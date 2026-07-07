@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>团队如何与 AI Agent 高效协作 · Cartman</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #fff5f5, #ffe8ee);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 24px 16px;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255, 107, 157, 0.2);
+    box-shadow: 2px 0 20px rgba(255, 107, 157, 0.08);
+  }
+  .sidebar h2 {
+    font-size: 15px;
+    margin: 0 0 6px;
+    color: #14171e;
+    font-weight: 700;
+  }
+  .sidebar .sub {
+    font-size: 11px;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .slide-thumb {
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .slide-thumb:hover {
+    background: rgba(255, 107, 157, 0.12);
+    transform: translateX(2px);
+  }
+  .slide-thumb.active {
+    background: rgba(255, 107, 157, 0.18);
+    border-left: 3px solid #ff6b9d;
+  }
+  .slide-thumb img {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .slide-thumb .label {
+    font-size: 11px;
+    color: #3a4256;
+    margin-top: 6px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .slide-thumb .num {
+    font-size: 10px;
+    color: #ff6b9d;
+    margin-top: 2px;
+    font-weight: 700;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    overflow: hidden;
+  }
+  .main img {
+    max-width: 100%;
+    max-height: calc(100vh - 160px);
+    box-shadow: 0 12px 48px rgba(255, 107, 157, 0.18);
+    border-radius: 16px;
+    background: white;
+  }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 960px;
+    margin-top: 24px;
+    gap: 16px;
+  }
+  .badge {
+    background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #14171e;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255,107,157,0.18);
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  button {
+    padding: 10px 22px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff6b9d, #ff5588);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(255, 107, 157, 0.3);
+  }
+  button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4);
+  }
+  button:disabled {
+    background: #ffc8d8;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .key-hint {
+    font-size: 10px;
+    color: #b0b0b0;
+    text-align: center;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>团队如何与 AI Agent 高效协作</h2>
+    <div class="sub">by Cartman · 马卡龙手绘叙事风 · 2026</div>
+    <div id="thumbs"></div>
+  </div>
+  <div class="main">
+    <img id="current" src="" alt="PPT slide" />
+    <div class="controls">
+      <button id="prev">← 上一页</button>
+      <div class="badge" id="counter"></div>
+      <button id="next">下一页 →</button>
+    </div>
+    <div class="key-hint">键盘 ← / → 翻页 · 点击 sidebar 跳转</div>
+  </div>
+  <script>
+    const slides = [
+      { src: 'images/p0_cover.png', label: '封面 · 团队如何与 AI Agent 高效协作' },
+      { src: 'images/p1_problem.png', label: '破局钩子 · 3 大症状 1+1<2' },
+      { src: 'images/p2_vision.png', label: '总纲 · Context × Observation 双引擎' },
+      { src: 'images/p3_context_layers.png', label: 'Part 1 · Context 三层办公室' },
+      { src: 'images/p4_observation.png', label: 'Part 2 · Observation 闭环' },
+      { src: 'images/p5_memory_evolve.png', label: 'Part 2 深化 · Memory Evolution' },
+      { src: 'images/p6_human_role.png', label: 'Part 3 · 4 角色升级' },
+      { src: 'images/p7_takeaways.png', label: 'Takeaways · 3 件今天开始' },
+    ];
+    let current = 0;
+    const img = document.getElementById('current');
+    const counter = document.getElementById('counter');
+    const thumbsEl = document.getElementById('thumbs');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    function render() {
+      const s = slides[current];
+      img.src = s.src;
+      counter.textContent = `${current + 1} / ${slides.length} · ${s.label}`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+      thumbsEl.querySelectorAll('.slide-thumb').forEach((el, i) => {
+        el.classList.toggle('active', i === current);
+      });
+    }
+
+    slides.forEach((s, i) => {
+      const div = document.createElement('div');
+      div.className = 'slide-thumb';
+      div.innerHTML = `
+        <img src="${s.src}" />
+        <div class="label">${s.label}</div>
+        <div class="num">${String(i + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}</div>
+      `;
+      div.onclick = () => { current = i; render(); };
+      thumbsEl.appendChild(div);
+    });
+
+    prevBtn.onclick = () => { if (current > 0) { current--; render(); } };
+    nextBtn.onclick = () => { if (current < slides.length - 1) { current++; render(); } };
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    render();
+  </script>
+</body>
+</html>
