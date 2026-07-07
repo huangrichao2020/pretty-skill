@@ -65,25 +65,90 @@
 - ❌ `.md` 跟 `.pptx` 内文不一致 → 以 `.md` 为准
 - ❌ `.pdf` 替代 `.md` → `.pdf` 不是纯文本，diff/搜索/AI 处理弱
 
-## 工程流程
+## 工程流程（**不可跳过任一步**）
 
 ```text
-1. 列 N 页章节清单
-   ↓
-2. 写 content.md（每页 4-7 字段，先！）
-   ↓
-3. 写 60 行 prompt × N（每页）
-   ↓
-4. matrix 生成 N 张图（PNG）
-   ↓
-5. python-pptx 嵌入 → presentation.pptx
-   ↓
-6. html-ppt-viewer 套壳 → web.html
-   ↓
-7. 用 content.md 反查 .pptx/.html（如有出入以 .md 为准）
-   ↓
-8. 3 件套归档 → domains/<area>/<case>/
+┌─────────────────────────────────────────────┐
+│ 1. 列 N 页章节清单                            │
+│   ↓                                         │
+│ 2. 写 content.md（每页 4-7 字段 · 先！）    │
+│   ↓                                         │
+│ 3. 写 60 行 prompt × N（每页）               │
+│   ↓                                         │
+│ 4. matrix 生成 N 张图（PNG）                 │ ← 必须这一步！
+│   ↓                                         │
+│ 5. python-pptx 嵌入图 → presentation.pptx    │ ← 用图，不是用 .md 转 PPT
+│   ↓                                         │
+│ 6. html-ppt-viewer 套壳 → web.html          │ ← 用图，不是用 .md 转 HTML
+│   ↓                                         │
+│ 7. 用 content.md 反查 .pptx/.html            │ ← 以 .md 为准
+│   ↓                                         │
+│ 8. 3 件套归档 → domains/<area>/<case>/     │
+└─────────────────────────────────────────────┘
+
+⚠️ 关键反模式 · 必避
+═════════════════════════════════════════════════════════════
+
+❌ 「直接拿 content.md 转 PPT」
+   → 文字 PPT（丑、缺图、信息密度低）
+   → 朋友试了一次，结果就是一堆丑文字框
+   
+❌ 「跳过步骤 4，直接用 .md 文字拼 .pptx」
+   → 失去视觉冲击 = 失去 3F 范式 80% 价值
+   
+❌ 「步骤 5/6 用代码生成 HTML 文字 PPT 而不出图」
+   → python-pptx 的 text_frame 直接铺文字 ≠ "3F Content"
+   → 必须 add_picture() 嵌入预先生成的图
+
+✅ 正确路径（必须严格按这个流程）
+   → content.md（数据）
+     ↓ 写 prompt
+   → AI 出图（PNG）
+     ↓ embed into
+   → .pptx（视觉）
+     ↓ 包到 HTML 阅读器
+   → .html（网页）
 ```
+
+**为什么流程不可跳**：
+- `.md` 是「数据」
+- `.pptx` / `.html` 是「视觉表示」
+- 没有中间的「AI 出图」，数据无法变成有视觉冲击的表示
+- **文字直转 = 数据自己说自己，没有视觉化 = 失去 80% 价值**
+
+## 流程校验清单（PR 前必查）
+
+```
+□ 步骤 1: 章节清单写好
+□ 步骤 2: content.md 每页 4-7 字段齐全
+□ 步骤 3: 60 行 prompt × N
+□ 步骤 4: 实际调 matrix API 出图 · 截图存 images/
+□ 步骤 5: python-pptx 用 add_picture() 嵌入图
+□ 步骤 6: html-ppt-viewer 用图生成 web.html · 不是用 .md 转 HTML
+□ 步骤 7: 用 .md 反查 .pptx/.html · 内文一致
+□ 步骤 8: 3 件套归档到正确位置
+
+任一项打 ✗ → PR 退回
+```
+
+## 给 Agent 的 onboarding（必读）
+
+如果你是 agent 接任务做 PPT，**先看完下面这一段再动手**：
+
+```text
+你接到一个 PPT 任务。第一步不是写 .pptx，也不是用代码铺文字。
+第一步是：
+  1. 写 content.md（每页 4-7 字段）
+  2. 写 prompt
+  3. 调 image_gen API 出图（matrix / DALL-E / Midjourney）
+  4. 把图嵌进 .pptx
+  5. 把图包进 web.html
+
+如果你跳过第 3 步直接生成文字 PPT，结果会很丑，
+仓库主会拒绝接受。
+```
+
+完整 onboarding：[onboarding-guide.md](./onboarding-guide.md)
 
 ## 完整规范 vs 简化版
 

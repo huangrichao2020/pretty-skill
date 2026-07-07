@@ -10,6 +10,20 @@
 
 **pretty-skill** 做一件事：把任何 skill / 课件 / 知识沉淀都按 **3F Content** 范式发布（`.md` + `.pptx` + `.html`）。
 
+### 为什么 3F 不能偷懒（文字直转 PPT）
+
+`.md` + `.pptx` + `.html` 不是「任选其一」的格式，是**必须严格按 3F 流程**：
+
+```
+content.md（数据）  →  prompt × N  →  matrix AI 出图  →  图嵌入 .pptx + .html（视觉）
+```
+
+❌ **直接拿 `.md` 文字转 `.pptx`** → 文字 PPT（丑、缺图、信息密度低）。已经有人试过这种偷懒，**拒绝接受**。
+
+✅ **正确路径** —— 完整流程：[content-triple-format/README.md](./content-triple-format/README.md)
+
+📊 **正反面对照**（文字 PPT vs 图 PPT 直观对比）：[before-after-example.md](./content-triple-format/before-after-example.md)
+
 ## 你拿到什么
 
 | 加 3F 之前 | 加 3F 之后 |
