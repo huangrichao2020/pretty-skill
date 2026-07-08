@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>团队如何与 AI Agent 高效协作 · Cartman · PPT 演示版</title>
+<title>{CASE_TITLE} · PPT 演示版</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body {
@@ -133,28 +133,14 @@ html, body {
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <h3>缩略图导航</h3>
-        <div class="thumb" data-idx="0"><img src="images/p0_cover.png" alt="P0"><span class="thumb-num">1</span></div>
-    <div class="thumb" data-idx="1"><img src="images/p1_problem.png" alt="P1"><span class="thumb-num">2</span></div>
-    <div class="thumb" data-idx="2"><img src="images/p2_vision.png" alt="P2"><span class="thumb-num">3</span></div>
-    <div class="thumb" data-idx="3"><img src="images/p3_context_layers.png" alt="P3"><span class="thumb-num">4</span></div>
-    <div class="thumb" data-idx="4"><img src="images/p4_observation.png" alt="P4"><span class="thumb-num">5</span></div>
-    <div class="thumb" data-idx="5"><img src="images/p5_memory_evolve.png" alt="P5"><span class="thumb-num">6</span></div>
-    <div class="thumb" data-idx="6"><img src="images/p6_human_role.png" alt="P6"><span class="thumb-num">7</span></div>
-    <div class="thumb" data-idx="7"><img src="images/p7_takeaways.png" alt="P7"><span class="thumb-num">8</span></div>
+    {THUMBNAILS}
   </aside>
 
   <main class="stage">
-    <div class="slide" data-idx="0"><img src="images/p0_cover.png" alt="P0"></div>
-    <div class="slide" data-idx="1"><img src="images/p1_problem.png" alt="P1"></div>
-    <div class="slide" data-idx="2"><img src="images/p2_vision.png" alt="P2"></div>
-    <div class="slide" data-idx="3"><img src="images/p3_context_layers.png" alt="P3"></div>
-    <div class="slide" data-idx="4"><img src="images/p4_observation.png" alt="P4"></div>
-    <div class="slide" data-idx="5"><img src="images/p5_memory_evolve.png" alt="P5"></div>
-    <div class="slide" data-idx="6"><img src="images/p6_human_role.png" alt="P6"></div>
-    <div class="slide" data-idx="7"><img src="images/p7_takeaways.png" alt="P7"></div>
+    {SLIDES}
     <div class="overlay-top">
-      <div class="title">团队如何与 AI Agent 高效协作 · Cartman</div>
-      <div class="progress"><span id="current">1</span> / <span id="total">8</span></div>
+      <div class="title">{CASE_TITLE}</div>
+      <div class="progress"><span id="current">1</span> / <span id="total">{PAGE_COUNT}</span></div>
     </div>
     <div class="controls">
       <div>
@@ -178,7 +164,7 @@ html, body {
 <!-- 演讲者模式 -->
 <div class="presenter-mode" id="presenterMode">
   <div class="pm-current">
-    <div class="pm-label">当前页 <span id="pm-cur-num">1</span> / <span id="pm-total">8</span></div>
+    <div class="pm-label">当前页 <span id="pm-cur-num">1</span> / <span id="pm-total">{PAGE_COUNT}</span></div>
     <img id="pm-cur-img" src="" alt="">
   </div>
   <div class="pm-next">
@@ -187,7 +173,7 @@ html, body {
   </div>
   <div class="pm-notes">
     <h4>📝 演讲备注</h4>
-    <p id="pm-notes-content">团队如何与 AI Agent 高效协作 · Cartman · pretty-skill PPT 演示版</p>
+    <p id="pm-notes-content">{DEFAULT_NOTE}</p>
   </div>
   <div class="pm-timer">
     <div class="label">⏱ 已演讲时长</div>
@@ -216,10 +202,10 @@ html, body {
 
 <script>
 // ===== 配置 =====
-const PAGE_COUNT = 8;
-const PAGE_IMAGES = ['p0_cover.png', 'p1_problem.png', 'p2_vision.png', 'p3_context_layers.png', 'p4_observation.png', 'p5_memory_evolve.png', 'p6_human_role.png', 'p7_takeaways.png'];
-const PAGE_NOTES = ['第 1 页 · p0_cover', '第 2 页 · p1_problem', '第 3 页 · p2_vision', '第 4 页 · p3_context_layers', '第 5 页 · p4_observation', '第 6 页 · p5_memory_evolve', '第 7 页 · p6_human_role', '第 8 页 · p7_takeaways'];
-const DEFAULT_NOTE = "团队如何与 AI Agent 高效协作 · Cartman · pretty-skill PPT 演示版";
+const PAGE_COUNT = {PAGE_COUNT};
+const PAGE_IMAGES = {PAGE_IMAGES_JS};
+const PAGE_NOTES = {PAGE_NOTES_JS};
+const DEFAULT_NOTE = "{DEFAULT_NOTE}";
 
 let cur = 0;
 let timerStart = Date.now();
