@@ -1,6 +1,7 @@
 # USAGE · agent 接入指南（学一下 XXX 标准协议）
 
-> **用途**：Mavis / Claude Code / Cursor / Aider 等 agent 看到这个文件 → 知道怎么把 pretty-skill 装进自己当元知识库。
+> **用途**：Mavis / Claude Code / Cursor / Aider 等 agent 看到这个文件 → 知道怎么把 pretty-skill 装进自己当**知识工程中枢**。
+> **再定义**：pretty-skill **不是**「`SKILL.md` 技能仓」（那是 Anthropic Claude Skills 那套「按此执行 xxx」的预制工具）。本项目是**知识工程中枢** —— 产出的是「可复用的结构化知识产物」，不是「可调用的工具函数」。
 > **配套**：README.md（做什么）· INDEX.md（11 领域快查）· STRUCTURE.md（结构定义）
 
 ---
