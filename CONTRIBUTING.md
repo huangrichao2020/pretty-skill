@@ -168,12 +168,13 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ---
 
-## ✅ 4 条硬规则（v3.2 简化）
+## ✅ 5 条硬规则（v3.11 + 1）
 
 1. **必填 2 件**（content.md + web.html）—— HTML 是 PPT 演示版（必填）
 2. **锦绣 3 样齐全**（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）—— v3.1 简化要求
 3. **`.md` 为单一真相** —— `web.html` / `presentation.pptx` / `锦绣` 内文以 `.md` 为准
 4. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
+5. **`manifest.json` 必填**（v3.11 新增） —— 每个 case 必须含 `manifest.json`，含 visibility 标识字段
 
 ### 范式变化说明（v3.2 重要）
 
@@ -181,13 +182,61 @@ git commit -m "feat: add 新领域名称 + 案例1"
 - ⚠️ `presentation.pptx` = **可选**（90% 用户不需要 · 仅当要二次编辑时才生成 · 加 `--with-pptx` 标志）
 - 详细规范：[content-triple-format/ppt-html-spec.md](./content-triple-format/ppt-html-spec.md)
 
-## 🚫 5 个反模式（PR 100% 退回）
+### manifest.json 必填详解（v3.11）
+
+每个 case 必须在 case 根目录加 `manifest.json`（[示例](../金融投资/chokepoint-mainboard/manifest.json)）：
+
+```json
+{
+  "name": "chokepoint-mainboard",
+  "domain": "金融投资",
+  "title": "卡脖子选股报告 · 主板专版",
+  "visibility": "public",
+  "tags": ["A股", "卡脖子", "选股", "供应链"],
+  "contributor": "@Kun",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-08",
+  "last_updated": "2026-07-08",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": true,
+    "pptx_size_mb": 10.6
+  },
+  "page_count": 9,
+  "summary": "卡脖子选股 · Serenity 供应链瓶颈方法论"
+}
+```
+
+**visibility 字段**（agent 自动读 + check-3f.py 校验）：
+
+| 值 | 含义 | 是否提 PR |
+|---|---|---|
+| `public` | 提 PR 共享给所有开发者（默认）| ✅ |
+| `private` | 本地工作目录可用，git push 时 skip | ❌（agent 仍可读，私密 ignore）|
+| `draft` | 草稿，等成熟后改 public 再提 PR | ❌（暂时被忽略）|
+
+**新增 case 必做 3 件事**（[INDEX.md](./INDEX.md) 同步更新）：
+1. 在对应领域目录下建 case 子目录
+2. 加 `manifest.json`（含 visibility 字段）
+3. 更新 [INDEX.md](./INDEX.md) 的「所有 case 清单」表
+
+**v0.2 skill-creator 自动写**：用 `python skill-creator/create.py --input foo.md --domain "金融投资" --visibility private` 会自动生成 manifest.json。
+
+**人工参考 3 个现有 case**：
+- [AI能力/cartman-team-ai-agent-collab/manifest.json](../AI能力/cartman-team-ai-agent-collab/manifest.json)
+- [AI能力/social-ecom-skill/manifest.json](../AI能力/social-ecom-skill/manifest.json)
+- [金融投资/chokepoint-mainboard/manifest.json](../金融投资/chokepoint-mainboard/manifest.json)
+
+## 🚫 6 个反模式（PR 100% 退回）
 
 1. ❌ 直接拿 `.md` 转 `.pptx`（文字 PPT）→ 必须 `add_picture()` 嵌图
 2. ❌ 直接用 `.md` 转 `.html`（纯文字网页 / **不是 PPT 演示版**）→ 必须按 ppt-html-spec.md 规范生成
 3. ❌ 跳过 AI 出图步骤 → 必须有 `images/` + N 张 PNG
 4. ❌ 跳过锦绣 3 样 → 必须有 `锦绣/cover-横屏.png` + `cover-竖屏.png` + `slides/`（8-12 张）+ `readme.md`
 5. ❌ case 名称用大写 / 下划线 / 空格 → 必须 kebab-case（英文）或 kebab-case（中文）
+6. ❌ **缺失 `manifest.json`** → 必须包含 visibility 字段（v3.11 起，check-3f.py 自动校验）
 
 ---
 

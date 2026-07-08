@@ -1,22 +1,33 @@
 #!/usr/bin/env python3
-"""skill-creator · pretty-skill v3 自动化工具 · 主脚本
+"""skill-creator · pretty-skill v3 自动化工具 · v0.2 真实实现
 
-任何知识 → 1 键生成完整 pretty-skill 目录（3F Content + 锦绣）
+输入 .md 知识 → 1 键生成完整 pretty-skill case 目录：
+  - content.md (按页 4-7 字段)
+  - manifest.json (含 --visibility 字段)
+  - 锦绣/ 4 形态骨架 (cover-横屏 + cover-竖屏 + slides/ + readme.md)
+  - web.html (PPT 演示版 HTML)
+  - prompts/ (每页 matrix prompt 模板)
+  - 接下来要做的步骤清单
 
 用法：
-  python create.py --input my-knowledge.md --domain "金融投资" --style "深色科技风"
-  python create.py --url https://example.com/article --domain "思维方法" --visibility private
+  python create.py --input my-knowledge.md --domain "金融投资"
+  python create.py --url https://example.com/article --domain "思维方法"
+  python create.py --input my.md --domain "AI能力" --visibility private
 
-依赖：pip install python-pptx
+v0.2 新增：
+  ✅ 真分页（按 ## 一、二、三 / ## P1: title）
+  ✅ 真写 content.md + manifest.json + 锦绣骨架 + web.html + prompts
+  ✅ 自动 kebab-case 化 case name
+  ✅ 输出「下一步做什么」清单
 
-新增参数（v3.11）：
-  --visibility {public|private|draft}
-    public  → 默认，提 PR 共享给所有开发者
-    private → 本地 private，不公开（但 agent 本地仍可用）
-    draft   → 草稿，等成熟后改 public 再提 PR
+依赖：
+  pip install python-pptx (可选 · v0.2 不强求)
 """
 import argparse
+import json
+import re
 import sys
+from datetime import date
 from pathlib import Path
 
 PRESET_DOMAINS = [
@@ -31,76 +42,459 @@ PRESET_STYLES = [
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="skill-creator · pretty-skill 自动化工具",
+        description="skill-creator · pretty-skill 知识工程中枢自动化工具 v0.2",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
-  python create.py --input my-knowledge.md --domain "金融投资" --style "深色科技风"
+  python create.py --input my-knowledge.md --domain "金融投资"
   python create.py --url https://example.com/article --domain "思维方法"
+  python create.py --input my.md --domain "AI能力" --visibility private
+
+NOTE（v0.2 限制）:
+  - 输入必须是 .md 文件（按 ## 一、二、三 风格分页）
+  - 不真调 AI 出图（出图阶段需要用户手动调 matrix / DALL-E）
+  - 不真嵌图到 PPTX（v0.2 之后才支持 · 用 --with-pptx 参数）
+  - 输出的是「骨架」，用户填图后跑 check-3f.py 即可
         """,
     )
     parser.add_argument("--input", help="输入 .md 文件路径")
-    parser.add_argument("--url", help="输入 URL（与 --input 二选一）")
+    parser.add_argument("--url", help="输入 URL（v0.2 仅做占位，v0.3+ 真支持）")
     parser.add_argument(
         "--domain", required=True, choices=PRESET_DOMAINS + ["新增"],
-        help="11 预设领域之一（AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 生活方式 / 思维方法 / 新增）",
+        help="11 预设领域之一（或「新增」= 走 PR 流程）",
     )
     parser.add_argument(
-        "--style", default="蓝白灰", choices=PRESET_STYLES,
-        help="视觉风格（马卡龙 / 古铜金 / 蓝白灰 / 深色科技风 / 城市插画 / 真实生活感）· 默认蓝白灰",
+        "--style", default="手绘马卡龙", choices=PRESET_STYLES,
+        help="视觉风格（默认「手绘马卡龙」= pretty-skill 锁定风格）",
     )
     parser.add_argument("--pages", type=int, default=9, help="PPT 页数（默认 9）")
-    parser.add_argument("--output", default="./output/", help="输出目录（默认 ./output/）")
-    parser.add_argument("--no-jinxiu", action="store_true", help="跳过锦绣 4 形态生成")
+    parser.add_argument("--output", default="./output/", help="输出父目录（默认 ./output/）")
+    parser.add_argument("--case-name", help="case 目录名（默认 = .md 文件名 kebab-case）")
+    parser.add_argument("--no-jinxiu", action="store_true", help="跳过锦绣 4 形态骨架生成")
     parser.add_argument(
         "--visibility", default="public",
         choices=["public", "private", "draft"],
-        help="manifest.json 的 visibility 字段（public=提 PR 共享 / private=本地不共享 / draft=草稿等成熟后再改 public）",
+        help="manifest.json 的 visibility 字段",
     )
-    parser.add_argument("--api-key", help="AI 出图 API key（默认读 MATRIX_API_KEY 环境变量）")
+    parser.add_argument(
+        "--contributor", default="huangrichao2020",
+        help="贡献者名字（默认 huangrichao2020）",
+    )
+    parser.add_argument(
+        "--summary", default="",
+        help="case 的一句话简介（留空则自动从首页提取）",
+    )
     return parser.parse_args()
 
+
+# ───────────────────────── 输入解析 ─────────────────────────
+
+def parse_input_md(content: str) -> tuple[str, list[dict]]:
+    """解析 .md → (首页 / page 列表)
+
+    分页规则（按优先级）：
+      1. `## 一、xxx` / `## 二、xxx` （中文序号）
+      2. `## P1: xxx` / `## P2: xxx` （P 数字）
+      3. `## xxx` 普通 H2（依次 P1, P2...）
+    """
+    # 先提 H1 标题 + 首页 intro
+    lines = content.split("\n")
+    title_line = ""
+    intro_lines = []
+    body_start = 0
+    for i, line in enumerate(lines):
+        if line.startswith("# ") and not title_line:
+            title_line = line[2:].strip()
+            body_start = i + 1
+            continue
+        if line.startswith("## "):
+            break
+        if line.strip().startswith(">") or line.strip() == "":
+            intro_lines.append(line)
+    intro = "\n".join(intro_lines).strip()
+
+    # 按 H2 分页
+    page_pattern = re.compile(r"^## (.+)$", re.MULTILINE)
+    pages = []
+    for match in page_pattern.finditer(content):
+        title = match.group(1).strip()
+        start = match.end()
+        # 找下一个 H2 或文末
+        next_match = page_pattern.search(content, pos=start)
+        end = next_match.start() if next_match else len(content)
+        page_body = content[start:end].strip()
+        pages.append({"title": title, "body": page_body})
+
+    return title_line or "Untitled", pages
+
+
+def extract_fields(page_body: str) -> list[str]:
+    """启发式提取 4-7 个字段
+
+    优先级：
+      1. `>` quote 块 → 1 字段
+      2. bullet (`- xxx`) / numbered (`1. xxx`) 列表 → 每个 1 字段
+      3. 段落（粗体强调） → 1 字段
+      4. 没有就 fallback 到原 body 整段
+    """
+    fields = []
+
+    # 1. quote blocks
+    quote_blocks = re.findall(r"^>\s*(.+?)(?=\n[^>]|\Z)", page_body, re.MULTILINE | re.DOTALL)
+    for q in quote_blocks:
+        fields.append(q.strip().replace("\n", " "))
+        if len(fields) >= 7: break
+
+    # 2. bullet items
+    if len(fields) < 4:
+        bullets = re.findall(r"^[-*]\s+(.+)$", page_body, re.MULTILINE)
+        for b in bullets:
+            if len(fields) >= 7: break
+            fields.append(b.strip())
+
+    # 3. numbered items
+    if len(fields) < 4:
+        numbered = re.findall(r"^\d+\.\s+(.+)$", page_body, re.MULTILINE)
+        for n in numbered:
+            if len(fields) >= 7: break
+            fields.append(n.strip())
+
+    # 4. bold-emphasized line
+    if len(fields) < 4:
+        bolds = re.findall(r"\*\*([^*]+)\*\*", page_body)
+        for b in bolds:
+            if len(fields) >= 7: break
+            fields.append(b.strip())
+
+    # 5. fallback：整段
+    if len(fields) < 4:
+        plain = page_body.strip()
+        if plain:
+            fields.append(plain[:200])
+
+    return fields[:7]
+
+
+def to_kebab_case(s: str) -> str:
+    """转 kebab-case：去特殊字符 + 全小写 + 空格转 -"""
+    s = re.sub(r"[\s_]+", "-", s)
+    s = re.sub(r"[^\w\u4e00-\u9fff\-]", "", s)
+    s = re.sub(r"-+", "-", s).strip("-")
+    return s.lower()
+
+
+# ───────────────────────── 文件生成 ─────────────────────────
+
+def write_manifest(case_dir: Path, args, page_count: int, summary: str):
+    manifest = {
+        "name": case_dir.name,
+        "domain": args.domain,
+        "title": case_dir.name,
+        "visibility": args.visibility,
+        "tags": ["待填"],
+        "contributor": args.contributor,
+        "contributor_github": args.contributor,
+        "created": str(date.today()),
+        "last_updated": str(date.today()),
+        "format": {
+            "content_md": "content.md",
+            "web_html": "web.html",
+            "锦绣": not args.no_jinxiu,
+            "presentation_pptx": False,
+        },
+        "page_count": page_count,
+        "summary": summary or "（v0.2 自动生成，待 creator 编辑）",
+    }
+    (case_dir / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+
+def write_content_md(case_dir: Path, title: str, intro: str, pages: list[dict]):
+    """写 content.md（每页 4-7 字段 · YAML-like 格式）"""
+    lines = [f"# {title}", ""]
+    if intro:
+        lines.extend([f"> {intro}", ""])
+    lines.append("---")
+    lines.append("")
+    for i, page in enumerate(pages, 1):
+        lines.append(f"## P{i}: {page['title']}")
+        lines.append("")
+        fields = extract_fields(page["body"])
+        for f in fields:
+            lines.append(f"- {f}")
+        lines.append("")
+    (case_dir / "content.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_jinxiu_skeleton(case_dir: Path, args, page_count: int):
+    """写 锦绣/ 4 形态骨架 + 提示"""
+    if args.no_jinxiu:
+        return
+    jx = case_dir / "锦绣"
+    jx.mkdir(exist_ok=True)
+    # cover-横屏 占位
+    cover_h = jx / "cover-横屏.png.placeholder"
+    cover_h.write_text(
+        f"# 占位 · cover-横屏.png\n"
+        f"# 用法：调 matrix / DALL-E 出 1 张 16:9（1920×1080）横屏封面，\n"
+        f"# 题目是「{case_dir.name}」，马卡龙 5 色手绘叙事风。\n"
+        f"# 生成后保存到本文件名去掉 .placeholder。\n", encoding="utf-8"
+    )
+    # cover-竖屏
+    cover_v = jx / "cover-竖屏.png.placeholder"
+    cover_v.write_text(
+        f"# 占位 · cover-竖屏.png\n"
+        f"# 用法：1 张 3:4（1080×1440）或 9:16（1080×1920）竖屏封面，小红书/抖音/视频号专用。\n"
+        f"# 题目同上，手绘马卡龙风。\n", encoding="utf-8"
+    )
+    # slides/
+    slides = jx / "slides"
+    slides.mkdir(exist_ok=True)
+    for i in range(1, page_count + 1):
+        (slides / f"slide-{i:02d}.png.placeholder").write_text(
+            f"# 占位 · slide-{i:02d}.png\n"
+            f"# 用法：1 张 16:9 讲解图，对应 content.md 中第 {i} 页。\n"
+            f"# 马卡龙 5 色手绘叙事风，不堆字。\n", encoding="utf-8"
+        )
+    # readme.md（融合稿）
+    readme = jx / "readme.md"
+    readme.write_text(
+        f"# {case_dir.name} · 融合稿\n\n"
+        f"> 这是「锦绣」的融合 md，用于公众号 + 自媒体 + AI 阅读三用。\n\n"
+        f"## 一句话简介\n\n"
+        f"{args.summary or '（v0.2 自动生成，请在 manifest.json 和 web.html 中精修）'}\n\n"
+        f"## 几个核心要点\n\n"
+        f"（待 creator 填 · v0.2 占位）\n\n"
+        f"## 一图胜千言\n\n"
+        f"![cover](cover-横屏.png)\n", encoding="utf-8"
+    )
+
+
+def write_web_html(case_dir: Path, title: str, pages: list[dict]):
+    """写 PPT 演示版 web.html（v3.2 规范）"""
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>{title} · pretty-skill</title>
+  <link rel="stylesheet" href="../../_模板/案例/web.css">
+</head>
+<body>
+  <div class="ppt">
+    <div class="slide cover">
+      <h1>{title}</h1>
+      <p class="subtitle">pretty-skill · 知识工程中枢</p>
+      <p class="meta">visibility: {case_dir.parent.parent.name} · auto-generated by skill-creator v0.2</p>
+    </div>
+'''
+    for i, page in enumerate(pages, 1):
+        fields = extract_fields(page["body"])
+        html += f'''    <div class="slide">
+      <h2>P{i}: {page["title"]}</h2>
+      <ul>
+'''
+        for f in fields:
+            html += f'        <li>{f}</li>\n'
+        html += '''      </ul>
+    </div>
+'''
+    html += '''  </div>
+</body>
+</html>
+'''
+    (case_dir / "web.html").write_text(html, encoding="utf-8")
+
+
+def write_prompts(case_dir: Path, title: str, pages: list[dict], args):
+    """写 prompts/ · 每页 1 个 matrix prompt 模板"""
+    prompts = case_dir / "prompts"
+    prompts.mkdir(exist_ok=True)
+    for i, page in enumerate(pages, 1):
+        fields = extract_fields(page["body"])
+        prompt_text = f'''# slide-{i:02d}.png prompt · pretty-skill · {title}
+
+Style: 手绘叙事 + 马卡龙配色，cream paper 底色，深棕文字 #6B4423
+Aspect: 16:9 (1920x1080)
+Resolution: 2K
+
+[主视觉]
+{page["title"]}
+
+[4-7 个要点（每点图标化）]
+{chr(10).join(f"- {f}" for f in fields)}
+
+[装饰]
+手绘云 / 星星 / 咖啡杯 / 铅笔 / 便利贴（不同倾斜角）
+
+[避免]
+NO tech aesthetic, NO dark mode, NO neon, NO multi-color rainbow, NO English body, NO emoji as standalone
+'''
+        (prompts / f"slide-{i:02d}.md").write_text(prompt_text, encoding="utf-8")
+
+
+def write_next_steps(case_dir: Path, args, page_count: int):
+    """写 NEXT_STEPS.md · 接下来做什么"""
+    next_md = f'''# Next Steps · 接下来做什么
+
+> v0.2 骨架生成完成 · **你需要做的 5 步**：
+
+## 1. 看骨架（5 分钟）
+
+打开这两个文件：
+
+- `content.md` —— 看每页要点是否齐全
+- `web.html` —— 浏览器打开看 PPT 演示版是否 OK
+
+## 2. 调 matrix 出图（10-30 分钟，**可选**走 prompts/）
+
+```bash
+# 用 prompts/slide-NN.md 作为 prompt 模板
+# 调 matrix 或 DALL-E 出 16:9 2K PNG
+# 保存到对应位置：
+#   images/slide-NN.png   （喂 web.html）
+#   锦绣/slides/slide-NN.png   （锦绣用）
+#   锦绣/cover-横屏.png + cover-竖屏.png
+```
+
+> **不调出图也行** —— v0.2 留了 `.placeholder` 文件，check-3f.py 跑时会温和提醒。
+
+## 3. 调 manifest（2 分钟）
+
+打开 `manifest.json`：
+- 填 `tags` 数组（多个）
+- 填 `summary`（一句话讲清 case 是什么）
+- `visibility` 字段已经按你传入的 `--visibility` 填好
+
+## 4. 跑 check-3f 校验（30 秒）
+
+```bash
+python3 ../../content-triple-format/check-3f.py "{args.domain}/{case_dir.name}"
+```
+
+退出码 0 = 通过 / 1 = 失败 + 原因。
+
+## 5. 提 PR 或本地使用
+
+**如果 visibility=public**：
+```bash
+git add "{args.domain}/{case_dir.name}"
+git commit -m "feat({args.domain}): add {case_dir.name}"
+git push origin main  # 提 PR
+```
+
+**如果 visibility=private**：本地用，git push 时不共享。
+
+---
+
+> **v0.2 范围**：解析 .md → 4 件套骨架（content.md + manifest.json + web.html + 锦绣骨架）+ prompts 模板
+>
+> **v0.3 计划**：真调 matrix 出图 + 嵌图到 PPTX + 自动跑 check-3f
+'''
+    (case_dir / "NEXT_STEPS.md").write_text(next_md, encoding="utf-8")
+
+
+def write_gitignore(case_dir: Path):
+    """占位说明文件 .gitignore（让 placeholders 不入 git）"""
+    (case_dir / "锦绣" / ".gitignore").write_text(
+        "# 占位说明文件不入 git\n*.placeholder\n",
+        encoding="utf-8"
+    ) if (case_dir / "锦绣").exists() else None
+
+
+# ───────────────────────── 主流程 ─────────────────────────
 
 def main():
     args = parse_args()
 
-    if not args.input and not args.url:
-        print("❌ 必须提供 --input 或 --url 其中之一")
+    if not args.input:
+        print("❌ 必须提供 --input（或 v0.3+ 的 --url）")
         sys.exit(1)
+
+    input_path = Path(args.input)
+    if not input_path.exists():
+        print(f"❌ 输入文件不存在: {input_path}")
+        sys.exit(1)
+
+    # 1. 解析输入
+    content = input_path.read_text(encoding="utf-8")
+    title, pages = parse_input_md(content)
+
+    if not pages:
+        print(f"❌ .md 文件必须含至少 1 个 H2（## xxx）才能分页")
+        print(f"   当前文件 {input_path} 没有 H2，v0.2 stub 退化为单页")
+        pages = [{"title": "默认", "body": content}]
+
+    # 2. case name 推导
+    case_name = args.case_name or to_kebab_case(input_path.stem)
+    if not case_name:
+        case_name = "untitled-case"
+    if not re.match(r"^[a-z0-9\-\u4e00-\u9fff]+$", case_name):
+        print(f"⚠️  case-name '{case_name}' 含特殊字符，自动清理")
+        case_name = re.sub(r"[^a-z0-9\-\u4e00-\u9fff]", "-", case_name)
+
+    # 3. 准备目录
+    output_dir = Path(args.output) / args.domain / case_name
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # 4. 写文件
+    summary = args.summary
+    if not summary and pages:
+        # 自动从首页第 1 个 quote 提取
+        first_page_fields = extract_fields(pages[0]["body"])
+        summary = first_page_fields[0] if first_page_fields else ""
 
     print(f"""
 ╔════════════════════════════════════════════════════════════╗
-║  skill-creator · pretty-skill v3 自动化工具                  ║
+║  skill-creator · pretty-skill v0.2 真实生成                ║
 ╚════════════════════════════════════════════════════════════╝
 
-📝 输入：     {args.input or args.url}
+📥 输入：     {input_path.name} ({len(pages)} 页)
 🎯 领域：     {args.domain}
 🎨 风格：     {args.style}
-📄 页数：     {args.pages}
-📂 输出：     {args.output}
-🌟 锦绣：     {'跳过' if args.no_jinxiu else '生成 4 形态'}
-🔒 可见性：   {args.visibility} ({'提 PR 共享' if args.visibility == 'public' else '本地不共享' if args.visibility == 'private' else '草稿待成熟'})
+📂 输出：     {output_dir}
+🔒 可见性：   {args.visibility}
 """)
 
-    # TODO v0.1: 实现完整 3F Content + 锦绣生成
-    print("⚠️  v0.1 还是 stub - 完整实现见 skill-creator/README.md 路线图")
-    print()
-    print("📋 v0.1 已实现：")
-    print("  ✅ 命令行参数解析")
-    print("  ✅ 11 领域 + 6 风格预设校验")
-    print("  ✅ visibility 参数（v3.11：public / private / draft）")
-    print()
-    print("🚧 v0.2 计划：")
-    print("  - 解析 .md 输入 → content.md 4-7 字段/页")
-    print("  - 调 matrix MCP 出图（9 张）")
-    print("  - python-pptx 嵌图 → presentation.pptx")
-    print("  - html-ppt-viewer → web.html")
-    print("  - 锦绣 4 形态生成（cover + 9图 + PPT + 视频脚本）")
-    print("  - v0.2 起自动写 manifest.json（用 --visibility 字段）")
-    print()
-    print("🌟 完整 3F Content + 锦绣：参考 content-triple-format/ 范式")
-    print("   📘 [content-triple-format/README.md](../content-triple-format/README.md)")
-    print("   📘 [content-triple-format/锦绣.md](../content-triple-format/锦绣.md)")
+    write_manifest(output_dir, args, len(pages), summary)
+    print(f"  ✅ manifest.json ({args.visibility})")
+
+    write_content_md(output_dir, title, "", pages)
+    print(f"  ✅ content.md ({len(pages)} 页)")
+
+    write_web_html(output_dir, title, pages)
+    print(f"  ✅ web.html (PPT 演示版骨架)")
+
+    write_jinxiu_skeleton(output_dir, args, len(pages))
+    if not args.no_jinxiu:
+        print(f"  ✅ 锦绣/ 4 形态骨架 (cover × 2 + {len(pages)} slides + readme.md)")
+
+    write_prompts(output_dir, title, pages, args)
+    print(f"  ✅ prompts/{len(pages)} 个 (matrix prompt 模板)")
+
+    write_next_steps(output_dir, args, len(pages))
+    print(f"  ✅ NEXT_STEPS.md (接下来做什么)")
+
+    write_gitignore(output_dir)
+
+    vis_msg = {
+        "public": "shared globally via PR",
+        "private": "private local · skip on git push",
+        "draft": "draft · change to public later",
+    }[args.visibility]
+
+    print(f"""
+🎉 v0.2 生成完成！
+
+接下来：
+  1. cd {output_dir}
+  2. 打开 NEXT_STEPS.md · 看 5 步清单
+  3. 调 matrix 出图（可选）→ 跑 check-3f.py 校验 → 提 PR
+
+visibility={args.visibility} → {vis_msg}
+
+详细文档：[content-triple-format/锦绣.md](../../content-triple-format/锦绣.md)
+""")
 
     return 0
 

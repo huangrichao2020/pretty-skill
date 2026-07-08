@@ -170,13 +170,47 @@ mavis mcp call matrix matrix_generate_image '{"prompt": "...", "aspect_ratio": "
 
 ## 🛣️ Roadmap
 
-| 版本 | 状态 | 目标 |
-|---|---|---|
-| v0.1 | ✅ 当前 | CLI 框架 + 基础输入解析 + matrix 出图 |
-| v0.2 | 计划 | 锦绣 3 样自动生成（v3.1 简化）|
-| v0.3 | 计划 | URL 输入支持（browser-act 集成）|
-| v1.0 | 计划 | 完整 3F Content + 锦绣 + PR 模板生成 |
+| 版本 | 状态 | 目标 | 进度 |
+|---|---|---|---|
+| v0.1 | ✅ 已完成 | CLI 框架 + 命令行参数 + 11 领域 / 6 风格 + visibility 参数 | ✅ |
+| v0.2 | ✅ **v3.15 完成** | 真分页 · 真写 4 件套骨架（content.md + manifest.json + web.html + 锦绣 4 形态）+ prompts/ | ✅ 实测通过 |
+| v0.3 | 计划 | 真调 matrix 出图 · 嵌图到 PPTX · 跑 check-3f.py 自动验证 |
+| v0.4 | 计划 | URL 输入支持（browser-act 集成）+ 自动 fetch + 转 .md |
+| v1.0 | 计划 | 完整 3F Content + 锦绣 + PR 模板 + CI 自动提 PR |
 | v2.0 | 计划 | Web UI（拖拽 .md / 输入 URL → 一键生成）|
+
+### v0.2 真实成果
+
+跑 v0.2 后，骨架自动生成：
+
+```text
+output/<domain>/<case-name>/
+├── content.md          (4-7 字段/页 · 按 H2 自动分页)
+├── manifest.json       (含 --visibility 字段 · v3.11 PR 必填)
+├── web.html            (PPT 演示版骨架 · 用 _模板/案例/web.css)
+├── NEXT_STEPS.md       (5 步清单：编辑 → 出图 → 校验 → 提 PR)
+├── prompts/            (每页 1 个 matrix prompt 模板 · 手绘马卡龙风)
+└── 锦绣/                (4 形态占位 + .gitignore)
+    ├── cover-横屏.png.placeholder
+    ├── cover-竖屏.png.placeholder
+    ├── readme.md       (融合稿 · 公众号 + 自媒体 + AI 阅读三用)
+    └── slides/         (N 张 PNG 占位 · placeholder 形式)
+```
+
+**实测结果**（2026-07-08）：
+
+```bash
+$ python skill-creator/create.py \
+    --input sample-knowledge.md \
+    --domain "金融投资" \
+    --case-name "chokepoint-test"
+✅ manifest.json (public)
+✅ content.md (6 页 · 自动分页)
+✅ web.html (PPT 演示版骨架)
+✅ 锦绣/ 4 形态骨架 (cover × 2 + 6 slides + readme.md)
+✅ prompts/ 6 个 (matrix prompt 模板)
+✅ NEXT_STEPS.md (接下来做什么)
+```
 
 ---
 
