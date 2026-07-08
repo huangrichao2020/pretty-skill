@@ -54,6 +54,8 @@ pretty-skill/
 ├── FRIENDS-PR-GUIDE.md
 ├── PROMOTION.md
 ├── CONTRIBUTORS.md
+├── INDEX.md                         ← 🆕 11 领域快查（agent RAG 友好）
+├── USAGE.md                         ← 🆕 agent 接入指南（学一下 XXX 协议）
 ├── LICENSE
 └── roadmap.md
 ```

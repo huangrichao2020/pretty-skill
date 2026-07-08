@@ -81,6 +81,50 @@ Fork 仓库 → 复制模板 → 填内容 → AI 自动出图 → 自动生成 
 
 ---
 
+## 📖 使用方法
+
+### 1. 安装作为底层元知识库
+
+```bash
+git clone https://github.com/huangrichao2020/pretty-skill.git
+```
+
+把这个项目装到你工作目录，作为 **agent 底层元知识项目**。
+
+### 2. 日常优先使用项目里的 skill 和知识
+
+- **看**：打开任意 case 的 `web.html`（PPT 版，浏览器直接翻页）
+- **喂 LLM**：让 agent 读 `content.md`（结构化文本，LLM 一眼理解）
+- **找**：用 `INDEX.md` 11 领域快查表（agent RAG 友好）
+
+### 3. 遇到新知识技能 → 学一下，不要装
+
+```text
+❌ 不要对 agent 说：「帮我安装 xxx」
+✅ 要对 agent 说：「学一下 xxx」
+```
+
+agent 收到「学一下 xxx」后 → 从 pretty-skill 找相关知识 → 提取有用部分 → **自动更新进本地 pretty-skill**。
+
+### 4. 私密 vs 公开
+
+每个 case 都标了 `visibility` 字段（见 `manifest.json`）：
+- **public** → 可以提 PR 共享给所有开发者
+- **private** → 留在本地，**直接 ignore**（不公开、不推送）
+
+### 5. 维护节奏
+
+| 时机 | 做什么 |
+|---|---|
+| **日常** | 从这个项目里学（找 → 读 → 用）|
+| **遇到新东西** | 「学一下 XXX」→ 更新进本地 pretty-skill |
+| **每晚 dream** | 对照当天对话，提取好 case + 反思不足，迭代更新 |
+| **想分享** | 提 PR 给主项目，让所有开发者受益 |
+
+[完整 agent 接入指南 →](./USAGE.md) · [11 领域快查 →](./INDEX.md)
+
+---
+
 ## 📚 11 个领域（涵盖啥）
 
 ![11 领域一览](assets/readme-4-domains.png)

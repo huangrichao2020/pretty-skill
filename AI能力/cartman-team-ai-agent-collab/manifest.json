@@ -1,0 +1,19 @@
+{
+  "name": "cartman-team-ai-agent-collab",
+  "domain": "AI能力",
+  "title": "团队如何与 AI Agent 高效协作 · Cartman",
+  "visibility": "public",
+  "tags": ["multi-agent", "团队协作", "Cartman范式", "人机协作"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-07",
+  "last_updated": "2026-07-08",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 8,
+  "summary": "Cartman 多 agent 团队的高效协作方法论 · 9 张 AI 出图"
+}
