@@ -125,21 +125,22 @@ pretty-skill/
 ```
 <领域>/<case>/
 ├── README.md                  ← case 说明（必填）
-├── content.md                 ← 源文字（必填，每页 4-7 字段）
-├── build_pptx.py              ← PPTX 生成脚本（推荐）
-├── web.html                   ← 网页版（必填，含 <img> 标签）
-├── images/                    ← AI 出图原图（必填，≥ 1 张/页）
+├── content.md                 ← 源文字（**必填** · 每页 4-7 字段）
+├── web.html                   ← PPT 演示版（**必填** · 中央大图 + 键盘翻页 + 全屏 + 演讲者模式）
+├── presentation.pptx          ← 真实 PowerPoint（**可选** · 仅二次编辑时生成 · 加 --with-pptx）
+├── build_pptx.py              ← PPTX 生成脚本（推荐 · 可选时使用）
+├── images/                    ← AI 出图原图（**必填** · ≥ 1 张/页）
 │   ├── p0_cover.png
 │   ├── p1_hook.png
 │   └── ...
-├── output/                    ← PPTX 输出（必填，≥ 1 MB）
+├── output/                    ← PPTX 输出（**可选** · ≥ 1 MB · 二次编辑时生成）
 │   └── <case_name>.pptx
-├── prompts/                   ← 出图 prompt（推荐，60 行/页）
+├── prompts/                   ← 出图 prompt（**必填** · 60 行/页）
 │   ├── README.md
 │   ├── p0_cover.md
 │   └── ...
 │
-└── 锦绣/                      ← 🆕 锦绣素材（创建时自动生成 · v3.1 简化）
+└── 锦绣/                      ← 🆕 锦绣素材（**必填** · v3.1 简化）
     ├── cover-横屏.png          # 1 张横屏封面（16:9）
     ├── cover-竖屏.png          # 1 张竖屏封面（3:4 或 9:16）
     ├── slides/                 # 8-12 张讲解图（16:9 · creator 自行决定）

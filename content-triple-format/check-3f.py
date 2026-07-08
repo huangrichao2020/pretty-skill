@@ -167,15 +167,17 @@ def find_pptx(case_dir: Path) -> Path | None:
 
 
 def check_pptx(case_dir: Path) -> tuple[bool, list[str]]:
-    """检查 presentation.pptx · ≥ 1 MB · 内嵌图"""
+    """检查 presentation.pptx · v3.2 改可选（warning 不阻止）"""
     errors = []
+    warnings = []
     pptx_path = find_pptx(case_dir)
 
     if pptx_path is None:
-        errors.append(
-            f"❌ presentation.pptx 不存在（找过: case_dir/、case_dir/output/、所有子目录）"
-        )
-        return False, errors
+        # v3.2 改：PPTX 可选，warning 而非 error
+        warn(f"presentation.pptx 不存在（v3.2 可选 · 90% 用户不需要）")
+        warn(f"  · 仅当需要二次编辑时才生成（用 build_pptx.py）")
+        warn(f"  · 演示场景请用 web.html（必填 · PPT 演示版）")
+        return True, errors  # v3.2 软警告
 
     info(f"presentation.pptx 位置: {pptx_path.relative_to(case_dir.parent)}")
 
@@ -183,34 +185,28 @@ def check_pptx(case_dir: Path) -> tuple[bool, list[str]]:
     size_mb = pptx_path.stat().st_size / (1024 ** 2)
     info(f"presentation.pptx 文件大小: {size_mb:.2f} MB")
     if size_mb < MIN_PPTX_SIZE_MB:
-        errors.append(
-            f"❌ presentation.pptx 文件大小 {size_mb:.2f} MB < {MIN_PPTX_SIZE_MB} MB（疑似纯文字 PPT）"
-        )
-        return False, errors
+        warn(f"presentation.pptx 文件大小 {size_mb:.2f} MB < {MIN_PPTX_SIZE_MB} MB（疑似纯文字 PPT）")
+    else:
+        ok(f"presentation.pptx 大小合规 ({size_mb:.2f} MB ≥ {MIN_PPTX_SIZE_MB} MB)")
 
-    ok(f"presentation.pptx 大小合规 ({size_mb:.2f} MB ≥ {MIN_PPTX_SIZE_MB} MB)")
-
-    # 检查 pptx 内是否真含图（解 zip 看 ppt/media 目录）
+    # 检查 pptx 内是否真含图
     try:
         with zipfile.ZipFile(pptx_path) as zf:
             media_files = [n for n in zf.namelist() if n.startswith("ppt/media/")]
             if not media_files:
-                errors.append("❌ presentation.pptx 内无任何图（ppt/media/ 为空）")
-                return False, errors
-
-            image_extensions = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"}
-            image_files = [n for n in media_files if any(n.lower().endswith(ext) for ext in image_extensions)]
-            if not image_files:
-                errors.append(f"❌ presentation.pptx 内 ppt/media/ 文件不是图: {media_files[:3]}")
-                return False, errors
-
-            ok(f"presentation.pptx 内含 {len(image_files)} 张图（嵌图证据）")
+                warn("presentation.pptx 内无任何图（ppt/media/ 为空）")
+            else:
+                image_extensions = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"}
+                image_files = [n for n in media_files if any(n.lower().endswith(ext) for ext in image_extensions)]
+                if not image_files:
+                    warn(f"presentation.pptx 内 ppt/media/ 文件不是图")
+                else:
+                    ok(f"presentation.pptx 内含 {len(image_files)} 张图（嵌图证据）")
 
     except zipfile.BadZipFile:
-        errors.append(f"❌ presentation.pptx 不是合法 zip 文件")
-        return False, errors
+        warn(f"presentation.pptx 不是合法 zip 文件")
 
-    return len(errors) == 0, errors
+    return True, errors  # v3.2 软警告模式
 
 
 def check_web_html(case_dir: Path) -> tuple[bool, list[str]]:

@@ -35,11 +35,19 @@
 - Case 路径：`<领域>/<case 名>/`
 - Case 名格式：（英文 kebab-case / 中文 kebab-case）
 
-## 3F Content 检查（必填 · 给 AI 读）
+## 3F Content 检查（v3.2 简化）
+
+### 必填 2 件
 
 - [ ] `content.md` 已写完（每页 4-7 字段）
-- [ ] `output/<case_name>.pptx` 已生成（≥ 1 MB）
-- [ ] `web.html` 已生成（含 `<img>` 标签）
+- [ ] `web.html` 已生成（PPT 演示版 · 中央大图 + 键盘翻页 + 全屏 + 演讲者模式）
+
+### 可选 1 件
+
+- [ ] `output/<case_name>.pptx` 已生成（**可选** · 仅当需要二次编辑时才生成）
+
+### 必填配套
+
 - [ ] `images/` 目录有 N 张 PNG（与 content.md P{n} 数量一致）
 - [ ] `prompts/` 目录有 N 个 prompt 文件（不是只有 README）
 

@@ -10,11 +10,11 @@
 
 CLI 工具，把任意知识（.md / URL / 笔记 / 你脑子里想的）一键变成 pretty-skill 完整目录：
 
-- `content.md`（4-7 字段/页）
-- `images/`（N 张 AI 出图）
-- `output/<case_name>.pptx`（≥ 1 MB）
-- `web.html`（含 `<img>` 标签）
-- `锦绣/`（v3.1 简化：横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）
+- `content.md`（4-7 字段/页 · **必填**）
+- `web.html`（PPT 演示版 · **必填**）
+- `output/<case_name>.pptx`（**可选** · 加 `--with-pptx` 才生成）
+- `images/`（N 张 AI 出图 · **必填**）
+- `锦绣/`（v3.1 简化：横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md · **必填**）
 
 **意义**：让"贡献一个 skill"和"创建 1 个 GitHub repo"一样简单。
 
@@ -91,6 +91,7 @@ python skill-creator/create.py \
 | `--pages` | 否 | PPT 页数（默认 9）|
 | `--output` | 否 | 输出目录（默认 ./output/）|
 | `--no-jinxiu` | 否 | 跳过锦绣 3 样生成（仅生成 3F Content）|
+| `--with-pptx` | 否 | 生成真实 .pptx（v3.2 默认不生成）|
 | `--api-key` | 否 | AI 出图 API key（默认读环境变量 `MATRIX_API_KEY`）|
 
 ---
@@ -104,7 +105,8 @@ python skill-creator/create.py \
    ├─ 解析输入 → content.md（4-7 字段/页）
    ├─ 调 matrix AI 出图（9 张）
    ├─ python-pptx 嵌图 → presentation.pptx
-   ├─ html-ppt-viewer → web.html
+   ├─ html-ppt-viewer（v3.2 升级） → web.html（PPT 演示版 · 必填）
+   ├─ （可选）python-pptx → presentation.pptx
    └─ 锦绣 3 样生成（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）
    ↓
 3. 人类编辑 / 调优视觉（30 分钟）        ← 30 分钟

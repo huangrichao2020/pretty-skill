@@ -165,17 +165,23 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ---
 
-## ✅ 4 条硬规则
+## ✅ 4 条硬规则（v3.2 简化）
 
-1. **3 件套齐全**（content.md + presentation.pptx + web.html）—— 不收不齐的 PR
+1. **必填 2 件**（content.md + web.html）—— HTML 是 PPT 演示版（必填）
 2. **锦绣 3 样齐全**（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）—— v3.1 简化要求
-3. **`.md` 为单一真相** —— `.pptx` / `.html` / `锦绣` 内文以 `.md` 为准
+3. **`.md` 为单一真相** —— `web.html` / `presentation.pptx` / `锦绣` 内文以 `.md` 为准
 4. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
+
+### 范式变化说明（v3.2 重要）
+
+- ✅ `web.html` = **PPT 演示版**（必填 · 任何浏览器打开 + 键盘翻页 + 全屏 + 演讲者模式）
+- ⚠️ `presentation.pptx` = **可选**（90% 用户不需要 · 仅当要二次编辑时才生成 · 加 `--with-pptx` 标志）
+- 详细规范：[content-triple-format/ppt-html-spec.md](./content-triple-format/ppt-html-spec.md)
 
 ## 🚫 5 个反模式（PR 100% 退回）
 
 1. ❌ 直接拿 `.md` 转 `.pptx`（文字 PPT）→ 必须 `add_picture()` 嵌图
-2. ❌ 直接用 `.md` 转 `.html`（纯文字网页）→ 必须含 `<img>` 标签
+2. ❌ 直接用 `.md` 转 `.html`（纯文字网页 / **不是 PPT 演示版**）→ 必须按 ppt-html-spec.md 规范生成
 3. ❌ 跳过 AI 出图步骤 → 必须有 `images/` + N 张 PNG
 4. ❌ 跳过锦绣 3 样 → 必须有 `锦绣/cover-横屏.png` + `cover-竖屏.png` + `slides/`（8-12 张）+ `readme.md`
 5. ❌ case 名称用大写 / 下划线 / 空格 → 必须 kebab-case（英文）或 kebab-case（中文）
@@ -190,6 +196,8 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ### Q: 我不会用 python-pptx 生成 PPT？
 
+**v3.2 起 PPTX 是可选的** —— 90% 用户不需要（用 web.html 就够演示）。
+仅当需要二次编辑时：
 看 [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) Step 4 的代码示例，复制粘贴改改路径即可。
 
 ### Q: 锦绣 3 样素材怎么生成？
