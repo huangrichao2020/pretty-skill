@@ -1,181 +1,249 @@
-# 贡献指南
+# 贡献指南 · pretty-skill v3
 
-感谢你愿意贡献！pretty-skill 是一个 **对 AI 友好的中文 skill 沉淀仓库**，每个 skill 都按 **3 件套**（`.md` + `.pptx` + `.html`）发布。
-
-## 5 分钟快速贡献
-
-### 1. Fork 这个仓库
-
-```bash
-git clone https://github.com/<your-account>/pretty-skill
-cd pretty-skill
-```
-
-### 2. 创建新 case
-
-```bash
-# 复制模板到你的中文领域目录
-cp -r _模板/案例 "<中文领域>/<你的-case-名>"
-
-# 编辑文件
-cd "<中文领域>/<你的-case-名>"
-# 1. 改 content.md（用你的真实内容）
-# 2. 改 README.md
-# 3. 准备 images/（用 matrix / DALL-E / Midjourney 出图）
-# 4. 跑 build_pptx.py 生成 output/<case_name>.pptx
-# 5. 改 web.html（用 html-ppt-viewer 模板 / 你的方式）
-```
-
-### 3. 3 件套 checklist
-
-```
-✅ content.md           每页 4-7 字段（标题/副标/主张/要点/数字/金句）
-✅ presentation.pptx    16:9 宽屏 · PowerPoint 可编辑 · 图嵌入（不是文字直转）
-✅ web.html             浏览器直接看 · 键盘翻页 · 图嵌入（不是 .md 转 HTML）
-✅ README.md            case 说明 + 跨引用 + 元信息
-✅ images/              8 张 PNG（matrix 出图证据）
-✅ prompts/             每页 60 行 prompt 文件（工程可复现）
-
-**3 件套不全不收** —— 这是这个仓库的核心约定。
-```
-
-### 4. 流程必查（防 agent 偷懒文字直转 PPT）
-
-**反模式**：直接拿 `.md` 文字转 `.pptx` → 文字 PPT（丑、缺图、信息密度低）
-
-✅ **正确流程**：必须经过中间"AI 出图"步骤
-```
-content.md  →  prompt × N  →  matrix AI 出图  →  图嵌入 .pptx + .html
-```
-
-详细规范：[content-triple-format/README.md](./content-triple-format/README.md)
-
-**PR 自动检测**：
-- `.pptx` 内必须 embed 图（文件大小 ≥ 2 MB 通常含图）
-- `web.html` 内必须含 `<img>` 标签（不是纯 `<p>` 文字）
-- PR 时若检测到文字直转 → 自动退回
-
-### 🚫 PR 拒绝标准（硬指标 · 自动检测）
-
-**任一项打 ✗ = 拒绝 PR · 不接受修改余地**
-
-```
-□ F2 .pptx 文件大小 ≥ 1 MB（含图证据）
-□ F2 .pptx 通过 add_picture() 嵌入 N 张 PNG（不是 text_frame 铺文字）
-□ F3 .html 含 <img> 标签（不是纯 <p> 文字）
-□ F3 .html 视觉是"设计稿"，不是"提纲列表"
-□ images/ 目录下有 N 张原图（≥ 1 张 / 每页 1 张）
-□ prompts/ 目录下有 N 个 prompt 文件（每页 60 行）
-```
-
-**🤖 自动校验脚本**（推荐 · 1 行命令就能拦截偷懒）：
-
-```bash
-# 本地校验你的 case（提交 PR 前必跑）
-python3 content-triple-format/check-3f.py <你的 case 目录>
-
-# 例：
-python3 content-triple-format/check-3f.py domains/ai-training/cartman-team-ai-agent-collab
-
-# 退出码：
-#   0 = 全部通过（PR 可提）
-#   1 = 有检查项失败（PR 会被自动退回 + 提示失败原因）
-```
-
-**🤖 GitHub Actions 集成**（PR 自动跑 · 不需要手动触发）：
-
-本仓库已配 `.github/workflows/check-3f.yml`：
-- ✅ PR 提交时自动跑 `check-3f.py`
-- ❌ 失败时自动评论 PR + 阻止 merge
-- ✅ 通过时显示绿色 ✓ 标记
-
-你只需要：
-1. 按 [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) 用 fork 提 PR
-2. 等 GitHub Actions 自动跑校验
-3. 失败就按 Actions 日志修复
+> **欢迎全球开发者 / 玩家贡献 skill 或知识！**
+> pretty-skill 是一个**开源项目** —— 集合全世界优质技能与知识，按 **3F Content + 锦绣** 范式发布，让任何知识都能被 AI 消化 + 给人传播。
 
 ---
 
-**自动检查 6 项**：
-1. `content.md` 存在 · 每页 4-7 字段
-2. `presentation.pptx` ≥ 1 MB（实测：文字 PPT ≈ 200 KB；图 PPT ≈ 1.5-2 MB）
-3. `presentation.pptx` 解 zip 后含 `ppt/media/` 图文件
-4. `web.html` 含 `<img>` 标签
-5. `images/` 目录存在 + N 张 PNG
-6. `prompts/` 目录存在（软警告）
+## 💡 为什么贡献
 
-**集成到 GitHub Actions**（可选）：在 PR 时自动跑 `check-3f.py`，失败就阻止 merge。
+1. **你的知识永久价值化** —— 一份 `.md` + 1 套多平台素材 = 全网共享
+2. **AI 友好** —— LLM 能直接消化你的内容（不像 PDF / Word）
+3. **人易传播** —— 锦绣 PPT 让分享到朋友圈 / 小红书有视觉冲击
+4. **全球共享** —— 仓库公开 = 任何人都能 fork / 复刻 / 翻译
+5. **社区贡献者** —— 自动加入 [CONTRIBUTORS.md](./CONTRIBUTORS.md) 榜
 
-**常见 PR 退回理由**：
-| 你提交的 | 实际状态 | 退回原因 |
+---
+
+## 🎯 贡献什么
+
+| 类型 | 例子 | 领域 |
 |---|---|---|
-| 200 KB 的 .pptx | 文字 PPT | F2 必须 ≥ 1 MB |
-| .html 全是 `<p>` | .md 转 HTML | F3 必须含 `<img>` |
-| 只有 content.md 和 .pptx，没 images/ | 跳过了 AI 出图 | 必须有出图证据 |
-| .pptx 是用 python-pptx `add_text` 写的 | text_frame 偷懒 | 必须 `add_picture` |
+| **方法论** | 决策框架 / 思考模型 / 最佳实践 | 思维方法 / 编程开发 / 产品设计 |
+| **案例分析** | 真实项目复盘 / 案例拆解 | 商业运营 / 金融投资 / 数据科学 |
+| **技能教程** | 工具使用 / 编程技巧 / 制作流程 | 编程开发 / 内容创作 / 游戏玩家 |
+| **知识沉淀** | 学科总结 / 概念解释 / 历史复盘 | 教育学习 / 思维方法 / 生活方式 |
+| **攻略 / 指南** | 游戏攻略 / 旅行指南 / 工具评测 | 游戏玩家 / 生活方式 / 内容创作 |
+| **可视化** | 信息图 / 数据可视化 / 思维导图 | 数据科学 / 思维方法 / 编程开发 |
 
-### 5. 提 PR
+---
+
+## 🚀 5 分钟贡献流程
+
+### Step 1 · Fork 仓库（一次性 · 用你 GitHub 账号）
+
+1. 打开 https://github.com/huangrichao2020/pretty-skill
+2. 点右上角 **Fork** 按钮 → 选你的 GitHub 账号
+3. 完成后你有了 `https://github.com/<你的用户名>/pretty-skill`
+
+### Step 2 · Clone 你的 fork
 
 ```bash
-git add "<中文领域>/<your-case-name>"
-git commit -m "feat(<中文领域>): add <your-case-name> case (3F Content)"
+git clone https://github.com/<你的用户名>/pretty-skill.git
+cd pretty-skill
+```
+
+### Step 3 · 加主仓库为 upstream
+
+```bash
+git remote add upstream https://github.com/huangrichao2020/pretty-skill.git
+git fetch upstream
+git checkout main
+git merge upstream/main
+```
+
+### Step 4 · 创建新 case
+
+```bash
+# 1. 复制模板
+cp -r _模板/案例 "<11 领域之一>/<你的-case-名>"
+
+# 2. 编辑文件
+cd "<11 领域之一>/<你的-case-名>"
+# - 改 content.md（用你的真实内容，每页 4-7 字段）
+# - 改 README.md（用例说明）
+# - 准备 images/（用 matrix / DALL-E / Midjourney 出 N 张图）
+# - 跑 build_pptx.py 生成 output/<case_name>.pptx
+# - 改 web.html（用 html-ppt-viewer 模板）
+# - 生成 锦绣/（4 形态：cover + 9图 + PPT + 视频脚本）
+```
+
+**推荐用 skill-creator 自动化**（未来 v3.1）：
+
+```bash
+pip install pretty-skill
+pretty-skill create --input my-knowledge.md --domain "金融投资" --style "深色科技风"
+# 自动生成 content.md + images/ + presentation.pptx + web.html + 锦绣 4 形态
+```
+
+完整 onboarding：[content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md)
+
+### Step 5 · 本地校验（必跑 · 退出码 0 才能提）
+
+```bash
+# 校验 3F Content + 锦绣层
+python content-triple-format/check-3f.py "<11 领域>/<你的-case-名>"
+
+# 退出码：
+#   0 = 全部通过（PR 可提）
+#   1 = 有检查项失败（按错误提示修复）
+```
+
+### Step 6 · Commit + Push 到你的 fork
+
+```bash
+git add "<11 领域>/<你的-case-名>"
+git commit -m "feat(<11 领域>): add <你的-case-名> case (3F Content + 锦绣)"
 git push origin main
-# 然后在 GitHub 上开 PR
 ```
 
-### 6. PR 模板（自动填充）
+### Step 7 · 在 GitHub 网页开 PR
 
+1. 访问 https://github.com/<你的用户名>/pretty-skill
+2. 点 **"Compare & pull request"** 按钮
+3. 选 base = `huangrichao2020/pretty-skill:main`，compare = `<你的用户名>/pretty-skill:main`
+4. 填 PR 模板（11 领域下拉 + 3 件套 + 锦绣 全选）
+5. 点 **Create pull request**
+
+**PR 提完后**：
+- GitHub Actions 自动跑 `check-3f.py` + 锦绣层校验 → 30 秒出结果
+- 如果 ❌ 失败 → 看 GitHub Actions 日志修复
+- 如果 ✅ 通过 → 等仓库主 review
+
+---
+
+## 🌟 想新增 1 个领域？（v3 全球共建核心）
+
+**全球开发者都可以 PR 新领域**（不只是仓库主预设）：
+
+```bash
+# 1. 创建新领域目录
+mkdir -p "新领域名称/案例1"
+
+# 2. 新领域必须有 README
+cat > "新领域名称/README.md" <<EOF
+# 新领域名称
+
+> 这个领域是什么 / 范围 / 适用人群
+> 至少有 1 个 case 验证
+EOF
+
+# 3. 至少有 1 个 case（否则不接受空领域）
+cp -r _模板/案例 "新领域名称/案例1"
+cd "新领域名称/案例1"
+# 改 content + 出图 + 跑 check ...
+
+# 4. 提 PR
+git add "新领域名称/"
+git commit -m "feat: add 新领域名称 + 案例1"
 ```
-## 3 件套检查
-- [ ] content.md 已写完
-- [ ] presentation.pptx 已生成
-- [ ] web.html 已生成
-- [ ] README.md 已写
 
-## 来源
-- 案例来源：（公司 / 个人 / 公开演讲 / 内部培训 / 等）
-- 原始材料：（如有 PDF / 链接）
+**仓库主审核标准**：
+- ✅ 新领域有清晰定义（不和 11 预设重叠）
+- ✅ 至少有 1 个高质量 case
+- ✅ 命名规范（中文 / 2-6 汉字 / 不加 / / 不加前缀）
+- ✅ content.md 字段齐全
+- ✅ 锦绣 4 形态齐全
 
-## 风格
-- 风格类型：（商务科技 / 手绘科教 / 城市插画 / 真实生活感 / 反套路金句 / 博物图鉴 / 自选）
-- 配色：（马卡龙 / 古铜金 / 蓝白灰 / 自选）
+---
 
-## 检验
-- 中文无错字
-- 数字 / 时间 / 百分比 ≥ 1 个
-- 金句 ≥ 1 句
-```
+## 🛠️ 11 领域（v3 预设 · 完整列表）
 
-## 4 条硬规则
+| 领域 | 范围 |
+|---|---|
+| **AI能力** | LLM / Agent / 提示工程 / 机器学习 |
+| **编程开发** | 通用编程 / 架构 / 模式 / 最佳实践 / 前后端 |
+| **数据科学** | 数据分析 / 可视化 / 统计 / BI |
+| **产品设计** | 产品方法论 / UX / UI / 用户研究 |
+| **商业运营** | 营销 / 增长 / 用户运营 / 商业模式 |
+| **金融投资** | A 股 / 港美股 / 加密货币 / 量化 |
+| **内容创作** | 视频 / 写作 / 直播 / 摄影 |
+| **教育学习** | 学科教育 / 语言学习 / 知识管理 |
+| **游戏玩家** | 游戏攻略 / 角色养成 / 副本流程 / MOD |
+| **生活方式** | 健康 / 时间管理 / 关系 / 旅行 |
+| **思维方法** | 决策框架 / 思维模型 / 心理学 |
 
-1. **3 件套齐全** —— 不收不齐的 PR
-2. **`.md` 为单一真相** —— `.pptx` / `.html` 内文以 `.md` 为准
-3. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
-4. **不刷 star** —— 内容质量 > 互推数字
+---
 
-## 完整规范
+## ✅ 4 条硬规则
 
-[content-triple-format/README.md](./content-triple-format/README.md) —— 详细 3F Content 范式
+1. **3 件套齐全**（content.md + presentation.pptx + web.html）—— 不收不齐的 PR
+2. **锦绣 4 形态齐全**（cover + 9图 + PPT + 视频脚本）—— v3 新增要求
+3. **`.md` 为单一真相** —— `.pptx` / `.html` / `锦绣` 内文以 `.md` 为准
+4. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
 
-## 提了 PR 之后
+## 🚫 5 个反模式（PR 100% 退回）
 
-- ✅ README 同步收录到对应领域目录
-- ✅ 自动加入 [CONTRIBUTORS.md](./CONTRIBUTORS.md)
-- ✅ 你 GitHub 个人页 + 1 个「贡献者」标记
+1. ❌ 直接拿 `.md` 转 `.pptx`（文字 PPT）→ 必须 `add_picture()` 嵌图
+2. ❌ 直接用 `.md` 转 `.html`（纯文字网页）→ 必须含 `<img>` 标签
+3. ❌ 跳过 AI 出图步骤 → 必须有 `images/` + N 张 PNG
+4. ❌ 跳过锦绣 4 形态 → 必须有 `锦绣/cover-朋友圈.png` + 9 图 + PPT + 视频脚本
+5. ❌ case 名称用大写 / 下划线 / 空格 → 必须 kebab-case（英文）或 kebab-case（中文）
 
-## 任何问题
+---
+
+## ❓ 常见问题
+
+### Q: 我没装 matrix MCP 出图怎么办？
+
+随便用 DALL-E / Midjourney / Stable Diffusion / 即梦 / 文心一言 **任何一个 AI 出图工具**都行。只要最后把 PNG 图放到 `images/` 目录 + 用 `add_picture()` 嵌入 PPTX。
+
+### Q: 我不会用 python-pptx 生成 PPT？
+
+看 [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) Step 4 的代码示例，复制粘贴改改路径即可。
+
+### Q: 锦绣 PPT 怎么生成？
+
+v3 推荐用 skill-creator 工具（未来）。手动方式：
+1. 准备 9 张图（小红书用）+ 12 页 PPT（公众号用）+ 1 张大图（朋友圈用）
+2. 按 [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) 范式排版
+
+### Q: PR 失败被 check-3f 拒绝了怎么办？
+
+读 Actions 日志，会告诉你是哪项检查失败。常见：
+- `.pptx` < 1 MB → 用 `add_picture()` 嵌图
+- `.html` 不含 `<img>` → 用图嵌进 HTML
+- `images/` 缺失 → 调 AI 出图 API 把 PNG 放进去
+- `锦绣/` 不全 → 按 [锦绣.md](./content-triple-format/锦绣.md) 4 形态补齐
+
+### Q: 中英文 case 名哪个好？
+
+都可以。**英文** (`chokepoint-mainboard`) 更适合 GitHub 搜索；**中文** (`小红书爆款拆解`) 更直观。
+
+### Q: 我贡献的内容会被 AI 训练用吗？
+
+不会被直接训练用。但任何 AI agent 可以消费你的 `.md` 内容（这是 3F Content 的核心价值）。这和 Wikipedia 类似。
+
+### Q: 我是新领域，怎么提 PR？
+
+见上方"🌟 想新增 1 个领域？"段。
+
+---
+
+## 🎯 贡献者福利
+
+- ✅ 你的 GitHub 个人页 + 「pretty-skill 贡献者」标记
+- ✅ 每个贡献的 case 永久收录
+- ✅ 中文 / 全球 圈的人脉 + 影响力
+- ✅ 优先收录你的自媒体内容（按规范审核）
+- ✅ 仓库主 1v1 review 反馈（让你下次写得更好）
+
+---
+
+## 📞 任何问题
 
 - 提 Issue
 - 或在 PR 评论里讨论
 
-我们优先回复 —— 这是中文圈第一个按 3F Content 范式做的开源仓库，欢迎贡献者共建。
+我们优先回复 —— 这是中文圈第一个按 **3F Content + 锦绣** 范式做的开源项目，欢迎全球贡献者共建。
 
 ---
 
-## 📚 扩展阅读
-
-- [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) —— 朋友 5 分钟 PR 流程（不需要主仓库 token）
-- [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) —— 5 步 onboarding
-- [content-triple-format/before-after-example.md](./content-triple-format/before-after-example.md) —— 文字 PPT vs 图 PPT 对照
-- [content-triple-format/check-3f.py](./content-triple-format/check-3f.py) —— PR 自动校验脚本
-- [roadmap.md](./roadmap.md) —— 仓库路线图
+参考：
+- [README.md](./README.md) · 项目总览
+- [STRUCTURE.md](./STRUCTURE.md) · 11 领域结构
+- [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) · 5 分钟 PR 流程
+- [content-triple-format/README.md](./content-triple-format/README.md) · 3F Content 范式
+- [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) · 锦绣范式
+- [skill-creator/README.md](./skill-creator/README.md) · 自动化工具
+- [roadmap.md](./roadmap.md) · 仓库路线图

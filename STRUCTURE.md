@@ -1,158 +1,226 @@
-# 仓库目录结构 · Structure Decision
+# 仓库目录结构 · Structure Decision v3
 
-> **TL;DR**：**新结构用中文领域一级目录 = `<领域>/<case>/`**。
+> **TL;DR**：v3 结构 = **11 个中文领域一级目录** + **3F Content + 锦绣范式** + **skill-creator 自动化工具**。
 >
-> 理由一句话：**面向中文开发者，目录名就该用中文**。打开 GitHub 看到 `金融分析/chokepoint-mainboard/` 一眼就知道这是金融类 case。
+> 一句话：**面向中文开发者 + 玩家 + 全球共建** 的开源项目。
 
 ---
 
-## ✅ 推荐结构 · 中文领域一级目录（v2 起的所有新 case）
+## ✅ v3 推荐结构
 
 ```
 pretty-skill/
-├── AI培训/                      ← 中文领域（一级）
-│   ├── cartman-team-ai-agent-collab/  ← case（case 名可英文/中文）
-│   └── social-ecom-skill/
-├── 金融分析/                    ← 中文领域（一级）
-│   └── chokepoint-mainboard/
-├── 教育/                        ← 占位（未来扩展）
-│   └── (空)
-├── _模板/                      ← 案例模板
-│   └── 案例/
-├── content-triple-format/      ← 范式文档
-├── .github/                    ← CI/CD + PR 模板
-├── README.md
-├── STRUCTURE.md (本文件)
-└── ...
-```
-
-**为什么用中文领域目录**：
-
-1. **面向中文开发者**：仓库主明确说"面向中文开发者"——目录名用中文是基本盘
-2. **一眼懂**：打开 `金融分析/` 不用想"这是干啥的"，直接进
-3. **GitHub / 终端 / IDE 全兼容**：现代系统都支持 UTF-8 路径，没有兼容性问题
-4. **跨领域对比直观**：`AI培训/ vs 金融分析/ vs 教育/` 直接列，扁平 2 层
-5. **case 名可灵活**：case 内部名 `cartman-team-ai-agent-collab` / `chokepoint-mainboard` 可以英文（方便搜索 + GitHub 友好），**只有领域目录必须中文**
-
----
-
-## ❌ Deprecated 结构
-
-### 1. `domains/<area>/<case>/`（v0 旧结构，2026-07-07 用过）
-
-```
-domains/
-├── ai-training/                  ← 英文
+├── AI能力/                          ← 11 领域（中文一级目录）
 │   ├── cartman-team-ai-agent-collab/
 │   └── social-ecom-skill/
-└── financial-analysis/          ← 英文
-    └── chokepoint-mainboard/
+├── 编程开发/                        ← 全球开发者 PR 用
+├── 数据科学/
+├── 产品设计/
+├── 商业运营/
+├── 金融投资/
+│   └── chokepoint-mainboard/
+├── 内容创作/
+├── 教育学习/
+├── 游戏玩家/                        ← 玩家专属领域
+├── 生活方式/
+├── 思维方法/
+│
+├── _模板/                           ← case 模板
+│   ├── 案例/                        ← 单 case 模板
+│   └── 锦绣/                        ← 锦绣 PPT 模板
+│
+├── skill-creator/                   ← 🆕 自动化工具
+│   ├── create.py                    ← 主脚本
+│   ├── templates/                   ← 内部模板
+│   └── README.md
+│
+├── content-triple-format/           ← 范式文档
+│   ├── README.md
+│   ├── 3F-content.md                ← 旧范式（保留）
+│   ├── 锦绣.md                      ← 🆕 新范式
+│   ├── check-3f.py                  ← PR 自动校验
+│   ├── onboarding-guide.md
+│   ├── before-after-example.md
+│   ├── methodology.md
+│   └── deep-themes.md               ← 视觉风格预设
+│
+├── .github/
+│   ├── PULL_REQUEST_TEMPLATE.md     ← 11 领域下拉
+│   └── workflows/check-3f.yml
+│
+├── README.md                        ← 项目总览（重写）
+├── STRUCTURE.md (本文件)
+├── CONTRIBUTING.md
+├── FRIENDS-PR-GUIDE.md
+├── PROMOTION.md
+├── CONTRIBUTORS.md
+├── LICENSE
+└── roadmap.md
 ```
-
-**为什么 deprecated**：
-- ❌ 英文目录名对中文用户不友好
-- ❌ 路径长 3 层
-- ❌ 领域是英文，与仓库"面向中文开发者"定位不符
-
-**v2 迁移**：2026-07-08 已经全部迁到中文结构（`AI培训/`、`金融分析/`），`domains/` 目录已删。
-
-### 2. `cases/<case>/`（v1 临时结构，2026-07-08 短暂用过）
-
-```
-cases/
-└── chokepoint-mainboard/
-```
-
-**为什么 deprecated**：
-- ❌ 抹掉了"领域"分类信息
-- ❌ 所有 case 混在一起，跨领域对比难
-- ❌ 我（mavis）之前推这个结构没尊重用户"中文领域一级目录"的需求——已纠正
-
-**v2 迁移**：`cases/chokepoint-mainboard/` → `金融分析/chokepoint-mainboard/`，`cases/` 目录已删。
 
 ---
 
-## 📐 v2 结构约定
+## 🎯 11 领域分类（v3 预设 · 全球共建）
 
-### 一级目录（领域）—— 100% 中文
-
-| 目录 | 状态 | 说明 |
+| # | 领域（一级目录）| 范围 |
 |---|---|---|
-| `AI培训/` | 已有 case | 第 1 个领域，2 个 v0 seed cases |
-| `金融分析/` | 已有 case | 第 2 个领域，1 个 case（@Kun 卡脖子选股） |
-| `教育/` | 空目录（占位）| 未来扩展 |
-| `_模板/` | 模板 | case 模板，非领域 |
+| 1 | **AI能力** | LLM / Agent / 提示工程 / 机器学习 |
+| 2 | **编程开发** | 通用编程 / 架构 / 模式 / 最佳实践 / 前后端 / 移动 |
+| 3 | **数据科学** | 数据分析 / 可视化 / 统计 / BI / 量化研究 |
+| 4 | **产品设计** | 产品方法论 / UX / UI / 用户研究 / 需求管理 |
+| 5 | **商业运营** | 营销 / 增长 / 用户运营 / 商业模式 / 私域 |
+| 6 | **金融投资** | A 股 / 港美股 / 加密货币 / 量化 / 财务规划 |
+| 7 | **内容创作** | 视频 / 写作 / 直播 / 摄影 / 短视频 |
+| 8 | **教育学习** | 学科教育 / 语言学习 / 知识管理 / 学习方法 |
+| 9 | **游戏玩家** | 游戏攻略 / 角色养成 / 副本流程 / MOD 制作 / 二创 |
+| 10 | **生活方式** | 健康 / 时间管理 / 关系 / 旅行 / 美食 / 家居 |
+| 11 | **思维方法** | 决策框架 / 思维模型 / 心理学 / 认知科学 |
 
-**领域命名规范**：
-- ✅ 2-6 个汉字：`AI培训` / `金融分析` / `教育` / `产品设计` / `运营增长` / `技术研发`
-- ❌ 不加 `/`：用 `金融分析` 不用 `金融/分析`
-- ❌ 不加前缀：用 `金融分析` 不用 `领域-金融分析`
-- ❌ 不用拼音：用 `金融分析` 不用 `jinrongfenxi`
+### 命名逻辑（为什么这么命名）
 
-### 二级目录（case）—— 英文/中文都可
-
-| 推荐 | 例子 |
+| 领域 | 命名理由 |
 |---|---|
-| ✅ 英文 kebab-case | `chokepoint-mainboard` / `cartman-team-ai-agent-collab` |
-| ✅ 中文 kebab-case | `小红书爆款拆解` / `抖音起号方法论` |
-| ❌ 大写字母 | `CHOKEPOINT` |
-| ❌ 下划线 | `chokepoint_mainboard`（grep 不友好） |
-| ❌ 空格 | `chokepoint mainboard`（URL 编码会乱） |
+| AI能力（不是 AI培训）| 能力是双向的（既给 AI 学，又用人学 AI）|
+| 编程开发（不是 开发）| 含"编程"= 强调实践 |
+| 金融投资（不是 金融分析）| "投资"强调价值导向，"分析"偏方法论 |
+| 内容创作（不是 创作）| "内容"强调输出形式（视频 / 文字 / 图片）|
+| 思维方法（不是 认知）| "方法"更实用 = 学了能用 |
+| 游戏玩家（不是 游戏）| "玩家"强调身份认同 = 这就是为玩家做的方法论 |
 
-### Case 内部结构
+### 为什么是 11 个
+
+- **认知心理学 7±2 极限的扩展版** = 覆盖广 + 不超载
+- **全球开发者 PR 时能一眼选对领域** = 0 沟通成本
+- **可扩展**：可以 PR 新领域（验证 + 审核）
+
+---
+
+## 🌟 "锦绣"概念（v3 首次提出）
+
+> **锦绣（Jinxiu）= 把任何知识 / skill 在创建时就"绣"成易传播的视觉作品**
+
+类比：原材料知识 → 刺绣工艺 → 锦（华丽展示品）
+
+### 4 种形态
+
+| 形态 | 用途 | 平台 |
+|---|---|---|
+| **锦绣封面** | 1 张 16:9 大图 | 朋友圈 / 推特 / 微博 |
+| **锦绣 PPT** | 8-12 页完整讲解 | 小红书 / 公众号 / 知乎 / 演讲 |
+| **锦绣网页版** | 移动友好 | 微信 / 推友 |
+| **锦绣视频脚本** | 30-60 秒讲解 | 短视频平台（抖音 / 视频号 / B 站）|
+
+### 1 次创作 = 1 套多平台素材
+
+`skill-creator` 工具一键生成 4 种形态，开发者 / 玩家拿到就能传播。
+
+### 完整规范
+
+[content-triple-format/锦绣.md](./content-triple-format/锦绣.md)
+
+---
+
+## 📐 完整 case 内部结构
 
 ```
 <领域>/<case>/
-├── README.md              ← case 说明（必填）
-├── content.md             ← 源文字（必填，每页 4-7 字段）
-├── build_pptx.py          ← PPTX 生成脚本（推荐）
-├── web.html               ← 浏览器翻页版（必填，含 <img> 标签）
-├── images/                ← AI 出图原图（必填，≥ 1 张/页）
+├── README.md                  ← case 说明（必填）
+├── content.md                 ← 源文字（必填，每页 4-7 字段）
+├── build_pptx.py              ← PPTX 生成脚本（推荐）
+├── web.html                   ← 网页版（必填，含 <img> 标签）
+├── images/                    ← AI 出图原图（必填，≥ 1 张/页）
 │   ├── p0_cover.png
 │   ├── p1_hook.png
 │   └── ...
-├── output/                ← PPTX 输出（必填，≥ 1 MB）
+├── output/                    ← PPTX 输出（必填，≥ 1 MB）
 │   └── <case_name>.pptx
-└── prompts/               ← 出图 prompt（推荐，60 行/页）
-    ├── README.md
-    ├── p0_cover.md
-    └── ...
+├── prompts/                   ← 出图 prompt（推荐，60 行/页）
+│   ├── README.md
+│   ├── p0_cover.md
+│   └── ...
+│
+└── 锦绣/                      ← 🆕 锦绣 PPT（创建时自动生成）
+    ├── cover-朋友圈.png        # 1 张大图
+    ├── xiaohongshu-9图/        # 9 张图
+    │   ├── 1_封面.png
+    │   ├── 2_钩子.png
+    │   └── ...
+    ├── public-account-ppt/    # 12 页完整讲解
+    │   ├── 1_封面.pptx
+    │   └── ...
+    └── video-script.md         # 30-60 秒视频脚本
 ```
+
+---
+
+## 🛠️ skill-creator 工具（v3 新增）
+
+### 是什么
+
+CLI 工具，把任意知识一键变成 pretty-skill 完整目录（3F Content + 锦绣）
+
+### 输入
+
+- 任意 `.md` 文件
+- 任意 URL（博客 / 知乎 / 公众号）
+- 视频脚本 / 笔记 / 你脑子里想的
+
+### 输出
+
+- 完整 skill 目录：`content.md` + `images/` + `presentation.pptx` + `web.html` + **锦绣 PPT**
+- 多平台素材：朋友圈 1 图 + 小红书 9 图 + 公众号 12 页 + 视频脚本
+
+### 安装 + 使用
+
+```bash
+# 未来
+pip install pretty-skill
+pretty-skill create --input my-knowledge.md --domain "金融投资"
+```
+
+完整使用：[skill-creator/README.md](./skill-creator/README.md)
 
 ---
 
 ## 🛠️ 现有 case 迁移路径
 
-### 新 case（用 v2 结构）
+### 新 case（用 v3 结构）
 
 ```bash
-# 复制模板
-cp -r _模板/案例 "中文领域/<你的-case>"
+# 1. 复制模板
+cp -r _模板/案例 "<11 领域之一>/<你的-case-名>"
 
-# 编辑
-cd "中文领域/<你的-case>"
+# 2. 编辑文件
+cd "<11 领域之一>/<你的-case-名>"
 # 改 content.md / build_pptx.py / web.html ...
+
+# 3. 跑 check-3f.py 验证
+python content-triple-format/check-3f.py "<领域>/<case>"
+
+# 4. 提 PR
+git add "<领域>/<case>"
+git commit -m "feat(<领域>): add <case> case (3F Content + 锦绣)"
+git push
 ```
 
-### 修改已存在的 case
+### 改路径 / 改领域
 
-直接改，不需要迁移。
+直接 `git mv` + 改 README 跨引用 + 改 PR 模板里的"所属领域"段。
 
 ---
 
-## 📂 各路径约定（v2 终态）
+## 📂 各路径约定
 
 | 路径 | 用途 | 谁应该写 |
 |---|---|---|
-| `<中文领域>/` | **新 case 主目录**（领域） | 所有贡献者（新 PR） |
-| `<中文领域>/<case>/` | **case 目录** | 贡献者（PR 改这个） |
-| `_模板/案例/` | **case 模板** | 仓库主（不要 PR 改这个） |
-| `content-triple-format/` | **范式文档** | 仓库主（范式升级） |
-| `.github/workflows/` | **CI/CD** | 仓库主 |
-| `.github/PULL_REQUEST_TEMPLATE.md` | **PR 模板** | 仓库主 |
-| `CONTRIBUTING.md` | **贡献指南** | 仓库主 |
-| `FRIENDS-PR-GUIDE.md` | **5 分钟 PR 流程** | 仓库主 |
-| `STRUCTURE.md` | **本文件 · 目录结构决策** | 仓库主 |
+| `<11 领域之一>/` | **case 主目录**（领域）| 全球开发者 / 玩家（PR） |
+| `<领域>/<case>/` | **case 目录** | 全球开发者（PR 改这个）|
+| `<领域>/<case>/锦绣/` | **锦绣 PPT** | skill-creator 自动生成 |
+| `_模板/案例/` | **case 模板** | 仓库主（不要 PR 改）|
+| `_模板/锦绣/` | **锦绣 PPT 模板** | 仓库主 |
+| `skill-creator/` | **自动化工具** | 仓库主 + 社区贡献 |
+| `content-triple-format/` | **范式文档** | 仓库主（范式升级）|
+| `.github/` | **CI/CD + PR 模板** | 仓库主 |
 
 ---
 
@@ -162,18 +230,52 @@ cd "中文领域/<你的-case>"
 
 ```bash
 # 1. 跑 check-3f.py（自动校验）
-python content-triple-format/check-3f.py "<中文领域>/<你的-case>"
+python content-triple-format/check-3f.py "<领域>/<case>"
 # 退出码 0 = OK；1 = 失败 + 错误原因
 
 # 2. 确认路径规范
-ls "<中文领域>/<你的-case>/"
-# 应该有：content.md + web.html + images/ + output/<case_name>.pptx + prompts/
+ls "<领域>/<case>/"
+# 应该有：content.md + web.html + images/ + output/<case_name>.pptx + prompts/ + 锦绣/
+
+# 3. 确认领域是 11 预设之一 或 PR 新增
+# PR 模板自动给 11 领域下拉
 ```
 
 **PR 模板**（`.github/PULL_REQUEST_TEMPLATE.md`）会强制你声明：
-- [ ] 我把 case 放在 `<中文领域>/<case>/`（推荐结构）
+- [ ] 我把 case 放在 11 领域之一
 - [ ] 领域目录名是中文
-- [ ] case 名是英文 kebab-case 或中文 kebab-case
+- [ ] case 名是英文/中文 kebab-case
+- [ ] 3 件套 + 锦绣全有
+- [ ] check-3f.py 跑过 exit 0
+
+---
+
+## ➕ 新增领域 PR 流程
+
+**全球开发者都可以 PR 新领域**（不只是仓库主预设）：
+
+```bash
+# 1. 创建新领域目录
+mkdir -p 新领域名称/案例1
+
+# 2. 新领域必须有 README
+cat > 新领域名称/README.md <<EOF
+# 新领域名称
+> 这个领域是什么
+> 至少 1 个 case 验证
+EOF
+
+# 3. 至少有 1 个 case（否则不接受空领域）
+
+# 4. 提 PR
+git add 新领域名称/
+git commit -m "feat(领域): add 新领域 + 案例1"
+```
+
+**仓库主审核标准**：
+- 新领域有清晰定义（不和 11 预设重叠）
+- 至少有 1 个高质量 case
+- 命名规范（中文 / 2-6 汉字 / 不加 / / 不加前缀）
 
 ---
 
@@ -181,22 +283,29 @@ ls "<中文领域>/<你的-case>/"
 
 | 时间 | 结构 | 备注 |
 |---|---|---|
-| 2026-07-07 v0 | `domains/ai-training/<case>/` | 仓库主首次公开时的结构 |
-| 2026-07-08 v1.0 | `cases/<case>/`（尝试扁平）| @Kun 提 PR #1 时改用，但抹掉领域分类 |
-| 2026-07-08 v1.1 | **`<中文领域>/<case>/`** | 用户纠正"面向中文开发者" → 改用中文领域一级目录 ✅ |
-| v2（未来） | 可能按"内容形式"分类（PPT / 长图 / 视频脚本）| 暂未规划 |
+| 2026-07-07 v0 | `domains/ai-training/<case>/` | 仓库主首次公开 |
+| 2026-07-08 v1 | `cases/<case>/`（英文扁平）| @Kun PR #1 临时结构 |
+| 2026-07-08 v1.1 | `<中文领域>/<case>/`（金融分析 + AI培训）| 用户纠正"面向中文开发者" |
+| 2026-07-08 v2 | `<中文领域>/<case>/`（2 领域）| STRUCTURE.md 决策文档化 |
+| 2026-07-08 **v3** ✨ | **11 领域 + 锦绣 + skill-creator + 全球开源** | **本次跃迁** |
 
 ---
 
 ## 💯 设计原则
 
-> **目录结构必须尊重用户语言/文化偏好**。中文项目 = 中文目录 = 中文体验。
-> 不要套用"通用最佳实践"（英文扁平）忽略用户实际需求。
+> **目录结构必须尊重用户语言/文化偏好 + 工具/范式必须服务真实需求。**
+> 中文项目 = 中文目录 = 中文体验。
+> 范式 = AI 友好（3F Content）+ 人易传播（锦绣）。
+> 工具 = skill-creator（让贡献和创建一样简单）。
+> 任何"推荐结构"前必问"目标用户语言"和"命名习惯"。
 
 ---
 
 参考：
+- [README.md](./README.md) · 项目总览
 - [CONTRIBUTING.md](./CONTRIBUTING.md) · 完整贡献指南
 - [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) · 5 分钟 PR 流程
 - [content-triple-format/README.md](./content-triple-format/README.md) · 3F Content 范式
+- [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) · 锦绣范式
+- [skill-creator/README.md](./skill-creator/README.md) · skill-creator 工具
 - [roadmap.md](./roadmap.md) · 仓库路线图

@@ -35,6 +35,29 @@ from xml.etree import ElementTree as ET
 # ───────────────────────── 校验规则 ─────────────────────────
 
 MIN_PPTX_SIZE_MB = 1.0  # F2 最小文件大小（实测：1 页图 PPT 压缩后 ≈ 1.5-2 MB；文字 PPT ≈ 200 KB）
+
+# v3 预设 11 个领域
+PRESET_DOMAINS = {
+    "AI能力": "LLM / Agent / 提示工程 / 机器学习",
+    "编程开发": "通用编程 / 架构 / 模式 / 最佳实践 / 前后端",
+    "数据科学": "数据分析 / 可视化 / 统计 / BI",
+    "产品设计": "产品方法论 / UX / UI / 用户研究",
+    "商业运营": "营销 / 增长 / 用户运营 / 商业模式",
+    "金融投资": "A 股 / 港美股 / 加密货币 / 量化",
+    "内容创作": "视频 / 写作 / 直播 / 摄影",
+    "教育学习": "学科教育 / 语言学习 / 知识管理",
+    "游戏玩家": "游戏攻略 / 角色养成 / 副本流程 / MOD",
+    "生活方式": "健康 / 时间管理 / 关系 / 旅行",
+    "思维方法": "决策框架 / 思维模型 / 心理学",
+}
+
+# 锦绣层 4 形态（v3 新增）
+JINXIU_FORMS = {
+    "cover-朋友圈.png": "锦绣封面（1 张 16:9 大图）",
+    "xiaohongshu-9图/": "锦绣小红书 9 图（≥ 9 张 PNG）",
+    "public-account-ppt/": "锦绣公众号 PPT（≥ 8 张 PNG）",
+    "video-script.md": "锦绣视频脚本（30-60 秒）",
+}
 REQUIRED_PAGE_FIELDS_MIN = 4  # content.md 每页至少 4 个字段
 REQUIRED_PAGE_FIELDS_MAX = 7  # content.md 每页最多 7 个字段
 
@@ -235,7 +258,93 @@ def check_images_dir(case_dir: Path) -> tuple[bool, list[str]]:
     return True, errors
 
 
+def check_jinxiu(case_dir: Path) -> tuple[bool, list[str]]:
+    """检查锦绣 4 形态（v3 新增 · v3.0 软警告 · v3.1 改硬要求）"""
+    errors = []
+    warnings = []
+    jinxiu_dir = case_dir / "锦绣"
+
+    if not jinxiu_dir.exists():
+        # v3 软警告：暂不阻止（v0/v1 case 没有，等 v3.1 改硬要求）
+        warn("锦绣/ 目录不存在（v3 新增要求 · v3.0 软警告 · v3.1 改硬要求）")
+        warn("  建议：v3 提 PR 时自动生成 · 见 skill-creator/README.md")
+        return True, errors  # 不算 error
+
+    info("锦绣 4 形态检查:")
+    for form, desc in JINXIU_FORMS.items():
+        path = jinxiu_dir / form
+        if not path.exists():
+            warn(f"锦绣/{form} 不存在（{desc} · 软警告）")
+        else:
+            if path.is_file():
+                size_kb = path.stat().st_size // 1024
+                ok(f"锦绣/{form} ({size_kb} KB · {desc})")
+            elif path.is_dir():
+                png_count = len(list(path.glob("*.png")))
+                if "9图" in form and png_count < 9:
+                    warn(f"锦绣/{form} 只有 {png_count} 张图（要求 ≥ 9 · 软警告）")
+                elif "PPT" in form and png_count < 8:
+                    warn(f"锦绣/{form} 只有 {png_count} 张图（要求 ≥ 8 · 软警告）")
+                else:
+                    ok(f"锦绣/{form} ({png_count} 张图 · {desc})")
+
+    return True, errors  # v3 软警告模式不阻止
+
+
 def check_prompts_dir(case_dir: Path) -> tuple[bool, list[str]]:
+    """检查锦绣 4 形态（v3 新增）"""
+    errors = []
+    warnings = []
+    jinxiu_dir = case_dir / "锦绣"
+
+    if not jinxiu_dir.exists():
+        errors.append(
+            f"❌ 锦绣/ 目录不存在（v3 新增要求：创建时自动生成 4 形态）"
+        )
+        return False, errors
+
+    info("锦绣 4 形态检查:")
+    for form, desc in JINXIU_FORMS.items():
+        path = jinxiu_dir / form
+        if not path.exists():
+            errors.append(f"❌ 锦绣/{form} 不存在（{desc}）")
+        else:
+            if path.is_file():
+                size_kb = path.stat().st_size // 1024
+                ok(f"锦绣/{form} ({size_kb} KB · {desc})")
+            elif path.is_dir():
+                png_count = len(list(path.glob("*.png")))
+                if "9图" in form and png_count < 9:
+                    errors.append(f"❌ 锦绣/{form} 只有 {png_count} 张图（要求 ≥ 9）")
+                elif "PPT" in form and png_count < 8:
+                    errors.append(f"❌ 锦绣/{form} 只有 {png_count} 张图（要求 ≥ 8）")
+                else:
+                    ok(f"锦绣/{form} ({png_count} 张图 · {desc})")
+
+    return len(errors) == 0, errors
+
+
+def check_domain(case_dir: Path) -> tuple[bool, list[str]]:
+    """检查 case 是否在 11 预设领域之一 或 PR 新增领域"""
+    errors = []
+    warnings = []
+
+    # 找 case 的领域目录（向上 1 层）
+    domain = case_dir.parent.name
+    if domain in PRESET_DOMAINS:
+        ok(f"领域 {domain} 是 v3 预设 11 领域之一（{PRESET_DOMAINS[domain]}）")
+    else:
+        # 检查是否 PR 新增（有 README.md 算）
+        readme = case_dir.parent / "README.md"
+        if readme.exists():
+            warn(f"领域 {domain} 不在 11 预设 · 但父目录有 README（PR 新增领域已声明）")
+        else:
+            errors.append(
+                f"❌ 领域 {domain} 不在 v3 11 预设（{list(PRESET_DOMAINS.keys())}）· "
+                f"且父目录无 README.md · 必须选 11 预设之一 或 PR 新增领域"
+            )
+
+    return len(errors) == 0, errors
     """检查 prompts/ 目录 · 提示文件"""
     errors = []
     prompts_dir = case_dir / "prompts"
@@ -377,6 +486,16 @@ def main():
     check_prompts_dir(case_dir)
     print()
 
+    print("┌─ 领域归属检查（v3 11 领域）")
+    ok_dom, errs_dom = check_domain(case_dir)
+    all_ok = all_ok and ok_dom
+    print()
+
+    print("┌─ 锦绣 4 形态检查（v3 新增）")
+    ok_jx, errs_jx = check_jinxiu(case_dir)
+    all_ok = all_ok and ok_jx
+    print()
+
     print("┌─ 一致性检查（页数对齐）")
     ok_cons, errs_cons = check_consistency(case_dir)
     all_ok = all_ok and ok_cons
@@ -391,7 +510,7 @@ def main():
     else:
         print(f"{RED}❌ 有检查项失败 · PR 会被自动退回{NC}")
         print(f"\n{RED}失败原因：{NC}")
-        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons
+        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons + errs_dom + errs_jx
         for err in all_errors:
             print(f"  {err}")
         print(f"\n{YELLOW}📖 参考修复：{NC}")
