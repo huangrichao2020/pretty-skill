@@ -1,7 +1,7 @@
 # PR 模板 · pretty-skill
 
 > **所有 PR 请按此模板填写**。
-> **必跑检查**：`python content-triple-format/check-3f.py <你的 case 目录>` 退出码 0 才提。
+> **必跑检查**：`python content-triple-format/check-3f.py "<中文领域>/<你的 case 目录>"` 退出码 0 才提。
 
 ---
 
@@ -9,26 +9,30 @@
 
 <!-- 简要描述（1-3 句） -->
 
+## 路径（必填 · 中文领域一级目录）
+
+- 中文领域（一级目录名）：（AI培训 / 金融分析 / 教育 / 自定义中文）
+- Case 路径：`<中文领域>/<case 名>/`
+- Case 名格式：（英文 kebab-case / 中文 kebab-case / 自选）
+
+**示例**：
+- 正确：`金融分析/chokepoint-mainboard/`
+- 正确：`教育/小红书爆款拆解/`
+- 错误：`cases/chokepoint-mainboard/`（已 deprecated）
+- 错误：`domains/financial-analysis/chokepoint-mainboard/`（已 deprecated）
+
 ## 3 件套检查（必填）
 
 - [ ] `content.md` 已写完（每页 4-7 字段）
-- [ ] `presentation.pptx` 已生成（≥ 1 MB）
+- [ ] `output/<case_name>.pptx` 已生成（≥ 1 MB）
 - [ ] `web.html` 已生成（含 `<img>` 标签）
 - [ ] `images/` 目录有 N 张 PNG（与 content.md P{n} 数量一致）
 - [ ] `prompts/` 目录有 N 个 prompt 文件（不是只有 README）
 
-## 路径检查（必填 · v2 PR 翻车案例）
-
-- [ ] 我把 case 放在 `cases/<case-name>/`（推荐结构 · 见 [STRUCTURE.md](./STRUCTURE.md)）
-- [ ] **如果我同时在 `domains/<area>/<case-name>/` 提交** → 已删除旧路径
-  - 命令：`git rm -r domains/<area>/<case-name>/`
-  - 验证：`diff -r cases/<name> domains/<area>/<name>` 应该没差异
-- [ ] 同一份内容没有在 2 个地方
-
 ## 本地校验（必跑 · 退出码 0 才能提）
 
 ```bash
-python content-triple-format/check-3f.py <你的 case 目录>
+python content-triple-format/check-3f.py "<中文领域>/<case 名>/"
 ```
 
 输出（截屏 or 贴文字）：
@@ -75,5 +79,6 @@ python content-triple-format/check-3f.py <你的 case 目录>
 
 参考：
 - [CONTRIBUTING.md](./CONTRIBUTING.md) · 完整贡献指南
+- [STRUCTURE.md](./STRUCTURE.md) · 目录结构决策
 - [onboarding-guide.md](./content-triple-format/onboarding-guide.md) · 5 步流程
 - [check-3f.py](./content-triple-format/check-3f.py) · PR 自动校验脚本

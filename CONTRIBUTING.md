@@ -14,15 +14,16 @@ cd pretty-skill
 ### 2. 创建新 case
 
 ```bash
-# 复制模板
-cp -r domains/_template/case domains/ai-training/<your-case-name>
+# 复制模板到你的中文领域目录
+cp -r _模板/案例 "<中文领域>/<你的-case-名>"
 
 # 编辑文件
-cd domains/ai-training/<your-case-name>
+cd "<中文领域>/<你的-case-名>"
 # 1. 改 content.md（用你的真实内容）
-# 2. 改 README.md（用例说明）
-# 3. 替换 presentation.pptx（用 ppt-orchestrator / 你的方式）
-# 4. 替换 web.html（用 html-ppt-viewer / 你的方式）
+# 2. 改 README.md
+# 3. 准备 images/（用 matrix / DALL-E / Midjourney 出图）
+# 4. 跑 build_pptx.py 生成 output/<case_name>.pptx
+# 5. 改 web.html（用 html-ppt-viewer 模板 / 你的方式）
 ```
 
 ### 3. 3 件套 checklist
@@ -116,8 +117,8 @@ python3 content-triple-format/check-3f.py domains/ai-training/cartman-team-ai-ag
 ### 5. 提 PR
 
 ```bash
-git add domains/ai-training/<your-case-name>
-git commit -m "feat(ai-training): add <your-case-name> case (3F Content)"
+git add "<中文领域>/<your-case-name>"
+git commit -m "feat(<中文领域>): add <your-case-name> case (3F Content)"
 git push origin main
 # 然后在 GitHub 上开 PR
 ```

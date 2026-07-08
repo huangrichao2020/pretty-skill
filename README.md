@@ -47,20 +47,20 @@ python3 content-triple-format/check-3f.py <你的 case 目录>
 ```bash
 git clone https://github.com/huangrichao2020/pretty-skill
 cd pretty-skill
-open domains/ai-training/cartman-team-ai-agent-collab/web.html
+open AI培训/cartman-team-ai-agent-collab/web.html
 # → 看 8 页 PPT 真实案例（Context × Observation 双引擎）
 ```
 
 ## 当前内容
 
-### `domains/ai-training/`（v0 seed · 2 个 cases）
+### `AI培训/`（领域 1 · 2 个 cases）
 
 | Case | 主题 | 大小 | 数据 |
 |---|---|---|---|
 | **cartman-team-ai-agent-collab** | 团队如何与 AI Agent 高效协作 | 21.8 MB | 8 页 PPT · 0 返工 |
 | **social-ecom-skill** | 社交电商 × 两层拆解法 | 19.3 MB | 8 页 PPT · 0 返工 |
 
-### `cases/`（v1 标准结构 · 新 case 走这里）
+### `金融分析/`（领域 2 · 1 个 case）
 
 | Case | 主题 | 大小 | 贡献者 | 数据 |
 |---|---|---|---|---|

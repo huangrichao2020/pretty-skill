@@ -1,4 +1,4 @@
-# {CASE_NAME}
+# {案例名}
 
 > **一句话定位**：{case 主题}
 
@@ -8,8 +8,9 @@
 
 **作者**：{作者}
 **生成日期**：{YYYY-MM-DD}
-**风格**：{手绘科教 / 商务科技 / 博物图鉴 / 真实生活感 / 反套路金句 / 城市插画}
+**风格**：{手绘科教 / 商务科技 / 博物图鉴 / 真实生活感 / 反套路金句 / 城市插画 / 深色科技风}
 **页数**：{6-12}
+**所属领域**：{中文领域名}
 
 ## 核心论点
 
@@ -23,12 +24,12 @@
 
 ## 跨引用
 
-- [3F Content 范式](../../../../content-triple-format/)
+- [3F Content 范式](../../content-triple-format/)
 - [本案例 prompt](./prompts/)
 - [本案例图片](./images/)
-- [完整 .pptx](./output/presentation.pptx)
+- [完整 .pptx](./output/{case_name}.pptx)
 - [完整 .html](./web.html)
 
 ## 贡献者
 
-- @huangrichao2020
+- @{你的 GitHub 用户名}

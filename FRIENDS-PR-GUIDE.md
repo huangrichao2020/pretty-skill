@@ -13,16 +13,6 @@
 2. 点右上角 **Fork** 按钮 → 选你的 GitHub 账号
 3. 完成后你有了 `https://github.com/<你的用户名>/pretty-skill`
 
----
-
-## 5 分钟标准流程
-
-### Step 1 · Fork 仓库（一次性 · 用你自己 GitHub 账号）
-
-1. 打开 https://github.com/huangrichao2020/pretty-skill
-2. 点右上角 **Fork** 按钮 → 选你的 GitHub 账号
-3. 完成后你有了 `https://github.com/<你的用户名>/pretty-skill`
-
 ### Step 2 · Clone 你自己的 fork 到本机
 
 ```bash
@@ -42,15 +32,15 @@ git merge upstream/main
 ### Step 4 · 创建新 case
 
 ```bash
-# 复制模板
-cp -r domains/_template/case domains/<领域>/<你的-case-名称>
+# 复制模板到你的中文领域目录
+cp -r _模板/案例 "<中文领域>/<你的-case-名>"
 
 # 编辑文件
-cd domains/<领域>/<你的-case-名称>
+cd "<中文领域>/<你的-case-名>"
 # 1. 改 content.md（用你的真实内容，每页 4-7 字段）
 # 2. 改 README.md
 # 3. 准备 images/（用 matrix / DALL-E / Midjourney 出 N 张图）
-# 4. 生成 presentation.pptx（用 python-pptx add_picture 嵌图）
+# 4. 生成 output/<case_name>.pptx（用 python-pptx add_picture 嵌图）
 # 5. 生成 web.html（用 html-ppt-viewer 嵌图）
 ```
 
@@ -60,7 +50,7 @@ cd domains/<领域>/<你的-case-名称>
 
 ```bash
 # PR 提交前必跑这一行（GitHub Actions 也会跑，但本地先跑发现问题更快）
-python3 content-triple-format/check-3f.py domains/<领域>/<你的-case-名称>
+python3 content-triple-format/check-3f.py "<中文领域>/<你的-case-名>"
 
 # 退出码：
 #   0 = 全部通过（可提 PR）
@@ -70,8 +60,8 @@ python3 content-triple-format/check-3f.py domains/<领域>/<你的-case-名称>
 ### Step 6 · Commit + Push 到你的 fork
 
 ```bash
-git add domains/<领域>/<你的-case-名称>
-git commit -m "feat(<领域>): add <你的-case-名称> case (3F Content)"
+git add "<中文领域>/<你的-case-名>"
+git commit -m "feat(<中文领域>): add <你的-case-名> case (3F Content)"
 git push origin main
 ```
 
@@ -87,21 +77,6 @@ git push origin main
 - GitHub Actions 自动跑 `check-3f.py` → 30 秒出结果
 - 如果 ❌ 失败 → 看 GitHub Actions 日志修复
 - 如果 ✅ 通过 → 等仓库主 review
-
----
-
-## 🚨 如果你之前用仓库主的 token 提过 PR
-
-**立刻做的事**：
-
-1. **告诉仓库主 rotate token**（删除旧 token + 生成新 token）
-   - 仓库主路径：https://github.com/settings/tokens
-   - 找到泄露的 PAT → 点 **Revoke** → 删掉
-   - 生成新 PAT（如果还需要）
-
-2. **你之前的 PR 不会失效**（PR 是基于代码 diff，不依赖 token 权限）
-
-3. **之后按本指南用你自己的 GitHub 账号操作**
 
 ---
 
@@ -130,6 +105,14 @@ git push origin main
 - `.html` 不含 `<img>` → 用图嵌进 HTML（不是 .md 转 HTML）
 - `images/` 缺失 → 调 AI 出图 API 把 PNG 放进去
 
+### Q: 中文领域名怎么选？
+
+看 [STRUCTURE.md](./STRUCTURE.md)「中文领域命名规范」段。`AI培训` / `金融分析` / `教育` / `产品设计` / `运营增长` / `技术研发` 都可以。
+
+### Q: case 名可以用中文吗？
+
+可以。`小红书爆款拆解` / `抖音起号方法论` 都可以。但英文 kebab-case 搜索更友好（GitHub 友好）。
+
 ---
 
 ## ✅ 你贡献后拿到什么
@@ -143,12 +126,9 @@ git push origin main
 
 ---
 
-**记住**：你**永远不需要**仓库主的 token。GitHub 的 PR 流程本来就设计成"分布式协作"—— fork + PR 是 GitHub 的核心约定，**比任何 token 共享方案都安全**。
-
----
-
 参考：
-- [CONTRIBUTING.md](./CONTRIBUTING.md) —— 完整贡献指南
-- [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) —— 5 步标准流程
-- [content-triple-format/check-3f.py](./content-triple-format/check-3f.py) —— PR 自动校验脚本
+- [CONTRIBUTING.md](./CONTRIBUTING.md) · 完整贡献指南
+- [STRUCTURE.md](./STRUCTURE.md) · 目录结构决策
+- [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) · 5 步标准流程
+- [content-triple-format/check-3f.py](./content-triple-format/check-3f.py) · PR 自动校验脚本
 - [GitHub 官方 Fork 文档](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks)

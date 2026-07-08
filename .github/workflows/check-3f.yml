@@ -37,29 +37,25 @@ jobs:
           echo "::group::🔍 3F Content 自动校验"
           set +e
 
-          # 找出所有 case 目录（支持多种结构）
-          # - domains/<area>/<case>/（旧结构）
-          # - cases/<case>/（新结构 - 推荐）
+          # 找出所有 case 目录 · v2 结构：<领域>/<case>/
+          # 一级目录 = 中文领域（如 AI培训/ 金融分析/ 教育/）
+          # 二级目录 = case 名（英文 / 中文都可）
           cases=()
-          for dir in domains/*/*/ cases/*/; do
-            # 跳过 _template 目录
-            case "$dir" in
-              *_template*) continue ;;
+          for first_level_dir in */; do
+            # 跳过特殊目录
+            case "$first_level_dir" in
+              .git/*|content-triple-format/*|.github/*|_模板/*) continue ;;
             esac
-            if [ -f "$dir/content.md" ] || [ -f "$dir/presentation.pptx" ] || [ -f "$dir/output"/*.pptx ] 2>/dev/null; then
-              # 去重（避免软链/重复）
-              real_dir=$(realpath "$dir" 2>/dev/null || echo "$dir")
-              already_in=0
-              for existing in "${cases[@]}"; do
-                if [ "$existing" = "$dir" ]; then
-                  already_in=1
-                  break
-                fi
-              done
-              if [ $already_in -eq 0 ]; then
-                cases+=("$dir")
+            # 跳过非中文/英文领域目录的隐藏目录
+            case "$first_level_dir" in
+              .*) continue ;;
+            esac
+            # 找这个领域下的所有 case
+            for case_dir in "$first_level_dir"*/; do
+              if [ -d "$case_dir" ] && ([ -f "$case_dir/content.md" ] || [ -f "$case_dir/presentation.pptx" ] || ls "$case_dir/output"/*.pptx 2>/dev/null > /dev/null); then
+                cases+=("$case_dir")
               fi
-            fi
+            done
           done
 
           if [ ${#cases[@]} -eq 0 ]; then
