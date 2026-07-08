@@ -17,6 +17,14 @@
 - [ ] `images/` 目录有 N 张 PNG（与 content.md P{n} 数量一致）
 - [ ] `prompts/` 目录有 N 个 prompt 文件（不是只有 README）
 
+## 路径检查（必填 · v2 PR 翻车案例）
+
+- [ ] 我把 case 放在 `cases/<case-name>/`（推荐结构 · 见 [STRUCTURE.md](./STRUCTURE.md)）
+- [ ] **如果我同时在 `domains/<area>/<case-name>/` 提交** → 已删除旧路径
+  - 命令：`git rm -r domains/<area>/<case-name>/`
+  - 验证：`diff -r cases/<name> domains/<area>/<name>` 应该没差异
+- [ ] 同一份内容没有在 2 个地方
+
 ## 本地校验（必跑 · 退出码 0 才能提）
 
 ```bash
