@@ -37,11 +37,28 @@ jobs:
           echo "::group::🔍 3F Content 自动校验"
           set +e
 
-          # 找出所有 domains/ 下的 case 目录（包含 presentation.pptx 的）
+          # 找出所有 case 目录（支持多种结构）
+          # - domains/<area>/<case>/（旧结构）
+          # - cases/<case>/（新结构 - 推荐）
           cases=()
-          for dir in domains/*/*/; do
-            if [ -f "$dir/presentation.pptx" ] || [ -f "$dir/content.md" ]; then
-              cases+=("$dir")
+          for dir in domains/*/*/ cases/*/; do
+            # 跳过 _template 目录
+            case "$dir" in
+              *_template*) continue ;;
+            esac
+            if [ -f "$dir/content.md" ] || [ -f "$dir/presentation.pptx" ] || [ -f "$dir/output"/*.pptx ] 2>/dev/null; then
+              # 去重（避免软链/重复）
+              real_dir=$(realpath "$dir" 2>/dev/null || echo "$dir")
+              already_in=0
+              for existing in "${cases[@]}"; do
+                if [ "$existing" = "$dir" ]; then
+                  already_in=1
+                  break
+                fi
+              done
+              if [ $already_in -eq 0 ]; then
+                cases+=("$dir")
+              fi
             fi
           done
 

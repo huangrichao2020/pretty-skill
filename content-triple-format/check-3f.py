@@ -104,17 +104,42 @@ def check_content_md(case_dir: Path) -> tuple[bool, list[str]]:
 
 
 def find_pptx(case_dir: Path) -> Path | None:
-    """查找 presentation.pptx · 支持 case_dir/ 和 case_dir/output/ 两种位置"""
-    candidates = [
+    """查找 *.pptx · 支持多种位置 + 多种命名
+
+    优先级：
+      1. case_dir/presentation.pptx（标准名）
+      2. case_dir/output/presentation.pptx（标准名 + output/）
+      3. case_dir/output/<case_name>.pptx（自定义名）
+      4. case_dir/<case_name>.pptx（自定义名）
+      5. 任何子目录的 *.pptx（fallback）
+    """
+    # 标准命名（最高优先级）
+    standard = [
         case_dir / "presentation.pptx",
         case_dir / "output" / "presentation.pptx",
     ]
-    for path in candidates:
+    for path in standard:
         if path.exists():
             return path
-    # 也搜一下子目录（防 build_pptx.py 输出到其他位置）
-    for path in case_dir.rglob("presentation.pptx"):
+
+    # 自定义命名：用 case_dir 名 + output/ 子目录
+    case_name = case_dir.name
+    custom = [
+        case_dir / "output" / f"{case_name}.pptx",
+        case_dir / f"{case_name}.pptx",
+        case_dir / "output" / f"{case_name}_mainboard.pptx",  # 兼容 chokepoint 那种命名
+        case_dir / f"{case_name}_mainboard.pptx",
+    ]
+    for path in custom:
+        if path.exists():
+            return path
+
+    # Fallback: 找任何 .pptx 文件（限 1 层子目录，避免搜到错误位置）
+    for path in case_dir.glob("*.pptx"):
         return path
+    for path in case_dir.glob("output/*.pptx"):
+        return path
+
     return None
 
 
@@ -259,10 +284,17 @@ def check_consistency(case_dir: Path) -> tuple[bool, list[str]]:
     script_pages = 0
     if build_script.exists():
         script_content = build_script.read_text(encoding="utf-8")
-        # 匹配 PAGES = [ "p0_...", "p1_...", ... ]
+        # 匹配 PAGES = [ ... ] 块
         match = re.search(r"PAGES\s*=\s*\[(.*?)\]", script_content, re.DOTALL)
         if match:
-            script_pages = len(re.findall(r'"[^"]+"', match.group(1)))
+            block = match.group(1)
+            # 按行算有效项（每行通常是 ("p0_...", "title") 或 "p0_..."）
+            lines = [l.strip().rstrip(",") for l in block.split("\n") if l.strip()]
+            # 过滤掉纯注释行
+            lines = [l for l in lines if not l.startswith("#")]
+            # 过滤掉空行和单独的逗号
+            lines = [l for l in lines if l and l != ","]
+            script_pages = len(lines)
 
     info(f"一致性: content.md {md_pages} 页 / images/ {len(image_pngs)} PNG / build_pptx.py {script_pages} 项")
 
