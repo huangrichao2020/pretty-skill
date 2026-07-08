@@ -103,14 +103,33 @@ def check_content_md(case_dir: Path) -> tuple[bool, list[str]]:
     return len(errors) == 0, errors
 
 
-def check_pptx(case_dir: Path) -> tuple[bool, list[str]]:
-    """检查 presentation.pptx · ≥ 2 MB · 内嵌图"""
-    errors = []
-    pptx_path = case_dir / "presentation.pptx"
+def find_pptx(case_dir: Path) -> Path | None:
+    """查找 presentation.pptx · 支持 case_dir/ 和 case_dir/output/ 两种位置"""
+    candidates = [
+        case_dir / "presentation.pptx",
+        case_dir / "output" / "presentation.pptx",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    # 也搜一下子目录（防 build_pptx.py 输出到其他位置）
+    for path in case_dir.rglob("presentation.pptx"):
+        return path
+    return None
 
-    if not pptx_path.exists():
-        errors.append(f"❌ presentation.pptx 不存在 ({pptx_path})")
+
+def check_pptx(case_dir: Path) -> tuple[bool, list[str]]:
+    """检查 presentation.pptx · ≥ 1 MB · 内嵌图"""
+    errors = []
+    pptx_path = find_pptx(case_dir)
+
+    if pptx_path is None:
+        errors.append(
+            f"❌ presentation.pptx 不存在（找过: case_dir/、case_dir/output/、所有子目录）"
+        )
         return False, errors
+
+    info(f"presentation.pptx 位置: {pptx_path.relative_to(case_dir.parent)}")
 
     # 检查文件大小
     size_mb = pptx_path.stat().st_size / (1024 ** 2)
@@ -200,13 +219,67 @@ def check_prompts_dir(case_dir: Path) -> tuple[bool, list[str]]:
         warn(f"prompts/ 目录不存在（建议有 - 工程可复现）")
         return True, errors  # 软警告，不强制
 
-    md_files = list(prompts_dir.glob("*.md"))
-    if md_files:
-        ok(f"prompts/ 含 {len(md_files)} 个 prompt 文件")
-    else:
-        warn(f"prompts/ 目录存在但无 .md 文件")
+    # 区分 README.md 和实际 prompt 文件（p0_*.md, p1_*.md）
+    readme_files = list(prompts_dir.glob("README.md"))
+    readme_files += list(prompts_dir.glob("readme.md"))
+    prompt_files = [f for f in prompts_dir.glob("*.md") if f.name.lower() != "readme.md"]
 
-    return True, errors
+    if prompt_files:
+        ok(f"prompts/ 含 {len(prompt_files)} 个 prompt 文件（{len(readme_files)} 个 README）")
+    else:
+        if readme_files:
+            errors.append(
+                f"❌ prompts/ 只有 README.md 文档，缺实际 prompt 文件（应该是 p0_*.md / p1_*.md 等）"
+            )
+        else:
+            warn(f"prompts/ 目录存在但无任何 .md 文件")
+
+    return len(errors) == 0, errors
+
+
+def check_consistency(case_dir: Path) -> tuple[bool, list[str]]:
+    """一致性检查 · content.md 页数 = images/ PNG 数 = build_pptx.py PAGES 数"""
+    errors = []
+    warnings = []
+
+    # 1. 数 content.md P{n} 数量
+    md_path = case_dir / "content.md"
+    if not md_path.exists():
+        return True, errors  # 已被前面 check 标记
+
+    content = md_path.read_text(encoding="utf-8")
+    md_pages = len(re.findall(r"^## P\d+", content, re.MULTILINE))
+
+    # 2. 数 images/ PNG 数量
+    images_dir = case_dir / "images"
+    image_pngs = list(images_dir.glob("*.png")) if images_dir.exists() else []
+
+    # 3. 解析 build_pptx.py PAGES 数量
+    build_script = case_dir / "build_pptx.py"
+    script_pages = 0
+    if build_script.exists():
+        script_content = build_script.read_text(encoding="utf-8")
+        # 匹配 PAGES = [ "p0_...", "p1_...", ... ]
+        match = re.search(r"PAGES\s*=\s*\[(.*?)\]", script_content, re.DOTALL)
+        if match:
+            script_pages = len(re.findall(r'"[^"]+"', match.group(1)))
+
+    info(f"一致性: content.md {md_pages} 页 / images/ {len(image_pngs)} PNG / build_pptx.py {script_pages} 项")
+
+    if md_pages > 0 and len(image_pngs) != md_pages:
+        errors.append(
+            f"❌ 页数不一致: content.md 有 {md_pages} 页，但 images/ 有 {len(image_pngs)} 张 PNG"
+        )
+
+    if md_pages > 0 and script_pages > 0 and script_pages != md_pages:
+        errors.append(
+            f"❌ 页数不一致: content.md 有 {md_pages} 页，但 build_pptx.py PAGES 列表只有 {script_pages} 项"
+        )
+
+    if not errors and md_pages > 0:
+        ok(f"页数一致（content.md {md_pages} 页 = images/ {len(image_pngs)} PNG = build_pptx.py {script_pages} 项）")
+
+    return len(errors) == 0, errors
 
 
 # ───────────────────────── 主流程 ─────────────────────────
@@ -272,6 +345,11 @@ def main():
     check_prompts_dir(case_dir)
     print()
 
+    print("┌─ 一致性检查（页数对齐）")
+    ok_cons, errs_cons = check_consistency(case_dir)
+    all_ok = all_ok and ok_cons
+    print()
+
     # 总结
     print(f"{'='*70}")
     if all_ok:
@@ -281,7 +359,7 @@ def main():
     else:
         print(f"{RED}❌ 有检查项失败 · PR 会被自动退回{NC}")
         print(f"\n{RED}失败原因：{NC}")
-        all_errors = errs_md + errs_pptx + errs_html + errs_imgs
+        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons
         for err in all_errors:
             print(f"  {err}")
         print(f"\n{YELLOW}📖 参考修复：{NC}")

@@ -89,25 +89,11 @@ python3 content-triple-format/check-3f.py domains/ai-training/cartman-team-ai-ag
 - ✅ 通过时显示绿色 ✓ 标记
 
 你只需要：
-1. 按 [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) 用 fork 提 PR（不需要主仓库 token）
+1. 按 [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) 用 fork 提 PR
 2. 等 GitHub Actions 自动跑校验
 3. 失败就按 Actions 日志修复
 
 ---
-
-### 🚫 不要把仓库主的 token 给任何人
-
-**反模式**（2026-07-08 已发生 1 次）：
-- ❌ 朋友拿仓库主的 token 提 PR
-- ❌ Token 离开本机 = 真实安全风险
-- ❌ Token 可能在第三方设备被记录 / 截屏 / 同步泄露
-
-**正确做法**（PR 应该去 token 化）：
-- ✅ 每个贡献者用自己的 GitHub 账号 fork
-- ✅ 标准 GitHub PR 流程（fork → 修改 → push → 开 PR）
-- ✅ 仓库主不需要分享任何凭据
-
-详见 [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) —— 5 分钟贡献流程。
 
 **自动检查 6 项**：
 1. `content.md` 存在 · 每页 4-7 字段

@@ -1,19 +1,17 @@
 # 朋友 PR 指南 · 5 分钟贡献流程
 
-> **目标**：让你不需要仓库主的 GitHub token，也能给 pretty-skill 提 PR。
-> **核心理念**：PR 流程应该**去 token 化** —— 任何人 fork 仓库就能贡献。
+> **目标**：5 分钟完成第一次 pretty-skill PR 贡献。
+> **核心理念**：标准 GitHub fork + PR 流程，任何人都能参与。
 
 ---
 
-## ⚠️ 重要：你不需要仓库主的 token
+## 5 分钟标准流程
 
-之前朋友拿 token 提 PR = **token 共享反模式**：
+### Step 1 · Fork 仓库（一次性 · 用你自己 GitHub 账号）
 
-- ❌ 仓库主 token 离开本机 = 安全风险（token 可能在第三方设备被记录 / 截屏 / 泄露）
-- ❌ 一旦 token 泄露 = 攻击者可读写整个 GitHub 账号
-- ✅ **正确做法**：每个贡献者用自己的 GitHub 账号 fork + 提 PR
-
-这个仓库已经设了 GitHub Actions 校验脚本（`.github/workflows/check-3f.yml`），你提 PR 后系统会自动跑校验。**完全不需要主仓库 token**。
+1. 打开 https://github.com/huangrichao2020/pretty-skill
+2. 点右上角 **Fork** 按钮 → 选你的 GitHub 账号
+3. 完成后你有了 `https://github.com/<你的用户名>/pretty-skill`
 
 ---
 
