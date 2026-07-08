@@ -24,6 +24,13 @@ content.md（数据）  →  prompt × N  →  matrix AI 出图  →  图嵌入 
 
 📊 **正反面对照**（文字 PPT vs 图 PPT 直观对比）：[before-after-example.md](./content-triple-format/before-after-example.md)
 
+🤖 **自动校验脚本**（推荐 · 提交 PR 前必跑）：
+
+```bash
+python3 content-triple-format/check-3f.py <你的 case 目录>
+# 退出码 0 = 通过；1 = PR 会被自动退回
+```
+
 ## 你拿到什么
 
 | 加 3F 之前 | 加 3F 之后 |

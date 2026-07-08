@@ -59,18 +59,42 @@ content.md  →  prompt × N  →  matrix AI 出图  →  图嵌入 .pptx + .htm
 **任一项打 ✗ = 拒绝 PR · 不接受修改余地**
 
 ```
-□ F2 .pptx 文件大小 ≥ 2 MB（含图证据）
+□ F2 .pptx 文件大小 ≥ 1 MB（含图证据）
 □ F2 .pptx 通过 add_picture() 嵌入 N 张 PNG（不是 text_frame 铺文字）
 □ F3 .html 含 <img> 标签（不是纯 <p> 文字）
 □ F3 .html 视觉是"设计稿"，不是"提纲列表"
-□ images/ 目录下有 N 张原图（≥ 8 张）
+□ images/ 目录下有 N 张原图（≥ 1 张 / 每页 1 张）
 □ prompts/ 目录下有 N 个 prompt 文件（每页 60 行）
 ```
+
+**🤖 自动校验脚本**（推荐 · 1 行命令就能拦截偷懒）：
+
+```bash
+# 本地校验你的 case（提交 PR 前必跑）
+python3 content-triple-format/check-3f.py <你的 case 目录>
+
+# 例：
+python3 content-triple-format/check-3f.py domains/ai-training/cartman-team-ai-agent-collab
+
+# 退出码：
+#   0 = 全部通过（PR 可提）
+#   1 = 有检查项失败（PR 会被自动退回 + 提示失败原因）
+```
+
+**自动检查 6 项**：
+1. `content.md` 存在 · 每页 4-7 字段
+2. `presentation.pptx` ≥ 1 MB（实测：文字 PPT ≈ 200 KB；图 PPT ≈ 1.5-2 MB）
+3. `presentation.pptx` 解 zip 后含 `ppt/media/` 图文件
+4. `web.html` 含 `<img>` 标签
+5. `images/` 目录存在 + N 张 PNG
+6. `prompts/` 目录存在（软警告）
+
+**集成到 GitHub Actions**（可选）：在 PR 时自动跑 `check-3f.py`，失败就阻止 merge。
 
 **常见 PR 退回理由**：
 | 你提交的 | 实际状态 | 退回原因 |
 |---|---|---|
-| 1 MB 的 .pptx | 文字 PPT | F2 必须 ≥ 2 MB |
+| 200 KB 的 .pptx | 文字 PPT | F2 必须 ≥ 1 MB |
 | .html 全是 `<p>` | .md 转 HTML | F3 必须含 `<img>` |
 | 只有 content.md 和 .pptx，没 images/ | 跳过了 AI 出图 | 必须有出图证据 |
 | .pptx 是用 python-pptx `add_text` 写的 | text_frame 偷懒 | 必须 `add_picture` |
