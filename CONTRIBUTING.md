@@ -65,7 +65,7 @@ cd "<11 领域之一>/<你的-case-名>"
 # - 准备 images/（用 matrix / DALL-E / Midjourney 出 N 张图）
 # - 跑 build_pptx.py 生成 output/<case_name>.pptx
 # - 改 web.html（用 html-ppt-viewer 模板）
-# - 生成 锦绣/（4 形态：cover + 9图 + PPT + 视频脚本）
+# - 生成 锦绣/（4 形态：封面 + 9图 + PPT + 视频脚本）
 ```
 
 **推荐用 skill-creator 自动化**（未来 v3.1）：

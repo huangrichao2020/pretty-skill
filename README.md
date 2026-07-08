@@ -1,39 +1,63 @@
-# Pretty Skill · 全球优质技能与知识集合
+# Pretty Skill · 让技能和知识被人看懂
 
 > ### 💎 大量优秀的 skill 或知识做出来，没人用，因为没人看得懂。
 >
-> 这个项目**从不追求快速生成 SOP**。各位多花几分钟，生成能讲解清楚你的 skill 或知识的图片、封面、pptx、html，**方便人看和学**，才是一直被忽视的重要东西。
+> 这个项目就是来解决这个的。**多花 5 分钟讲清楚，比快速生成 100 份强 100 倍**。
 
 [English](./README_en.md) · 简体中文
 
 ![Pretty Skill · 项目是什么](assets/readme-2-what.png)
 
-**pretty-skill** = 开源项目 · 集合全世界开发者与玩家贡献的优质技能 / 知识 · 按 **3F Content + 锦绣** 范式发布，让任何知识**被 AI 消化 + 被人看懂 + 被人传播**。
+**pretty-skill** 是一个**开源项目**：把全世界开发者做出来的优质 skill 和知识，整理成**好看 + 好读**的形式，让你能**快速看懂 + 直接用**。
 
 ---
 
-## 💎 项目哲学
+## 🎯 这个项目能干啥？
 
-> **清晰 > 速度 · 让人看得懂 > 快速生成**
+![4 个作用 + 1 个愿景](assets/readme-3-actions.png)
 
-之前的 AI 工具追求"自动化"和"快速生成"——但这恰恰是**优秀知识没人用的根因**。**多花 5 分钟讲清楚 = 100 倍可懂性提升**。
+### 1. 看现成的（读）
 
-![之前 vs 现在 · 多花 5 分钟讲清楚](assets/readme-6-compare.png)
+项目里有人做好了**各种 skill 和知识**，还都配上了**对应的 PPT**（PPT 版 HTML）。
+打开 `web.html` → 翻页 → 学。
+不用看 PDF / Word 找半天。
+
+### 2. 做自己的（创建）
+
+想做方法论卡片给团队看？不用从零开始。
+Fork 仓库 → 复制模板 → 填内容 → AI 自动出图 → 自动生成 PPT。
+**5 分钟做出一个能分享的方法论**。
+
+### 3. 分享你的（提 PR）
+
+有什么好方法想分享？提个 PR，**开发者们都能用你的智慧**。
+仓库主审核 → 全球共享。
+
+> **范式参考**：每个 case 都按 **3F Content + 锦绣** 发布——
+> - **3F Content** = AI 友好（`content.md` 喂 LLM · `web.html` PPT 演示版）
+> - **锦绣** = 方便分享（横竖封面 + 8-12 讲解图 + 1 融合 md）
+>
+> [详细规范 →](./content-triple-format/README.md) · [锦绣 →](./content-triple-format/锦绣.md) · [PPT 版 HTML →](./content-triple-format/ppt-html-spec.md)
 
 ---
 
-## 🎯 范式：3F Content + 锦绣
+## 🌟 未来理想 · 这个项目的最终愿景
 
-![范式：3F Content + 锦绣](assets/readme-3-paradigm.png)
+![愿景 · 1 个项目代替所有工具](assets/readme-6-vision.png)
 
-- **3F Content** = AI 友好（`content.md` 喂 LLM · `web.html` PPT 演示版）
-- **锦绣** = 人易传播（2 封面 + 8-12 讲解图 + 1 融合 md）
+> **你再也不需要为每个新知识装一个新工具。**
+> **只需要装一个 pretty-skill。**
 
-[详细规范 →](./content-triple-format/README.md) · [锦绣 →](./content-triple-format/锦绣.md) · [PPT 版 HTML →](./content-triple-format/ppt-html-spec.md)
+下次你想学啥，**对 agent 说"学一下 XXX"**。
+agent 自动从 pretty-skill 找相关知识，更新进你的项目。
+**私密知识直接 ignore**。
+
+**人们只需要维护一个项目。**
+**参与的人越多，整个项目越好用。**
 
 ---
 
-## 📚 11 领域（中文一级目录 · 全球共建）
+## 📚 11 个领域（涵盖啥）
 
 ![11 领域一览](assets/readme-4-domains.png)
 
@@ -82,6 +106,6 @@
 
 ## 📜 License
 
-[MIT](./LICENSE) · 提 Issue / 提 PR · 全球开发者共建
+[MIT](./LICENSE) · 提 Issue / 提 PR · **开发者PR共建**。
 
 <sub>项目哲学：清晰 > 速度 · 各位多花 5 分钟讲清楚 = 100 倍可懂性提升</sub>
