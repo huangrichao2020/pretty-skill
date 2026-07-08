@@ -51,12 +51,12 @@ PRESET_DOMAINS = {
     "思维方法": "决策框架 / 思维模型 / 心理学",
 }
 
-# 锦绣层 4 形态（v3 新增）
+# 锦绣层 v3.1 简化（按形式切 · 不锁死平台）
 JINXIU_FORMS = {
-    "cover-朋友圈.png": "锦绣封面（1 张 16:9 大图）",
-    "xiaohongshu-9图/": "锦绣小红书 9 图（≥ 9 张 PNG）",
-    "public-account-ppt/": "锦绣公众号 PPT（≥ 8 张 PNG）",
-    "video-script.md": "锦绣视频脚本（30-60 秒）",
+    "cover-横屏.png": "横屏封面（1 张 16:9 · 朋友圈/推特/微博）",
+    "cover-竖屏.png": "竖屏封面（1 张 3:4 或 9:16 · 小红书/抖音/视频号）",
+    "slides/": "讲解图集（8-12 张 16:9 PNG）",
+    "readme.md": "融合 md（公众号 + 自媒体稿 + AI 阅读 三用）",
 }
 REQUIRED_PAGE_FIELDS_MIN = 4  # content.md 每页至少 4 个字段
 REQUIRED_PAGE_FIELDS_MAX = 7  # content.md 每页最多 7 个字段
@@ -270,23 +270,24 @@ def check_jinxiu(case_dir: Path) -> tuple[bool, list[str]]:
         warn("  建议：v3 提 PR 时自动生成 · 见 skill-creator/README.md")
         return True, errors  # 不算 error
 
-    info("锦绣 4 形态检查:")
+    info("锦绣 v3.1 简化（按形式切 · 不锁死平台）:")
     for form, desc in JINXIU_FORMS.items():
         path = jinxiu_dir / form
         if not path.exists():
-            warn(f"锦绣/{form} 不存在（{desc} · 软警告）")
+            warn(f"锦绣/{form} 不存在（{desc} · v3 软警告）")
         else:
             if path.is_file():
                 size_kb = path.stat().st_size // 1024
                 ok(f"锦绣/{form} ({size_kb} KB · {desc})")
             elif path.is_dir():
                 png_count = len(list(path.glob("*.png")))
-                if "9图" in form and png_count < 9:
-                    warn(f"锦绣/{form} 只有 {png_count} 张图（要求 ≥ 9 · 软警告）")
-                elif "PPT" in form and png_count < 8:
-                    warn(f"锦绣/{form} 只有 {png_count} 张图（要求 ≥ 8 · 软警告）")
+                if form == "slides/":
+                    if png_count < 8 or png_count > 12:
+                        warn(f"锦绣/slides/ 有 {png_count} 张图（要求 8-12 · 软警告）")
+                    else:
+                        ok(f"锦绣/slides/ ({png_count} 张图 · {desc})")
                 else:
-                    ok(f"锦绣/{form} ({png_count} 张图 · {desc})")
+                    ok(f"锦绣/{form} ({png_count} 个文件 · {desc})")
 
     return True, errors  # v3 软警告模式不阻止
 

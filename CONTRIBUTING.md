@@ -168,7 +168,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
 ## ✅ 4 条硬规则
 
 1. **3 件套齐全**（content.md + presentation.pptx + web.html）—— 不收不齐的 PR
-2. **锦绣 4 形态齐全**（cover + 9图 + PPT + 视频脚本）—— v3 新增要求
+2. **锦绣 3 样齐全**（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）—— v3.1 简化要求
 3. **`.md` 为单一真相** —— `.pptx` / `.html` / `锦绣` 内文以 `.md` 为准
 4. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
 
@@ -177,7 +177,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
 1. ❌ 直接拿 `.md` 转 `.pptx`（文字 PPT）→ 必须 `add_picture()` 嵌图
 2. ❌ 直接用 `.md` 转 `.html`（纯文字网页）→ 必须含 `<img>` 标签
 3. ❌ 跳过 AI 出图步骤 → 必须有 `images/` + N 张 PNG
-4. ❌ 跳过锦绣 4 形态 → 必须有 `锦绣/cover-朋友圈.png` + 9 图 + PPT + 视频脚本
+4. ❌ 跳过锦绣 3 样 → 必须有 `锦绣/cover-横屏.png` + `cover-竖屏.png` + `slides/`（8-12 张）+ `readme.md`
 5. ❌ case 名称用大写 / 下划线 / 空格 → 必须 kebab-case（英文）或 kebab-case（中文）
 
 ---
@@ -192,11 +192,15 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 看 [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) Step 4 的代码示例，复制粘贴改改路径即可。
 
-### Q: 锦绣 PPT 怎么生成？
+### Q: 锦绣 3 样素材怎么生成？
 
-v3 推荐用 skill-creator 工具（未来）。手动方式：
-1. 准备 9 张图（小红书用）+ 12 页 PPT（公众号用）+ 1 张大图（朋友圈用）
-2. 按 [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) 范式排版
+v3.1 推荐用 skill-creator 工具（即将开源）。手动方式：
+1. 准备 **1 张横屏封面**（16:9）+ **1 张竖屏封面**（3:4 或 9:16）+ **8-12 张讲解图**（16:9）+ **1 份融合 md**
+2. 按 [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) v3.1 范式排版
+
+### Q: 锦绣要发哪个平台？
+
+**不限定**。creator 拿到素材后自己决定发朋友圈 / 小红书 / 抖音 / 推特 / 微博 / 公众号 / 视频号 / 任何平台。范式只规定"形式"（横/竖/讲解图/md），不规定"平台"。
 
 ### Q: PR 失败被 check-3f 拒绝了怎么办？
 

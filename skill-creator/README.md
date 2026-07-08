@@ -14,7 +14,7 @@ CLI 工具，把任意知识（.md / URL / 笔记 / 你脑子里想的）一键�
 - `images/`（N 张 AI 出图）
 - `output/<case_name>.pptx`（≥ 1 MB）
 - `web.html`（含 `<img>` 标签）
-- `锦绣/`（4 形态：cover + 9图 + PPT + 视频脚本）
+- `锦绣/`（v3.1 简化：横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）
 
 **意义**：让"贡献一个 skill"和"创建 1 个 GitHub repo"一样简单。
 
@@ -52,11 +52,11 @@ python skill-creator/create.py \
 # ├── output/        # PPTX
 # ├── web.html
 # ├── prompts/       # 9 个 prompt 文件
-# └── 锦绣/          # 4 形态
-#     ├── cover-朋友圈.png
-#     ├── xiaohongshu-9图/   (9 张)
-#     ├── public-account-ppt/ (12 页)
-#     └── video-script.md
+# └── 锦绣/          # v3.1 简化（按形式 · 不锁死平台）
+#     ├── cover-横屏.png
+#     ├── cover-竖屏.png
+#     ├── slides/    # 8-12 张讲解图
+#     └── readme.md  # 1 份融合 md（公众号 + 自媒体稿 + AI 阅读）
 ```
 
 ### 输入：URL（博客 / 知乎 / 公众号）
@@ -90,7 +90,7 @@ python skill-creator/create.py \
 | `--style` | 否 | 视觉风格（马卡龙 / 古铜金 / 蓝白灰 / 深色科技风 / 城市插画 / 真实生活感）· 默认蓝白灰 |
 | `--pages` | 否 | PPT 页数（默认 9）|
 | `--output` | 否 | 输出目录（默认 ./output/）|
-| `--no-jinxiu` | 否 | 跳过锦绣 4 形态生成（仅生成 3F Content）|
+| `--no-jinxiu` | 否 | 跳过锦绣 3 样生成（仅生成 3F Content）|
 | `--api-key` | 否 | AI 出图 API key（默认读环境变量 `MATRIX_API_KEY`）|
 
 ---
@@ -105,7 +105,7 @@ python skill-creator/create.py \
    ├─ 调 matrix AI 出图（9 张）
    ├─ python-pptx 嵌图 → presentation.pptx
    ├─ html-ppt-viewer → web.html
-   └─ 锦绣 4 形态生成（cover + 9图 + PPT + 视频脚本）
+   └─ 锦绣 3 样生成（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）
    ↓
 3. 人类编辑 / 调优视觉（30 分钟）        ← 30 分钟
    ↓
@@ -155,13 +155,13 @@ mavis mcp call matrix matrix_generate_image '{"prompt": "...", "aspect_ratio": "
 - Stable Diffusion
 - 即梦 / 文心一言
 
-### 锦绣 4 形态生成
+### 锦绣 3 样生成（v3.1 简化）
 
 | 形态 | 模板 | 实现 |
 |---|---|---|
-| 锦绣封面 | 1 张 16:9 大图 | matrix 出图 + 1 句话金句叠加 |
-| 锦绣 9 图 | 9 张 3:4 图 | matrix 出图 × 9 + 标题叠加 |
-| 锦绣 PPT | 12 页 16:9 | python-pptx 嵌图 × 12 |
+| 横屏封面 | 1 张 16:9 大图 | matrix 出图 + 1 句话金句叠加 |
+| 竖屏封面 | 1 张 3:4 或 9:16 大图 | matrix 出图 + 1 句话金句叠加 |
+| 讲解图集 slides/ | 8-12 张 16:9 | matrix 出图 × 8-12 + 标题叠加 |
 | 锦绣视频脚本 | 30-60 秒 | 模板文案 + 用户填实 |
 
 ---
@@ -171,7 +171,7 @@ mavis mcp call matrix matrix_generate_image '{"prompt": "...", "aspect_ratio": "
 | 版本 | 状态 | 目标 |
 |---|---|---|
 | v0.1 | ✅ 当前 | CLI 框架 + 基础输入解析 + matrix 出图 |
-| v0.2 | 计划 | 锦绣 4 形态自动生成 |
+| v0.2 | 计划 | 锦绣 3 样自动生成（v3.1 简化）|
 | v0.3 | 计划 | URL 输入支持（browser-act 集成）|
 | v1.0 | 计划 | 完整 3F Content + 锦绣 + PR 模板生成 |
 | v2.0 | 计划 | Web UI（拖拽 .md / 输入 URL → 一键生成）|

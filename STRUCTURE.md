@@ -139,16 +139,14 @@ pretty-skill/
 │   ├── p0_cover.md
 │   └── ...
 │
-└── 锦绣/                      ← 🆕 锦绣 PPT（创建时自动生成）
-    ├── cover-朋友圈.png        # 1 张大图
-    ├── xiaohongshu-9图/        # 9 张图
-    │   ├── 1_封面.png
-    │   ├── 2_钩子.png
+└── 锦绣/                      ← 🆕 锦绣素材（创建时自动生成 · v3.1 简化）
+    ├── cover-横屏.png          # 1 张横屏封面（16:9）
+    ├── cover-竖屏.png          # 1 张竖屏封面（3:4 或 9:16）
+    ├── slides/                 # 8-12 张讲解图（16:9 · creator 自行决定）
+    │   ├── slide-1.png
+    │   ├── slide-2.png
     │   └── ...
-    ├── public-account-ppt/    # 12 页完整讲解
-    │   ├── 1_封面.pptx
-    │   └── ...
-    └── video-script.md         # 30-60 秒视频脚本
+    └── readme.md               # 1 份融合 md（公众号 + 自媒体稿 + AI 阅读）
 ```
 
 ---
