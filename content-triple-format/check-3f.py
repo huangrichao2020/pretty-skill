@@ -25,6 +25,7 @@
 """
 
 import argparse
+import json
 import re
 import sys
 import zipfile
@@ -420,6 +421,49 @@ def check_consistency(case_dir: Path) -> tuple[bool, list[str]]:
     return len(errors) == 0, errors
 
 
+def check_manifest(case_dir: Path) -> tuple[bool, list[str]]:
+    """v3.11 起必填 · 验证 manifest.json 存在 + visibility 合法 + 领域在 11 预设中"""
+    errors = []
+    manifest_path = case_dir / "manifest.json"
+
+    if not manifest_path.exists():
+        errors.append("❌ manifest.json 不存在（v3.11 起必填 · 含 visibility 字段）")
+        return False, errors
+
+    try:
+        meta = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        errors.append(f"❌ manifest.json 不是合法 JSON: {e}")
+        return False, errors
+
+    # 必填字段
+    required = ["name", "domain", "visibility", "tags", "contributor", "created", "format"]
+    missing = [f for f in required if f not in meta]
+    if missing:
+        errors.append(f"❌ manifest.json 缺字段: {', '.join(missing)}")
+
+    # visibility 必须是 3 个值之一
+    visibility = meta.get("visibility")
+    valid_vis = ("public", "private", "draft")
+    if visibility not in valid_vis:
+        errors.append(f"❌ visibility='{visibility}' 不合法（必须是 public / private / draft 之一）")
+    elif visibility == "private":
+        warn(f"visibility='private' — 提 PR 后 agent 不共享，但本地仍可用")
+    elif visibility == "draft":
+        warn(f"visibility='draft' — 暂时 ignore，等成熟后改 public 再提 PR")
+
+    # domain 必须在 11 预设中
+    domain = meta.get("domain")
+    if domain and domain not in PRESET_DOMAINS:
+        errors.append(f"❌ domain='{domain}' 不在 11 预设领域中（先 PR 一份 README 再新增领域）")
+
+    if not errors:
+        ok(f"manifest.json 合规（visibility={visibility}, domain={domain}）")
+        return True, []
+
+    return False, errors
+
+
 # ───────────────────────── 主流程 ─────────────────────────
 
 def main():
@@ -498,6 +542,11 @@ def main():
     all_ok = all_ok and ok_cons
     print()
 
+    print("┌─ manifest.json 检查（v3.11 起必填）")
+    ok_mf, errs_mf = check_manifest(case_dir)
+    all_ok = all_ok and ok_mf
+    print()
+
     # 总结
     print(f"{'='*70}")
     if all_ok:
@@ -507,7 +556,7 @@ def main():
     else:
         print(f"{RED}❌ 有检查项失败 · PR 会被自动退回{NC}")
         print(f"\n{RED}失败原因：{NC}")
-        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons + errs_dom + errs_jx
+        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons + errs_dom + errs_jx + errs_mf
         for err in all_errors:
             print(f"  {err}")
         print(f"\n{YELLOW}📖 参考修复：{NC}")

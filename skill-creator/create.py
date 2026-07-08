@@ -5,9 +5,15 @@
 
 用法：
   python create.py --input my-knowledge.md --domain "金融投资" --style "深色科技风"
-  python create.py --url https://example.com/article --domain "思维方法"
+  python create.py --url https://example.com/article --domain "思维方法" --visibility private
 
 依赖：pip install python-pptx
+
+新增参数（v3.11）：
+  --visibility {public|private|draft}
+    public  → 默认，提 PR 共享给所有开发者
+    private → 本地 private，不公开（但 agent 本地仍可用）
+    draft   → 草稿，等成熟后改 public 再提 PR
 """
 import argparse
 import sys
@@ -46,6 +52,11 @@ def parse_args():
     parser.add_argument("--pages", type=int, default=9, help="PPT 页数（默认 9）")
     parser.add_argument("--output", default="./output/", help="输出目录（默认 ./output/）")
     parser.add_argument("--no-jinxiu", action="store_true", help="跳过锦绣 4 形态生成")
+    parser.add_argument(
+        "--visibility", default="public",
+        choices=["public", "private", "draft"],
+        help="manifest.json 的 visibility 字段（public=提 PR 共享 / private=本地不共享 / draft=草稿等成熟后再改 public）",
+    )
     parser.add_argument("--api-key", help="AI 出图 API key（默认读 MATRIX_API_KEY 环境变量）")
     return parser.parse_args()
 
@@ -68,6 +79,7 @@ def main():
 📄 页数：     {args.pages}
 📂 输出：     {args.output}
 🌟 锦绣：     {'跳过' if args.no_jinxiu else '生成 4 形态'}
+🔒 可见性：   {args.visibility} ({'提 PR 共享' if args.visibility == 'public' else '本地不共享' if args.visibility == 'private' else '草稿待成熟'})
 """)
 
     # TODO v0.1: 实现完整 3F Content + 锦绣生成
@@ -76,6 +88,7 @@ def main():
     print("📋 v0.1 已实现：")
     print("  ✅ 命令行参数解析")
     print("  ✅ 11 领域 + 6 风格预设校验")
+    print("  ✅ visibility 参数（v3.11：public / private / draft）")
     print()
     print("🚧 v0.2 计划：")
     print("  - 解析 .md 输入 → content.md 4-7 字段/页")
@@ -83,6 +96,7 @@ def main():
     print("  - python-pptx 嵌图 → presentation.pptx")
     print("  - html-ppt-viewer → web.html")
     print("  - 锦绣 4 形态生成（cover + 9图 + PPT + 视频脚本）")
+    print("  - v0.2 起自动写 manifest.json（用 --visibility 字段）")
     print()
     print("🌟 完整 3F Content + 锦绣：参考 content-triple-format/ 范式")
     print("   📘 [content-triple-format/README.md](../content-triple-format/README.md)")
