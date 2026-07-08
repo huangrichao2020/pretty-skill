@@ -25,3 +25,15 @@
 
 **git**
 - commit `fbd2a23` 已落地本地仓；未 push（push 到公开上游需用户确认）。
+
+### 2026-07-08 23:00 复核（每日 dream 修炼自动化）
+
+- **git 状态**：自 20:13 提交以来工作树干净，无新增未提交改动。
+- **全量 3F 复核**：对当日全部 5 个 case 跑 `check-3f.py`，**均 `EXIT=0`**：
+  - `内容创作/橙皮书方法论`（7 页）
+  - `金融投资/macro-monitor`（7 页）
+  - `金融投资/chokepoint-mainboard`（9 页）
+  - `AI能力/cartman-team-ai-agent-collab`（8 页）
+  - `AI能力/social-ecom-skill`（8 页）
+- **补全记录**：20:13 那条仅记了 `fbd2a23` 的 2 个 case；本日实际共沉淀 **5 个** 3F case（另 3 个来自 `cf31d1b`：chokepoint-mainboard / cartman-team-ai-agent-collab / social-ecom-skill）。
+- **新增沉淀**：无。自 20:13 以来无新对话 / 新工作成果，未新建或硬造 case（遵循「无高价值内容不硬造」原则）。
