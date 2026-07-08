@@ -22,6 +22,12 @@ v0.2 新增：
 
 依赖：
   pip install python-pptx (可选 · v0.2 不强求)
+
+⚠️ 前置条件 · 生图能力是必须的
+   这个工具生成的是「骨架」，要真视觉化必须调 AI 出图：
+   **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑
+   （支持 matrix MCP 多模态生图 + 生视频，月费起步）。
+   没生图能力 = 只能跑骨架，骨架不是 pretty-skill 的精髓。
 """
 import argparse
 import json

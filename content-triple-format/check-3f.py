@@ -16,12 +16,17 @@
   □ web.html 存在且含 <img> 标签
   □ images/ 目录存在且有 N 张 PNG（与 .pptx 页数对齐）
   □ prompts/ 目录存在（每页 60 行 prompt）
+  □ manifest.json 必填（v3.11 起）· 含 visibility 合法字段
 
 参考规范：
   - content-triple-format/README.md
   - pretty-skill/CONTRIBUTING.md (🚫 PR 拒绝标准)
 
 朋友 agent 翻车 1 次后写了这个脚本，让"文字 PPT 偷懒"变成代码层面被拦截。
+
+⚠️ 前置条件 · 生图能力是必须的
+   pretty-skill 所有视觉化都依赖 AI 出图。
+   推荐使用 MiniMax 套餐（49 元 Token plan 套餐就够，支持 matrix MCP 多模态生图 + 生视频）。
 """
 
 import argparse

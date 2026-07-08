@@ -5,8 +5,14 @@
 > - **可选 1 件**：`presentation.pptx` 真实 PowerPoint（需要二次编辑时才生成）
 >
 > 让内容对 AI 和人类同等友好 + 任何场景都能演示 + 不强求 PowerPoint。
-
+>
 > 这是 pretty-skill 的核心约定。所有贡献者必读。
+
+> ### ⚠️ 配套 · 生图能力是必须的
+>
+> 3F Content + 锦绣 范式都依赖 AI 出图。
+> **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步）。
+> 没生图能力 = 范式坍塌。
 
 ## 为什么做 3F
 

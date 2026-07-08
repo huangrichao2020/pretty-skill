@@ -168,13 +168,20 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ---
 
-## ✅ 5 条硬规则（v3.11 + 1）
+## ✅ 6 条硬规则（v3.16+ · 生图必填为第 1 条）
 
-1. **必填 2 件**（content.md + web.html）—— HTML 是 PPT 演示版（必填）
-2. **锦绣 3 样齐全**（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）—— v3.1 简化要求
-3. **`.md` 为单一真相** —— `web.html` / `presentation.pptx` / `锦绣` 内文以 `.md` 为准
-4. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
-5. **`manifest.json` 必填**（v3.11 新增） —— 每个 case 必须含 `manifest.json`，含 visibility 标识字段
+> ### ⚠️ 第 1 条 · 生图能力是必须的
+>
+> pretty-skill 所有视觉化都依赖 AI 出图（横竖封面 + 9 讲解图 + 锦绣 4 形态 + PPT 演示版插图）。
+> **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步够用）。
+> **没有生图能力 = 没有视觉化 = 项目范式坍塌。**
+
+1. **生图必填** —— 横屏封面 + 竖屏封面 + 8-12 讲解图都必须有（用 MiniMax 套餐的 matrix MCP）
+2. **必填 2 件**（content.md + web.html）—— HTML 是 PPT 演示版（必填）
+3. **锦绣 3 样齐全**（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）—— v3.1 简化要求
+4. **`.md` 为单一真相** —— `web.html` / `presentation.pptx` / `锦绣` 内文以 `.md` 为准
+5. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
+6. **`manifest.json` 必填**（v3.11 新增） —— 每个 case 必须含 `manifest.json`，含 visibility 标识字段
 
 ### 范式变化说明（v3.2 重要）
 

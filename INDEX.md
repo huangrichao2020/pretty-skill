@@ -3,6 +3,9 @@
 > **💎 再定义**：pretty-skill 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
 > **这里不是工具箱，是出版局。**
 
+> **⚠️ 前置条件 · 生图能力是必须的** —— pretty-skill 所有视觉化都依赖 AI 出图。
+> 推荐使用 MiniMax 套餐（49 元 Token plan 套餐就够，支持 matrix MCP 多模态生图 + 生视频）。
+
 > **用途**：agent 启动时读这个文件 → 1 秒钟定位相关 case → 按 visibility 决定是否纳入。
 > **更新规则**：新增 case 时必须更新本文件 + 加 `manifest.json`。
 
