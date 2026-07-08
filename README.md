@@ -53,21 +53,32 @@ open domains/ai-training/cartman-team-ai-agent-collab/web.html
 
 ## 当前内容
 
-### `domains/ai-training/`（首个领域 · 2 个 seed cases）
+### `domains/ai-training/`（v0 seed · 2 个 cases）
 
 | Case | 主题 | 大小 | 数据 |
 |---|---|---|---|
 | **cartman-team-ai-agent-collab** | 团队如何与 AI Agent 高效协作 | 21.8 MB | 8 页 PPT · 0 返工 |
 | **social-ecom-skill** | 社交电商 × 两层拆解法 | 19.3 MB | 8 页 PPT · 0 返工 |
 
+### `cases/`（v1 标准结构 · 新 case 走这里）
+
+| Case | 主题 | 大小 | 贡献者 | 数据 |
+|---|---|---|---|---|
+| **chokepoint-mainboard** | A 股卡脖子选股报告 · 主板专版 | ~28 MB | @Kun 🎉 第 1 个真 case | 9 页 PPT · 深色科技风 · 真实 A 股数据 |
+
 每个 case 都有：
 - `content.md` —— 人类 + AI 都读的源文字（用 grep / diff / IDE 全文搜索 / LLM prompt 喂）
-- `presentation.pptx` —— PowerPoint / Keynote / WPS 可编辑演示
-- `web.html` —— 浏览器直接看，键盘 ← → 翻页
+- `presentation.pptx` —— PowerPoint / Keynote / WPS 可编辑演示（含图）
+- `web.html` —— 浏览器直接看，键盘 ← → 翻页（含图）
+- `images/` —— AI 出图原图（≥ 1 张 / 页）
+- `prompts/` —— 每页 prompt 文件（工程可复现）
+- `build_pptx.py` —— 模板化 PPTX 生成脚本
 
 ### `content-triple-format/`（核心范式文档）
 
 - 完整 3F Content 规范 + 反模式 + 模板
+- **`check-3f.py` 自动校验脚本**（PR 提交前必跑）
+- **`deep-themes.md` 视觉风格预设**（手绘马卡龙 + 深色科技风）
 - 是这个仓库的核心约定，所有贡献者必读
 
 ## 如何贡献
@@ -83,15 +94,20 @@ open domains/ai-training/cartman-team-ai-agent-collab/web.html
 
 | 版本 | 时间 | 目标 |
 |---|---|---|
-| **v0** ✨ 当前 | 2026-07 | 第 1 个领域「ai-training」+ 2 个 seed cases + 范式文档 |
-| v1 | 1 个月内 | 3-5 个领域（business-pitch / tech-product / education / 等） |
-| v2 | 3 个月内 | 10+ 领域 + 自动贡献者榜 + 周更 star 增长 |
+| **v0** ✨ 已完成 | 2026-07-07 | 第 1 个领域「ai-training」+ 2 个 seed cases + 范式文档 |
+| **v1** ✨ 当前 | 2026-07-08 | 第 1 个真 case `chokepoint-mainboard`（@Kun）+ check-3f.py 自动校验 + GitHub Actions + PR 模板 + STRUCTURE 决策 |
+| v2 | 1 个月内 | 3-5 个领域（business-pitch / tech-product / education / 等） |
+| v3 | 3 个月内 | 10+ 领域 + 自动贡献者榜 + 周更 star 增长 |
 
 [完整路线图](./roadmap.md)
 
 ## Star 增长史
 
 - 2026-07-07 ✨ 仓库诞生（README + 2 seed cases + 3F Content 范式）
+- 2026-07-08 🎉 **PR #1 合并** · 第 1 个真 case `chokepoint-mainboard`（@Kun）· v1 多领域扩展启动
+- 2026-07-08 ✅ 范式升级 4 重防御（SKILL.md 硬约束 + CONTRIBUTING 拒绝标准 + before-after 直观对照 + onboarding 5 步流程）
+- 2026-07-08 ✅ check-3f.py 自动校验脚本 + GitHub Actions 集成
+- 2026-07-08 ✅ STRUCTURE.md 决策文档（cases/ vs domains/ 路径约定）
 
 ## License
 
