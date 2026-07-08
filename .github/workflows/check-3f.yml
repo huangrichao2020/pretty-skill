@@ -1,0 +1,110 @@
+name: check-3f
+
+on:
+  pull_request:
+    paths:
+      - 'domains/**'
+      - 'content-triple-format/**'
+  push:
+    branches: [main]
+
+jobs:
+  validate-3f-content:
+    runs-on: ubuntu-latest
+    name: Validate 3F Content (no text-only PPT/HTML)
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install python-pptx
+
+      - name: Run check-3f.py on changed case directories
+        env:
+          # 让脚本输出不带 ANSI 颜色（GitHub Actions 友好）
+          NO_COLOR: '1'
+          FORCE_COLOR: '0'
+        run: |
+          echo "::group::🔍 3F Content 自动校验"
+          set +e
+
+          # 找出所有 domains/ 下的 case 目录（包含 presentation.pptx 的）
+          cases=()
+          for dir in domains/*/*/; do
+            if [ -f "$dir/presentation.pptx" ] || [ -f "$dir/content.md" ]; then
+              cases+=("$dir")
+            fi
+          done
+
+          if [ ${#cases[@]} -eq 0 ]; then
+            echo "⚠️ 没找到任何 case 目录，跳过校验"
+            exit 0
+          fi
+
+          echo "📂 发现 ${#cases[@]} 个 case 目录: ${cases[*]}"
+          echo ""
+
+          failed=0
+          for case_dir in "${cases[@]}"; do
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "🔍 检查: $case_dir"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            python content-triple-format/check-3f.py "$case_dir"
+            rc=$?
+            if [ $rc -ne 0 ]; then
+              failed=$((failed + 1))
+            fi
+            echo ""
+          done
+
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          if [ $failed -ne 0 ]; then
+            echo "❌ ${failed}/${#cases[@]} 个 case 未通过 3F Content 校验"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo ""
+            echo "### ❌ 3F Content 校验失败" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "本 PR 修改的 ${failed} 个 case 未通过 3F Content 范式校验。" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**常见失败原因：**" >> $GITHUB_STEP_SUMMARY
+            echo "- .pptx 文件太小（< 1 MB）→ 可能是纯文字 PPT" >> $GITHUB_STEP_SUMMARY
+            echo "- .html 不含 \`<img>\` 标签 → 可能是 .md 直接转 HTML" >> $GITHUB_STEP_SUMMARY
+            echo "- images/ 目录缺失 → 跳过了 AI 出图步骤" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**修复指南：**" >> $GITHUB_STEP_SUMMARY
+            echo "- [3F Content 范式](./content-triple-format/README.md)" >> $GITHUB_STEP_SUMMARY
+            echo "- [Onboarding 5 步流程](./content-triple-format/onboarding-guide.md)" >> $GITHUB_STEP_SUMMARY
+            echo "- [正反面对照](./content-triple-format/before-after-example.md)" >> $GITHUB_STEP_SUMMARY
+            echo "- [PR 拒绝标准](./CONTRIBUTING.md#-pr-拒绝标准硬指标-自动检测)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**本地复跑：**" >> $GITHUB_STEP_SUMMARY
+            echo '```bash' >> $GITHUB_STEP_SUMMARY
+            echo "python3 content-triple-format/check-3f.py $case_dir" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          echo "✅ 全部 ${#cases[@]} 个 case 通过 3F Content 校验"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          echo "### ✅ 3F Content 校验通过" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${#cases[@]} 个 case 全部符合 3F Content 范式（.md + .pptx + .html + 图嵌入）" >> $GITHUB_STEP_SUMMARY
+          echo "::group::"
+
+      - name: Annotate PR with results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const summary = process.env.CHECK_3F_RESULT || 'see logs';
+            console.log('check-3f result:', summary);

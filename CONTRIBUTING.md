@@ -81,6 +81,34 @@ python3 content-triple-format/check-3f.py domains/ai-training/cartman-team-ai-ag
 #   1 = 有检查项失败（PR 会被自动退回 + 提示失败原因）
 ```
 
+**🤖 GitHub Actions 集成**（PR 自动跑 · 不需要手动触发）：
+
+本仓库已配 `.github/workflows/check-3f.yml`：
+- ✅ PR 提交时自动跑 `check-3f.py`
+- ❌ 失败时自动评论 PR + 阻止 merge
+- ✅ 通过时显示绿色 ✓ 标记
+
+你只需要：
+1. 按 [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) 用 fork 提 PR（不需要主仓库 token）
+2. 等 GitHub Actions 自动跑校验
+3. 失败就按 Actions 日志修复
+
+---
+
+### 🚫 不要把仓库主的 token 给任何人
+
+**反模式**（2026-07-08 已发生 1 次）：
+- ❌ 朋友拿仓库主的 token 提 PR
+- ❌ Token 离开本机 = 真实安全风险
+- ❌ Token 可能在第三方设备被记录 / 截屏 / 同步泄露
+
+**正确做法**（PR 应该去 token 化）：
+- ✅ 每个贡献者用自己的 GitHub 账号 fork
+- ✅ 标准 GitHub PR 流程（fork → 修改 → push → 开 PR）
+- ✅ 仓库主不需要分享任何凭据
+
+详见 [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) —— 5 分钟贡献流程。
+
 **自动检查 6 项**：
 1. `content.md` 存在 · 每页 4-7 字段
 2. `presentation.pptx` ≥ 1 MB（实测：文字 PPT ≈ 200 KB；图 PPT ≈ 1.5-2 MB）
@@ -154,3 +182,13 @@ git push origin main
 - 或在 PR 评论里讨论
 
 我们优先回复 —— 这是中文圈第一个按 3F Content 范式做的开源仓库，欢迎贡献者共建。
+
+---
+
+## 📚 扩展阅读
+
+- [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) —— 朋友 5 分钟 PR 流程（不需要主仓库 token）
+- [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) —— 5 步 onboarding
+- [content-triple-format/before-after-example.md](./content-triple-format/before-after-example.md) —— 文字 PPT vs 图 PPT 对照
+- [content-triple-format/check-3f.py](./content-triple-format/check-3f.py) —— PR 自动校验脚本
+- [roadmap.md](./roadmap.md) —— 仓库路线图
