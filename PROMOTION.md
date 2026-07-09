@@ -56,9 +56,9 @@ pretty-skill v3.13 上线：https://github.com/huangrichao2020/pretty-skill
    - 锦绣视频脚本（30-60 秒讲解）
 
 (3) 11 领域 + skill-creator 工具 = 全局共享
-   - 11 个中文领域预设：AI能力 / 编程开发 / 数据科学 / 产品设计
-     / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家
-     / 生活方式 / 思维方法
+   - 11 个中文领域预设：ai-agent / coding / data-science / product-design
+     / business-model / trading-review / content-ops / learning / gaming
+     / lifestyle / pkm-decision
    - 全球开发者都能 PR 贡献 · 也可 PR 新增领域
    - skill-creator 工具一键把任何知识 → 完整 case 目录
    - v3.13 新增：manifest.json 标识 public / private / draft
@@ -71,9 +71,9 @@ pretty-skill v3.13 上线：https://github.com/huangrichao2020/pretty-skill
 4. 元知识底座（学一下 XXX）：agent 不装包，从这里抽
 
 仓库里已经有 3 个真实 case：
-- AI能力/cartman-team-ai-agent-collab（团队与 AI 协作 8 页）
-- AI能力/social-ecom-skill（社交电商两层拆解 8 页）
-- 金融投资/chokepoint-mainboard（A 股卡脖子选股 9 页 · @Kun）
+- ai-agent/cartman-team-ai-agent-collab（团队与 AI 协作 8 页）
+- ai-agent/social-ecom-skill（社交电商两层拆解 8 页）
+- trading-review/chokepoint-mainboard（A 股卡脖子选股 9 页 · @Kun）
 
 9 个领域等待全球开发者贡献。
 
@@ -120,9 +120,9 @@ v3.13 核心跃迁：从「对 AI 友好的中文内容仓」→ 「agent 的知
    - 一起 = 知识既能被 AI 消化又能被人传播
 
 2. 领域升级：2 → 11 中文领域
-   - v3：AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营
-     / 金融投资 / 内容创作 / 教育学习 / 游戏玩家
-     / 生活方式 / 思维方法
+   - v3：ai-agent / coding / data-science / product-design / business-model
+     / trading-review / content-ops / learning / gaming
+     / lifestyle / pkm-decision
    - 全球开发者都能 PR 新增领域
 
 3. 元知识接入升级（v3.11+）：

@@ -10,9 +10,9 @@
   - 接下来要做的步骤清单
 
 用法：
-  python create.py --input my-knowledge.md --domain "金融投资"
-  python create.py --url https://example.com/article --domain "思维方法"
-  python create.py --input my.md --domain "AI能力" --visibility private
+  python create.py --input my-knowledge.md --domain "trading-review"
+  python create.py --url https://example.com/article --domain "pkm-decision"
+  python create.py --input my.md --domain "ai-agent" --visibility private
 
 v0.2 新增：
   ✅ 真分页（按 ## 一、二、三 / ## P1: title）
@@ -38,8 +38,8 @@ from datetime import date
 from pathlib import Path
 
 PRESET_DOMAINS = [
-    "AI能力", "编程开发", "数据科学", "产品设计", "商业运营",
-    "金融投资", "内容创作", "教育学习", "游戏玩家", "生活方式", "思维方法",
+    "ai-agent", "coding", "data-science", "product-design", "business-model",
+    "trading-review", "content-ops", "learning", "gaming", "lifestyle", "pkm-decision",
 ]
 
 PRESET_STYLES = [
@@ -54,7 +54,7 @@ STYLE_DESCRIPTIONS = {
     "古铜金": "古铜色 + 金色 + 深棕背景 → 高端商业 / B 端产品发布",
     "蓝白灰": "蓝白灰极简 → 严谨商务 / 数据分析",
     "深色科技风": "deep slate (#0A0E14) + cyan (#00D4AA) 强调 → 程序员 / 极客 / Stripe / Linear 风格",
-    "城市插画": "手绘城市建筑风 → 旅行 / 生活方式 / 文化",
+    "城市插画": "手绘城市建筑风 → 旅行 / lifestyle / 文化",
     "真实生活感": "写实摄影风 → 美食 / 健康 / 家居",
 }
 
@@ -104,9 +104,9 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
-  python create.py --input my-knowledge.md --domain "金融投资"
-  python create.py --url https://example.com/article --domain "思维方法"
-  python create.py --input my.md --domain "AI能力" --visibility private
+  python create.py --input my-knowledge.md --domain "trading-review"
+  python create.py --url https://example.com/article --domain "pkm-decision"
+  python create.py --input my.md --domain "ai-agent" --visibility private
 
 NOTE（v0.2 限制）:
   - 输入必须是 .md 文件（按 ## 一、二、三 风格分页）

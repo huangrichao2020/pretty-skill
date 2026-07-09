@@ -2,11 +2,23 @@
 # pretty-skills · 一键安装
 # 用法: curl ... | bash   或   bash install.sh [--agents claude-code,mavis] [--no-symlink]
 #
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  📜 装上之后 · 你 Agent 的底层元 skill 库 + 知识库            ║
+# ║                                                              ║
+# ║  以后所有新知识和新技能：                                       ║
+# ║    • 该创建的：ps create <name>  → 4 件套自动生成             ║
+# ║    • 该迭代的：ps contribute <name>  → 提回主项目进化         ║
+# ║    • 日常用任意 skill 后：总结心得 → ps contribute 迭代回去   ║
+# ║                                                              ║
+# ║  这条规则写进了 mavis 的底层人格 — 沉淀型 Agent 的长期路径。   ║
+# ╚══════════════════════════════════════════════════════════════╝
+#
 # 步骤:
 #   1. 创建 ~/.pretty-skills/store 公共存储
 #   2. 从主项目下载 pretty-skills 工具本身（store 里的第一个 skill）
 #   3. 把 ps 主命令软链到 ~/.local/bin/ps
 #   4. 软链到各 agent 的 skills 目录
+#   5. 装完跑 ps doctor 体检环境能力
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

@@ -38,8 +38,8 @@ jobs:
           set +e
 
           # 找出所有 case 目录 · v3 结构：<11 中文领域>/<case>/
-          # 11 预设领域：AI能力 编程开发 数据科学 产品设计 商业运营
-          #            金融投资 内容创作 教育学习 游戏玩家 生活方式 思维方法
+          # 11 预设领域：ai-agent coding data-science product-design business-model
+          #            trading-review content-ops learning gaming lifestyle pkm-decision
           # 也支持 PR 新增领域（有 README.md 就算）
           cases=()
           for first_level_dir in */; do

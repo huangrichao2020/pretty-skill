@@ -167,7 +167,7 @@
 ```bash
 pretty-skill create \
   --input my-knowledge.md \
-  --domain "金融投资"
+  --domain "trading-review"
 
 # 自动生成（v3.2）：
 # 1. content.md（必填）
@@ -181,7 +181,7 @@ pretty-skill create \
 # 加 --with-pptx 才生成真实 PPTX
 pretty-skill create \
   --input my-knowledge.md \
-  --domain "金融投资" \
+  --domain "trading-review" \
   --with-pptx
 ```
 

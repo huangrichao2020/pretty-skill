@@ -11,10 +11,24 @@
 
 ---
 
+## 📜 一句话 · 你的 Agent 底层元 skill 库
+
+**pretty-skills = 你 Agent 的「底层元 skill 库 + 知识库」**。
+
+装上之后，**以后所有新知识和新技能不要直接安装 — 先走流程吸纳进 pretty-skills**：
+
+- **该创建的**：`ps create <name>` 一创生成 4 件套
+- **该迭代的**：`ps contribute <name>` 提回主项目进化
+- **日常用任意 skill 后**：总结心得，回到 pretty-skills 迭代
+
+> 这条规则不只写在 README 里 — 它写进了 mavis 的底层人格。
+> pretty-skills 不是"装个工具"，是 Agent 的**长期成长路径**。
+
+---
+
 ## 装 1 个 pretty-skills，能干什么？
 
-
-### 1. **pretty-skills**  管理你所有 skill
+### 1. **pretty-skills** — 1 装管所有 skill
 
 每一个 agent（Claude Code / Codex / Mavis / Cursor / Windsurf）都可以装一个 pretty-skills。
 装完之后它帮你**收纳 / 更新 / 进化**你所有的 skill 和知识 — 一次装，5 个 agent 都能用。
@@ -26,7 +40,7 @@ ps update      # 更新：拉主项目最新
 ps contribute  # 进化：把本地改好的提回主项目
 ```
 
-### 2. **pretty-skills-creator** 帮你创建skill时同步生成知识讲解HTML 或 PPT
+### 2. **pretty-skills-creator** — 1 创自带宣传 HTML + PPT
 
 如果你想**宣传或推广你的 skill**，
 pretty-skills-creator 在创建时会**同时帮你创建宣传 HTML 和 PPT**，
@@ -61,6 +75,42 @@ ps graph > deps.mmd
 ps contribute my-tweak
 ```
 
+---
+
+## 🌌 哲学 · 四自在
+
+pretty-skills 的灵魂是**四自在** — 把项目从"装个工具"升华到"修行法门"。
+
+### 1. 观自在 — 看清自己的全貌
+
+**内功**：装 1 个 pretty-skills，让 5 个 agent 看到同一份 skill 库
+**外功**：不再到处装乱七八糟的 skill，先 `ps list` 看自己已有啥
+
+> 装之前先看 (`ps list`) — 90% 的"新需求"其实早就在 store 里了。
+
+### 2. 化自在 — 把知识变成 skill
+
+**内功**：说"学一下 XXX" 而不是"帮我安装 XXX"
+**外功**：用 `ps add` / `ps create` 把知识结构化进 pretty-skills
+
+> "帮我装个新 skill" 是消费，"学一下" 是沉淀。
+> 知识只有进了 pretty-skills，才真的属于你。
+
+### 3. 照因果 — 用中迭代
+
+**内功**：每用一次 skill，留一句心得
+**外功**：定期 `ps contribute` 把心得迭代回主项目
+
+> skill 不是"装完就完了"，是"用了才真懂"。
+> 懂了就贡献，让后来人少走你走过的坑。
+
+### 4. 渡Agent — 提 PR 共建生态
+
+**内功**：非私密的部分主动提 PR 共享
+**外功**：用 `ps contribute` 走 fork + PR 流程，零人工干预 auto-merge
+
+> 一个人走得快，一群人走得远。
+> 你沉淀的每个 skill 都可能帮到另一个 Agent — 那个 Agent 也可能帮到你的。
 
 ---
 
@@ -87,25 +137,43 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 ├── README.md                           # 你正在看
 ├── _config.yml                         # Jekyll 配置（GitHub Pages）
 ├── index.html                          # GitHub Pages 入口
-├── cases/                              # 案例库（演示 pretty-skills 怎么用）
-│   └── ...
-├── docs/                               # 总文档
-│   ├── 4-installation.md
-│   ├── 5-skill-schema.md
-│   └── 6-contributing.md
-└── tools/
-    ├── pretty-skills/                  # 产品 1：管
-    │   ├── SKILL.md                    # agent 加载入口
-    │   ├── install.sh                  # 一键装 5 agent
-    │   ├── cli/ps                      # 主命令
-    │   ├── cli/ps-list / info / add / rm / update / graph / contribute / create
-    │   ├── lib/common.sh
-    │   ├── manifest-schema.json
-    │   ├── CHANGELOG.md
-    │   └── docs/                       # 工具自己的文档
-    └── pretty-skills-creator/          # 产品 2：创（待迁移）
-        └── ...
+├── ai-agent/                           # 11 领域 case 库（kebab-case 英文，对齐 knowhub）
+├── business-model/
+├── coding/
+├── content-ops/
+├── data-science/
+├── gaming/
+├── learning/
+├── lifestyle/
+├── pkm-decision/
+├── product-design/
+├── trading-review/
+├── _模板/                              # 模板
+├── assets/                             # 静态资源
+├── content-triple-format/              # 3F Content 范式
+├── marketing/                          # 营销素材
+├── skill-creator/                      # v3 时代的 creator（旧）
+├── tools/
+│   ├── pretty-skills/                  # 产品 1：管
+│   └── pretty-skills-creator/          # 产品 2：创
+└── docs/
 ```
+
+> **领域命名规则**：跟 knowhub 对齐的 6 个用 knowhub 名
+> （`ai-agent` / `business-model` / `content-ops` / `pkm-decision` / `trading-review`），
+> knowhub 没有的 5 个用 kebab-case 英文（`coding` / `data-science` / `product-design` / `gaming` / `learning` / `lifestyle`）。
+
+---
+
+## 支持的 agent
+
+| Agent | Skills 目录 |
+|---|---|
+| Claude Code | `~/.claude/skills/` |
+| Codex | `~/.codex/skills/` |
+| Mavis | `~/.mavis/skills/` |
+| Cursor | `~/.cursor/skills/` |
+| Windsurf | `~/.windsurf/skills/` |
 
 ---
 
@@ -113,10 +181,11 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 
 | 文档 | 干什么 |
 |---|---|
-| [`tools/pretty-skills/SKILL.md`](tools/pretty-skills/SKILL.md) | pretty-skills 工具的 agent 加载入口（agent 读这个） |
-| [`tools/pretty-skills/docs/install.md`](tools/pretty-skills/docs/install.md) | 安装指南（含 5 agent 路径） |
+| [`tools/pretty-skills/SKILL.md`](tools/pretty-skills/SKILL.md) | pretty-skills 工具的 agent 加载入口 |
+| [`tools/pretty-skills/docs/install.md`](tools/pretty-skills/docs/install.md) | 安装指南（含 5 agent 路径）|
 | [`tools/pretty-skills/docs/skill-schema.md`](tools/pretty-skills/docs/skill-schema.md) | manifest.yaml 怎么写 |
 | [`tools/pretty-skills/docs/contributing.md`](tools/pretty-skills/docs/contributing.md) | 怎么提 PR |
+| [`tools/pretty-skills/docs/doctor.md`](tools/pretty-skills/docs/doctor.md) | 环境能力体检解读 |
 | [`tools/pretty-skills/CHANGELOG.md`](tools/pretty-skills/CHANGELOG.md) | 版本变更 |
 
 ---
@@ -128,7 +197,7 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | `curl: (56) ... 429` | 代理 / 沙箱限速 | 直连重试，或换代理 |
 | `Authentication failed for ...pretty-skills` | gh CLI 没登录 | `gh auth login` |
 | `ps: command not found` | `~/.local/bin` 不在 PATH | `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc` |
-| `ps add` 找不到 skill | 仓库还在过渡期（旧名） | 跑 `ps doctor` 看完整能力 |
+| `ps add` 找不到 skill | 仓库还在过渡期（旧名）| 跑 `ps doctor` 看完整能力 |
 
 跑 `ps doctor` 一键体检环境能力 + 缺什么怎么补。
 
@@ -139,24 +208,16 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | 阶段 | 时间 | 状态 |
 |---|---|---|
 | 重塑方案 + 草稿 | 2026-07-09 | ✅ 完成 |
-| 工具核心（CLI + install + manifest） | Day 1-3 | ✅ 完成 |
+| 工具核心（CLI + install + manifest）| Day 1-3 | ✅ 完成 |
 | pretty-skills-creator 迁移 | Day 4-5 | ✅ 完成 |
 | ps doctor 环境能力体检 | Day 5 | ✅ 完成 |
-| PR #3 合到 main | 2026-07-09 | ✅ 完成 |
-| GitHub 改名 + v0.1.0 release | 2026-07-09 | ✅ 完成 |
-| 5 agent 端联调 | Day 5-6 | 🚧 当前 |
-| 撤回 PR #2 + 调整 auto-deploy workflow | 待定 | 📅 待开始 |
-
----
-
-## 旧 `pretty-skill` 单数版的说明
-
-旧 README（含四自在哲学、案例展示）在 git history 里。改名后旧 URL 会被 GitHub 自动重定向到新仓库。
-
-如果你是从旧 URL 跳过来的：
-- "四自在"哲学保留在 `docs/soul.md`（待写）
-- 所有 case 演示会在 `cases/` 目录（待迁移）
-- 旧 `pretty-skill` skill 名 → 新 `pretty-skills` skill 名（自动）
+| 仓库改名 pretty-skill → pretty-skills | 2026-07-09 | ✅ 完成 |
+| Release v0.1.0 | 2026-07-09 | ✅ 完成 |
+| README + 徽章 + topics + 11 领域重命名 | 2026-07-09 | ✅ 完成 |
+| 撤回 PR #2 + auto-deploy workflow | 2026-07-09 | ✅ 完成 |
+| GitHub Pages 上线 | 2026-07-09 | ✅ 完成 |
+| 5 agent 端联调（Cursor / Windsurf）| 持续 | 🚧 当前 |
+| `ps search` / `ps publish` / `ps audit` | v0.2.0 | 📅 待开始 |
 
 ---
 
