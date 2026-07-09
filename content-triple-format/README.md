@@ -6,7 +6,7 @@
 >
 > 让内容对 AI 和人类同等友好 + 任何场景都能演示 + 不强求 PowerPoint。
 >
-> 这是 pretty-skill 的核心约定。所有贡献者必读。
+> 这是 pretty-skills 的核心约定。所有贡献者必读。
 
 > ### ⚠️ 配套 · 生图能力是必须的
 >
@@ -210,7 +210,7 @@
 
 ## 30 秒起步
 
-1. **Fork** pretty-skill
+1. **Fork** pretty-skills
 2. **复制** `_模板/案例/` 到 `<领域>/<你的-case>/`
 3. **填** `content.md`（每页 4-7 字段）
 4. **生成** `web.html`（PPT 演示版）

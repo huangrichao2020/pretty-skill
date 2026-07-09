@@ -12,12 +12,13 @@
 
 ## [0.1.0] - 2026-07-09
 
-### 🎉 v0.1.0 release · 仓库改名
-- `pretty-skill` → `pretty-skills`（复数）
-- 旧 URL 自动重定向到新仓库
-- 旧 README "过渡期" banner 替换为 "v0.1.0 已发布" banner
-- `PS_REPO` 默认值从 `pretty-skill` 改 `pretty-skills`
-- `push.sh` 目标 `REPO` 默认值从 `pretty-skill` 改 `pretty-skills`
+### 🎉 v0.1.0 首发
+- pretty-skills 双产品定位：管（pretty-skills）+ 创（pretty-skills-creator）
+- 9 个子命令 CLI · 5 agent 跨平台安装
+- 11 领域对齐 knowhub（6 个 knowhub 已有 + 5 个同风格）
+- README 顶部加底层元 skill 库规则 + 四自在哲学
+- 6 个徽章 + 11 个 topics
+- `PS_REPO` 默认 `huangrichao2020/pretty-skills`
 
 ## [0.1.1] - 2026-07-09
 
@@ -48,7 +49,7 @@
 ## [0.1.0] - 2026-07-09
 
 ### 新增
-- 工具第一版，从单数 pretty-skill 重塑为复数 pretty-skills
+- 工具第一版，从单数 pretty-skills 重塑为复数 pretty-skills
 - 8 个子命令：`ps list / info / add / rm / update / graph / contribute / sync / create / help`
 - 跨 5 agent 安装（Claude Code / Codex / Mavis / Cursor / Windsurf）
 - 公共 store + 软链架构（`~/.pretty-skills/store/` → 各 agent skills 目录）

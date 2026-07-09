@@ -4,7 +4,7 @@
 
 ## 核心团队
 
-- **huangrichao2020** · 仓库创建者 · pretty-skill 发起人 · 2026-07
+- **huangrichao2020** · 仓库创建者 · pretty-skills 发起人 · 2026-07
 
 ## 贡献者
 
@@ -12,7 +12,7 @@
 
 ## 贡献者福利
 
-- 你的 GitHub 个人页 + 「pretty-skill 贡献者」标记
+- 你的 GitHub 个人页 + 「pretty-skills 贡献者」标记
 - 每个贡献的 case 永久收录
 - 中文 PPT 圈的人脉 + 影响力
 - 优先收录你的自媒体内容（按 CONTRIBUTING 审核）

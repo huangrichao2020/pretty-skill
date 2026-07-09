@@ -1,4 +1,4 @@
-# pretty-skill 宣传文草稿 · v3.13 「知识工程中枢」
+# pretty-skills 宣传文草稿 · v3.13 「知识工程中枢」
 
 > **写作用 3F Content + 锦绣范式 + 量化疗效叙事**：先告诉疗效（你拿到什么）再讲技术细节
 > **v3.13 定位**：**agent 的「知识工程中枢」** —— 不是传统 `SKILL.md` 技能仓。沉淀学到的、做过的、提炼过的知识，整理成 AI 能直接读 + 人能看得懂 的结构化产物。
@@ -13,15 +13,15 @@
 
 ### 标题备选
 - A：《我做了一件事：把 agent 的"知识工程中枢"开源了——不是装工具箱，是出版局》
-- B：《pretty-skill v3.13 上线 · 「知识工程中枢」理念 + 11 领域 + 学一下 XXX 协议》
-- C：《从 1 个仓库到 agent 元知识底座 · pretty-skill 是怎么变成知识工程中枢的》
+- B：《pretty-skills v3.13 上线 · 「知识工程中枢」理念 + 11 领域 + 学一下 XXX 协议》
+- C：《从 1 个仓库到 agent 元知识底座 · pretty-skills 是怎么变成知识工程中枢的》
 
 ### 正文
 
 ```
 我做了 1 件事：把"agent 的知识工程中枢"做成开源项目。
 
-pretty-skill v3.13 上线：https://github.com/huangrichao2020/pretty-skill
+pretty-skills v3.13 上线：https://github.com/huangrichao2020/pretty-skills
 
 再定义先讲清：本项目**不是**传统带 SKILL.md 的 agent 技能仓
 （不是「按此执行 xxx」的预制工具箱）。
@@ -41,7 +41,7 @@ pretty-skill v3.13 上线：https://github.com/huangrichao2020/pretty-skill
    - 你写了一篇顶级方法论，没传播 = 等于没写
    - 共享需要：人能看懂 + AI 能读 + PR 流程简单
 
-所以 pretty-skill 做 3 件事：
+所以 pretty-skills 做 3 件事：
 
 (1) 3F Content 范式 = AI 能直接读
    每个 case 按 .md + .pptx + .html 三件套发布
@@ -84,7 +84,7 @@ pretty-skill v3.13 上线：https://github.com/huangrichao2020/pretty-skill
 - 提 PR · 自动 GitHub Actions 校验（含 manifest.json 必填）
 - 仓库主 review · merge · 全球共享
 
-⭐ Star 仓库：https://github.com/huangrichao2020/pretty-skill
+⭐ Star 仓库：https://github.com/huangrichao2020/pretty-skills
 📧 联系我：提 Issue / 邮箱 / 评论区
 
 — huangrichao2020
@@ -96,13 +96,13 @@ pretty-skill v3.13 上线：https://github.com/huangrichao2020/pretty-skill
 ## 📝 知乎版（1300 字）
 
 ### 标题
-- 《pretty-skill v3.13 上线 · 「知识工程中枢」理念 · 不再是 SKILL.md 技能仓》
-- 《让 AI 直接读 + 人能看得懂 · pretty-skill 是怎么变成 agent 元知识底座的》
+- 《pretty-skills v3.13 上线 · 「知识工程中枢」理念 · 不再是 SKILL.md 技能仓》
+- 《让 AI 直接读 + 人能看得懂 · pretty-skills 是怎么变成 agent 元知识底座的》
 
 ### 正文
 
 ```
-最近把 pretty-skill 升级到 v3.13，先讲清再定义：
+最近把 pretty-skills 升级到 v3.13，先讲清再定义：
 
 本项目**不是**传统 SKILL.md 技能仓（那是 Anthropic Claude Skills 那种"按此执行 xxx"）。
 本项目是 agent 的**知识工程中枢** —— 沉淀可复用的结构化知识产物。
@@ -133,10 +133,10 @@ v3.13 核心跃迁：从「对 AI 友好的中文内容仓」→ 「agent 的知
 
 [展示 3 个 seed case 的 3 件套结构 + 1 张锦绣封面示例]
 
-价值：未来 AI 时代，**只有一个项目**（pretty-skill）需要维护，agent 从这里抽知识就够。
+价值：未来 AI 时代，**只有一个项目**（pretty-skills）需要维护，agent 从这里抽知识就够。
 不需为每个新知识「装」新工具，直接「学」就好。
 
-GitHub：https://github.com/huangrichao2020/pretty-skill
+GitHub：https://github.com/huangrichao2020/pretty-skills
 ```
 
 ---
@@ -152,7 +152,7 @@ v3.13 上线：agent 的「知识工程中枢」开箱
 INPUT: 学一下 XXX
 OUTPUT: 人能看 + LLM 能读 + 项目能复用
 
-GitHub: https://github.com/huangrichao2020/pretty-skill
+GitHub: https://github.com/huangrichao2020/pretty-skills
 
 11 领域 + skill-creator + 中文圈首个
 ```
@@ -162,12 +162,12 @@ GitHub: https://github.com/huangrichao2020/pretty-skill
 ## 🔥 V2EX 版（450 字）
 
 ### 标题
-- 《[开源] pretty-skill v3.13 · agent 的知识工程中枢 · 不是 SKILL.md 仓》
+- 《[开源] pretty-skills v3.13 · agent 的知识工程中枢 · 不是 SKILL.md 仓》
 
 ### 正文
 
 ```
-[Project] pretty-skill v3.13 · 知识工程中枢 · 11 领域 + skill-creator + 学一下 XXX 协议
+[Project] pretty-skills v3.13 · 知识工程中枢 · 11 领域 + skill-creator + 学一下 XXX 协议
 
 [Github 链接 + 1 张知识工程中枢配图]
 
@@ -194,7 +194,7 @@ v3.13 加了「INDEX + manifest + USAGE」让 agent 能真正把它当元知识�
 ## 📋 通用发布 checklist
 
 发送前必查：
-- [ ] 链接是对的（https://github.com/huangrichao2020/pretty-skill）
+- [ ] 链接是对的（https://github.com/huangrichao2020/pretty-skills）
 - [ ] 描述具体到「你拿到什么」（不是「我做了什么」）
 - [ ] 至少 1 张仓库首页截图
 - [ ] 至少 1 张「知识工程中枢」配图（v3.13 新出）

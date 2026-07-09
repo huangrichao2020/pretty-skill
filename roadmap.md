@@ -1,6 +1,6 @@
 # 路线图
 
-> **💎 再定义**：pretty-skill 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
+> **💎 再定义**：pretty-skills 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
 > **这里不是工具箱，是出版局。**
 
 ---
@@ -38,7 +38,7 @@
 
 - v0.2 真正实现 `3 件套生成`（content.md + web.html + 锦绣）
   - 解析 `.md` / URL → 4-7 字段/页 content.md
-  - 调 matrix MCP 出图（手绘马卡龙 5 色 · 按 pretty-skill 锁定风格）
+  - 调 matrix MCP 出图（手绘马卡龙 5 色 · 按 pretty-skills 锁定风格）
   - python-pptx 嵌图 → `presentation.pptx`
   - html-ppt-viewer → `web.html`
   - 自动写 manifest.json（用 `--visibility` 参数）
@@ -94,9 +94,9 @@
 ### 商业化（可选 · 不影响免费）
 
 - 公益 + 商业双轨：
-  - 公益：核心 pretty-skill 开源永久免费
+  - 公益：核心 pretty-skills 开源永久免费
   - 商业：定制 case 服务 / 中小企业知识沉淀咨询 / agent 接入培训
-- 「pretty-skill 企业版」：私有部署 + SSO + 审计
+- 「pretty-skills 企业版」：私有部署 + SSO + 审计
 - 自媒体矩阵联动：每个新 case 自动转公众号 + 知乎 + 小红书帖 + 视频脚本
 
 **目标**：2000+ star · 全球 agent 元知识底座
@@ -112,4 +112,4 @@
 > **清晰 > 速度 · 让人看得懂 > 快速生成**
 
 之前的工具追求"自动化"和"快速生成"——但这恰恰是优秀知识没人用的根因。
-pretty-skill **从不追求快速生成 SOP**，各位多花 5 分钟讲清楚 = 100 倍可懂性提升。
+pretty-skills **从不追求快速生成 SOP**，各位多花 5 分钟讲清楚 = 100 倍可懂性提升。

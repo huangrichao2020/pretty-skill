@@ -22,12 +22,12 @@
 
 参考规范：
   - content-triple-format/README.md
-  - pretty-skill/CONTRIBUTING.md (🚫 PR 拒绝标准)
+  - pretty-skills/CONTRIBUTING.md (🚫 PR 拒绝标准)
 
 朋友 agent 翻车 1 次后写了这个脚本，让"文字 PPT 偷懒"变成代码层面被拦截。
 
 ⚠️ 前置条件 · 生图能力是必须的
-   pretty-skill 所有视觉化都依赖 AI 出图。
+   pretty-skills 所有视觉化都依赖 AI 出图。
    推荐使用 MiniMax 套餐（49 元 Token plan 套餐就够，支持 matrix MCP 多模态生图 + 生视频）。
    ❌ 不允许用代码（Pillow / HTML canvas / SVG 转 PNG / matplotlib / ASCII）凑合当"图"代替真 AI 出图。
    ❌ 没生图能力的 agent 应当**终止并报错**，不允许提交骨架图或代码伪图。
@@ -578,7 +578,7 @@ def check_manifest(case_dir: Path) -> tuple[bool, list[str]]:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="3F Content 自动校验脚本 · pretty-skill 仓库专用",
+        description="3F Content 自动校验脚本 · pretty-skills 仓库专用",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 退出码：
@@ -675,9 +675,9 @@ def main():
         for err in all_errors:
             print(f"  {err}")
         print(f"\n{YELLOW}📖 参考修复：{NC}")
-        print(f"  - pretty-skill/content-triple-format/README.md（范式）")
-        print(f"  - pretty-skill/content-triple-format/onboarding-guide.md（5 步流程）")
-        print(f"  - pretty-skill/content-triple-format/before-after-example.md（正反面对照）")
+        print(f"  - pretty-skills/content-triple-format/README.md（范式）")
+        print(f"  - pretty-skills/content-triple-format/onboarding-guide.md（5 步流程）")
+        print(f"  - pretty-skills/content-triple-format/before-after-example.md（正反面对照）")
         print(f"\n{YELLOW}💡 朋友 agent 翻车案例：{NC}")
         print(f"  2026-07-08 朋友试 3F Content → agent 偷懒文字 PPT → 200 KB 拒")
         print(f"{'='*70}\n")

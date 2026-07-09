@@ -1,6 +1,6 @@
-# skill-creator · pretty-skill 自动化工具
+# skill-creator · pretty-skills 自动化工具
 
-> **任何知识 → 1 键生成完整 pretty-skill 目录（3F Content + 锦绣）**
+> **任何知识 → 1 键生成完整 pretty-skills 目录（3F Content + 锦绣）**
 >
 > v3 核心工具。全球开发者 / 玩家都能用。
 
@@ -14,7 +14,7 @@
 
 ## 💡 这是什么
 
-CLI 工具，把任意知识（.md / URL / 笔记 / 你脑子里想的）一键变成 pretty-skill 完整目录：
+CLI 工具，把任意知识（.md / URL / 笔记 / 你脑子里想的）一键变成 pretty-skills 完整目录：
 
 - `content.md`（4-7 字段/页 · **必填**）
 - `web.html`（PPT 演示版 · **必填**）
@@ -30,11 +30,11 @@ CLI 工具，把任意知识（.md / URL / 笔记 / 你脑子里想的）一键�
 
 ```bash
 # 未来发布到 PyPI
-pip install pretty-skill
+pip install pretty-skills
 
 # 现在用 git clone
-git clone https://github.com/huangrichao2020/pretty-skill.git
-cd pretty-skill
+git clone https://github.com/huangrichao2020/pretty-skills.git
+cd pretty-skills
 pip install -e skill-creator/
 ```
 
@@ -46,16 +46,16 @@ pip install -e skill-creator/
 
 **这是关键流程** —— 没选风格就跑会毁掉整个项目。
 
-create.py 默认会弹出 picker（7 选 1，pretty-skill 锁定「手绘马卡龙」）：
+create.py 默认会弹出 picker（7 选 1，pretty-skills 锁定「手绘马卡龙」）：
 
 ```
 ╔════════════════════════════════════════════════════════════╗
-║  pretty-skill · 请选 PPT 视觉风格 + 主题颜色                  ║
+║  pretty-skills · 请选 PPT 视觉风格 + 主题颜色                  ║
 ╚════════════════════════════════════════════════════════════╝
 
-选 1 个数字（默认 = 1 = pretty-skill 锁定的手绘马卡龙）：
+选 1 个数字（默认 = 1 = pretty-skills 锁定的手绘马卡龙）：
 
-  1. 手绘马卡龙 ← pretty-skill 锁定的默认
+  1. 手绘马卡龙 ← pretty-skills 锁定的默认
   2. 马卡龙
   3. 古铜金
   4. 蓝白灰
@@ -67,7 +67,7 @@ create.py 默认会弹出 picker（7 选 1，pretty-skill 锁定「手绘马卡�
 **7 个候选**：
 | 风格 | 美学描述 | 适用场景 |
 |---|---|---|
-| **手绘马卡龙** | 5 色马卡龙 + cream paper + 深棕文字 + 手绘 | pretty-skill 默认（讲故事 / 方法论）|
+| **手绘马卡龙** | 5 色马卡龙 + cream paper + 深棕文字 + 手绘 | pretty-skills 默认（讲故事 / 方法论）|
 | 马卡龙 | 5 色马卡龙 + cream paper（less 手绘）| 简洁马卡龙 |
 | 古铜金 | 古铜色 + 金色 + 深棕背景 | B 端 / 产品发布 |
 | 蓝白灰 | 极简蓝白灰 | 数据分析 / 严谨商务 |
@@ -87,7 +87,7 @@ python skill-creator/create.py --input my-knowledge.md --domain "trading-review"
 python skill-creator/create.py --input my-knowledge.md --domain "trading-review" < /dev/null  # 自动用默认
 ```
 
-> ⚠️ **其他 agent 调用 pretty-skill 时如果跳过 picker 直接跑** = 视觉化失败 / 用户看到风格不对
+> ⚠️ **其他 agent 调用 pretty-skills 时如果跳过 picker 直接跑** = 视觉化失败 / 用户看到风格不对
 > 解决：让它们传 `--style <name>` 或 `--pick-style`
 
 ### 第 2 步 · 调 matrix 出图

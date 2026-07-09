@@ -1,10 +1,10 @@
 # USAGE · agent 接入指南（学一下 XXX 标准协议）
 
-> **用途**：Mavis / Claude Code / Cursor / Aider 等 agent 看到这个文件 → 知道怎么把 pretty-skill 装进自己当**知识工程中枢**。
-> **再定义**：pretty-skill **不是**「`SKILL.md` 技能仓」（那是 Anthropic Claude Skills 那套「按此执行 xxx」的预制工具）。本项目是**知识工程中枢** —— 产出的是「可复用的结构化知识产物」，不是「可调用的工具函数」。
+> **用途**：Mavis / Claude Code / Cursor / Aider 等 agent 看到这个文件 → 知道怎么把 pretty-skills 装进自己当**知识工程中枢**。
+> **再定义**：pretty-skills **不是**「`SKILL.md` 技能仓」（那是 Anthropic Claude Skills 那套「按此执行 xxx」的预制工具）。本项目是**知识工程中枢** —— 产出的是「可复用的结构化知识产物」，不是「可调用的工具函数」。
 > **配套**：README.md（做什么）· INDEX.md（11 领域快查）· STRUCTURE.md（结构定义）
 
-> **⚠️ 前置条件 · 生图能力是必须的** —— pretty-skill 所有视觉化都依赖 AI 出图（出图是中枢产物的核心工序）。
+> **⚠️ 前置条件 · 生图能力是必须的** —— pretty-skills 所有视觉化都依赖 AI 出图（出图是中枢产物的核心工序）。
 > **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步）。
 
 ---
@@ -12,10 +12,10 @@
 ## 1. 安装作为底层元知识库
 
 ```bash
-git clone https://github.com/huangrichao2020/pretty-skill.git ~/pretty-skill
+git clone https://github.com/huangrichao2020/pretty-skills.git ~/pretty-skills
 ```
 
-把项目放在 `~/pretty-skill`（或任意路径），告诉 agent 这个路径就行。
+把项目放在 `~/pretty-skills`（或任意路径），告诉 agent 这个路径就行。
 
 ---
 
@@ -28,7 +28,7 @@ agent 启动后第一件事：**读 INDEX.md** + **按 visibility 加载 case**�
 from pathlib import Path
 import json
 
-PRETTY_SKILL_ROOT = Path.home() / "pretty-skill"
+PRETTY_SKILL_ROOT = Path.home() / "pretty-skills"
 
 # Step 1: 读 INDEX.md 了解 11 领域
 index = (PRETTY_SKILL_ROOT / "INDEX.md").read_text()
@@ -63,14 +63,14 @@ agent 收到 user 说「学一下 XXX」后，**不要直接装包**。走这个
 用户说：「学一下 缠论」
 
 Agent 内部流程：
-1. search pretty-skill INDEX.md 的 tags 和 case-name
+1. search pretty-skills INDEX.md 的 tags 和 case-name
 2. 找到相关 case → 读 content.md 拿核心方法
-3. 提取有用部分 → 新建（or 更新）本地 pretty-skill case
+3. 提取有用部分 → 新建（or 更新）本地 pretty-skills case
 4. 标记 visibility（public / private / draft）
 5. 跟用户说：「学完了，已经加入 pkm-decision/缠论/」
 ```
 
-**核心原则**：agent 永远不直接 `npm install xxx`，而是「学习 + 沉淀」到 pretty-skill。
+**核心原则**：agent 永远不直接 `npm install xxx`，而是「学习 + 沉淀」到 pretty-skills。
 
 ### 私密 ignore 的标准用法
 
@@ -104,7 +104,7 @@ agent cron / schedule 每晚 23:00 跑：
 1. 读取当天所有对话记录（按 session 分组）
 2. 提取高质量 case（用户说「记下来」「这个方法好」之类）
 3. 反思不足（用户说「不对」「差点」之类）
-4. 更新进本地 pretty-skill：
+4. 更新进本地 pretty-skills：
    - 新 case → 新建目录 + manifest.json
    - 旧 case 改进 → 修订 content.md
 5. 第二天 agent 启动时即看到昨天的更新
@@ -119,13 +119,13 @@ agent cron / schedule 每晚 23:00 跑：
 case 标 `visibility: public` 后想共享：
 
 ```bash
-cd ~/pretty-skill
+cd ~/pretty-skills
 git checkout -b feat/my-new-case
 # 写 case...
 git add .
 git commit -m "feat(<领域>): add <case-name>"
 git push origin feat/my-new-case
-# 然后去 https://github.com/huangrichao2020/pretty-skill 提 PR
+# 然后去 https://github.com/huangrichao2020/pretty-skills 提 PR
 ```
 
 CI 自动跑 `check-3f.py` 验证 3 件套齐全 + 锦绣合格 → merge。
@@ -137,9 +137,9 @@ CI 自动跑 `check-3f.py` 验证 3 件套齐全 + 锦绣合格 → merge。
 | Agent | 集成方式 |
 |---|---|
 | **Mavis (MiniMax Code)** | 自动 load 内存 + cron 调度 |
-| **Claude Code** | `~/.claude/skills/pretty-skill` 软链 + read INDEX.md |
-| **Cursor** | `.cursorrules` 引用 pretty-skill path + INDEX 检索 |
-| **Aider** | `--read pretty-skill/INDEX.md` flag |
+| **Claude Code** | `~/.claude/skills/pretty-skills` 软链 + read INDEX.md |
+| **Cursor** | `.cursorrules` 引用 pretty-skills path + INDEX 检索 |
+| **Aider** | `--read pretty-skills/INDEX.md` flag |
 | **其他 LLM** | 任何能读文件的都可以 load INDEX.md + case |
 
 **共同点**：永远 INDEX.md 是入口，永远 visibility 是过滤规则。
@@ -148,7 +148,7 @@ CI 自动跑 `check-3f.py` 验证 3 件套齐全 + 锦绣合格 → merge。
 
 ## 7. 一句话总结
 
-**pretty-skill = agent 的元知识库。**
+**pretty-skills = agent 的元知识库。**
 **用法 = clone + load + 学一下 + dream + PR。**
 **精髓 = 私密忽略，公开共享，参与越多越好。**
 
@@ -170,7 +170,7 @@ CI 自动跑 `check-3f.py` 验证 3 件套齐全 + 锦绣合格 → merge。
 
 **为什么禁止**：代码生图 = 工具箱伪造视觉化 = 项目范式坍塌。
 
-**正确做法**（agent 接到 pretty-skill 任务，检测自己）：
+**正确做法**（agent 接到 pretty-skills 任务，检测自己）：
 
 ```python
 def handle_pretty_skill_task(task):
@@ -179,7 +179,7 @@ def handle_pretty_skill_task(task):
         sys.exit(1)
         # 2. 报错
         raise RuntimeError(
-            "❌ pretty-skill 任务需要 AI 出图能力\n"
+            "❌ pretty-skills 任务需要 AI 出图能力\n"
             "本 agent 没配 matrix MCP / MiniMax 套餐\n"
             "请：\n"
             "  A. 升级 MiniMax 套餐（49 元 Token plan 起步）https://minimax.io/\n"
@@ -201,4 +201,4 @@ def handle_pretty_skill_task(task):
 
 不满足 → PR 自动退回 + 报错文案引导用 MiniMax 套餐。
 
-> **附录**：pretty-skill 项目哲学「清晰 > 速度 · 多花 5 分钟讲清楚 = 100 倍可懂性提升」 —— 不允许代码生图凑合是这一哲学的代码层强制执行。
+> **附录**：pretty-skills 项目哲学「清晰 > 速度 · 多花 5 分钟讲清楚 = 100 倍可懂性提升」 —— 不允许代码生图凑合是这一哲学的代码层强制执行。

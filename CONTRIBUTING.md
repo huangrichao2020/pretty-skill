@@ -1,10 +1,10 @@
-# 贡献指南 · pretty-skill v3
+# 贡献指南 · pretty-skills v3
 
-> **💎 再定义**：pretty-skill 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓（不找「按此执行 xxx」的预制工具）。
+> **💎 再定义**：pretty-skills 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓（不找「按此执行 xxx」的预制工具）。
 > 沉淀学到的、做过的、提炼过的知识，整理成 **AI 能直接读 + 人能看得懂** 的结构化产物。**这里不是工具箱，是出版局。**
 
 > **欢迎全球开发者 / 玩家贡献 skill 或知识！**
-> pretty-skill 是一个**开源项目** —— 集合全世界优质技能与知识，按 **3F Content + 锦绣** 范式发布，让任何知识都能被 AI 消化 + 给人传播。
+> pretty-skills 是一个**开源项目** —— 集合全世界优质技能与知识，按 **3F Content + 锦绣** 范式发布，让任何知识都能被 AI 消化 + 给人传播。
 
 ---
 
@@ -35,21 +35,21 @@
 
 ### Step 1 · Fork 仓库（一次性 · 用你 GitHub 账号）
 
-1. 打开 https://github.com/huangrichao2020/pretty-skill
+1. 打开 https://github.com/huangrichao2020/pretty-skills
 2. 点右上角 **Fork** 按钮 → 选你的 GitHub 账号
-3. 完成后你有了 `https://github.com/<你的用户名>/pretty-skill`
+3. 完成后你有了 `https://github.com/<你的用户名>/pretty-skills`
 
 ### Step 2 · Clone 你的 fork
 
 ```bash
-git clone https://github.com/<你的用户名>/pretty-skill.git
-cd pretty-skill
+git clone https://github.com/<你的用户名>/pretty-skills.git
+cd pretty-skills
 ```
 
 ### Step 3 · 加主仓库为 upstream
 
 ```bash
-git remote add upstream https://github.com/huangrichao2020/pretty-skill.git
+git remote add upstream https://github.com/huangrichao2020/pretty-skills.git
 git fetch upstream
 git checkout main
 git merge upstream/main
@@ -74,8 +74,8 @@ cd "<11 领域之一>/<你的-case-名>"
 **推荐用 skill-creator 自动化**（未来 v3.1）：
 
 ```bash
-pip install pretty-skill
-pretty-skill create --input my-knowledge.md --domain "trading-review" --style "深色科技风"
+pip install pretty-skills
+pretty-skills create --input my-knowledge.md --domain "trading-review" --style "深色科技风"
 # 自动生成 content.md + images/ + presentation.pptx + web.html + 锦绣 4 形态
 ```
 
@@ -102,9 +102,9 @@ git push origin main
 
 ### Step 7 · 在 GitHub 网页开 PR
 
-1. 访问 https://github.com/<你的用户名>/pretty-skill
+1. 访问 https://github.com/<你的用户名>/pretty-skills
 2. 点 **"Compare & pull request"** 按钮
-3. 选 base = `huangrichao2020/pretty-skill:main`，compare = `<你的用户名>/pretty-skill:main`
+3. 选 base = `huangrichao2020/pretty-skills:main`，compare = `<你的用户名>/pretty-skills:main`
 4. 填 PR 模板（11 领域下拉 + 3 件套 + 锦绣 全选）
 5. 点 **Create pull request**
 
@@ -172,7 +172,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 > ### ⚠️ 第 1 条 · 生图能力是必须的
 >
-> pretty-skill 所有视觉化都依赖 AI 出图（横竖封面 + 9 讲解图 + 锦绣 4 形态 + PPT 演示版插图）。
+> pretty-skills 所有视觉化都依赖 AI 出图（横竖封面 + 9 讲解图 + 锦绣 4 形态 + PPT 演示版插图）。
 > **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步够用）。
 > **没有生图能力 = 没有视觉化 = 项目范式坍塌。**
 
@@ -324,7 +324,7 @@ v3.1 推荐用 skill-creator 工具（即将开源）。手动方式：
 
 ## 🎯 贡献者福利
 
-- ✅ 你的 GitHub 个人页 + 「pretty-skill 贡献者」标记
+- ✅ 你的 GitHub 个人页 + 「pretty-skills 贡献者」标记
 - ✅ 每个贡献的 case 永久收录
 - ✅ 中文 / 全球 圈的人脉 + 影响力
 - ✅ 优先收录你的自媒体内容（按规范审核）

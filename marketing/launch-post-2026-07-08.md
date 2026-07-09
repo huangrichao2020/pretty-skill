@@ -1,10 +1,10 @@
-# pretty-skill 上线贴 · 飞书 / 小红书版
+# pretty-skills 上线贴 · 飞书 / 小红书版
 
 > **发帖时间**：v3.14 push 后 24 小时内
 > **覆盖渠道**：飞书（深度版）· 小红书（精华版） · 可根据平台调字号 / 配图数
 > **核心金句**：「这里不是工具箱，是出版局。」
 
-> ⚠️ **前置条件提醒**：pretty-skill 所有视觉化都依赖 AI 出图。**推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步够用）。没生图能力 = 没视觉化 = 项目范式坍塌。
+> ⚠️ **前置条件提醒**：pretty-skills 所有视觉化都依赖 AI 出图。**推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步够用）。没生图能力 = 没视觉化 = 项目范式坍塌。
 
 ---
 
@@ -12,14 +12,14 @@
 
 ### 标题候选
 - 《我做了 1 个项目：把 agent 的"知识工程中枢"开源了》
-- 《pretty-skill v3.14 上线 · 不是 SKILL.md 技能仓，是知识工程中枢》
-- 《多花 5 分钟讲清楚 = 100 倍可懂性提升 · 我押注 pretty-skill》
+- 《pretty-skills v3.14 上线 · 不是 SKILL.md 技能仓，是知识工程中枢》
+- 《多花 5 分钟讲清楚 = 100 倍可懂性提升 · 我押注 pretty-skills》
 
 ### 正文
 
 ```
-我做了 1 个开源项目：pretty-skill
-https://github.com/huangrichao2020/pretty-skill
+我做了 1 个开源项目：pretty-skills
+https://github.com/huangrichao2020/pretty-skills
 
 先把定位讲清楚 —— 这个项目**不是**传统带 SKILL.md 的 agent 技能仓。
 那种「按此执行 xxx」的预制工具箱，本项目**不做**。
@@ -41,7 +41,7 @@ https://github.com/huangrichao2020/pretty-skill
 我自己也掉过这个坑。给团队做过方法论卡片，写 PPT 洋洋洒洒 50 页，结果没人看完。
 直到我换了思路 —— 多花 5 分钟讲清楚，比快速生成 100 份强 100 倍。
 
-所以做了 pretty-skill，做 4 件事：
+所以做了 pretty-skills，做 4 件事：
 
 1. **看现成的**：项目里有人做好了「各种 skill + 知识」，配 PPT 版 HTML。打开 web.html 翻页就懂。
 
@@ -49,10 +49,10 @@ https://github.com/huangrichao2020/pretty-skill
 
 3. **分享你的**：有什么好方法想分享？提个 PR，**开发者们都用得上**。
 
-4. **元知识底座**：以后别对 agent 说"帮我装 xxx" —— 说"学一下 xxx"。agent 从 pretty-skill 里抽知识更新进你的项目。私密的知识直接 ignore。
+4. **元知识底座**：以后别对 agent 说"帮我装 xxx" —— 说"学一下 xxx"。agent 从 pretty-skills 里抽知识更新进你的项目。私密的知识直接 ignore。
 
 哲学层是「四自在」（佛学骨架）：
-- 观自在 · 装 1 个 pretty-skill 替代装 100 个 skill
+- 观自在 · 装 1 个 pretty-skills 替代装 100 个 skill
 - 化自在 · 说「学一下 xxx」提取更新
 - 照因果 · 每晚 dream 修炼，反思迭代
 - 渡众生 · 非私密部分提 PR，锦绣共繁荣
@@ -92,7 +92,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 4. 提 PR
 
 **C. 围观角度**：
-1. Star 一下 github.com/huangrichao2020/pretty-skill
+1. Star 一下 github.com/huangrichao2020/pretty-skills
 2. 推荐给一个会被卡脖子的朋友
 
 ----
@@ -114,14 +114,14 @@ check-3f.py 自动校验：PR 合规才能 merge
 
 ### 标题候选
 - 《开了个开源项目 · agent 的知识工程中枢》📚
-- 《不是 SKILL.md 仓！是这个 · pretty-skill v3.14》
+- 《不是 SKILL.md 仓！是这个 · pretty-skills v3.14》
 - 《多花 5 分钟讲清楚 = 100 倍可懂性提升》📚
-- 《1 张图讲清楚 pretty-skill 是什么》🌸
+- 《1 张图讲清楚 pretty-skills 是什么》🌸
 
 ### 正文
 
 ```
-我做了 1 个开源项目 👉 github.com/huangrichao2020/pretty-skill
+我做了 1 个开源项目 👉 github.com/huangrichao2020/pretty-skills
 
 它**不是**传统 SKILL.md 技能仓（不要来这找「按此执行 xxx」的预制工具）
 
@@ -151,7 +151,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 |---|---|---|
 | 5 分钟生成 PPT | → | 多花 5 分钟讲清楚 |
 | PDF 躺硬盘 0 人看 | → | 朋友圈 100+ 人看懂 |
-| 装 100 个 skill 互相打架 | → | 装 1 个 pretty-skill 自动抽 |
+| 装 100 个 skill 互相打架 | → | 装 1 个 pretty-skills 自动抽 |
 
 **一句话总结**：
 **这里不是工具箱，是出版局。**
@@ -173,7 +173,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 ### 小红书 hashtag
 
 ```
-#开源项目 #GitHub #agent #skill #知识工程中枢 #pretty-skill
+#开源项目 #GitHub #agent #skill #知识工程中枢 #pretty-skills
 #SKILL仓 #AI友好 #不装工具箱是出版局
 #中文开发者 #手绘 #马卡龙配色 #四自在
 #学一下XXX #KOL #AI生产力 #开发者工具
@@ -184,7 +184,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 ## 🎯 飞书 + 小红书发布 checklist
 
 发送前必查：
-- [ ] github 链接正确：`https://github.com/huangrichao2020/pretty-skill`
+- [ ] github 链接正确：`https://github.com/huangrichao2020/pretty-skills`
 - [ ] 飞书版配图 → 中枢图（readme-3-hub.png）+ 11 领域图（readme-4-domains.png）
 - [ ] 小红书版配图 3 张（中枢 + 什么 + 5 步贡献）
 - [ ] 飞书版标题用深度版（"v3.14 + 哲学 + 元知识底座"）

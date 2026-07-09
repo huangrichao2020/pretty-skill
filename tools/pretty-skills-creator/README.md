@@ -10,7 +10,7 @@
 
 ```bash
 # 1. 装 pretty-skills（前置）
-curl -fsSL https://raw.githubusercontent.com/huangrichao2020/pretty-skill/main/tools/pretty-skills/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/huangrichao2020/pretty-skills/main/tools/pretty-skills/install.sh | bash
 
 # 2. 创建新 skill
 ps create my-new-skill \

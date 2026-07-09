@@ -7,7 +7,7 @@
 [![Made with Mavis](https://img.shields.io/badge/made%20with-Mavis-f59e0b.svg)](https://example.com)
 [![Edge-first](https://img.shields.io/badge/edge--first-OSS-0891b2)](tools/pretty-skills/docs/contributing.md)
 
-> ✅ **v0.1.0 已发布**（2026-07-09）· 仓库名 `pretty-skill` → `pretty-skills`。
+> ✅ v0.1.0 · 5 agents · 边缘优先开源
 
 ---
 
@@ -197,7 +197,7 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | `curl: (56) ... 429` | 代理 / 沙箱限速 | 直连重试，或换代理 |
 | `Authentication failed for ...pretty-skills` | gh CLI 没登录 | `gh auth login` |
 | `ps: command not found` | `~/.local/bin` 不在 PATH | `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc` |
-| `ps add` 找不到 skill | 仓库还在过渡期（旧名）| 跑 `ps doctor` 看完整能力 |
+| `ps add` 找不到 skill | 仓库访问不到 | 跑 `ps doctor` 看完整能力 |
 
 跑 `ps doctor` 一键体检环境能力 + 缺什么怎么补。
 
@@ -208,14 +208,13 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | 阶段 | 时间 | 状态 |
 |---|---|---|
 | 重塑方案 + 草稿 | 2026-07-09 | ✅ 完成 |
-| 工具核心（CLI + install + manifest）| Day 1-3 | ✅ 完成 |
-| pretty-skills-creator 迁移 | Day 4-5 | ✅ 完成 |
-| ps doctor 环境能力体检 | Day 5 | ✅ 完成 |
-| 仓库改名 pretty-skill → pretty-skills | 2026-07-09 | ✅ 完成 |
-| Release v0.1.0 | 2026-07-09 | ✅ 完成 |
-| README + 徽章 + topics + 11 领域重命名 | 2026-07-09 | ✅ 完成 |
-| 撤回 PR #2 + auto-deploy workflow | 2026-07-09 | ✅ 完成 |
-| GitHub Pages 上线 | 2026-07-09 | ✅ 完成 |
+| 工具核心（CLI + install + manifest）| 2026-07-09 | ✅ 完成 |
+| pretty-skills-creator 迁移 | 2026-07-09 | ✅ 完成 |
+| ps doctor 环境能力体检 | 2026-07-09 | ✅ 完成 |
+| 11 领域对齐 knowhub | 2026-07-09 | ✅ 完成 |
+| README + 徽章 + topics | 2026-07-09 | ✅ 完成 |
+| 底层元 skill 库规则 + 四自在哲学 | 2026-07-09 | ✅ 完成 |
+| auto-deploy workflow + GitHub Pages | 2026-07-09 | ✅ 完成 |
 | 5 agent 端联调（Cursor / Windsurf）| 持续 | 🚧 当前 |
 | `ps search` / `ps publish` / `ps audit` | v0.2.0 | 📅 待开始 |
 

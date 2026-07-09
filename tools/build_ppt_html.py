@@ -45,7 +45,7 @@ def generate(case_dir: Path, case_title: str, page_images: list[str], page_notes
     html = html.replace("{PAGE_COUNT}", str(len(page_images)))
     html = html.replace("{PAGE_IMAGES_JS}", str(page_images))
     html = html.replace("{PAGE_NOTES_JS}", str(page_notes))
-    html = html.replace("{DEFAULT_NOTE}", f"{case_title} · pretty-skill PPT 演示版")
+    html = html.replace("{DEFAULT_NOTE}", f"{case_title} · pretty-skills PPT 演示版")
 
     return html
 

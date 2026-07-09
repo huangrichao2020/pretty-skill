@@ -16,7 +16,7 @@ set -euo pipefail
 
 OUT_DIR="${1:?用法: bash $0 <out_dir>/<name>}"
 BASE_OWNER="${BASE_OWNER:-huangrichao2020}"
-REPO="${REPO:-pretty-skills}"  # v0.1.0 改名完成
+REPO="${REPO:-pretty-skills}"
 
 # 检查 gh auth
 if ! gh auth status >/dev/null 2>&1; then
@@ -97,7 +97,7 @@ PR_URL=$(gh pr create \
 - 待补：完整 content.md / 真实 .pptx / 锦绣 4 形态
 
 ### 标签
-- \`auto-deploy-placeholder\` — pretty-skill 端应自动 merge + 部署
+- \`auto-deploy-placeholder\` — pretty-skills 端应自动 merge + 部署
 - \`skill-status:placeholder\` — 标记当前是占位版
 
 ### 验证（auto-deploy workflow 会做）

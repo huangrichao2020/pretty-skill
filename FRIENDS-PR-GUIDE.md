@@ -1,6 +1,6 @@
-# 5 分钟 PR 流程 · pretty-skill v3
+# 5 分钟 PR 流程 · pretty-skills v3
 
-> **💎 再定义**：pretty-skill 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
+> **💎 再定义**：pretty-skills 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
 > **这里不是工具箱，是出版局。**
 
 > 给任何开发者 / 玩家看的最简版贡献指南。5 分钟完成 PR。
@@ -12,7 +12,7 @@
 
 ## 1 分钟选领域
 
-打开 https://github.com/huangrichao2020/pretty-skill/tree/main 看 11 个一级目录，选一个对你的内容最合适的：
+打开 https://github.com/huangrichao2020/pretty-skills/tree/main 看 11 个一级目录，选一个对你的内容最合适的：
 
 ```
 ai-agent/    coding/   data-science/   product-design/
@@ -28,11 +28,11 @@ gaming/  lifestyle/   pkm-decision/
 
 ```bash
 # 1. Fork + clone
-gh repo fork huangrichao2020/pretty-skill --clone
-cd pretty-skill
+gh repo fork huangrichao2020/pretty-skills --clone
+cd pretty-skills
 
 # 2. 加 upstream
-git remote add upstream https://github.com/huangrichao2020/pretty-skill.git
+git remote add upstream https://github.com/huangrichao2020/pretty-skills.git
 git fetch upstream && git merge upstream/main
 
 # 3. 复制模板

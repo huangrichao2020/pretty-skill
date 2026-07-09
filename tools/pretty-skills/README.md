@@ -67,4 +67,4 @@ tools/pretty-skills/
 
 - **本仓库根目录的 `README.md`** — 讲整个 pretty-skills 是什么（双产品定位）
 - **`tools/pretty-skills/`** — 管（这个目录）
-- **`tools/pretty-skills-creator/`** — 创（占位，Day 4-5 迁移）
+- **`tools/pretty-skills-creator/`** — 创（完整迁移）

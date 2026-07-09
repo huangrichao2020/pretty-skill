@@ -1,6 +1,6 @@
 # Skill Manifest Schema
 
-每个 pretty-skill 必须在根目录带 `manifest.yaml`，被 `ps` 工具扫描、验证、装到 5 agent。
+每个 pretty-skills 必须在根目录带 `manifest.yaml`，被 `ps` 工具扫描、验证、装到 5 agent。
 
 ## 必填字段
 

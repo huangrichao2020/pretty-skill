@@ -1,6 +1,6 @@
 # 卡脖子选股报告 · 主板专版 · 2026-07-07
 
-> [3F Content · F1 源文字版](https://github.com/huangrichao2020/pretty-skill) · 数据截至 2026-07-07 15:30 收盘
+> [3F Content · F1 源文字版](https://github.com/huangrichao2020/pretty-skills) · 数据截至 2026-07-07 15:30 收盘
 
 ---
 

@@ -1,6 +1,6 @@
 # 仓库目录结构 · Structure Decision v3
 
-> **💎 再定义**：pretty-skill 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
+> **💎 再定义**：pretty-skills 是 **agent 的「知识工程中枢」** —— **不是**传统 `SKILL.md` 技能仓。
 > 沉淀学到的、做过的、提炼过的知识，整理成 AI 能直接读 + 人能看得懂 的结构化产物。
 > **这里不是工具箱，是出版局。**
 
@@ -16,7 +16,7 @@
 ## ✅ v3 推荐结构
 
 ```
-pretty-skill/
+pretty-skills/
 ├── ai-agent/                          ← 11 领域（中文一级目录）
 │   ├── cartman-team-ai-agent-collab/
 │   └── social-ecom-skill/
@@ -165,7 +165,7 @@ pretty-skill/
 
 ### 是什么
 
-CLI 工具，把任意知识一键变成 pretty-skill 完整目录（3F Content + 锦绣）
+CLI 工具，把任意知识一键变成 pretty-skills 完整目录（3F Content + 锦绣）
 
 ### 输入
 
@@ -182,8 +182,8 @@ CLI 工具，把任意知识一键变成 pretty-skill 完整目录（3F Content 
 
 ```bash
 # 未来
-pip install pretty-skill
-pretty-skill create --input my-knowledge.md --domain "trading-review"
+pip install pretty-skills
+pretty-skills create --input my-knowledge.md --domain "trading-review"
 ```
 
 完整使用：[skill-creator/README.md](./skill-creator/README.md)

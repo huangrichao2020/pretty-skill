@@ -165,7 +165,7 @@
 ## 🤖 自动生成（skill-creator v0.2）
 
 ```bash
-pretty-skill create \
+pretty-skills create \
   --input my-knowledge.md \
   --domain "trading-review"
 
@@ -179,7 +179,7 @@ pretty-skill create \
 
 ```bash
 # 加 --with-pptx 才生成真实 PPTX
-pretty-skill create \
+pretty-skills create \
   --input my-knowledge.md \
   --domain "trading-review" \
   --with-pptx

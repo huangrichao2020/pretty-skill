@@ -1,6 +1,6 @@
 # Agent Onboarding Guide
 
-> **谁该读这个**：你是 agent，接到 PPT 任务，要给 pretty-skill 仓库或任何 3F Content 范式交付物做贡献。
+> **谁该读这个**：你是 agent，接到 PPT 任务，要给 pretty-skills 仓库或任何 3F Content 范式交付物做贡献。
 > **读完这个你拿到**：一个**不能偷懒**的标准流程，照着做就能交付合格 PPT。
 
 ---
@@ -146,7 +146,7 @@ prs.save("presentation.pptx")
 
 1. **你不会偷懒成文字 PPT**（因为你已经知道丑）
 2. **你交付更快**（流程已经清楚，不重复想"先做什么"）
-3. **你 PR 通过率 100%**（流程符合 pretty-skill 标准）
+3. **你 PR 通过率 100%**（流程符合 pretty-skills 标准）
 
 ---
 
