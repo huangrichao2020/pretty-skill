@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# ps-doctor · 体检环境能力（install.sh 跑完自动调一次，随时可手动跑）
+
+set -euo pipefail
+_REAL_PATH="$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || python3 -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd "$(dirname "$_REAL_PATH")" && pwd)"
+PS_ROOT_HOME="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT_HOME/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+DOCTOR_LIB=""
+for cand in "$PS_ROOT_HOME/store/pretty-skills/lib/doctor.sh" "$SCRIPT_DIR/../lib/doctor.sh"; do
+  if [ -f "$cand" ]; then
+    DOCTOR_LIB="$cand"
+    break
+  fi
+done
+
+if [ -z "$DOCTOR_LIB" ]; then
+  log_err "找不到 lib/doctor.sh"
+  exit 1
+fi
+
+# shellcheck source=../lib/doctor.sh
+source "$DOCTOR_LIB"
+
+# 解析参数
+show_explain=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --explain|-e) show_explain=1; shift ;;
+    -h|--help)
+      echo "用法: ps doctor [--explain]"
+      echo "  --explain  显示缺能力时体验会差在哪"
+      exit 0
+      ;;
+    *) shift ;;
+  esac
+done
+
+run_doctor
+
+if [ "$show_explain" -eq 1 ]; then
+  explain_degraded_experience
+fi

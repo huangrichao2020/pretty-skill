@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# ps-rm <name> · 卸载一个 skill（删 store + 软链）
+# 不删 home 目录的修改（先警告再问）
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+name="${1:-}"
+if [ -z "$name" ]; then
+  log_err "用法: ps rm <name>"
+  exit 1
+fi
+
+dst="$PS_STORE/$name"
+if [ ! -d "$dst" ] && [ ! -L "$dst" ]; then
+  log_err "本地没装 $name"
+  exit 1
+fi
+
+# 检查是否有未 commit 的本地修改
+if [ -d "$dst/.git" ] || has_cmd git; then
+  if [ -d "$dst" ] && (cd "$dst" && git status --short 2>/dev/null | grep -q .); then
+    log_warn "$name 有未 commit 的修改："
+    (cd "$dst" && git status --short 2>/dev/null | head -5 | sed 's/^/  /')
+    if [ -t 0 ]; then
+      read -rp "确定要卸吗？这会删 store（修改也会丢）[y/N] " yn
+      case "$yn" in
+        [yY]*) ;;
+        *) log_info "取消"; exit 0 ;;
+      esac
+    else
+      log_err "非交互模式 + 有未 commit 修改，拒绝"
+      exit 1
+    fi
+  fi
+fi
+
+# 删软链
+log_info "删 agent 软链 ..."
+for a in claude-code codex mavis cursor windsurf; do
+  unlink_skill_from_agent "$name" "$a" 2>/dev/null || true
+done
+
+# 删 store
+rm -rf "$dst"
+log_ok "已删: $dst"
+
+echo
+log_ok "🗑  $name 已卸载"
+echo

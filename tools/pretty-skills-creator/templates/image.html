@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{{ title }} · 占位版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>{% raw %}
+  /* 生图式 · Apple-like 卡片 */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "SF Pro CJK", "Helvetica Neue", sans-serif;
+    background: linear-gradient(180deg, #fafaf7 0%, #f4f1eb 100%);
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    max-width: 760px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 18px 44px rgba(30,35,40,0.10), 0 4px 12px rgba(30,35,40,0.06);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge.complete { background: #d1fae5; color: #065f46; }
+  .cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f4f1eb;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover img { width: 100%; height: 100%; object-fit: cover; }
+  .cover-placeholder {
+    color: #9ca3af;
+    font-size: 14px;
+    text-align: center;
+    padding: 16px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .domain-tag {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fafaf7;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin-bottom: 32px;
+  }
+  .meta {
+    border-top: 1px solid #e5e5e0;
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 16px;
+    font-size: 14px;
+  }
+  .meta dt { color: #6b6b6b; font-weight: 500; }
+  .meta dd { color: #1a1a1a; }
+  .triggers { display: flex; flex-wrap: wrap; gap: 8px; }
+  .triggers span {
+    background: #f4f1eb;
+    color: #1a1a1a;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  .footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px dashed #d4d4d0;
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+  }
+{% endraw %}</style>
+</head>
+<body>
+<main class="card">
+  <span class="badge {{ status_class }}">{{ status_badge }}</span>
+
+  <div class="cover">
+    {{ cover_html }}
+  </div>
+
+  <span class="domain-tag">{{ domain }}</span>
+  <h1>{{ title }}</h1>
+  <p class="description">{{ description }}</p>
+
+  <dl class="meta">
+    <dt>作者</dt>
+    <dd>{{ contributor }}</dd>
+    <dt>领域</dt>
+    <dd>{{ domain }}</dd>
+    <dt>触发词</dt>
+    <dd><div class="triggers">{{ trigger_html }}</div></dd>
+    <dt>关联</dt>
+    <dd>{{ related }}</dd>
+    <dt>创建</dt>
+    <dd>{{ created }}</dd>
+  </dl>
+
+  <p class="footer">
+    {{ status_hint }}
+  </p>
+</main>
+</body>
+</html>

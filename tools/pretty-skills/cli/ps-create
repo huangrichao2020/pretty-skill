@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# ps-create <name> · 调用 pretty-skills-creator 创建新 skill
+# 流程:
+#   1. 先 ps add pretty-skills-creator（如未装）
+#   2. 调它的 create_skill.py 脚本（带 4 风格 + 交互式 picker）
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+name="${1:-}"
+if [ -z "$name" ]; then
+  log_err "用法: ps create <name>  (例: ps create my-awesome-skill)"
+  exit 1
+fi
+
+creator_dir="$PS_STORE/pretty-skills-creator"
+if [ ! -d "$creator_dir" ]; then
+  log_info "pretty-skills-creator 没装，先装 ..."
+  exec "$SCRIPT_DIR/ps-add" "pretty-skills-creator" "--from" "$PS_REPO"
+  # ps-add 完之后会回到这里（但 bash 不会回到这里，exec 不会续）
+fi
+
+# 调 create_skill.py
+create_script="$creator_dir/scripts/create_skill.py"
+if [ ! -f "$create_script" ]; then
+  log_err "$create_script 不存在（pretty-skills-creator 装坏了）"
+  exit 1
+fi
+
+log_info "调 pretty-skills-creator 创建 $name ..."
+# 转发所有参数给 create_skill.py
+python3 "$create_script" "$name" --out-dir "$PS_STORE" "${@:2}"
+
+# 软链到所有 agent
+log_info "软链到 agent ..."
+for a in $(detect_agents); do
+  link_skill_to_agent "$name" "$a"
+done
+
+echo
+log_ok "🎉 $name 已创建并装好"
+log_info "下一步: cd $PS_STORE/$name && 改 SKILL.md + manifest.yaml"
+log_info "完成后跑: ${BOLD}ps contribute $name${RESET} 提 PR"
+echo

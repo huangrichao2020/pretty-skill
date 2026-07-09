@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# ps-list · 列出本地所有 skill（按 agent 分组）
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+PS_STORE_DIR="$PS_STORE"
+
+echo
+echo "${BOLD}📦 本地已装 skill${RESET}"
+echo
+
+if [ ! -d "$PS_STORE_DIR" ] || [ -z "$(ls -A "$PS_STORE_DIR" 2>/dev/null)" ]; then
+  log_warn "store 是空的"
+  echo "装一个试试: ${BOLD}ps add pretty-skills-creator${RESET}"
+  exit 0
+fi
+
+# 读每个 skill 的 manifest（包含 symlink）
+for skill_dir in "$PS_STORE_DIR"/*/; do
+  skill_name=$(basename "$skill_dir")
+  # 跟随 symlink
+  if [ -L "$skill_dir" ]; then
+    skill_name=$(basename "$(readlink "$skill_dir")")
+  fi
+  manifest="$skill_dir/manifest.yaml"
+  if [ -f "$manifest" ]; then
+    version=$(grep -E '^version:' "$manifest" | head -1 | sed -E 's/^version:[[:space:]]+//' | tr -d '"')
+    # 多行 description: 取到下一个非缩进行，截前 60 字符
+    description=$(awk '
+      /^description:[[:space:]]*[|>+-]?/ { flag=1; sub(/^description:[[:space:]]*[|>+-]?[[:space:]]*/, ""); if (length($0)>0) print; next }
+      flag && /^[[:space:]]/ { print; next }
+      flag { flag=0 }
+    ' "$manifest" | head -1 | sed -E 's/^["'\'']?(.*)["'\''"]?$/\1/' | cut -c1-60)
+  else
+    version="?"
+    description="(无 manifest.yaml)"
+  fi
+
+  # 哪些 agent 装了
+  agents=()
+  for a in claude-code codex mavis cursor windsurf; do
+    agent_dir=$(agent_skills_dir "$a" 2>/dev/null) || continue
+    if [ -L "$agent_dir/$skill_name" ] || [ -d "$agent_dir/$skill_name" ]; then
+      agents+=("$a")
+    fi
+  done
+  agent_str=$(IFS=','; echo "${agents[*]:-未软链}")
+
+  printf "  ${GREEN}%-32s${RESET} ${BLUE}v%s${RESET}\n" "$skill_name" "$version"
+  printf "    %s\n" "$description"
+  printf "    ${YELLOW}agents:${RESET} %s\n" "$agent_str"
+  echo
+done
+
+echo "${BOLD}总计${RESET}: $(ls -1 "$PS_STORE_DIR" | wc -l | tr -d ' ') 个 skill"
+echo

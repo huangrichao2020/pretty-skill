@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# ps-add <name> · 从主项目装一个 skill
+# 用法: ps add <name> [--from <repo>]
+# 默认源: huangrichao2020/pretty-skills/tree/main/tools/<name>
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+name="${1:-}"
+if [ -z "$name" ]; then
+  log_err "用法: ps add <name>  (例: ps add serenity-stock-choke)"
+  exit 1
+fi
+
+from_repo="$PS_REPO"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --from) from_repo="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+
+dst="$PS_STORE/$name"
+if [ -d "$dst" ] || [ -L "$dst" ]; then
+  log_warn "$name 已经在本地了（试试: ps update $name）"
+  exit 0
+fi
+
+# 拉主项目（sparse checkout，只取 tools/<name>）
+log_info "从 $from_repo 拉 $name ..."
+tmpdir=$(mktemp -d)
+trap "rm -rf $tmpdir" EXIT
+
+if ! has_cmd git; then
+  log_err "需要 git"
+  exit 1
+fi
+
+# 用 sparse checkout
+git clone --depth 1 --filter=blob:none --sparse "https://github.com/$from_repo.git" "$tmpdir/repo" 2>&1 | grep -v "Cloning into" || true
+cd "$tmpdir/repo"
+git sparse-checkout set "tools/$name" 2>&1 | tail -2 || {
+  log_err "主项目里没有 tools/$name"
+  log_info "可用的 skill: https://github.com/$from_repo/tree/main/tools"
+  exit 1
+}
+
+if [ ! -d "tools/$name" ]; then
+  log_err "tools/$name 不存在"
+  exit 1
+fi
+
+# 复制到 store
+mkdir -p "$PS_STORE"
+cp -R "tools/$name" "$dst"
+log_ok "已装到 store: $dst"
+
+# 软链到所有 agent
+log_info "软链到 agent ..."
+detected=$(detect_agents)
+if [ -n "$detected" ]; then
+  for a in $detected; do
+    link_skill_to_agent "$name" "$a"
+  done
+else
+  log_warn "没检测到任何 agent（手动软链或再跑 install.sh）"
+fi
+
+# 检查依赖
+log_info "检查依赖 ..."
+check_dependencies "$name" || log_warn "依赖未满足，但已装好"
+
+echo
+log_ok "🎉 $name 装好了"
+log_info "试一下: ${BOLD}ps info $name${RESET}"
+echo

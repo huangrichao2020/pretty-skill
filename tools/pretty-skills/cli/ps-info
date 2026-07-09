@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# ps-info <name> · 显示 skill 详情
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+name="${1:-}"
+if [ -z "$name" ]; then
+  log_err "用法: ps info <name>"
+  exit 1
+fi
+
+skill_dir="$PS_STORE/$name"
+if [ ! -d "$skill_dir" ]; then
+  log_err "本地没装 $name（试试: ps add $name）"
+  exit 1
+fi
+
+echo
+echo "${BOLD}📄 $name${RESET}"
+echo
+
+# 读 manifest
+manifest="$skill_dir/manifest.yaml"
+if [ -f "$manifest" ]; then
+  echo "${BLUE}━━━ manifest.yaml ━━━${RESET}"
+  cat "$manifest"
+  echo "${BLUE}━━━━━━━━━━━━━━━━━━━━━${RESET}"
+else
+  log_warn "没有 manifest.yaml"
+fi
+
+echo
+echo "${BLUE}━━━ 文件 ━━━${RESET}"
+find "$skill_dir" -maxdepth 2 -type f | head -20 | sed "s|$skill_dir/||"
+[ "$(find "$skill_dir" -maxdepth 2 -type f | wc -l)" -gt 20 ] && echo "  ...（还有更多）"
+
+echo
+echo "${BLUE}━━━ 安装位置 ━━━${RESET}"
+for a in claude-code codex mavis cursor windsurf; do
+  agent_dir=$(agent_skills_dir "$a" 2>/dev/null) || continue
+  if [ -L "$agent_dir/$name" ]; then
+    target=$(readlink "$agent_dir/$name")
+    echo "  ${GREEN}✓${RESET} $a: $agent_dir/$name -> $target"
+  elif [ -d "$agent_dir/$name" ]; then
+    echo "  ${YELLOW}⚠${RESET} $a: $agent_dir/$name (是目录不是软链)"
+  fi
+done
+
+echo
+echo "${BLUE}━━━ 占用空间 ━━━${RESET}"
+du -sh "$skill_dir" 2>/dev/null
+
+echo
+echo "${BLUE}━━━ 最后修改 ━━━${RESET}"
+find "$skill_dir" -type f -printf '%T@ %p\n' | sort -rn | head -3 | awk '{print "  " $2 "  (" strftime("%Y-%m-%d %H:%M", $1) ")"}'
+
+echo

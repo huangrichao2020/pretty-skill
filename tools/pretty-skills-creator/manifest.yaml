@@ -1,0 +1,10 @@
+name: pretty-skills-creator
+version: 0.1.0
+description: 创建新 skill 的入口
+author: huangrichao2020
+license: MIT
+dependencies:
+  - name: pretty-skills
+    version: ">=0.1.0"
+  - name: python3
+    optional: true
