@@ -1,22 +1,45 @@
 # pretty-skills
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/huangrichao2020/pretty-skills)](https://github.com/huangrichao2020/pretty-skills/releases)
+[![5 agents](https://img.shields.io/badge/agents-5-7c3aed)](#-支持的-agent)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](tools/pretty-skills/docs/contributing.md)
+[![Made with Mavis](https://img.shields.io/badge/made%20with-Mavis-f59e0b.svg)](https://example.com)
+[![Edge-first](https://img.shields.io/badge/edge--first-OSS-0891b2)](tools/pretty-skills/docs/contributing.md)
+
 > ✅ **v0.1.0 已发布**（2026-07-09）· 仓库名 `pretty-skill` → `pretty-skills`。
-> **README 顶部先说一件事**：这是一次产品重塑，定位从"内容案例仓库" → "双产品工具生态"。
 
 ---
 
-## 一句话
+## 装 1 个 pretty-skills，能干什么？
 
-**pretty-skills = 让每个 agent 都能装、每个用户都能改、每个贡献都被看见。**
+**两件事，**每个 agent **都能用：
 
-它是一个**双产品**仓库：
+### 1. **pretty-skills（管）** — 1 装管所有 skill
 
-| 产品 | 干什么 | 安装 |
-|---|---|---|
-| **pretty-skills**（管） | 跨 agent 统一管理你的所有 skill 和知识 | `curl -fsSL .../install.sh \| bash` |
-| **pretty-skills-creator**（创） | 创建 skill 时自动带 4 风格 HTML 占位 + 可选 PPT | `ps create my-skill` |
+每一个 agent（Claude Code / Codex / Mavis / Cursor / Windsurf）都可以装一个 pretty-skills。
+装完之后它帮你**收纳 / 更新 / 进化**你所有的 skill 和知识 — 一次装，5 个 agent 都能用。
 
-> "管"和"创"是父子关系：装好 pretty-skills 后，`ps create` 就把 pretty-skills-creator 调起来。
+```bash
+curl -fsSL https://raw.githubusercontent.com/huangrichao2020/pretty-skills/main/tools/pretty-skills/install.sh | bash
+ps list        # 收纳：看你装的所有 skill
+ps update      # 更新：拉主项目最新
+ps contribute  # 进化：把本地改好的提回主项目
+```
+
+### 2. **pretty-skills-creator（创）** — 1 创自带宣传 HTML + PPT
+
+如果你想**宣传或推广你的 skill**，
+pretty-skills-creator 在创建时会**同时帮你创建宣传 HTML 和 PPT**，
+连写带做一步到位 — 你只管填 5 项 metadata。
+
+```bash
+ps create my-new-skill \
+  --title "..." --description "..." --triggers a b c \
+  --style image       # image / code-swiss / code-tech / code-paper
+# → 自动生成 web.html + manifest.yaml + SKILL.md + CHANGELOG.md
+# → ps contribute my-new-skill  提 PR，自动 fork + 创建分支
+```
 
 ---
 
