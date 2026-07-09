@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你攒了一硬盘知识，却从没真正用过一次 · pretty-skills</title>
+<style>
+  :root{
+    --cream:#FFF5F5; --coral:#FF6B9D; --mint:#C7F0BD;
+    --sky:#BDE0FE; --lemon:#FFE5A5; --ink:#2b2b2b; --muted:#7a7a7a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:#f4f1ee; color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; background:#fff; padding:40px 26px 64px;
+    box-shadow:0 2px 30px rgba(0,0,0,.06);}
+  .cover{width:100%; border-radius:14px; margin-bottom:30px; display:block;}
+  h1{font-size:27px; line-height:1.4; margin:0 0 14px; letter-spacing:.5px;}
+  .lead{font-size:16px; color:var(--coral); font-weight:600; margin:0 0 6px;}
+  .meta{font-size:13px; color:var(--muted); margin:0 0 30px;
+    border-bottom:1px dashed #eee; padding-bottom:22px;}
+  p{margin:18px 0; font-size:16.5px;}
+  h2{font-size:20px; margin:40px 0 14px; padding-left:12px;
+    border-left:5px solid var(--coral);}
+  strong{color:var(--ink);}
+  .hl{background:linear-gradient(transparent 62%, var(--lemon) 62%); padding:0 2px; font-weight:600;}
+  blockquote{margin:24px 0; padding:16px 20px; background:var(--cream);
+    border-radius:10px; color:#555; font-size:15px; border-left:4px solid var(--mint);}
+  ul{margin:16px 0; padding-left:22px;}
+  li{margin:8px 0; font-size:16px;}
+  .case{background:#fbfaff; border:1px solid #eef2ff; border-radius:12px;
+    padding:16px 20px; margin:18px 0;}
+  .case b{color:#5b6bd6;}
+  table{width:100%; border-collapse:collapse; margin:22px 0; font-size:14.5px;}
+  th,td{border:1px solid #eee; padding:11px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--cream); color:#444; font-weight:600;}
+  td:first-child{color:var(--muted); white-space:nowrap;}
+  figure{margin:28px 0;}
+  figure img{width:100%; border-radius:12px; display:block; box-shadow:0 4px 18px rgba(0,0,0,.07);}
+  figcaption{text-align:center; font-size:12.5px; color:var(--muted); margin-top:8px;}
+  .cta{background:linear-gradient(135deg,var(--coral),#ff8fb0); color:#fff;
+    border-radius:14px; padding:22px 24px; margin:34px 0 10px;}
+  .cta b{color:#fff;}
+  .cta a{color:#fff; text-decoration:underline;}
+  .end{text-align:center; font-size:15px; color:var(--muted); margin-top:36px;
+    font-style:italic;}
+  .sig{text-align:right; color:var(--muted); font-size:14px; margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <img class="cover" src="images/cover.png" alt="pretty-skills 封面">
+
+  <p class="lead">我用 1 个开源项目，把“收藏即学会”的幻觉治好了。</p>
+  <h1>你攒了一硬盘知识，却从没真正用过一次</h1>
+  <p class="meta">pretty-skills · 你的 Agent 知识工程中枢 · 已开源 MIT</p>
+
+  <p>你有没有过这种时刻——</p>
+  <p>刷到一篇神文，手指一抖点下“收藏”，心里踏实了：“存着，以后看。”</p>
+  <p>给团队写了一份 50 页的方法论 PPT，发出去，石沉大海。</p>
+  <p>自己摸索出一套打法，想教给别人，却怎么也讲不透。</p>
+  <p>然后呢？然后那些 PDF、那些 Word、那些躺在文件夹里的“干货”，就再也没打开过。</p>
+  <p>我们管这叫“收藏即学会”。但真相是：<span class="hl">收藏，只是把焦虑从“我没学”变成了“我存了，所以没事”</span>。</p>
+  <p>知识最大的浪费，从来不是没人生产。而是生产出来之后——人懒得看，AI 爬不动，搜索引擎搜不到，连你自己都 diff 不了哪个版本是对的。</p>
+
+  <figure>
+    <img src="images/pain.png" alt="知识困在文件里">
+    <figcaption>干货困在格式里，人懒得看，AI 爬不动</figcaption>
+  </figure>
+
+  <h2>我掉过三个坑，你一定也掉过</h2>
+  <p><strong>第一，干货困在封闭格式里。</strong> PDF 搜不到关键词，PPT 没人看完，脑子里的经验带不走。一份好内容，一旦变成二进制文件，就等于被封印了。</p>
+  <p><strong>第二，装 100 个 skill 互相打架。</strong> Agent 技能仓越装越乱：重复的、冲突的、版本漂移的，最后你根本不知道该信哪一个。</p>
+  <p><strong>第三，好方法讲不清。</strong> 你明明有一套厉害的打法，却只能用 50 页 PPT 去讲——别人看不完，你也讲不透。知识在你手里，是负担，不是资产。</p>
+  <p>我试过无数“知识管理”工具，最后发现：问题不在工具多不多，而在知识有没有“活”过来——能不能被搜索、被引用、被改写、被讲给别人听。pretty-skills 就是冲着这四点去的。</p>
+
+  <h2>所以，这里不是工具箱，是出版局</h2>
+  <p>我没有再做第 101 个“技能仓”。我做了一个叫 <strong>pretty-skills</strong> 的开源项目（github.com/huangrichao2020/pretty-skills）。</p>
+  <p>一句话定位：它是你的 <span class="hl">Agent 知识工程中枢</span>。</p>
+  <p>传统技能仓是“按此执行 xxx”的预制工具箱，塞满指令。pretty-skills 不干这个。它干的是：把你学到的、做过的、提炼过的知识，整理成“AI 能直接读 + 人能看得懂”的结构化产物。沉淀一次，到处能看；Agent 能读，人能复用。</p>
+
+  <figure>
+    <img src="images/bureau.png" alt="一次创作，多形态输出">
+    <figcaption>一次创作 = 一套多平台素材：网页 / PPT / 手机卡 / 视频</figcaption>
+  </figure>
+
+  <h2>3F Content + 锦绣：写一次，到处能发</h2>
+  <p>怎么做到“AI 能读、人能看、到处能发”？靠一套我管它叫 <strong>3F Content</strong> 的范式，外加一个叫“锦绣”的绣花工艺。</p>
+  <p>每个知识点，落地成一套三件套：</p>
+  <ul>
+    <li><strong>content.md</strong>：喂给 LLM 的源文字。AI 直接读，能做检索、能改写、能回答。</li>
+    <li><strong>web.html</strong>：PPT 演示版。打开就是翻页幻灯片，键盘左右键就能讲，不用装任何软件。</li>
+    <li><strong>锦绣</strong>：一次创作，自动“绣”成 4 种能传播的形态——横屏封面、PPT、移动网页、短视频脚本。</li>
+  </ul>
+  <p>而且每个 case 都要过一道 <code>check-3f.py</code> 自动校验，垃圾不进仓——这保证了仓库里每一份知识，都是“活的”、可用的、能跑的。</p>
+
+  <table>
+    <tr><th></th><th>以前</th><th>现在（pretty-skills）</th></tr>
+    <tr><td>一份方法论</td><td>50 页 PPT，发出去没人看</td><td>1 份 content.md + 翻页网页 + 小红书九图 + 演讲 PPT</td></tr>
+    <tr><td>知识形态</td><td>死在 PDF / Word 里</td><td>AI 能读、人能搜、能 diff、能复用</td></tr>
+    <tr><td>Agent 技能</td><td>装 100 个互相打架</td><td>装 1 个，自动抽知识</td></tr>
+  </table>
+
+  <h2>不是 demo 玩具，是三个真刀真枪的 case</h2>
+
+  <div class="case">
+    <p><b>▍AI狼群战法</b><br>
+    怎么带一支多 Agent 团队？Cartman 的方法论被整理成 8 页马卡龙手绘——Context（上下文）给 Agent 一个能自己做事的“三层办公室”，Observation（观察）建一个即时反馈 + 每周复盘的进化闭环。8 张图，0 返工。一句话：“不是 AI 替代你，是会用 AI 的同行替代你。”</p>
+  </div>
+  <div class="case">
+    <p><b>▍卡脖子猎手</b><br>
+    一份真实的 A 股选股报告。按“断货 = 地震”的逻辑，在主板里挖半导体材料、稀土的瓶颈标的——最后锁定：1 只 S（盛和资源·全球稀土）、2 只 A（彤程新材·光刻胶、雅克科技·前驱体全栈），还排除掉 1 只“伪卡脖子”（有研新材·毛利率仅 6%）。9 页图文 + 10MB 真实 PPTX。这是能拿去交易的研判，不是 PPT 空话。</p>
+  </div>
+  <div class="case">
+    <p><b>▍橙皮书方法论</b><br>
+    花叔写 9 本橙皮书的方法：调研 → 规划 → 多 Agent 并行写作 → 三审三校 + 事实核查 → 构建成册。7 页源文字 + 锦绣四形态，新手照着做就能复制一套出书流水线。</p>
+  </div>
+
+  <figure>
+    <img src="images/garden.png" alt="案例花园，共建生态">
+    <figcaption>16 个中文领域，等你来种下自己的 case</figcaption>
+  </figure>
+
+  <p>现在仓库有 <strong>16 个中文领域</strong>——Agent知识、编程开发、数据科学、产品设计、商业运营、金融投资、内容创作、教育学习、游戏玩家、情感领域、做事技巧、玄学修炼、橙皮书、社交主导、视觉创作、故事写作。其中 12 个还是空的，专门等全球开发者来填。</p>
+
+  <h2>四自在：它的灵魂</h2>
+  <p>我不想把它做成又一个“装完就完了”的工具。pretty-skills 的灵魂是“四自在”——</p>
+  <ul>
+    <li><strong>观自在</strong>：装 1 个 pretty-skills，顶替装 100 个乱七八糟的 skill。先看清自己已有啥。</li>
+    <li><strong>化自在</strong>：以后别对 Agent 说“帮我装 XXX”，说“学一下 XXX”。知识只有进了 pretty-skills，才真的属于你。</li>
+    <li><strong>照因果</strong>：每用一次，留一句心得；定期迭代回去。skill 不是装完就懂，是用了才真懂。</li>
+    <li><strong>渡 Agent</strong>：非私密的部分，提个 PR 共享。你沉淀的每一个 case，都可能帮到另一个 Agent——而那个 Agent，也可能回头帮到你。</li>
+  </ul>
+
+  <div class="cta">
+    <p style="margin:0 0 10px"><b>三分钟，三种姿势开始：</b></p>
+    <p style="margin:6px 0">1. <b>用户</b>：clone 下来当你的 Agent 底层元知识库，日常用“学一下 XXX”代替“帮我装 XXX”。</p>
+    <p style="margin:6px 0">2. <b>贡献者</b>：选 1 个领域，复制模板，5 分钟做一个能分享的方法论，跑一下 check-3f，提个 PR。</p>
+    <p style="margin:6px 0">3. <b>围观</b>：去 <a href="https://github.com/huangrichao2020/pretty-skills">github.com/huangrichao2020/pretty-skills</a> 点个 Star，再推荐给一个正被“知识管理”卡住的朋友。</p>
+    <p style="margin:10px 0 0; font-size:14.5px; opacity:.92">担心不会写？仓库里的 <code>_模板/案例</code> 自带骨架，把 content.md 的字段填完，出图、生成网页、跑校验一条龙。中文优先，全程不用切英文。MIT 协议，放心用、放心改。</p>
+  </div>
+
+  <p class="end">多花 5 分钟把知识讲清楚，比快速生成 100 份没人看的文档，强 100 倍。<br>这里不是工具箱，是出版局。</p>
+  <p class="sig">—— huangrichao2020</p>
+
+</div>
+</body>
+</html>

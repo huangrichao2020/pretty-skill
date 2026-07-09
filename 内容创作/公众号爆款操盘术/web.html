@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公众号爆款操盘术 · PPT 演示版</title>
+<style>
+* { margin:0; padding:0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #000; color: #fff; user-select: none; }
+.app { display: flex; width: 100vw; height: 100vh; }
+.sidebar { width: 180px; height: 100%; background: rgba(26,26,26,0.92);
+  border-right: 1px solid #333; padding: 12px 8px; overflow-y: auto; transition: transform .3s; }
+.sidebar.hidden { transform: translateX(-100%); }
+.sidebar h3 { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding: 0 4px; }
+.thumb { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border-radius: 4px; margin-bottom: 8px;
+  cursor: pointer; border: 2px solid transparent; overflow: hidden; position: relative; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb.active { border-color: #4a90e2; box-shadow: 0 0 12px rgba(74,144,226,.4); }
+.thumb .thumb-num { position: absolute; top: 4px; left: 4px; background: rgba(0,0,0,.7); color: #4a90e2; font-size: 10px; padding: 1px 6px; border-radius: 8px; }
+.stage { flex: 1; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
+.slide { width: 100%; height: 100%; display: none; align-items: center; justify-content: center; }
+.slide.active { display: flex; }
+.slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.overlay-top { position: absolute; top: 0; left: 0; right: 0; padding: 12px 24px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.7), transparent); display: flex; justify-content: space-between; align-items: center; pointer-events: none; }
+.overlay-top .title { font-size: 14px; font-weight: 500; }
+.overlay-top .progress { font-size: 12px; color: #4a90e2; font-weight: 600; }
+.controls { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,.7), transparent); display: flex; justify-content: space-between; align-items: center; }
+.controls button { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2);
+  padding: 6px 14px; border-radius: 4px; font-size: 12px; cursor: pointer; transition: .15s; pointer-events: auto; }
+.controls button:hover { background: rgba(74,144,226,.2); border-color: #4a90e2; }
+.controls .key-hint { font-size: 11px; color: #888; }
+.keyboard-hint { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(0,0,0,.92);
+  border: 1px solid #4a90e2; padding: 24px 32px; border-radius: 8px; z-index: 10000; max-width: 480px; text-align: center; }
+.keyboard-hint h3 { color: #4a90e2; margin-bottom: 12px; font-size: 16px; }
+.keyboard-hint .keys { color: #fff; font-size: 13px; line-height: 2; }
+.keyboard-hint kbd { display: inline-block; background: #333; padding: 2px 8px; border-radius: 3px; font-family: monospace; font-size: 11px; margin: 0 2px; }
+.keyboard-hint button { margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"><h3>缩略图导航</h3>
+    <div class="thumb" data-idx="0"><img src="images/p0.png"><span class="thumb-num">1</span></div>
+    <div class="thumb" data-idx="1"><img src="images/p1.png"><span class="thumb-num">2</span></div>
+    <div class="thumb" data-idx="2"><img src="images/p2.png"><span class="thumb-num">3</span></div>
+    <div class="thumb" data-idx="3"><img src="images/p3.png"><span class="thumb-num">4</span></div>
+  </aside>
+  <main class="stage">
+    <div class="slide" data-idx="0"><img src="images/p0.png"></div>
+    <div class="slide" data-idx="1"><img src="images/p1.png"></div>
+    <div class="slide" data-idx="2"><img src="images/p2.png"></div>
+    <div class="slide" data-idx="3"><img src="images/p3.png"></div>
+    <div class="overlay-top"><div class="title">公众号爆款操盘术 · 把方法论写成别人看完就想用</div><div class="progress"><span id="current">1</span> / <span id="total">4</span></div></div>
+    <div class="controls">
+      <div><button onclick="goPrev()">◀ 上页</button><button onclick="goNext()">下页 ▶</button><button onclick="goHome()">首页</button><button onclick="goEnd()">末页</button></div>
+      <div class="key-hint">← → 翻页 · F 全屏 · T 缩略图</div>
+      <div><button onclick="toggleFullscreen()">⛶ 全屏</button><button onclick="toggleSidebar()">⊟ 侧栏</button></div>
+    </div>
+  </main>
+</div>
+<div class="keyboard-hint" id="keyboardHint"><h3>⌨️ 键盘快捷键</h3>
+  <div class="keys"><kbd>←</kbd> <kbd>→</kbd> <kbd>Space</kbd> 翻页 · <kbd>F11</kbd> <kbd>F</kbd> 全屏<br><kbd>T</kbd> 缩略图 · <kbd>Home</kbd> <kbd>End</kbd> 首末页</div>
+  <button onclick="dismissHint()">知道了</button></div>
+<script>
+const PAGE_COUNT = 4;
+const PAGE_IMAGES = ["images/p0.png","images/p1.png","images/p2.png","images/p3.png"];
+let cur = 0;
+let hintDismissed = sessionStorage.getItem('ppt-hint-dismissed') === '1';
+function showPage(n){ cur = Math.max(0, Math.min(PAGE_COUNT-1, n));
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active', i===cur));
+  document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active', i===cur));
+  document.getElementById('current').textContent = cur+1;
+  const at = document.querySelector('.thumb.active'); if(at) at.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function goNext(){showPage(cur+1);} function goPrev(){showPage(cur-1);}
+function goHome(){showPage(0);} function goEnd(){showPage(PAGE_COUNT-1);}
+document.addEventListener('keydown',(e)=>{ if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  switch(e.key){ case 'ArrowRight': case ' ': e.preventDefault(); goNext(); break;
+    case 'ArrowLeft': e.preventDefault(); goPrev(); break;
+    case 'Home': goHome(); break; case 'End': goEnd(); break;
+    case 'f': case 'F': toggleFullscreen(); break; case 't': case 'T': toggleSidebar(); break; } });
+document.querySelector('.stage').addEventListener('click',(e)=>{ if(e.target.tagName==='BUTTON'||e.target.tagName==='IMG')return;
+  const r=e.currentTarget.getBoundingClientRect(); if(e.clientX<r.width/2) goPrev(); else goNext(); });
+function toggleFullscreen(){ if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});} else {document.exitFullscreen();} }
+function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('hidden'); }
+document.querySelectorAll('.thumb').forEach((t)=>t.addEventListener('click',()=>showPage(parseInt(t.dataset.idx))));
+function dismissHint(){ document.getElementById('keyboardHint').style.display='none'; sessionStorage.setItem('ppt-hint-dismissed','1'); }
+if(hintDismissed){ document.getElementById('keyboardHint').style.display='none'; }
+showPage(0);
+</script>
+</body>
+</html>

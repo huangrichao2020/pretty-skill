@@ -1,0 +1,19 @@
+{
+  "name": "公众号爆款操盘术",
+  "domain": "内容创作",
+  "title": "公众号爆款操盘术 · 把方法论写成别人看完就想用",
+  "visibility": "public",
+  "tags": ["公众号", "写作", "方法论", "钩子链", "内容运营", "爆款"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-09",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 4,
+  "summary": "把任意方法论写成公众号爆款的可复用系统：5段钩子链（痛点→翻转→范式→案例→CTA）+ 刘润式纪律 + 4图闭环 + 多端分发 · 源自 wechat-article-pro 技能与一次真实推广文实战"
+}
