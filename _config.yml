@@ -1,0 +1,36 @@
+title: "pretty-skills · 跨 agent 的 skill 管理器"
+description: |
+  让每个 agent 都能装、每个用户都能改、每个贡献都被看见。
+  5 大 agent 一次装（Claude Code / Codex / Mavis / Cursor / Windsurf），
+  边缘优先开源：本地增删改无门槛，PR 是用户主动判断。
+email: huangrichao2020@users.noreply.github.com
+url: "https://github.com/huangrichao2020/pretty-skills"
+repository: huangrichao2020/pretty-skills
+
+# Jekyll 排除 tools/ 目录（不编译为页面，让 web.html 直接被 GitHub Pages 提供）
+exclude:
+  - tools/
+  - README.md
+  - CHANGELOG.md
+  - "*.yml"
+  - "*.yaml"
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - "*.log"
+
+# 用 jekyll-optional-front-matter 插件需要（如果以后想给 tools/ 里的 web.html 加 front matter）
+# plugins:
+#   - jekyll-optional-front-matter
+#   - jekyll-include-relative
+
+# 默认主题
+# theme: minima
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false

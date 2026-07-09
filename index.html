@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pretty-skills · 跨 agent 的 skill 管理器</title>
+<meta name="description" content="跨 5 大 agent 的 skill 管理器（Claude Code / Codex / Mavis / Cursor / Windsurf）。装 1 次管所有 skill 的收纳/更新/进化；想推广就用 pretty-skills-creator 1 创自带宣传 HTML + PPT。">
+
+<style>
+  :root {
+    --bg: #0f0f17;
+    --card: #1a1a2e;
+    --border: #2a2a3e;
+    --text: #e6e6f0;
+    --muted: #8b8ba0;
+    --primary: #7c3aed;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --creator: #0891b2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
+  header { text-align: center; margin-bottom: 3rem; }
+  .badge-row {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .badge {
+    display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px;
+    font-size: 0.75rem; font-weight: 500; text-decoration: none;
+    border: 1px solid var(--border); color: var(--muted);
+    background: var(--card);
+  }
+  .badge.primary { background: var(--primary); border-color: var(--primary); color: white; }
+  .badge.creator { background: var(--creator); border-color: var(--creator); color: white; }
+  h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;
+       background: linear-gradient(135deg, var(--primary), var(--accent));
+       -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .tagline { font-size: 1.25rem; color: var(--muted); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .tagline strong { color: var(--text); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 3rem; }
+  .actions a, .actions code {
+    padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem;
+    text-decoration: none; font-family: "SF Mono", Menlo, monospace;
+  }
+  .actions a.btn-install { background: var(--primary); color: white; font-weight: 600; }
+  .actions a.btn-install:hover { opacity: 0.9; }
+  .actions a.btn-github { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+  .actions code { background: var(--card); color: var(--accent); border: 1px solid var(--border); }
+
+  .product-section { margin-bottom: 3rem; }
+  .product-section h2 {
+    font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .product-section h2 .icon { font-size: 1.5rem; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    transition: all 0.2s; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .card:hover {
+    border-color: var(--primary); transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+  }
+  .card.creator-card:hover { border-color: var(--creator); box-shadow: 0 8px 24px rgba(8, 145, 178, 0.15); }
+  .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .card-desc { font-size: 0.875rem; color: var(--muted); flex-grow: 1; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
+  .meta-pill {
+    padding: 0.2rem 0.5rem; border-radius: 4px;
+    background: rgba(124, 58, 237, 0.15); color: var(--primary);
+  }
+  .meta-pill.creator { background: rgba(8, 145, 178, 0.15); color: var(--creator); }
+  .meta-pill.tag { background: rgba(245, 158, 11, 0.15); color: var(--accent); }
+  .card-link { font-size: 0.875rem; color: var(--primary); margin-top: 0.5rem; }
+  .card.creator-card .card-link { color: var(--creator); }
+
+  .empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+  .empty .icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+
+  footer { text-align: center; margin-top: 4rem; color: var(--muted); font-size: 0.875rem; }
+  footer a { color: var(--primary); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .feature { padding: 1rem; background: var(--card); border-radius: 8px; border: 1px solid var(--border); }
+  .feature .feat-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .feature .feat-title { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .feature .feat-desc { font-size: 0.75rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge-row">
+      <span class="badge primary">管</span>
+      <span class="badge creator">创</span>
+      <span class="badge">MIT License</span>
+      <span class="badge">v0.1.0</span>
+      <span class="badge">5 agents</span>
+      <span class="badge">Edge-first OSS</span>
+    </div>
+    <h1>pretty-skills</h1>
+    <p class="tagline">
+      <strong>装 1 次管所有 skill</strong>，让每个 agent 都能收纳 / 更新 / 进化你的所有知识。
+      <strong>想宣传就 ps create 1 创</strong>，pretty-skills-creator 自动生成宣传 HTML + PPT。
+    </p>
+    <div class="actions">
+      <a class="btn-install" href="https://github.com/huangrichao2020/pretty-skills#5-行上手">📦 一键安装</a>
+      <a class="btn-github" href="https://github.com/huangrichao2020/pretty-skills">⭐ GitHub</a>
+      <code>ps list</code>
+    </div>
+  </header>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <div class="feat-icon">🗂️</div>
+      <div class="feat-title">收纳</div>
+      <div class="feat-desc">一次装，5 agent 都能用</div>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">更新</div>
+      <div class="feat-desc"><code>ps update</code> 拉主项目最新</div>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">🌱</div>
+      <div class="feat-title">进化</div>
+      <div class="feat-desc"><code>ps contribute</code> 提 PR 回主项目</div>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">📢</div>
+      <div class="feat-title">宣传</div>
+      <div class="feat-desc"><code>ps create</code> 自带 HTML + PPT</div>
+    </div>
+  </div>
+
+  <section class="product-section" id="manage">
+    <h2><span class="icon">📦</span> pretty-skills（管）</h2>
+    <div class="grid" id="manage-grid">
+      <div class="empty">
+        <div class="icon">⏳</div>
+        <div>GitHub Pages 部署中…稍后刷新</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-section" id="create">
+    <h2><span class="icon">📢</span> pretty-skills-creator（创）</h2>
+    <div class="grid" id="create-grid">
+      <a class="card creator-card" href="https://github.com/huangrichao2020/pretty-skills/tree/main/tools/pretty-skills-creator">
+        <div class="card-title">pretty-skills-creator</div>
+        <div class="card-desc">创建新 skill 的入口，1 创自带宣传 HTML + PPT。4 风格可选：image / code-swiss / code-tech / code-paper。</div>
+        <div class="card-meta">
+          <span class="meta-pill creator">creator</span>
+          <span class="meta-pill tag">v0.1.0</span>
+        </div>
+        <div class="card-link">→ 查看 README</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>MIT License · <a href="https://github.com/huangrichao2020/pretty-skills">GitHub</a> · Made with Mavis</p>
+  </footer>
+</div>
+
+<script>
+// 异步扫 tools/ 目录的 manifest.yaml，渲染卡片
+// 失败时显示友好降级（不影响页面其他部分）
+
+async function scanSkills(productFilter) {
+  const grid = document.getElementById(productFilter + '-grid');
+  try {
+    // 用 GitHub API 扫 tools/ 目录
+    const resp = await fetch('https://api.github.com/repos/huangrichao2020/pretty-skills/contents/tools');
+    if (!resp.ok) throw new Error('API 返回 ' + resp.status);
+    const dirs = await resp.json();
+
+    const skillDirs = dirs.filter(d => d.type === 'dir' && d.name !== 'pretty-skills-creator');
+
+    if (productFilter === 'manage') {
+      // 渲染 manage：所有非 creator 的 skill
+      // 简化版：先放个空状态，下面会逐个加载
+    }
+
+    if (skillDirs.length === 0) {
+      grid.innerHTML = `<div class="empty"><div class="icon">🌱</div><div>暂无 skill，欢迎 <a href="https://github.com/huangrichao2020/pretty-skills/blob/main/tools/pretty-skills/docs/contributing.md" style="color:var(--primary)">提个 PR</a> 第一个</div></div>`;
+      return;
+    }
+
+    const cards = await Promise.all(skillDirs.map(async dir => {
+      try {
+        const m = await fetch('https://raw.githubusercontent.com/huangrichao2020/pretty-skills/main/' + dir.path + '/manifest.yaml');
+        if (!m.ok) return null;
+        const text = await m.text();
+
+        // 简单解析（避免引外部库）
+        const get = (key) => {
+          const m = text.match(new RegExp('^' + key + ':\\s*(.+)', 'm'));
+          return m ? m[1].trim().replace(/^["']|["']$/g, '') : '';
+        };
+        const getMulti = (key) => {
+          const m = text.match(new RegExp('^' + key + ':[\\s\\S]*?(?=^[a-zA-Z]|$)', 'm'));
+          if (!m) return [];
+          return (m[0].match(/^\s*-\s*(.+)/gm) || []).map(x => x.replace(/^\s*-\s*/, '').trim());
+        };
+
+        const name = get('name') || dir.name;
+        const desc = get('description').slice(0, 200);
+        const version = get('version') || '?';
+        const tags = getMulti('tags');
+        const triggers = getMulti('triggers');
+
+        return `
+          <a class="card" href="https://huangrichao2020.github.io/pretty-skills/tools/${dir.name}/web.html">
+            <div class="card-title">${escapeHtml(name)}</div>
+            <div class="card-desc">${escapeHtml(desc)}</div>
+            <div class="card-meta">
+              <span class="meta-pill">v${escapeHtml(version)}</span>
+              ${tags.slice(0, 3).map(t => `<span class="meta-pill tag">#${escapeHtml(t)}</span>`).join('')}
+            </div>
+            <div class="card-link">→ 打开 skill</div>
+          </a>
+        `;
+      } catch (e) {
+        return null;
+      }
+    }));
+
+    const valid = cards.filter(Boolean);
+    if (valid.length > 0) {
+      grid.innerHTML = valid.join('');
+    } else {
+      grid.innerHTML = `<div class="empty"><div class="icon">🌱</div><div>暂无完整 skill（占位 PR 合并后会自动出现）</div></div>`;
+    }
+  } catch (e) {
+    grid.innerHTML = `<div class="empty"><div class="icon">⚠️</div><div>GitHub API 调用失败：${escapeHtml(e.message)}</div></div>`;
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+scanSkills('manage');
+</script>
+</body>
+</html>
