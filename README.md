@@ -130,6 +130,21 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 
 ---
 
+## 📚 5 个 demo case · 看 pretty-skills 怎么用
+
+| 领域 | Case | 一句话 | 形态 |
+|---|---|---|---|
+| `AI能力` | **AI狼群战法** | Cartman 多 agent 团队的高效协作方法论 | content.md + 9 张 AI 出图 |
+| `AI能力` | **社交电商掘金术** | 用两层拆解法定位社交电商赛道 | content.md + 9 张 AI 出图 |
+| `内容创作` | **橙皮书方法论** | 花叔写 9 本橙皮书的方法（调研→写作→三审）| content.md + 7 张本地出图 + 锦绣四形态 |
+| `金融投资` | **卡脖子猎手** | Serenity 供应链瓶颈方法论选股 | content.md + 9 张图 + 10.6MB PPTX |
+| `金融投资` | **宏观雷达** | A 股每日宏观早报（央行/统计局/财联社多源）| content.md + 7 张图 + 锦绣四形态 |
+
+> **每个 case 都有 `.md` 源文字 + `.html` 网页 + `.pptx` PPTX（3F Content 范式）— AI 能直接读，人能直接看**。
+> 在线看：<https://huangrichao2020.github.io/pretty-skills/>
+
+---
+
 ## 仓库结构
 
 ```
@@ -137,17 +152,22 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 ├── README.md                           # 你正在看
 ├── _config.yml                         # Jekyll 配置（GitHub Pages）
 ├── index.html                          # GitHub Pages 入口
-├── AI能力/                           # 11 领域 case 库（kebab-case 英文，对齐 knowhub）
-├── 商业运营/
+├── AI能力/                             # 11 领域 case 库（中文一级目录）
+│   ├── AI狼群战法/                    # 5 个 demo case
+│   └── 社交电商掘金术/
 ├── 编程开发/
-├── 内容创作/
 ├── 数据科学/
-├── 游戏玩家/
+├── 产品设计/
+├── 商业运营/
+├── 金融投资/
+│   ├── 卡脖子猎手/
+│   └── 宏观雷达/
+├── 内容创作/
+│   └── 橙皮书方法论/
 ├── 教育学习/
+├── 游戏玩家/
 ├── 生活方式/
 ├── 思维方法/
-├── 产品设计/
-├── 金融投资/
 ├── _模板/                              # 模板
 ├── assets/                             # 静态资源
 ├── content-triple-format/              # 3F Content 范式
@@ -159,9 +179,7 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 └── docs/
 ```
 
-> **领域命名规则**：跟 knowhub 对齐的 6 个用 knowhub 名
-> （`AI能力` / `商业运营` / `内容创作` / `思维方法` / `金融投资`），
-> knowhub 没有的 5 个用 kebab-case 英文（`编程开发` / `数据科学` / `产品设计` / `游戏玩家` / `教育学习` / `生活方式`）。
+> **领域命名规则**：11 领域全部用中文（`AI能力` / `编程开发` / `数据科学` / `产品设计` / `商业运营` / `金融投资` / `内容创作` / `教育学习` / `游戏玩家` / `生活方式` / `思维方法`） — **有噱头、易传播**。case 命名也用中文（如 `AI狼群战法` / `卡脖子猎手`）。
 
 ---
 
@@ -205,18 +223,11 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 
 ## 🗓 路线图
 
-| 阶段 | 时间 | 状态 |
-|---|---|---|
-| 重塑方案 + 草稿 | 2026-07-09 | ✅ 完成 |
-| 工具核心（CLI + install + manifest）| 2026-07-09 | ✅ 完成 |
-| pretty-skills-creator 迁移 | 2026-07-09 | ✅ 完成 |
-| ps doctor 环境能力体检 | 2026-07-09 | ✅ 完成 |
-| 11 领域对齐 knowhub | 2026-07-09 | ✅ 完成 |
-| README + 徽章 + topics | 2026-07-09 | ✅ 完成 |
-| 底层元 skill 库规则 + 四自在哲学 | 2026-07-09 | ✅ 完成 |
-| auto-deploy workflow + GitHub Pages | 2026-07-09 | ✅ 完成 |
-| 5 agent 端联调（Cursor / Windsurf）| 持续 | 🚧 当前 |
-| `ps search` / `ps publish` / `ps audit` | v0.2.0 | 📅 待开始 |
+| 阶段 | 状态 |
+|---|---|
+| **v0.1.0**（2026-07-09 发布）：双产品（管 + 创）+ 9 子命令 + ps doctor + 11 领域中文化 + 5 case 噱头命名 + 四自在哲学 + 底层元 skill 库规则 + auto-deploy + GitHub Pages | ✅ 完成 |
+| 5 agent 端联调（Cursor / Windsurf）| 🚧 当前 |
+| `ps search` / `ps publish` / `ps audit`（v0.2.0）| 📅 待开始 |
 
 ---
 
