@@ -110,6 +110,19 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 
 ---
 
+## 🆘 装不上？
+
+| 错误 | 原因 | 解决 |
+|---|---|---|
+| `curl: (56) ... 429` | 代理 / 沙箱限速 | 直连重试，或换代理 |
+| `Authentication failed for ...pretty-skills` | gh CLI 没登录 | `gh auth login` |
+| `ps: command not found` | `~/.local/bin` 不在 PATH | `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc` |
+| `ps add` 找不到 skill | 仓库还在过渡期（旧名） | 跑 `ps doctor` 看完整能力 |
+
+跑 `ps doctor` 一键体检环境能力 + 缺什么怎么补。
+
+---
+
 ## 🗓 路线图
 
 | 阶段 | 时间 | 状态 |
