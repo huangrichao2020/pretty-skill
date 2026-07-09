@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a tool belt with 4 tools hanging: matrix (paintbrush), git (commit icon), gh (tag), mavis-trash (recycle bin). Each tool has 3 small rule badges. Cream paper background. Macaron palette. Dark brown Chinese title '工程硬规则 · 13 条踩坑经验'. Workshop / craftsman mood. 16:9, 2K.

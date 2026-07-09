@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a 4-petal lotus flower, each petal labeled with one 自在: 观自在 / 化自在 / 照因果 / 渡众生. Center has a small meditating figure. Cream paper background. Macaron palette. Dark brown Chinese title '四自在哲学'. Zen / philosophical mood. 16:9, 2K.

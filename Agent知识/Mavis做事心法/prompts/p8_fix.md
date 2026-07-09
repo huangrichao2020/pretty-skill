@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a tree root system with a small wrench at the base, showing '5 Why' layers digging down to a core. Cream paper background. Macaron palette. Dark brown Chinese title 'Step 6 修复返工 · 5 Why 找根因'. Botanical / engineering mood. 16:9, 2K.

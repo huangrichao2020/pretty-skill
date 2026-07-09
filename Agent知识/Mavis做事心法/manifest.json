@@ -1,0 +1,27 @@
+{
+  "name": "Mavis做事心法",
+  "title": "Mavis 做事心法 · Agent 最佳实践 6 步法",
+  "domain": "Agent知识",
+  "tags": [
+    "Agent",
+    "最佳实践",
+    "6步法",
+    "做事心法",
+    "沟通铁律",
+    "反模式",
+    "四自在"
+  ],
+  "visibility": "public",
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-09",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": false,
+    "presentation_pptx": false
+  },
+  "page_count": 12,
+  "summary": "把 Mavis 的人格数据里可复用的方法论全部抽出来 · 6 步法做事流 + 沟通铁律 + 4 反模式 + 13 工程铁律 + 四自在哲学 · 让其他 agent 也能用这套方法"
+}

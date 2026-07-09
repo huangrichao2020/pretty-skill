@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of two hands shaking in agreement, with a thought bubble showing a question mark and a checkmark. Cream paper background. Macaron palette. Dark brown Chinese title 'Step 2 对齐共识 · 沟通铁律'. Subtitle: '出最终方案前先问 1 个关键问题'. Friendly, collaborative mood. 16:9, 2K.

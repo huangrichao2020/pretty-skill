@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a vintage camera / evidence collector setup: camera on tripod, photos pinned to a board showing UI screenshots, test results, bug reproductions. Cream paper background. Macaron palette. Dark brown Chinese title 'Step 5 审查证据'. Three photo types labeled: 截图 / 测试 / 复现. Documentary mood. 16:9, 2K.

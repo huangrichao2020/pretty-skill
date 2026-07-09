@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a relay race track with 4 runners passing batons in sequence. The track is shaped like a flowchart. Cream paper background. Macaron palette. Dark brown Chinese title 'Step 4 分步执行 · 小步快跑'. Cozy sports field mood. 16:9, 2K.

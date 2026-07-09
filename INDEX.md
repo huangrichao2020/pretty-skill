@@ -36,6 +36,7 @@
 |---|---|---|---|---|
 | Agent知识 | [`AI狼群战法`](./Agent知识/AI狼群战法/) | **public** | multi-agent, 协作 | content.md + web.html + 锦绣 |
 | Agent知识 | [`社交电商掘金术`](./Agent知识/社交电商掘金术/) | **public** | 社交电商, GPT | content.md + web.html + 锦绣 |
+| Agent知识 | [`Mavis做事心法`](./Agent知识/Mavis做事心法/) | **public** | 6步法, 沟通铁律, 反模式 | content.md + web.html + 13 AI 出图 |
 | 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + web.html + 锦绣 + presentation.pptx |
 | 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + web.html + 锦绣 |
 | 内容创作 | [`橙皮书方法论`](./内容创作/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + web.html + 锦绣 |

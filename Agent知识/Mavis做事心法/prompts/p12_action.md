@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a checklist on a wooden clipboard with 12 items, each with a small checkbox. Cream paper background. Macaron palette. Dark brown Chinese title '3 步开始 + 12 条自检 checklist'. Three small icons showing: git clone / 真任务 / dream 修炼. Cozy study desk. 16:9, 2K.

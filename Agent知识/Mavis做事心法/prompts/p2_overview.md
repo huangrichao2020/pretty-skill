@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a clean 6-step cycle diagram: 调研需求 → 对齐共识 → 详细规划 → 分步执行 → 审查证据 → 修复返工 → (back to 调研需求). Each step is a circular node connected by arrows. Top half labeled '用脑子', bottom half labeled '用手'. Cream paper background. Macaron palette. Dark brown Chinese title '6 步法做事流 · 一张图全貌'. Educational infographic style. 16:9, 2K.

@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a TodoWrite kanban board with 6 sticky notes pinned in order, each with a small icon (magnifier, handshake, clipboard, runner, camera, wrench). Cream paper background. Macaron palette. Dark brown Chinese title 'Step 3 详细规划'. Cozy workspace with desk lamp. 16:9, 2K.

@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 4 warning signs on a wooden fence: '精简铁律', 'picker 被吞', '图压缩过密', '抽象动词封装'. Each sign has a small emoji warning. Cream paper background. Macaron palette. Dark brown Chinese title '反模式库 · 4 个必避坑'. Cautionary mood with humor. 16:9, 2K.
