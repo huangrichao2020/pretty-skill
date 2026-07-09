@@ -10,6 +10,15 @@
 - `ps audit` — 检查 manifest 是否合法 / 依赖是否完整
 - 自更新机制（`ps self update` 升级工具自身）
 
+## [0.1.0] - 2026-07-09
+
+### 🎉 v0.1.0 release · 仓库改名
+- `pretty-skill` → `pretty-skills`（复数）
+- 旧 URL 自动重定向到新仓库
+- 旧 README "过渡期" banner 替换为 "v0.1.0 已发布" banner
+- `PS_REPO` 默认值从 `pretty-skill` 改 `pretty-skills`
+- `push.sh` 目标 `REPO` 默认值从 `pretty-skill` 改 `pretty-skills`
+
 ## [0.1.1] - 2026-07-09
 
 ### 新增

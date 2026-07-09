@@ -1,7 +1,6 @@
 # pretty-skills
 
-> ⚠️ **过渡期** · 仓库即将改名为 **`pretty-skills`**（复数）。
-> v0.1.0 release 时（5-6 天内）rename + 一起发。
+> ✅ **v0.1.0 已发布**（2026-07-09）· 仓库名 `pretty-skill` → `pretty-skills`。
 > **README 顶部先说一件事**：这是一次产品重塑，定位从"内容案例仓库" → "双产品工具生态"。
 
 ---
@@ -116,10 +115,13 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | 阶段 | 时间 | 状态 |
 |---|---|---|
 | 重塑方案 + 草稿 | 2026-07-09 | ✅ 完成 |
-| 工具核心（CLI + install + manifest） | Day 1-3 | 🚧 当前 |
-| pretty-skills-creator 迁移 | Day 4-5 | 📅 待开始 |
-| 5 agent 端联调 + 撤回 PR #2 | Day 5-6 | 📅 待开始 |
-| GitHub 改名 + v0.1.0 release | Day 6 | 📅 待开始 |
+| 工具核心（CLI + install + manifest） | Day 1-3 | ✅ 完成 |
+| pretty-skills-creator 迁移 | Day 4-5 | ✅ 完成 |
+| ps doctor 环境能力体检 | Day 5 | ✅ 完成 |
+| PR #3 合到 main | 2026-07-09 | ✅ 完成 |
+| GitHub 改名 + v0.1.0 release | 2026-07-09 | ✅ 完成 |
+| 5 agent 端联调 | Day 5-6 | 🚧 当前 |
+| 撤回 PR #2 + 调整 auto-deploy workflow | 待定 | 📅 待开始 |
 
 ---
 

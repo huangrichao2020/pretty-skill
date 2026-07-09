@@ -16,7 +16,7 @@ set -euo pipefail
 
 OUT_DIR="${1:?用法: bash $0 <out_dir>/<name>}"
 BASE_OWNER="${BASE_OWNER:-huangrichao2020}"
-REPO="${REPO:-pretty-skill}"  # 改名时改 pretty-skills（v0.1.0 release）
+REPO="${REPO:-pretty-skills}"  # v0.1.0 改名完成
 
 # 检查 gh auth
 if ! gh auth status >/dev/null 2>&1; then

@@ -22,7 +22,7 @@ fi
 : "${PS_ROOT:=$HOME/.pretty-skills}"
 : "${PS_STORE:=$PS_ROOT/store}"
 : "${PS_CONFIG:=$PS_ROOT/config.yaml}"
-: "${PS_REPO:=huangrichao2020/pretty-skill}"  # 改名后改 pretty-skills
+: "${PS_REPO:=huangrichao2020/pretty-skills}"  # v0.1.0 改名完成
 : "${PS_BRANCH:=main}"
 : "${PS_SKILLS_DIR:=$PS_ROOT/bin}"   # 工具自身所在的 bin 目录
 export PS_ROOT PS_STORE PS_CONFIG PS_REPO PS_BRANCH PS_SKILLS_DIR
