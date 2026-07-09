@@ -148,6 +148,7 @@ NOTE（v0.2 限制）:
     parser.add_argument("--output", default="./output/", help="输出父目录（默认 ./output/）")
     parser.add_argument("--case-name", help="case 目录名（默认 = .md 文件名 kebab-case）")
     parser.add_argument("--no-jinxiu", action="store_true", help="跳过锦绣 4 形态骨架生成")
+    parser.add_argument("--no-open", action="store_true", help="跳过自动打开 web.html（默认会在浏览器打开 PPT 演示版）")
     parser.add_argument(
         "--visibility", default="public",
         choices=["public", "private", "draft"],
@@ -577,6 +578,26 @@ v3.16+ 规则：
 
     write_web_html(output_dir, title, pages)
     print(f"  ✅ web.html (PPT 演示版骨架)")
+
+    # v3.18+ · 自动在本地浏览器打开 web.html（按用户反馈：本地按需预览，不要远端静态页）
+    if not args.no_open:
+        web_html_path = output_dir / "web.html"
+        try:
+            import platform, subprocess as _sp
+            _sys = platform.system()
+            if _sys == "Darwin":
+                _sp.Popen(["open", str(web_html_path.absolute())])
+                print(f"  🌐 已自动打开浏览器（macOS）: {web_html_path}")
+            elif _sys == "Linux":
+                _sp.Popen(["xdg-open", str(web_html_path.absolute())])
+                print(f"  🌐 已自动打开浏览器（Linux）: {web_html_path}")
+            elif _sys == "Windows":
+                _sp.Popen(["cmd", "/c", "start", "", str(web_html_path.absolute())])
+                print(f"  🌐 已自动打开浏览器（Windows）: {web_html_path}")
+        except FileNotFoundError:
+            print(f"  ⚠️  找不到 open/xdg-open/start 命令，请手动打开: {web_html_path}")
+        except Exception as e:
+            print(f"  ⚠️  自动打开失败: {e}（手动打开即可）")
 
     write_jinxiu_skeleton(output_dir, args, len(pages))
     if not args.no_jinxiu:

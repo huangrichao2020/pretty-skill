@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{CASE_TITLE} · PPT 演示版</title>
+<title>占星入门 12 星座 · 一次看懂自己的性格底色 · PPT 演示版</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body {
@@ -133,14 +133,30 @@ html, body {
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <h3>缩略图导航</h3>
-    {THUMBNAILS}
+        <div class="thumb" data-idx="0"><img src="images/p0_cover.png" alt="P0"><span class="thumb-num">1</span></div>
+    <div class="thumb" data-idx="1"><img src="images/p1_hook.png" alt="P1"><span class="thumb-num">2</span></div>
+    <div class="thumb" data-idx="2"><img src="images/p2_overview.png" alt="P2"><span class="thumb-num">3</span></div>
+    <div class="thumb" data-idx="3"><img src="images/p3_elements.png" alt="P3"><span class="thumb-num">4</span></div>
+    <div class="thumb" data-idx="4"><img src="images/p4_modes.png" alt="P4"><span class="thumb-num">5</span></div>
+    <div class="thumb" data-idx="5"><img src="images/p5_grid.png" alt="P5"><span class="thumb-num">6</span></div>
+    <div class="thumb" data-idx="6"><img src="images/p6_chemistry.png" alt="P6"><span class="thumb-num">7</span></div>
+    <div class="thumb" data-idx="7"><img src="images/p7_application.png" alt="P7"><span class="thumb-num">8</span></div>
+    <div class="thumb" data-idx="8"><img src="images/p8_action.png" alt="P8"><span class="thumb-num">9</span></div>
   </aside>
 
   <main class="stage">
-    {SLIDES}
+    <div class="slide" data-idx="0"><img src="images/p0_cover.png" alt="P0"></div>
+    <div class="slide" data-idx="1"><img src="images/p1_hook.png" alt="P1"></div>
+    <div class="slide" data-idx="2"><img src="images/p2_overview.png" alt="P2"></div>
+    <div class="slide" data-idx="3"><img src="images/p3_elements.png" alt="P3"></div>
+    <div class="slide" data-idx="4"><img src="images/p4_modes.png" alt="P4"></div>
+    <div class="slide" data-idx="5"><img src="images/p5_grid.png" alt="P5"></div>
+    <div class="slide" data-idx="6"><img src="images/p6_chemistry.png" alt="P6"></div>
+    <div class="slide" data-idx="7"><img src="images/p7_application.png" alt="P7"></div>
+    <div class="slide" data-idx="8"><img src="images/p8_action.png" alt="P8"></div>
     <div class="overlay-top">
-      <div class="title">{CASE_TITLE}</div>
-      <div class="progress"><span id="current">1</span> / <span id="total">{PAGE_COUNT}</span></div>
+      <div class="title">占星入门 12 星座 · 一次看懂自己的性格底色</div>
+      <div class="progress"><span id="current">1</span> / <span id="total">9</span></div>
     </div>
     <div class="controls">
       <div>
@@ -164,7 +180,7 @@ html, body {
 <!-- 演讲者模式 -->
 <div class="presenter-mode" id="presenterMode">
   <div class="pm-current">
-    <div class="pm-label">当前页 <span id="pm-cur-num">1</span> / <span id="pm-total">{PAGE_COUNT}</span></div>
+    <div class="pm-label">当前页 <span id="pm-cur-num">1</span> / <span id="pm-total">9</span></div>
     <img id="pm-cur-img" src="" alt="">
   </div>
   <div class="pm-next">
@@ -173,7 +189,7 @@ html, body {
   </div>
   <div class="pm-notes">
     <h4>📝 演讲备注</h4>
-    <p id="pm-notes-content">{DEFAULT_NOTE}</p>
+    <p id="pm-notes-content">占星入门 12 星座 · 一次看懂自己的性格底色 · pretty-skills PPT 演示版</p>
   </div>
   <div class="pm-timer">
     <div class="label">⏱ 已演讲时长</div>
@@ -202,10 +218,10 @@ html, body {
 
 <script>
 // ===== 配置 =====
-const PAGE_COUNT = {PAGE_COUNT};
-const PAGE_IMAGES = {PAGE_IMAGES_JS};
-const PAGE_NOTES = {PAGE_NOTES_JS};
-const DEFAULT_NOTE = "{DEFAULT_NOTE}";
+const PAGE_COUNT = 9;
+const PAGE_IMAGES = ['p0_cover.png', 'p1_hook.png', 'p2_overview.png', 'p3_elements.png', 'p4_modes.png', 'p5_grid.png', 'p6_chemistry.png', 'p7_application.png', 'p8_action.png'];
+const PAGE_NOTES = ['第 1 页 · p0_cover', '第 2 页 · p1_hook', '第 3 页 · p2_overview', '第 4 页 · p3_elements', '第 5 页 · p4_modes', '第 6 页 · p5_grid', '第 7 页 · p6_chemistry', '第 8 页 · p7_application', '第 9 页 · p8_action'];
+const DEFAULT_NOTE = "占星入门 12 星座 · 一次看懂自己的性格底色 · pretty-skills PPT 演示版";
 
 let cur = 0;
 let timerStart = Date.now();

@@ -1,23 +1,61 @@
 #!/usr/bin/env python3
-"""从 PPT HTML 模板生成具体 case 的 web.html
+"""从 PPT HTML 模板生成具体 case 的 web.html（v3.18 增强）
 
-用法：
-  python3 tools/build_ppt_html.py <case_dir> <case_title> [图片列表...]
+用法（3 种）：
 
-例：
-  python3 tools/build_ppt_html.py \\
-    Agent知识/AI狼群战法 \\
-    "团队如何与 AI Agent 高效协作" \\
-    p0_cover p1_problem p2_vision p3_context_layers p4_observation p5_memory_evolve p6_human_role p7_takeaways
+1. 自动模式（推荐）— 从 manifest.json 读 title + 从 images/ 读图序：
+   python3 tools/build_ppt_html.py <case_dir>
+
+2. 半自动 — 手动传 case_title（覆盖 manifest）：
+   python3 tools/build_ppt_html.py <case_dir> "自定义标题"
+
+3. 全手动 — 完全控制（兼容旧用法）：
+   python3 tools/build_ppt_html.py <case_dir> "标题" p0_cover p1_problem ...
+
+输出：<case_dir>/web.html（实例化好的 PPT 演示版 · 可本地浏览器打开）
+
+跨平台：
+- macOS: open web.html
+- Linux: xdg-open web.html
+- Windows: start web.html
+
+v3.18 增强：
+- 从 manifest.json 自动读 title / page_count
+- 从 images/ 读 p*.png 顺序（按文件名排序）
+- 不需要传图片列表参数
+- --open 参数创建完自动打开浏览器
 """
+import json
 import sys
+import subprocess
 from pathlib import Path
 
 TEMPLATE_PATH = Path(__file__).parent.parent / "_模板/案例/web.html"
 
 
+def load_manifest(case_dir: Path) -> dict | None:
+    """读 manifest.json（如果存在）"""
+    p = case_dir / "manifest.json"
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"⚠️  manifest.json 解析失败: {e}")
+        return None
+
+
+def discover_images(case_dir: Path) -> list[str]:
+    """从 images/ 自动读 p*.png（按文件名排序）"""
+    images_dir = case_dir / "images"
+    if not images_dir.exists():
+        return []
+    return sorted([f.name for f in images_dir.glob("p*.png")])
+
+
 def generate(case_dir: Path, case_title: str, page_images: list[str], page_notes: list[str] = None) -> str:
-    template = TEMPLATE_PATH.read_text(en编程开发="utf-8")
+    """实例化模板"""
+    template = TEMPLATE_PATH.read_text(encoding="utf-8")
 
     if page_notes is None:
         page_notes = [f"第 {i+1} 页 · {Path(img).stem}" for i, img in enumerate(page_images)]
@@ -50,25 +88,67 @@ def generate(case_dir: Path, case_title: str, page_images: list[str], page_notes
     return html
 
 
+def open_in_browser(file_path: Path) -> None:
+    """跨平台打开 web.html 在默认浏览器"""
+    try:
+        import platform
+        system = platform.system()
+        if system == "Darwin":  # macOS
+            subprocess.Popen(["open", str(file_path.absolute())])
+        elif system == "Linux":
+            subprocess.Popen(["xdg-open", str(file_path.absolute())])
+        elif system == "Windows":
+            # Windows 需要 start 命令（cmd 内置）
+            subprocess.Popen(["cmd", "/c", "start", "", str(file_path.absolute())], shell=False)
+        else:
+            print(f"⚠️  未知平台 {system}，跳过自动打开")
+            return
+        print(f"🌐 已自动打开浏览器: {file_path}")
+    except FileNotFoundError:
+        print(f"⚠️  找不到 open/xdg-open/start 命令，请手动打开: {file_path}")
+    except Exception as e:
+        print(f"⚠️  自动打开失败: {e}")
+
+
 def main():
-    if len(sys.argv) < 3:
-        print("用法: python3 build_ppt_html.py <case_dir> <case_title> [图片列表...]")
-        print("例:  python3 build_ppt_html.py Agent知识/cartman ... p0_cover p1_problem ...")
+    if len(sys.argv) < 2 or "--help" in sys.argv:
+        print(__doc__)
+        sys.exit(0 if "--help" in sys.argv else 1)
+
+    # 解析参数
+    args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    flags = {a for a in sys.argv[1:] if a.startswith("-")}
+    open_after = "--open" in flags
+
+    case_dir = Path(args[0])
+
+    if not case_dir.exists():
+        print(f"❌ Case 目录不存在: {case_dir}")
         sys.exit(1)
 
-    case_dir = Path(sys.argv[1])
-    case_title = sys.argv[2]
-    page_images = sys.argv[3:]
+    # 自动从 manifest 读 title
+    manifest = load_manifest(case_dir)
+    auto_title = manifest.get("title") if manifest else None
 
+    # 自动从 images/ 读图
+    auto_images = discover_images(case_dir)
+
+    # 解析剩余参数
+    case_title = auto_title
+    page_images = auto_images
+
+    if len(args) >= 2:
+        case_title = args[1]  # 手动标题覆盖 manifest
+    if len(args) >= 3:
+        page_images = args[2:]  # 手动图列表覆盖自动发现
+
+    # 校验
+    if not case_title:
+        print("❌ 拿不到 case title（manifest.json 没 title 字段，也没传参数）")
+        sys.exit(1)
     if not page_images:
-        # 自动从 images/ 读取 p*.png
-        images_dir = case_dir / "images"
-        if images_dir.exists():
-            page_images = sorted([f.name for f in images_dir.glob("p*.png")])
-            print(f"  自动读取 {len(page_images)} 张图: {page_images[:3]}...")
-        else:
-            print("❌ 没提供图片列表 + images/ 目录也不存在")
-            sys.exit(1)
+        print(f"❌ 拿不到图片列表（{case_dir}/images/ 里没有 p*.png，也没传参数）")
+        sys.exit(1)
 
     print(f"📝 Case: {case_dir}")
     print(f"📝 标题: {case_title}")
@@ -76,10 +156,13 @@ def main():
 
     html = generate(case_dir, case_title, page_images)
     output = case_dir / "web.html"
-    output.write_text(html, en编程开发="utf-8")
+    output.write_text(html, encoding="utf-8")
 
     size_kb = output.stat().st_size / 1024
     print(f"✅ 生成 {output} ({size_kb:.1f} KB)")
+
+    if open_after:
+        open_in_browser(output)
 
 
 if __name__ == "__main__":
