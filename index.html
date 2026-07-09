@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pretty-skill · 中文 skill 沉淀仓库</title>
+<meta name="description" content="对 AI 友好的中文 skill 沉淀仓库 · 每个 skill 按 3F Content 范式发布（.md + .pptx + .html）+ 锦绣 4 形态 · 让内容对 AI 和人类同等友好">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "SF Pro CJK", "Helvetica Neue", sans-serif;
+    background: linear-gradient(180deg, #fafaf7 0%, #f4f1eb 100%);
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 48px 24px;
+    line-height: 1.6;
+  }
+  main { max-width: 1080px; margin: 0 auto; }
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .tagline {
+    font-size: 18px;
+    color: #4a4a4a;
+    margin-bottom: 48px;
+    max-width: 720px;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .case-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(30,35,40,0.08);
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: block;
+  }
+  .case-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30,35,40,0.12);
+  }
+  .case-domain {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fafaf7;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .case-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .case-summary {
+    font-size: 13px;
+    color: #6b6b6b;
+    line-height: 1.5;
+  }
+  .case-status {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .status-placeholder { background: #fef3c7; color: #92400e; }
+  .status-complete { background: #d1fae5; color: #065f46; }
+  .meta {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px dashed #d4d4d0;
+    font-size: 14px;
+    color: #6b6b6b;
+  }
+  .meta a { color: #1a1a1a; }
+  pre { background: #1a1a1a; color: #fafaf7; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; margin: 12px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>pretty-skill</h1>
+  <p class="tagline">对 AI 友好的中文 skill 沉淀仓库 · 每个 skill 按 <strong>3F Content 范式</strong>发布（.md + .pptx + .html）+ <strong>锦绣 4 形态</strong> · 让内容对 AI 和人类同等友好</p>
+
+  <h2>精选案例</h2>
+  <div class="grid">
+    <a class="case-card" href="AI能力/cartman-team-ai-agent-collab/web.html">
+      <span class="case-domain">AI能力</span>
+      <div class="case-title">cartman-team-ai-agent-collab</div>
+      <p class="case-summary">团队用好 Agent · 马卡龙版 · 8 张讲解图 + 完整 content.md + 真实 .pptx</p>
+      <span class="case-status status-complete">✅ 完整版</span>
+    </a>
+    <a class="case-card" href="AI能力/social-ecom-skill/web.html">
+      <span class="case-domain">AI能力</span>
+      <div class="case-title">social-ecom-skill</div>
+      <p class="case-summary">社交电商 skill · 内容运营案例</p>
+      <span class="case-status status-complete">✅ 完整版</span>
+    </a>
+    <a class="case-card" href="金融投资/chokepoint-mainboard/web.html">
+      <span class="case-domain">金融投资</span>
+      <div class="case-title">chokepoint-mainboard</div>
+      <p class="case-summary">卡脖子选股报告 · 主板专版 · Serenity 供应链瓶颈方法论 · 9 张讲解图</p>
+      <span class="case-status status-complete">✅ 完整版</span>
+    </a>
+  </div>
+
+  <h2>🆕 渐进式 Skill 上线中</h2>
+  <p style="color: #4a4a4a; margin-bottom: 16px;">Mavis 的 <code>create-skill-html</code> helper 正在接入：用户用一句「做 skill」就能自动提占位 PR，<strong>当天就能在 Git Pages 上分享</strong>。完整 content.md / 锦绣 / 真实 .pptx 走另一个人工 review PR。</p>
+
+  <pre>用户："做个 skill 叫 X"
+  ↓
+Mavis create-skill-html helper
+  ↓
+强制生成 web.html (占位) + 视觉卡
+  ↓
+gh CLI: fork → push → 提 PR with auto-deploy-placeholder
+  ↓
+pretty-skill GitHub Action: 自动 merge
+  ↓
+deploy-pages: Git Pages 立刻可访问
+  ↓
+https://huangrichao2020.github.io/pretty-skill/&lt;领域&gt;/&lt;case&gt;/web.html</pre>
+
+  <div class="meta">
+    <p><strong>使用方式：</strong>访问任意 case 的 <code>web.html</code> 即可阅读 PPT 演示版。完整 3F Content 含 <code>content.md</code> + <code>output/&lt;name&gt;.pptx</code>，GitHub 仓库内查看。</p>
+    <p><strong>贡献方式：</strong>在 GitHub 仓库 <a href="https://github.com/huangrichao2020/pretty-skill">huangrichao2020/pretty-skill</a> 提 PR，<code>auto-deploy-placeholder</code> 标签走占位通道。</p>
+  </div>
+</main>
+</body>
+</html>

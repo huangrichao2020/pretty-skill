@@ -1,0 +1,141 @@
+name: Auto-Deploy Placeholder PR
+
+# 监听带 `auto-deploy-placeholder` 标签的 PR
+# 占位 PR 满足条件时 → 自动 approve + enable auto-merge
+# merge 后会触发 deploy-pages.yml → GitHub Pages 立刻可访问
+
+on:
+  pull_request:
+    types: [opened, labeled, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-deploy-placeholder:
+    if: |
+      contains(github.event.pull_request.labels.*.name, 'auto-deploy-placeholder') &&
+      github.event.pull_request.state == 'open'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          fetch-depth: 0
+
+      - name: 验证占位 PR 特征
+        id: validate
+        env:
+          BASE: ${{ github.event.pull_request.base.ref }}
+        run: |
+          echo "::group::🔍 验证占位 PR 特征"
+
+          # 1. 检查改动的文件列表
+          CHANGED=$(git diff --name-only origin/$BASE...HEAD)
+          echo "改动的文件:"
+          echo "$CHANGED"
+          echo ""
+
+          # 2. 必须是新 case（单一领域目录新增 2 个文件：web.html + manifest.json）
+          # 允许轻微的"工具/文档"附属改动
+          FILE_COUNT=$(echo "$CHANGED" | wc -l | tr -d ' ')
+          WEB_HTML_COUNT=$(echo "$CHANGED" | grep -c "web.html$" || true)
+          MANIFEST_COUNT=$(echo "$CHANGED" | grep -c "manifest.json$" || true)
+
+          if [ "$WEB_HTML_COUNT" -ne 1 ]; then
+            echo "❌ 必须恰好 1 个 web.html（实际 $WEB_HTML_COUNT）"
+            exit 1
+          fi
+
+          if [ "$MANIFEST_COUNT" -lt 1 ]; then
+            echo "❌ 必须有 manifest.json"
+            exit 1
+          fi
+
+          # 3. 找到 web.html 路径
+          WEB_HTML_PATH=$(echo "$CHANGED" | grep "web.html$" | head -1)
+          echo "web.html 路径: $WEB_HTML_PATH"
+          echo "WEB_HTML_PATH=$WEB_HTML_PATH" >> $GITHUB_OUTPUT
+
+          # 4. 验证 web.html 最低质量
+          echo ""
+          echo "::group::📋 web.html 质量检查"
+
+          # title
+          TITLE=$(grep -oP '<title>[^<]+</title>' "$WEB_HTML_PATH" | head -1 | sed 's/<[^>]*>//g')
+          TITLE_LEN=$(echo -n "$TITLE" | wc -m | tr -d ' ')
+          if [ "$TITLE_LEN" -lt 5 ]; then
+            echo "❌ title 太短 ($TITLE_LEN 字)，至少 5 字"
+            exit 1
+          fi
+          echo "✓ title ($TITLE_LEN 字): $TITLE"
+
+          # body 字数（粗略数中文字符 + 英文单词）
+          BODY_LEN=$(python3 -c "
+import re
+with open('$WEB_HTML_PATH', 'r', encoding='utf-8') as f:
+    html = f.read()
+# 去掉 script / style
+html = re.sub(r'<script.*?</script>', '', html, flags=re.S)
+html = re.sub(r'<style.*?</style>', '', html, flags=re.S)
+# 去掉标签
+text = re.sub(r'<[^>]+>', ' ', html)
+# 数中文字符 + 英文单词
+zh = len(re.findall(r'[\u4e00-\u9fff]', text))
+en = len(re.findall(r'[a-zA-Z]+', text))
+print(zh + en)
+")
+          if [ "$BODY_LEN" -lt 100 ]; then
+            echo "❌ 正文太短 ($BODY_LEN 字)，至少 100 字"
+            exit 1
+          fi
+          echo "✓ 正文 ($BODY_LEN 字)"
+
+          # ≥ 1 张图
+          IMG_COUNT=$(grep -c '<img' "$WEB_HTML_PATH" || true)
+          if [ "$IMG_COUNT" -lt 1 ]; then
+            # 占位版允许 cover-placeholder div（无图也算，但要求说明）
+            if grep -q "cover-placeholder" "$WEB_HTML_PATH"; then
+              echo "⚠️  无图，但有 cover-placeholder 标记（占位版可接受）"
+            else
+              echo "❌ 至少 1 个 <img> 标签 或 cover-placeholder 标记"
+              exit 1
+            fi
+          else
+            echo "✓ 图片 ($IMG_COUNT 张)"
+          fi
+
+          # 5. 验证 manifest.json 标了 placeholder 状态
+          MANIFEST_PATH=$(echo "$CHANGED" | grep "manifest.json$" | head -1)
+          STATUS=$(python3 -c "import json; print(json.load(open('$MANIFEST_PATH'))['status'])" 2>/dev/null || echo "")
+          if [ "$STATUS" != "placeholder" ]; then
+            echo "❌ manifest.status 必须是 'placeholder'（实际 '$STATUS'）"
+            exit 1
+          fi
+          echo "✓ manifest.status: placeholder"
+
+          echo ""
+          echo "✅ 所有占位 PR 校验通过"
+
+      - name: Auto-approve PR
+        if: steps.validate.outputs.WEB_HTML_PATH
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          echo "::group::🤖 自动 approve + enable auto-merge"
+          gh pr review "$PR_NUMBER" --approve --body "🤖 Auto-approved by pretty-skill bot · 占位 PR 通过质量检查 → 立刻 merge + 部署"
+          gh pr merge "$PR_NUMBER" --auto --squash --delete-branch
+          echo "✅ 已 enable auto-merge，PR 合入后 deploy-pages 会自动跑"
+
+      - name: 添加 skill-status 标签
+        if: steps.validate.outputs.WEB_HTML_PATH
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # 占位 PR 自动补 skill-status:placeholder 标签
+          gh pr edit "$PR_NUMBER" --add-label "skill-status:placeholder" || true

@@ -1,0 +1,11 @@
+# pretty-skill Jekyll 配置
+# 启用 GitHub Pages 后让仓库不被 Jekyll 默认排除
+# 重点：_模板 / 锦绣 / _data 等下划线目录都要 include
+include:
+  - _模板
+  - 锦绣
+  - _data
+exclude: []
+permalink: /:path/
+# 关闭 frontmatter 严格解析
+strict_front_matter: false
