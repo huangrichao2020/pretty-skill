@@ -1,0 +1,19 @@
+{
+  "name": "git沙箱求生术",
+  "domain": "编程开发",
+  "title": "Git 沙箱求生术 · 沙箱里和 GitHub 安全协作的避坑手册",
+  "visibility": "public",
+  "tags": ["git", "GitHub", "SSH", "HTTPS", "fetch", "沙箱", "WorkBuddy", "协作避坑"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-09",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 7,
+  "summary": "WorkBuddy 沙箱里 git 协作的工程避坑：SSH fetch 走 upload-pack 路径会静默卡死(120s/RC=124)，但 ssh -T/ls-remote/push 均正常——与认证无关。公开仓用 HTTPS 智能 HTTP fetch 秒回(8MB/s)；私有仓用 PAT HTTPS；PAT 跨 huangrichao2020 全仓复用。附 rebase --ours/--theirs 方向纪律与真实退出码校验纪律。"
+}

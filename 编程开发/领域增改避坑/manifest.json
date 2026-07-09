@@ -1,0 +1,19 @@
+{
+  "name": "领域增改避坑",
+  "domain": "编程开发",
+  "title": "pretty-skill 领域增改避坑 · 改领域名两处 PRESET_DOMAINS 必须同步",
+  "visibility": "public",
+  "tags": ["pretty-skill", "PRESET_DOMAINS", "check-3f", "create.py", "中文化", "领域", "维护避坑"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-09",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 7,
+  "summary": "维护 pretty-skill 的避坑：check-3f.py 与 skill-creator/create.py 各自硬编码 PRESET_DOMAINS，是中文领域的硬门槛——加/改领域必须两处一起改，否则校验或脚手架失效。历史坑：3 个老 case 的 manifest.domain 不在英文预设里长期 EXIT=1，被管道 grep 退出码掩盖。附中文正则 \\b 失效坑、11→16 领域中文化决策、加领域 4 步清单。"
+}
