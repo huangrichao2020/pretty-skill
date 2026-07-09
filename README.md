@@ -26,7 +26,7 @@
 
 ---
 
-## 装retty-skills，能干什么？
+## 装pretty-skills，能干什么？
 
 ### 1. **pretty-skills** — 管理你所有的 skill
 
