@@ -230,8 +230,9 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | 阶段 | 状态 |
 |---|---|
 | **v0.1.0**（2026-07-09 发布）：双产品（管 + 创）+ 9 子命令 + ps doctor + 12 领域中文化 + 5 case 噱头命名 + 四自在哲学 + 底层元 skill 库规则 + auto-deploy + GitHub Pages | ✅ 完成 |
-| 5 agent 端联调（Cursor / Windsurf）| 🚧 当前 |
 | `ps search` / `ps publish` / `ps audit`（v0.2.0）| 📅 待开始 |
+
+> 5 agent 端联调：用户本地用 **WorkBuddy**（腾讯桌面 agent）自测，不需要 mavis 端实测。
 
 ---
 
