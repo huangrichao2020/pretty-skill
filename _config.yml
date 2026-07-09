@@ -7,9 +7,18 @@ email: huangrichao2020@users.noreply.github.com
 url: "https://github.com/huangrichao2020/pretty-skills"
 repository: huangrichao2020/pretty-skills
 
-# Jekyll 排除 tools/ 目录（不编译为页面，让 web.html 直接被 GitHub Pages 提供）
+# Jekyll 配置：让 tools/ 下的文件作为静态文件提供（不 liquid 解析）
+# 这样用户访问 https://.../tools/<name>/web.html 就能直接看到 skill 内容
+defaults:
+  - scope:
+      path: "tools"
+    values:
+      liquid: false
+      sitemap: false
+      feed: false
+
+# 排除这些（不参与 build）
 exclude:
-  - tools/
   - README.md
   - CHANGELOG.md
   - "*.yml"
@@ -19,14 +28,7 @@ exclude:
   - node_modules
   - vendor
   - "*.log"
-
-# 用 jekyll-optional-front-matter 插件需要（如果以后想给 tools/ 里的 web.html 加 front matter）
-# plugins:
-#   - jekyll-optional-front-matter
-#   - jekyll-include-relative
-
-# 默认主题
-# theme: minima
+  - ".github"
 
 markdown: kramdown
 highlighter: rouge
