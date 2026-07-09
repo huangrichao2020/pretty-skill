@@ -61,17 +61,6 @@ ps graph > deps.mmd
 ps contribute my-tweak
 ```
 
----
-
-## 支持的 agent
-
-| Agent | Skills 目录 |
-|---|---|
-| Claude Code | `~/.claude/skills/` |
-| Codex | `~/.codex/skills/` |
-| Mavis | `~/.mavis/skills/` |
-| Cursor | `~/.cursor/skills/` |
-| Windsurf | `~/.windsurf/skills/` |
 
 ---
 
