@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# pretty-skills · 主命令（dispatcher）
+# 8 个子命令: list / info / add / rm / update / graph / contribute / sync
+
+set -euo pipefail
+# 解析真实路径（处理 ~/.local/bin/ps -> store/pretty-skills/cli/ps 的 symlink）
+_REAL_PATH="$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || python3 -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd "$(dirname "$_REAL_PATH")" && pwd)"
+PS_ROOT_HOME="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT_HOME/store/pretty-skills/lib/common.sh"
+
+# fallback: 装在仓库内（开发用）
+if [ ! -f "$LIB" ]; then
+  LIB="$SCRIPT_DIR/../lib/common.sh"
+fi
+
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+# 用法
+usage() {
+  cat <<EOF
+pretty-skills · 跨 agent 的 skill 管理器
+
+用法:
+  ps <command> [args]
+
+命令:
+  list                 列出本地所有 skill（按 agent 分组）
+  info <name>          显示 skill 详情
+  add <name>           从主项目装一个 skill
+  rm <name>            卸载一个 skill
+  update [name]        拉主项目最新（不传 name = 全部）
+  graph                输出 Mermaid 依赖图
+  contribute <name>    把本地修改推回主项目（提 PR）
+  sync                 批量 update = ps update（对所有 skill）
+  create <name>        调用 pretty-skills-creator 创建新 skill
+  help                 看这个帮助
+
+示例:
+  ps list
+  ps add serenity-stock-choke
+  ps graph > deps.mmd
+  ps contribute my-new-skill
+
+EOF
+}
+
+# dispatcher
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  list)        exec "$SCRIPT_DIR/ps-list" "$@" ;;
+  info)        exec "$SCRIPT_DIR/ps-info" "$@" ;;
+  add)         exec "$SCRIPT_DIR/ps-add" "$@" ;;
+  rm)          exec "$SCRIPT_DIR/ps-rm" "$@" ;;
+  update)      exec "$SCRIPT_DIR/ps-update" "$@" ;;
+  graph)       exec "$SCRIPT_DIR/ps-graph" "$@" ;;
+  contribute)  exec "$SCRIPT_DIR/ps-contribute" "$@" ;;
+  sync)        exec "$SCRIPT_DIR/ps-update" --all "$@" ;;
+  create)      exec "$SCRIPT_DIR/ps-create" "$@" ;;
+  help|-h|--help) usage ;;
+  *)
+    log_err "未知命令: $cmd"
+    usage
+    exit 1
+    ;;
+esac

@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+# ps-contribute <name> · 把本地修改推回主项目（提 PR）
+# 流程:
+#   1. 检查本地 store/<name> 有未 commit 的修改
+#   2. 在 GitHub 上 fork 主项目（gh repo fork）
+#   3. 把 store/<name> 同步到 fork 的 tools/<name> 目录
+#   4. 提 PR（gh pr create）
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+name="${1:-}"
+if [ -z "$name" ]; then
+  log_err "用法: ps contribute <name>"
+  exit 1
+fi
+
+dst="$PS_STORE/$name"
+if [ ! -d "$dst" ]; then
+  log_err "本地没装 $name"
+  exit 1
+fi
+
+# 检查 gh
+if ! has_cmd gh; then
+  log_err "需要 gh CLI（https://cli.github.com）"
+  exit 1
+fi
+
+# 验证 GitHub 登录
+if ! gh auth status >/dev/null 2>&1; then
+  log_err "gh 没登录（跑: gh auth login）"
+  exit 1
+fi
+
+# 1. 看本地有没有修改
+log_info "检查本地修改 ..."
+if ! (cd "$dst" && git status --short 2>/dev/null | grep -q .); then
+  log_warn "$name 没有未 commit 的修改"
+  log_info "先改 store/$name，再跑这个命令"
+  exit 0
+fi
+
+(cd "$dst" && git status --short | head -10 | sed 's/^/  /')
+
+# 2. 让用户写 changelog
+echo
+if [ -t 0 ]; then
+  echo "请用一句话描述这次修改（会进 PR 描述和 changelog）："
+  read -rp "> " changelog_msg
+else
+  log_err "非交互模式，ps contribute 不支持（手工跑: cd store/$name && 编辑后提 PR）"
+  exit 1
+fi
+
+# 3. fork 主项目
+log_info "Fork $PS_REPO ..."
+gh repo fork "$PS_REPO" --clone=false 2>&1 | tail -2 || {
+  log_err "Fork 失败（也许你已经 fork 过？）"
+  exit 1
+}
+
+# 4. clone fork
+fork_user=$(gh api user --jq .login)
+fork_repo="https://github.com/$fork_user/pretty-skills.git"
+workdir=$(mktemp -d)
+trap "rm -rf $workdir" EXIT
+
+log_info "Clone fork ..."
+gh repo clone "$fork_user/pretty-skills" "$workdir/repo" -- --depth 1 2>&1 | tail -1
+
+# 5. 建分支
+branch="contrib/$name-$(date +%Y%m%d-%H%M%S)"
+(cd "$workdir/repo" && git checkout -b "$branch" 2>&1 | tail -1)
+
+# 6. 同步 store/<name> 到 tools/<name>
+log_info "同步 store/$name -> tools/$name ..."
+rm -rf "$workdir/repo/tools/$name"
+cp -R "$dst" "$workdir/repo/tools/$name"
+
+# 7. commit + push + PR
+(cd "$workdir/repo" && git add "tools/$name" && git commit -m "feat($name): $changelog_msg" 2>&1 | tail -1)
+(cd "$workdir/repo" && git push -u origin "$branch" 2>&1 | tail -1)
+
+log_info "提 PR ..."
+pr_url=$(cd "$workdir/repo" && gh pr create \
+  --repo "$PS_REPO" \
+  --base "$PS_BRANCH" \
+  --head "$fork_user:$branch" \
+  --title "[$name] $changelog_msg" \
+  --body "$(cat <<EOF
+## 修改说明
+$changelog_msg
+
+## 自动化检查
+- [x] manifest.yaml 存在
+- [x] 文件结构合法
+- [ ] 维护者 review
+
+## 来源
+由 Mavis 用户通过 \`ps contribute\` 命令自动生成。
+EOF
+)")" 2>&1 | tail -1)
+
+echo
+log_ok "🎉 PR 已提: $pr_url"
+echo

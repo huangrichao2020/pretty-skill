@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/huangrichao2020/pretty-skills/blob/main/tools/pretty-skills/manifest-schema.json",
+  "title": "Pretty-Skills Skill Manifest",
+  "description": "每个 skill 必须带 manifest.yaml，被 ps 工具扫描、验证、装到 5 agent",
+  "type": "object",
+  "required": ["name", "version", "description", "author", "license"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}[a-z0-9]$",
+      "description": "skill 名（小写字母 + 数字 + -，2-64 字符，全局唯一）"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-z0-9.-]+)?$",
+      "description": "语义化版本（semver），例如 1.0.0 / 0.1.0-beta"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 500,
+      "description": "一句话定位（20-500 字符，告诉用户这个 skill 解决什么问题）"
+    },
+    "author": {
+      "type": "string",
+      "description": "作者名（GitHub handle 或邮箱）"
+    },
+    "license": {
+      "type": "string",
+      "default": "MIT",
+      "description": "SPDX license identifier（默认 MIT）"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]{1,32}$"
+      },
+      "maxItems": 8,
+      "description": "分类标签（最多 8 个，全小写，例如 stock / agent / ppt / writing）"
+    },
+    "triggers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 16,
+      "description": "用户自然语言触发词（agent 用来识别要不要加载这个 skill）"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "version": {
+            "type": "string",
+            "description": "semver range，例如 >=1.0.0"
+          },
+          "optional": {
+            "type": "boolean",
+            "default": false,
+            "description": "可选依赖（缺失时 ps 警告但不阻塞）"
+          }
+        }
+      },
+      "description": "依赖的其他 skill（ps 用这个生成依赖图）"
+    },
+    "agents": {
+      "type": "object",
+      "description": "兼容的 agent 列表",
+      "properties": {
+        "claude-code": { "type": "boolean", "default": true },
+        "codex": { "type": "boolean", "default": true },
+        "mavis": { "type": "boolean", "default": true },
+        "cursor": { "type": "boolean", "default": true },
+        "windsurf": { "type": "boolean", "default": true }
+      }
+    },
+    "entry": {
+      "type": "string",
+      "default": "SKILL.md",
+      "description": "skill 入口文件（默认 SKILL.md，agent 会读这个文件加载 skill 描述）"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "description": "项目主页（GitHub repo / 文档链接）"
+    }
+  },
+  "additionalProperties": false
+}

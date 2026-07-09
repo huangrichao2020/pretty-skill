@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# ps-update [name | --all] · 拉主项目最新覆盖本地
+# 有本地未 commit 修改 → 自动备份到 ~/.pretty-skills/backups/<name>-<timestamp>.tar.gz
+
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PS_ROOT="${PS_ROOT:-$HOME/.pretty-skills}"
+LIB="$PS_ROOT/store/pretty-skills/lib/common.sh"
+[ ! -f "$LIB" ] && LIB="$SCRIPT_DIR/../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$LIB"
+
+BACKUP_DIR="$PS_ROOT/backups"
+mkdir -p "$BACKUP_DIR"
+
+update_one() {
+  local name="$1"
+  local dst="$PS_STORE/$name"
+  if [ ! -d "$dst" ]; then
+    log_warn "$name 本地没装（试试: ps add $name）"
+    return 1
+  fi
+
+  # 检查本地修改
+  local has_changes=0
+  if (cd "$dst" && git status --short 2>/dev/null | grep -q .); then
+    has_changes=1
+  fi
+
+  # 备份
+  if [ "$has_changes" -eq 1 ]; then
+    local ts
+    ts=$(date +%Y%m%d-%H%M%S)
+    local backup="$BACKUP_DIR/${name}-${ts}.tar.gz"
+    tar -czf "$backup" -C "$PS_STORE" "$name" 2>/dev/null
+    log_warn "$name 有本地修改，已备份到 $backup"
+  fi
+
+  # 拉主项目最新
+  log_info "更新 $name ..."
+  local tmpdir
+  tmpdir=$(mktemp -d)
+  trap "rm -rf $tmpdir" RETURN
+  git clone --depth 1 --filter=blob:none --sparse "https://github.com/$PS_REPO.git" "$tmpdir/repo" 2>&1 | grep -v "Cloning into" || true
+  (cd "$tmpdir/repo" && git sparse-checkout set "tools/$name" 2>&1 | tail -1) || {
+    log_err "主项目里没有 tools/$name"
+    return 1
+  }
+
+  if [ -d "$tmpdir/repo/tools/$name" ]; then
+    rm -rf "$dst"
+    cp -R "$tmpdir/repo/tools/$name" "$dst"
+    log_ok "$name 已更新"
+  else
+    log_err "tools/$name 不存在"
+    return 1
+  fi
+}
+
+# 解析参数
+all=0
+names=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --all) all=1; shift ;;
+    -h|--help)
+      echo "用法: ps update [name | --all]"
+      exit 0
+      ;;
+    *) names+=("$1"); shift ;;
+  esac
+done
+
+if [ "$all" -eq 1 ] || [ ${#names[@]} -eq 0 ]; then
+  log_info "批量更新所有 skill ..."
+  for skill_dir in "$PS_STORE"/*/; do
+    [ -d "$skill_dir" ] || continue
+    skill_name=$(basename "$skill_dir")
+    [ "$skill_name" = "pretty-skills" ] && {
+      log_warn "跳过 pretty-skills 工具自身（用 install.sh 升级）"
+      continue
+    }
+    update_one "$skill_name" || log_warn "$skill_name 更新失败"
+  done
+else
+  for name in "${names[@]}"; do
+    update_one "$name"
+  done
+fi
+
+echo
+log_ok "✅ 更新完成"
+echo
