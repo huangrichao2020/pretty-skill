@@ -59,10 +59,10 @@ git merge upstream/main
 
 ```bash
 # 1. 复制模板
-cp -r _模板/案例 "<12 领域之一>/<你的-case-名>"
+cp -r _模板/案例 "<16 领域之一>/<你的-case-名>"
 
 # 2. 编辑文件
-cd "<12 领域之一>/<你的-case-名>"
+cd "<16 领域之一>/<你的-case-名>"
 # - 改 content.md（用你的真实内容，每页 4-7 字段）
 # - 改 README.md（用例说明）
 # - 准备 images/（用 matrix / DALL-E / Midjourney 出 N 张图）
@@ -85,7 +85,7 @@ pretty-skills create --input my-knowledge.md --domain "金融投资" --style "�
 
 ```bash
 # 校验 3F Content + 锦绣层
-python content-triple-format/check-3f.py "<12 领域>/<你的-case-名>"
+python content-triple-format/check-3f.py "<16 领域>/<你的-case-名>"
 
 # 退出码：
 #   0 = 全部通过（PR 可提）
@@ -95,8 +95,8 @@ python content-triple-format/check-3f.py "<12 领域>/<你的-case-名>"
 ### Step 6 · Commit + Push 到你的 fork
 
 ```bash
-git add "<12 领域>/<你的-case-名>"
-git commit -m "feat(<12 领域>): add <你的-case-名> case (3F Content + 锦绣)"
+git add "<16 领域>/<你的-case-名>"
+git commit -m "feat(<16 领域>): add <你的-case-名> case (3F Content + 锦绣)"
 git push origin main
 ```
 
@@ -105,7 +105,7 @@ git push origin main
 1. 访问 https://github.com/<你的用户名>/pretty-skills
 2. 点 **"Compare & pull request"** 按钮
 3. 选 base = `huangrichao2020/pretty-skills:main`，compare = `<你的用户名>/pretty-skills:main`
-4. 填 PR 模板（12 领域下拉 + 3 件套 + 锦绣 全选）
+4. 填 PR 模板（16 领域下拉 + 3 件套 + 锦绣 全选）
 5. 点 **Create pull request**
 
 **PR 提完后**：
@@ -150,7 +150,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ---
 
-## 🛠️ 12 领域（v3 预设 · 完整列表）
+## 🛠️ 16 领域（v3 预设 · 完整列表）
 
 | 领域 | 范围 |
 |---|---|
@@ -344,7 +344,7 @@ v3.1 推荐用 skill-creator 工具（即将开源）。手动方式：
 
 参考：
 - [README.md](./README.md) · 项目总览
-- [STRUCTURE.md](./STRUCTURE.md) · 12 领域结构
+- [STRUCTURE.md](./STRUCTURE.md) · 16 领域结构
 - [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) · 5 分钟 PR 流程
 - [content-triple-format/README.md](./content-triple-format/README.md) · 3F Content 范式
 - [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) · 锦绣范式

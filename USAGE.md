@@ -2,7 +2,7 @@
 
 > **用途**：Mavis / Claude Code / Cursor / Aider 等 agent 看到这个文件 → 知道怎么把 pretty-skills 装进自己当**知识工程中枢**。
 > **再定义**：pretty-skills **不是**「`SKILL.md` 技能仓」（那是 Anthropic Claude Skills 那套「按此执行 xxx」的预制工具）。本项目是**知识工程中枢** —— 产出的是「可复用的结构化知识产物」，不是「可调用的工具函数」。
-> **配套**：README.md（做什么）· INDEX.md（12 领域快查）· STRUCTURE.md（结构定义）
+> **配套**：README.md（做什么）· INDEX.md（16 领域快查）· STRUCTURE.md（结构定义）
 
 > **⚠️ 前置条件 · 生图能力是必须的** —— pretty-skills 所有视觉化都依赖 AI 出图（出图是中枢产物的核心工序）。
 > **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步）。
@@ -30,7 +30,7 @@ import json
 
 PRETTY_SKILL_ROOT = Path.home() / "pretty-skills"
 
-# Step 1: 读 INDEX.md 了解 12 领域
+# Step 1: 读 INDEX.md 了解 16 领域
 index = (PRETTY_SKILL_ROOT / "INDEX.md").read_text()
 
 # Step 2: 遍历所有 manifest.json，按 visibility 过滤

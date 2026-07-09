@@ -92,3 +92,27 @@
 **3F 校验**：5 个 case 全部 `check-3f.py` **`EXIT=0`**（真实退出码，非管道欺骗）。
 
 **git**：commit 后 push 到 `origin/main`（用户已授权）。
+
+---
+
+## 2026-07-09（续 · knowhub 领域对齐复核）
+
+**背景**：用户要求「把 knowhub/domains 的 11 个领域在 pretty-skills 建对应中文领域」。pull 后发现远端 `origin/main`(be04aba) 已被用户在另一台机器**基本做完这件事**——12 领域 PRESET 已对齐 knowhub 且用了中文噱头名（`Agent知识`/`情感领域`/`玄学修炼`/`做事技巧`…），7 个 case 全部 `check-3f EXIT=0`。
+
+**发现 & 处理**：
+- knowhub 11 领域里，远端已含 7 个（含改名对齐）；**仅缺 4 个**：`橙皮书`(orange-book)、`社交主导`(social-dominance)、`视觉创作`(visual-creation)、`故事写作`(writing-storycraft)。
+- 我之前提交的 6 个目录里，`情感关系`/`哲学现实` 与远端已有的 `情感领域`/`玄学修炼` **重名同义**——按「有重复尽量改为 knowhub 意思」原则**丢弃我的重名版、保留远端版**；`社交主导`/`视觉创作`/`故事写作`/`橙皮书` 为真正缺失项。
+- 行动：`git reset --hard origin/main` 丢弃冗余提交，在 be04aba 上**只补 4 个缺失领域**。
+
+**改动**：
+- 新建 `橙皮书/`、`社交主导/`、`视觉创作/`、`故事写作/` 4 目录，各带 `README.md`（占位风格 + knowhub 含义一行）。
+- `check-3f.py` + `create.py` 的 `PRESET_DOMAINS` 增加这 4 个中文名。
+- `INDEX.md` / `STRUCTURE.md` 领域表各加 4 行，计数 **12 → 16**（含目录树、H2、命名逻辑表、PR 模板下拉等）；保留 5 处历史发布记录行(12)不改写。
+
+**3F 校验**：现有 7 个 case 全部 `check-3f.py` **`EXIT=0`**（真实退出码）；2 脚本语法正常；PRESET 两处均含 4 新领域。
+
+**git**：commit 后 SSH push 到 `origin/main`（用户已授权）。至此 knowhub 11 领域全部对齐 pretty-skills（16 领域总量）。
+
+**技术坑记录**：
+- `git fetch` 走 SSH 在此沙箱**卡死**（120s 零输出，RC=124），但 `ssh -T`/`ls-remote`/之前的 push/HTTPS 下载均正常 → 是 SSH 协议 upload-pack 路径 stall，非认证问题。**公开仓可免认证用 HTTPS 智能 HTTP fetch**（`git fetch https://github.com/huangrichao2020/pretty-skills.git`）瞬时成功。
+- rebase 冲突中 `--ours`=目标分支(origin/main 新真相)、`--theirs`=正在重放的旧提交——方向别搞反。

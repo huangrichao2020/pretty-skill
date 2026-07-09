@@ -55,7 +55,7 @@ pretty-skills v3.13 上线：https://github.com/huangrichao2020/pretty-skills
    - 锦绣 9 图（小红书传播）
    - 锦绣视频脚本（30-60 秒讲解）
 
-(3) 12 领域 + skill-creator 工具 = 全局共享
+(3) 16 领域 + skill-creator 工具 = 全局共享
    - 12 个中文领域预设：Agent知识 / 编程开发 / 数据科学 / 产品设计
      / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家
      / 情感领域 / 做事技巧 / 玄学修炼
@@ -126,7 +126,7 @@ v3.13 核心跃迁：从「对 AI 友好的中文内容仓」→ 「agent 的知
    - 全球开发者都能 PR 新增领域
 
 3. 元知识接入升级（v3.11+）：
-   - INDEX.md · 12 领域快查（agent RAG 友好）
+   - INDEX.md · 16 领域快查（agent RAG 友好）
    - manifest.json · visibility 标识（public / private / draft）
    - USAGE.md · agent 接入协议（学一下 XXX / dream 修炼 / 提 PR）
    - 4 自在哲学（观 / 化 / 照 / 渡）
@@ -154,7 +154,7 @@ OUTPUT: 人能看 + LLM 能读 + 项目能复用
 
 GitHub: https://github.com/huangrichao2020/pretty-skills
 
-12 领域 + skill-creator + 中文圈首个
+16 领域 + skill-creator + 中文圈首个
 ```
 
 ---

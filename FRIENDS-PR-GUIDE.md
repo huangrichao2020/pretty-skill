@@ -36,8 +36,8 @@ git remote add upstream https://github.com/huangrichao2020/pretty-skills.git
 git fetch upstream && git merge upstream/main
 
 # 3. 复制模板
-cp -r _模板/案例 "<12 领域之一>/<你的-case-名>"
-cd "<12 领域之一>/<你的-case-名>"
+cp -r _模板/案例 "<16 领域之一>/<你的-case-名>"
+cd "<16 领域之一>/<你的-case-名>"
 
 # 4. 改 4 个核心文件
 # - content.md（4-7 字段/页 · 必填）
@@ -112,6 +112,6 @@ A: 用中文就好，仓库主都懂。
 
 参考：
 - [CONTRIBUTING.md](./CONTRIBUTING.md) · 完整版
-- [STRUCTURE.md](./STRUCTURE.md) · 12 领域
+- [STRUCTURE.md](./STRUCTURE.md) · 16 领域
 - [content-triple-format/README.md](./content-triple-format/README.md) · 3F Content
 - [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) · 锦绣范式
