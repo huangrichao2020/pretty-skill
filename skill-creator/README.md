@@ -122,7 +122,7 @@ python skill-creator/create.py \
 ```bash
 python skill-creator/create.py \
   --url https://zhuanlan.zhihu.com/p/xxxxxx \
-  --domain "思维方法" \
+  --domain "做事技巧" \
   --style "马卡龙"
 ```
 
@@ -144,7 +144,7 @@ python skill-creator/create.py \
 |---|---|---|
 | `--input` | 是* | 输入 .md 文件路径 |
 | `--url` | 是* | 输入 URL（与 --input 二选一）|
-| `--domain` | 是 | 11 预设领域之一（AI能力 / 编程开发 / ...）|
+| `--domain` | 是 | 11 预设领域之一（Agent知识 / 编程开发 / ...）|
 | `--style` | 否 | 视觉风格（马卡龙 / 古铜金 / 蓝白灰 / 深色科技风 / 城市插画 / 真实生活感）· 默认蓝白灰 |
 | `--pages` | 否 | PPT 页数（默认 9）|
 | `--output` | 否 | 输出目录（默认 ./output/）|
@@ -230,7 +230,7 @@ mavis mcp call matrix matrix_generate_image '{"prompt": "...", "aspect_ratio": "
 
 | 版本 | 状态 | 目标 | 进度 |
 |---|---|---|---|
-| v0.1 | ✅ 已完成 | CLI 框架 + 命令行参数 + 11 领域 / 6 风格 + visibility 参数 | ✅ |
+| v0.1 | ✅ 已完成 | CLI 框架 + 命令行参数 + 12 领域 / 6 风格 + visibility 参数 | ✅ |
 | v0.2 | ✅ **v3.15 完成** | 真分页 · 真写 4 件套骨架（content.md + manifest.json + web.html + 锦绣 4 形态）+ prompts/ | ✅ 实测通过 |
 | v0.3 | 计划 | 真调 matrix 出图 · 嵌图到 PPTX · 跑 check-3f.py 自动验证 |
 | v0.4 | 计划 | URL 输入支持（browser-act 集成）+ 自动 fetch + 转 .md |

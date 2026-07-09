@@ -6,7 +6,7 @@
 
 例：
   python3 tools/build_ppt_html.py \\
-    AI能力/AI狼群战法 \\
+    Agent知识/AI狼群战法 \\
     "团队如何与 AI Agent 高效协作" \\
     p0_cover p1_problem p2_vision p3_context_layers p4_observation p5_memory_evolve p6_human_role p7_takeaways
 """
@@ -17,7 +17,7 @@ TEMPLATE_PATH = Path(__file__).parent.parent / "_模板/案例/web.html"
 
 
 def generate(case_dir: Path, case_title: str, page_images: list[str], page_notes: list[str] = None) -> str:
-    template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    template = TEMPLATE_PATH.read_text(en编程开发="utf-8")
 
     if page_notes is None:
         page_notes = [f"第 {i+1} 页 · {Path(img).stem}" for i, img in enumerate(page_images)]
@@ -53,7 +53,7 @@ def generate(case_dir: Path, case_title: str, page_images: list[str], page_notes
 def main():
     if len(sys.argv) < 3:
         print("用法: python3 build_ppt_html.py <case_dir> <case_title> [图片列表...]")
-        print("例:  python3 build_ppt_html.py AI能力/cartman ... p0_cover p1_problem ...")
+        print("例:  python3 build_ppt_html.py Agent知识/cartman ... p0_cover p1_problem ...")
         sys.exit(1)
 
     case_dir = Path(sys.argv[1])
@@ -76,7 +76,7 @@ def main():
 
     html = generate(case_dir, case_title, page_images)
     output = case_dir / "web.html"
-    output.write_text(html, encoding="utf-8")
+    output.write_text(html, en编程开发="utf-8")
 
     size_kb = output.stat().st_size / 1024
     print(f"✅ 生成 {output} ({size_kb:.1f} KB)")

@@ -150,6 +150,6 @@
 - 完整 case：`~/.mavis/knowledge/knowhub/domains/visual-creation/cases/2026-07-05-AI狼群战法-ppt.md`
 - 配套 prompt：`./prompts/p0_cover.md` 等 8 个
 - 视觉资源：`./images/p0_cover.png` 等 8 个
-- PPTX 输出：`./output/team-AI能力-collab-cartman.pptx`
+- PPTX 输出：`./output/team-Agent知识-collab-cartman.pptx`
 - HTML 阅读器：`./index.html`
 - 生成日期：2026-07-05

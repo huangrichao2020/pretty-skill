@@ -13,7 +13,7 @@
 
 ### 标题备选
 - A：《我做了一件事：把 agent 的"知识工程中枢"开源了——不是装工具箱，是出版局》
-- B：《pretty-skills v3.13 上线 · 「知识工程中枢」理念 + 11 领域 + 学一下 XXX 协议》
+- B：《pretty-skills v3.13 上线 · 「知识工程中枢」理念 + 12 领域 + 学一下 XXX 协议》
 - C：《从 1 个仓库到 agent 元知识底座 · pretty-skills 是怎么变成知识工程中枢的》
 
 ### 正文
@@ -55,10 +55,10 @@ pretty-skills v3.13 上线：https://github.com/huangrichao2020/pretty-skills
    - 锦绣 9 图（小红书传播）
    - 锦绣视频脚本（30-60 秒讲解）
 
-(3) 11 领域 + skill-creator 工具 = 全局共享
-   - 11 个中文领域预设：AI能力 / 编程开发 / 数据科学 / 产品设计
+(3) 12 领域 + skill-creator 工具 = 全局共享
+   - 12 个中文领域预设：Agent知识 / 编程开发 / 数据科学 / 产品设计
      / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家
-     / 生活方式 / 思维方法
+     / 情感领域 / 做事技巧 / 玄学修炼
    - 全球开发者都能 PR 贡献 · 也可 PR 新增领域
    - skill-creator 工具一键把任何知识 → 完整 case 目录
    - v3.13 新增：manifest.json 标识 public / private / draft
@@ -71,8 +71,8 @@ pretty-skills v3.13 上线：https://github.com/huangrichao2020/pretty-skills
 4. 元知识底座（学一下 XXX）：agent 不装包，从这里抽
 
 仓库里已经有 3 个真实 case：
-- AI能力/AI狼群战法（团队与 AI 协作 8 页）
-- AI能力/社交电商掘金术（社交电商两层拆解 8 页）
+- Agent知识/AI狼群战法（团队与 AI 协作 8 页）
+- Agent知识/社交电商掘金术（社交电商两层拆解 8 页）
 - 金融投资/卡脖子猎手（A 股卡脖子选股 9 页 · @Kun）
 
 9 个领域等待全球开发者贡献。
@@ -120,13 +120,13 @@ v3.13 核心跃迁：从「对 AI 友好的中文内容仓」→ 「agent 的知
    - 一起 = 知识既能被 AI 消化又能被人传播
 
 2. 领域升级：2 → 11 中文领域
-   - v3：AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营
+   - v3：Agent知识 / 编程开发 / 数据科学 / 产品设计 / 商业运营
      / 金融投资 / 内容创作 / 教育学习 / 游戏玩家
-     / 生活方式 / 思维方法
+     / 情感领域 / 做事技巧 / 玄学修炼
    - 全球开发者都能 PR 新增领域
 
 3. 元知识接入升级（v3.11+）：
-   - INDEX.md · 11 领域快查（agent RAG 友好）
+   - INDEX.md · 12 领域快查（agent RAG 友好）
    - manifest.json · visibility 标识（public / private / draft）
    - USAGE.md · agent 接入协议（学一下 XXX / dream 修炼 / 提 PR）
    - 4 自在哲学（观 / 化 / 照 / 渡）
@@ -154,7 +154,7 @@ OUTPUT: 人能看 + LLM 能读 + 项目能复用
 
 GitHub: https://github.com/huangrichao2020/pretty-skills
 
-11 领域 + skill-creator + 中文圈首个
+12 领域 + skill-creator + 中文圈首个
 ```
 
 ---
@@ -167,7 +167,7 @@ GitHub: https://github.com/huangrichao2020/pretty-skills
 ### 正文
 
 ```
-[Project] pretty-skills v3.13 · 知识工程中枢 · 11 领域 + skill-creator + 学一下 XXX 协议
+[Project] pretty-skills v3.13 · 知识工程中枢 · 12 领域 + skill-creator + 学一下 XXX 协议
 
 [Github 链接 + 1 张知识工程中枢配图]
 

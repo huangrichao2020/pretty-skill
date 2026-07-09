@@ -1,9 +1,14 @@
 {
   "name": "社交电商掘金术",
-  "domain": "AI能力",
+  "domain": "Agent知识",
   "title": "社交电商 × 两层拆解法",
   "visibility": "public",
-  "tags": ["社交电商", "GPT", "拆解法", "产品定位"],
+  "tags": [
+    "社交电商",
+    "GPT",
+    "拆解法",
+    "产品定位"
+  ],
   "contributor": "huangrichao2020",
   "contributor_github": "huangrichao2020",
   "created": "2026-07-07",

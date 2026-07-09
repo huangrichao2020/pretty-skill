@@ -62,7 +62,7 @@ https://github.com/huangrichao2020/pretty-skills
 - 社交电商两层拆解（social-ecom）
 - A 股卡脖子选股 · 主板版（@Kun 贡献 · 9 页 PPT + 10 MB PPTX）
 
-11 中文领域预设（AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 生活方式 / 思维方法），9 个还空着等全球开发者贡献。
+12 中文领域预设（Agent知识 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 情感领域 / 做事技巧 / 玄学修炼），8 个还空着等全球开发者贡献。
 
 3 件套发布范式：
 - content.md（喂 LLM）
@@ -70,7 +70,7 @@ https://github.com/huangrichao2020/pretty-skills
 - 锦绣 PPT 4 形态（cover + 9图 + PPT + 视频脚本）
 
 还有一套 agent 接入机制：
-- INDEX.md（11 领域快查）
+- INDEX.md（12 领域快查）
 - manifest.json（公开 / 私密 / 草稿 标识）
 - USAGE.md（学一下 XXX + dream 修炼 + 提 PR 协议）
 
@@ -86,7 +86,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 2. 日常用「学一下 XXX」代替「帮我装 XXX」
 
 **B. 贡献者角度**：
-1. 选 11 领域中一个
+1. 选 12 领域中一个
 2. 复制 _模板/案例
 3. 改 content + 出图 + 跑 check-3f.py
 4. 提 PR
@@ -139,7 +139,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 
 **哲学**：「4 自在」 · 观 / 化 / 照 / 渡
 
-**11 中文领域** 等你贡献：AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 生活方式 / 思维方法
+**12 中文领域** 等你贡献：Agent知识 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 情感领域 / 做事技巧 / 玄学修炼
 
 **1 张图总结**：
 
@@ -185,7 +185,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 
 发送前必查：
 - [ ] github 链接正确：`https://github.com/huangrichao2020/pretty-skills`
-- [ ] 飞书版配图 → 中枢图（readme-3-hub.png）+ 11 领域图（readme-4-domains.png）
+- [ ] 飞书版配图 → 中枢图（readme-3-hub.png）+ 12 领域图（readme-4-domains.png）
 - [ ] 小红书版配图 3 张（中枢 + 什么 + 5 步贡献）
 - [ ] 飞书版标题用深度版（"v3.14 + 哲学 + 元知识底座"）
 - [ ] 小红书标题用 hook 版（"不是 SKILL.md 仓！是这个"）

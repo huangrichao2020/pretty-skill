@@ -1,9 +1,14 @@
 {
   "name": "AI狼群战法",
-  "domain": "AI能力",
+  "domain": "Agent知识",
   "title": "团队如何与 AI Agent 高效协作 · Cartman",
   "visibility": "public",
-  "tags": ["multi-agent", "团队协作", "Cartman范式", "人机协作"],
+  "tags": [
+    "multi-agent",
+    "团队协作",
+    "Cartman范式",
+    "人机协作"
+  ],
   "contributor": "huangrichao2020",
   "contributor_github": "huangrichao2020",
   "created": "2026-07-07",

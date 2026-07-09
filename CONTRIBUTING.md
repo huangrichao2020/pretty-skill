@@ -22,12 +22,12 @@
 
 | 类型 | 例子 | 领域 |
 |---|---|---|
-| **方法论** | 决策框架 / 思考模型 / 最佳实践 | 思维方法 / 编程开发 / 产品设计 |
+| **方法论** | 决策框架 / 思考模型 / 最佳实践 | 做事技巧 / 编程开发 / 产品设计 |
 | **案例分析** | 真实项目复盘 / 案例拆解 | 商业运营 / 金融投资 / 数据科学 |
 | **技能教程** | 工具使用 / 编程技巧 / 制作流程 | 编程开发 / 内容创作 / 游戏玩家 |
-| **知识沉淀** | 学科总结 / 概念解释 / 历史复盘 | 教育学习 / 思维方法 / 生活方式 |
-| **攻略 / 指南** | 游戏攻略 / 旅行指南 / 工具评测 | 游戏玩家 / 生活方式 / 内容创作 |
-| **可视化** | 信息图 / 数据可视化 / 思维导图 | 数据科学 / 思维方法 / 编程开发 |
+| **知识沉淀** | 学科总结 / 概念解释 / 历史复盘 | 教育学习 / 做事技巧 / 情感领域 |
+| **攻略 / 指南** | 游戏攻略 / 旅行指南 / 工具评测 | 游戏玩家 / 情感领域 / 内容创作 |
+| **可视化** | 信息图 / 数据可视化 / 思维导图 | 数据科学 / 做事技巧 / 编程开发 |
 
 ---
 
@@ -59,10 +59,10 @@ git merge upstream/main
 
 ```bash
 # 1. 复制模板
-cp -r _模板/案例 "<11 领域之一>/<你的-case-名>"
+cp -r _模板/案例 "<12 领域之一>/<你的-case-名>"
 
 # 2. 编辑文件
-cd "<11 领域之一>/<你的-case-名>"
+cd "<12 领域之一>/<你的-case-名>"
 # - 改 content.md（用你的真实内容，每页 4-7 字段）
 # - 改 README.md（用例说明）
 # - 准备 images/（用 matrix / DALL-E / Midjourney 出 N 张图）
@@ -85,7 +85,7 @@ pretty-skills create --input my-knowledge.md --domain "金融投资" --style "�
 
 ```bash
 # 校验 3F Content + 锦绣层
-python content-triple-format/check-3f.py "<11 领域>/<你的-case-名>"
+python content-triple-format/check-3f.py "<12 领域>/<你的-case-名>"
 
 # 退出码：
 #   0 = 全部通过（PR 可提）
@@ -95,8 +95,8 @@ python content-triple-format/check-3f.py "<11 领域>/<你的-case-名>"
 ### Step 6 · Commit + Push 到你的 fork
 
 ```bash
-git add "<11 领域>/<你的-case-名>"
-git commit -m "feat(<11 领域>): add <你的-case-名> case (3F Content + 锦绣)"
+git add "<12 领域>/<你的-case-名>"
+git commit -m "feat(<12 领域>): add <你的-case-名> case (3F Content + 锦绣)"
 git push origin main
 ```
 
@@ -105,7 +105,7 @@ git push origin main
 1. 访问 https://github.com/<你的用户名>/pretty-skills
 2. 点 **"Compare & pull request"** 按钮
 3. 选 base = `huangrichao2020/pretty-skills:main`，compare = `<你的用户名>/pretty-skills:main`
-4. 填 PR 模板（11 领域下拉 + 3 件套 + 锦绣 全选）
+4. 填 PR 模板（12 领域下拉 + 3 件套 + 锦绣 全选）
 5. 点 **Create pull request**
 
 **PR 提完后**：
@@ -150,11 +150,11 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ---
 
-## 🛠️ 11 领域（v3 预设 · 完整列表）
+## 🛠️ 12 领域（v3 预设 · 完整列表）
 
 | 领域 | 范围 |
 |---|---|
-| **AI能力** | LLM / Agent / 提示工程 / 机器学习 |
+| **Agent知识** | LLM / Agent / 提示工程 / 机器学习 / agent 框架 / agent 工具链 |
 | **编程开发** | 通用编程 / 架构 / 模式 / 最佳实践 / 前后端 |
 | **数据科学** | 数据分析 / 可视化 / 统计 / BI |
 | **产品设计** | 产品方法论 / UX / UI / 用户研究 |
@@ -163,8 +163,9 @@ git commit -m "feat: add 新领域名称 + 案例1"
 | **内容创作** | 视频 / 写作 / 直播 / 摄影 |
 | **教育学习** | 学科教育 / 语言学习 / 知识管理 |
 | **游戏玩家** | 游戏攻略 / 角色养成 / 副本流程 / MOD |
-| **生活方式** | 健康 / 时间管理 / 关系 / 旅行 |
-| **思维方法** | 决策框架 / 思维模型 / 心理学 |
+| **情感领域** | 男女关系 / 长期关系 / 社交关系 / 亲密 / 心理 / 自我接纳 |
+| **做事技巧** | 决策框架 / 思维模型 / 心理学 / 认知科学 / 做事方法 |
+| **玄学修炼** | 占星 / 塔罗 / 易经 / 风水 / 命理 / 灵修 / 冥想 / 禅修 |
 
 ---
 
@@ -232,8 +233,8 @@ git commit -m "feat: add 新领域名称 + 案例1"
 **v0.2 skill-creator 自动写**：用 `python skill-creator/create.py --input foo.md --domain "金融投资" --visibility private` 会自动生成 manifest.json。
 
 **人工参考 3 个现有 case**：
-- [AI能力/AI狼群战法/manifest.json](../AI能力/AI狼群战法/manifest.json)
-- [AI能力/社交电商掘金术/manifest.json](../AI能力/社交电商掘金术/manifest.json)
+- [Agent知识/AI狼群战法/manifest.json](../Agent知识/AI狼群战法/manifest.json)
+- [Agent知识/社交电商掘金术/manifest.json](../Agent知识/社交电商掘金术/manifest.json)
 - [金融投资/卡脖子猎手/manifest.json](../金融投资/卡脖子猎手/manifest.json)
 
 ## 🚫 6 个反模式（PR 100% 退回）
@@ -343,7 +344,7 @@ v3.1 推荐用 skill-creator 工具（即将开源）。手动方式：
 
 参考：
 - [README.md](./README.md) · 项目总览
-- [STRUCTURE.md](./STRUCTURE.md) · 11 领域结构
+- [STRUCTURE.md](./STRUCTURE.md) · 12 领域结构
 - [FRIENDS-PR-GUIDE.md](./FRIENDS-PR-GUIDE.md) · 5 分钟 PR 流程
 - [content-triple-format/README.md](./content-triple-format/README.md) · 3F Content 范式
 - [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) · 锦绣范式

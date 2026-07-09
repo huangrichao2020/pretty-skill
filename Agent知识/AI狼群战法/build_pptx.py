@@ -5,7 +5,7 @@
 - .pptx 不加任何画面装饰（页码 badge / 装饰元素都不要）
 - 干净嵌入图片即可
 
-输出：/Users/tingchi/.mavis/sessions/.../workspace/team-AI能力-collab-ppt/output/team-AI能力-collab-cartman.pptx
+输出：/Users/tingchi/.mavis/sessions/.../workspace/team-Agent知识-collab-ppt/output/team-Agent知识-collab-cartman.pptx
 """
 
 from pathlib import Path
@@ -13,10 +13,10 @@ from pptx import Presentation
 from pptx.util import Inches, Emu
 
 
-PPT_DIR = Path("/Users/tingchi/.mavis/sessions/mvs_7e34de60b7c34f0e90937c2eaf2d24b9/workspace/team-AI能力-collab-ppt")
+PPT_DIR = Path("/Users/tingchi/.mavis/sessions/mvs_7e34de60b7c34f0e90937c2eaf2d24b9/workspace/team-Agent知识-collab-ppt")
 IMAGES_DIR = PPT_DIR / "images"
 OUTPUT_DIR = PPT_DIR / "output"
-OUTPUT_PPTX = OUTPUT_DIR / "team-AI能力-collab-cartman.pptx"
+OUTPUT_PPTX = OUTPUT_DIR / "team-Agent知识-collab-cartman.pptx"
 
 # 8 页 · 按 V2 范式 D「8 张黄金节奏」
 PAGES = [

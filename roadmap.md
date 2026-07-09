@@ -18,17 +18,17 @@
 
 ### 现状交付
 
-- 11 中文领域预设（`AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 生活方式 / 思维方法`）
+- 11 中文领域预设（`Agent知识 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 情感领域 / 做事技巧`）
 - **3 件套发布范式**（`content.md` 喂 LLM + `web.html` 演示版 + 锦绣 PPT 形态）
 - **3 个真实 case**（`AI狼群战法` / `社交电商掘金术` / `卡脖子猎手` · @Kun 贡献）
 - **自动化工具**：check-3f.py 校验（含 manifest.json v3.11）+ skill-creator CLI（v0.1 stub · v0.2 计划 + --visibility）
-- **agent 接入协议**：INDEX.md（11 领域快查）+ manifest.json（visibility 标识）+ USAGE.md（学一下 / dream / PR 标准协议）
+- **agent 接入协议**：INDEX.md（12 领域快查）+ manifest.json（visibility 标识）+ USAGE.md（学一下 / dream / PR 标准协议）
 - **README 配图**：v3.10-v3.13 全部统一手绘马卡龙
 - **CI**：GitHub Actions 自动校验 PR
 
 **当前核心指标**：
 - 5 个 case · 领域持续待全球开发者贡献
-- 13+ 个完整文档（README / INDEX / USAGE / STRUCTURE / CONTRIBUTING / FRIENDS-PR-GUIDE / PROMOTION / CONTRIBUTORS / roadmap · 4 个范式 + 11 领域 + skill-creator）
+- 13+ 个完整文档（README / INDEX / USAGE / STRUCTURE / CONTRIBUTING / FRIENDS-PR-GUIDE / PROMOTION / CONTRIBUTORS / roadmap · 4 个范式 + 12 领域 + skill-creator）
 
 ---
 
@@ -65,7 +65,7 @@
 
 ### 中枢规模化
 
-- 11 领域 × ≥ 5 case = 50+ 真实 case
+- 12 领域 × ≥ 5 case = 50+ 真实 case
 - 贡献者激励：CONTRIBUTORS.md + 公众号文章推送 + 个人品牌曝光
 - 公开 API：第三方工具/agent 可查询 / 拉取 cases
   - `GET /api/cases?domain=金融投资` 风格 REST 接口
@@ -76,7 +76,7 @@
 
 - 自动 skill 提炼 agent：每天 scan 热门 GitHub README + 公众号文章 → 自动出 case
 - 跨领域推荐：「你关心 X · 也许关心 Y」基于 tags
-- 学习路径建议：从思维方法 → 金融投资 → 数据科学 · 自适应
+- 学习路径建议：从做事技巧 → 金融投资 → 数据科学 · 自适应
 
 **目标**：500+ star · agent 元知识领域事实标准
 

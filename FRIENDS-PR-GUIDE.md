@@ -12,12 +12,12 @@
 
 ## 1 分钟选领域
 
-打开 https://github.com/huangrichao2020/pretty-skills/tree/main 看 11 个一级目录，选一个对你的内容最合适的：
+打开 https://github.com/huangrichao2020/pretty-skills/tree/main 看 12 个一级目录，选一个对你的内容最合适的：
 
 ```
-AI能力/    编程开发/   数据科学/   产品设计/
+Agent知识/    编程开发/   数据科学/   产品设计/
 商业运营/  金融投资/   内容创作/   教育学习/
-游戏玩家/  生活方式/   思维方法/
+游戏玩家/  情感领域/   做事技巧/
 ```
 
 **没合适的？** 提 PR 新增（附 README + 至少 1 个 case）。
@@ -36,8 +36,8 @@ git remote add upstream https://github.com/huangrichao2020/pretty-skills.git
 git fetch upstream && git merge upstream/main
 
 # 3. 复制模板
-cp -r _模板/案例 "<11 领域之一>/<你的-case-名>"
-cd "<11 领域之一>/<你的-case-名>"
+cp -r _模板/案例 "<12 领域之一>/<你的-case-名>"
+cd "<12 领域之一>/<你的-case-名>"
 
 # 4. 改 4 个核心文件
 # - content.md（4-7 字段/页 · 必填）
@@ -112,6 +112,6 @@ A: 用中文就好，仓库主都懂。
 
 参考：
 - [CONTRIBUTING.md](./CONTRIBUTING.md) · 完整版
-- [STRUCTURE.md](./STRUCTURE.md) · 11 领域
+- [STRUCTURE.md](./STRUCTURE.md) · 12 领域
 - [content-triple-format/README.md](./content-triple-format/README.md) · 3F Content
 - [content-triple-format/锦绣.md](./content-triple-format/锦绣.md) · 锦绣范式
