@@ -37,3 +37,22 @@
   - `AI能力/social-ecom-skill`（8 页）
 - **补全记录**：20:13 那条仅记了 `fbd2a23` 的 2 个 case；本日实际共沉淀 **5 个** 3F case（另 3 个来自 `cf31d1b`：chokepoint-mainboard / cartman-team-ai-agent-collab / social-ecom-skill）。
 - **新增沉淀**：无。自 20:13 以来无新对话 / 新工作成果，未新建或硬造 case（遵循「无高价值内容不硬造」原则）。
+
+---
+
+## 2026-07-09
+
+**沉淀了什么 / 做了什么**
+- 先 `git pull --rebase` 拉取远端：远端有大重构 `128c81f`（仓库名 `pretty-skill`→`pretty-skills`，11 领域目录从中文名统一改为**英文名**，并把 check-3f.py 升级到 **v3.11**，新增强制 `manifest.json`（含 visibility 字段））。同时拉到新 tag `v0.1.0`。
+- 我本地 rebase 上来的 2 个 case 仍留在旧中文目录、且缺 v3.11 要求的 manifest.json → 对齐修复。
+
+**新建/更新了哪些 case**
+- 迁移目录对齐英文规范：`内容创作/橙皮书方法论` → `content-ops/橙皮书方法论`；`金融投资/macro-monitor` → `trading-review/macro-monitor`（`git mv`，删空的中文目录）。
+- 为 2 个 case 各补 `manifest.json`（visibility=public + tags + page_count 等）。
+- `INDEX.md`：case 清单从 3 条补到 5 条，计数文案 3→5；`roadmap.md` 计数同步。
+
+**3F 校验结果**
+- 迁移后首校 `EXIT=1`（v3.11 缺 manifest.json）→ 补 manifest 后 `content-ops/橙皮书方法论` 与 `trading-review/macro-monitor` 均 `check-3f.py` → **`EXIT=0`**。
+
+**git**
+- 已 rebase 到远端最新，本地领先的提交将 **push 到 origin/main**（用户本轮明确授权 push）。

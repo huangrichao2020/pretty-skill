@@ -27,7 +27,7 @@
 - **CI**：GitHub Actions 自动校验 PR
 
 **当前核心指标**：
-- 3 个 case · 9 领域待全球开发者贡献
+- 5 个 case · 领域持续待全球开发者贡献
 - 13+ 个完整文档（README / INDEX / USAGE / STRUCTURE / CONTRIBUTING / FRIENDS-PR-GUIDE / PROMOTION / CONTRIBUTORS / roadmap · 4 个范式 + 11 领域 + skill-creator）
 
 ---

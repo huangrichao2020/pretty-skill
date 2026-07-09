@@ -36,8 +36,10 @@
 | ai-agent | [`cartman-team-ai-agent-collab`](./ai-agent/cartman-team-ai-agent-collab/) | **public** | multi-agent, 协作 | content.md + web.html + 锦绣 |
 | ai-agent | [`social-ecom-skill`](./ai-agent/social-ecom-skill/) | **public** | 社交电商, GPT | content.md + web.html + 锦绣 |
 | trading-review | [`chokepoint-mainboard`](./trading-review/chokepoint-mainboard/) | **public** | 卡脖子, 选股 | content.md + web.html + 锦绣 + presentation.pptx |
+| trading-review | [`macro-monitor`](./trading-review/macro-monitor/) | **public** | A股, 宏观, 早报 | content.md + web.html + 锦绣 |
+| content-ops | [`橙皮书方法论`](./content-ops/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + web.html + 锦绣 |
 
-> **3 个 case 全部默认 public** —— 提 PR 共享。
+> **5 个 case 全部默认 public** —— 提 PR 共享。
 
 ---
 
@@ -79,4 +81,4 @@ def load_pretty_skill(root="/path/to/pretty-skills"):
 
 ---
 
-<sub>最后更新：v3.11 · 3 个 case 全部 public</sub>
+<sub>最后更新：v3.11 · 5 个 case 全部 public</sub>

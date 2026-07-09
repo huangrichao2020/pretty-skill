@@ -1,0 +1,19 @@
+{
+  "name": "orange-book-method",
+  "domain": "content-ops",
+  "title": "橙皮书方法论 · 快速搞懂陌生领域并沉淀成书",
+  "visibility": "public",
+  "tags": ["橙皮书", "方法论", "知识工程", "写作", "调研"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-08",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 7,
+  "summary": "源自花叔写 9 本橙皮书的方法：调研→规划→并行写作→三审三校+事实核查→构建 · 7 页 + 7 张本地出图 + 锦绣四形态"
+}

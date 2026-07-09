@@ -23,3 +23,5 @@ __pycache__/
 # Build temp
 *.log
 .DS_Store
+# WorkBuddy 内部运行记忆（不公开）
+.workbuddy/
