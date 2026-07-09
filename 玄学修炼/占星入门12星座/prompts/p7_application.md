@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 3 scenes in a triptych layout: left scene - person looking in mirror (自我认知), middle - two people talking (关系理解), right - person reading calendar with moon phases (时机判断). Cream paper background. Macaron palette. Dark brown Chinese title '星座不是算命 · 是性格方言'. No real photos. 16:9, 2K.

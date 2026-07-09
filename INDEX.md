@@ -39,6 +39,7 @@
 | 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + web.html + 锦绣 + presentation.pptx |
 | 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + web.html + 锦绣 |
 | 内容创作 | [`橙皮书方法论`](./内容创作/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + web.html + 锦绣 |
+| 玄学修炼 | [`占星入门12星座`](./玄学修炼/占星入门12星座/) | **public** | 占星, 12星座, 元素, 模式 | content.md + web.html + 9 AI 出图 |
 
 > **5 个 case 全部默认 public** —— 提 PR 共享。
 

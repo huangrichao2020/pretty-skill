@@ -1,0 +1,25 @@
+{
+  "name": "占星入门12星座",
+  "title": "占星入门 12 星座 · 一次看懂自己的性格底色",
+  "domain": "玄学修炼",
+  "tags": [
+    "占星",
+    "12星座",
+    "元素",
+    "模式",
+    "性格"
+  ],
+  "visibility": "public",
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-09",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": false,
+    "presentation_pptx": false
+  },
+  "page_count": 9,
+  "summary": "用 4 元素（火/土/风/水）× 3 模式（开创/固定/变动）= 12 星座，把 12 星座从'算命'变成'性格方言字典'"
+}

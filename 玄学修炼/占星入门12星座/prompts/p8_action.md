@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a wooden desk with 3 items: a zodiac wheel poster pinned on wall (find yourself), a relationship pie chart with 5 friends' names (see relationships), and a phone showing Astro.com app (use tools). Cream paper background. Macaron palette. Dark brown Chinese title '3 步开始你的星座实践'. Cozy study desk feel. No real photos. 16:9, 2K.

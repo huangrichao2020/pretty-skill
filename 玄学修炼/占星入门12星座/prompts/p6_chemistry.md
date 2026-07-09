@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 4 beakers/flasks in a row, each showing two element symbols mixing: fire+fire (red explosion), earth+earth (brown tower), fire+earth (orange-brown stable), fire+wind (orange-blue whirl), earth+water (mud splash). Cream paper background. Macaron palette. Dark brown Chinese title '元素关系化学反应'. Cozy alchemy lab feel. No real photos. 16:9, 2K.

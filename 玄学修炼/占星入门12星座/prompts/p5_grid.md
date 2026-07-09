@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a complete 4x3 grid with all 12 zodiac signs filled in. Each cell shows the zodiac symbol + Chinese name. Top row: 白羊-狮子-射手 (fire). Second: 金牛-处女-摩羯 (earth). Third: 双子-天秤-水瓶 (wind). Bottom: 巨蟹-天蝎-双鱼 (water). Color-coded by element. Cream paper background. Macaron palette. Dark brown Chinese title '一张表速记 12 星座'. No real photos. 16:9, 2K.

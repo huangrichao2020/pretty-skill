@@ -140,6 +140,7 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 | `内容创作` | **橙皮书方法论** | 花叔写 9 本橙皮书的方法（调研→写作→三审）| content.md + 7 张本地出图 + 锦绣四形态 |
 | `金融投资` | **卡脖子猎手** | Serenity 供应链瓶颈方法论选股 | content.md + 9 张图 + 10.6MB PPTX |
 | `金融投资` | **宏观雷达** | A 股每日宏观早报（央行/统计局/财联社多源）| content.md + 7 张图 + 锦绣四形态 |
+| `玄学修炼` | **占星入门12星座** | 用 4 元素 × 3 模式读懂 12 性格原型 | content.md + 9 张 AI 出图 |
 
 > **每个 case 都有 `.md` 源文字 + `.html` 网页 + `.pptx` PPTX（3F Content 范式）— AI 能直接读，人能直接看**。
 > 在线看：<https://huangrichao2020.github.io/pretty-skills/>

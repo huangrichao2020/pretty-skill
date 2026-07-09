@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a clock-like circle showing 12 zodiac signs with 3 mode markers: cardinal (开创, yellow arrows pointing outward), fixed (固定, blue anchors), mutable (变动, green flowing arrows). Cream paper background. Macaron palette. Dark brown Chinese title '3 模式 = 3 种处事节奏'. Educational infographic style. No real photos. 16:9, 2K.
