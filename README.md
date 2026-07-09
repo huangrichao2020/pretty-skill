@@ -26,9 +26,9 @@
 
 ---
 
-## 装 1 个 pretty-skills，能干什么？
+## 装retty-skills，能干什么？
 
-### 1. **pretty-skills** — 1 装管所有 skill
+### 1. **pretty-skills** — 管理你所有的 skill
 
 每一个 agent（Claude Code / Codex / Mavis / Cursor / Windsurf）都可以装一个 pretty-skills。
 装完之后它帮你**收纳 / 更新 / 进化**你所有的 skill 和知识 — 一次装，5 个 agent 都能用。
@@ -40,11 +40,12 @@ ps update      # 更新：拉主项目最新
 ps contribute  # 进化：把本地改好的提回主项目
 ```
 
-### 2. **pretty-skills-creator** — 1 创自带宣传 HTML + PPT
+### 2. **pretty-skills-creator** — 创自带宣传 HTML + PPT
 
 如果你想**宣传或推广你的 skill**，
 pretty-skills-creator 在创建时会**同时帮你创建宣传 HTML 和 PPT**，
 连写带做一步到位 — 你只管填 5 项 metadata。
+帮助你直接发小红书 抖音 公众号 ，大家一起繁荣创造机会。
 
 ```bash
 ps create my-new-skill \
