@@ -37,7 +37,7 @@
 | ai-agent | [`social-ecom-skill`](./ai-agent/social-ecom-skill/) | **public** | 社交电商, GPT | content.md + web.html + 锦绣 |
 | trading-review | [`chokepoint-mainboard`](./trading-review/chokepoint-mainboard/) | **public** | 卡脖子, 选股 | content.md + web.html + 锦绣 + presentation.pptx |
 | trading-review | [`macro-monitor`](./trading-review/macro-monitor/) | **public** | A股, 宏观, 早报 | content.md + web.html + 锦绣 |
-| content-ops | [`橙皮书方法论`](./content-ops/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + web.html + 锦绣 |
+| content-ops | [`orange-book-method`](./content-ops/orange-book-method/) | **public** | 橙皮书, 方法论, 写作 | content.md + web.html + 锦绣 |
 
 > **5 个 case 全部默认 public** —— 提 PR 共享。
 

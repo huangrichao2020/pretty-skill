@@ -56,3 +56,18 @@
 
 **git**
 - 已 rebase 到远端最新，本地领先的提交将 **push 到 origin/main**（用户本轮明确授权 push）。
+
+---
+
+## 2026-07-09（18:46 · case slug 英文化收尾）
+
+**背景**：上一轮把 2 个 case 迁到英文领域目录后，`content-ops/橙皮书方法论` 的**文件夹名仍是中文**，而其 `manifest.json` 里 `name` 已声明为英文 `orange-book-method` —— 名实不符，是全仓唯一的中文 slug 残留。
+
+**改动**
+- `git mv content-ops/橙皮书方法论 → content-ops/orange-book-method`（与 manifest.name 对齐；28 文件 rename 保留历史）。
+- `INDEX.md`：链接与 slug 更新为 `orange-book-method`。
+- 全仓已无指向旧路径的有效引用（仅历史 dream-log 记录保留，不改写）。
+
+**3F 校验**：`content-ops/orange-book-method` → `check-3f.py` **`EXIT=0`**。
+
+**git**：commit 后 push 到 `origin/main`（用户已授权）。至此全部 5 个 case 的领域目录与 slug 均符合 v3.11 英文规范。
