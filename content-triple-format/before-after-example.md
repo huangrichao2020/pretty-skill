@@ -126,4 +126,4 @@ Agent 的最短路径：
 
 **对照样本**：
 - ❌ 反例：朋友 agent 跑出的丑文字 PPT（2026-07-08 已拒）
-- ✅ 正例：`domains/ai-training/cartman-team-ai-agent-collab/presentation.pptx`（5.4 MB，含图）
+- ✅ 正例：`domains/ai-training/AI狼群战法/presentation.pptx`（5.4 MB，含图）

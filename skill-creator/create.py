@@ -38,8 +38,17 @@ from datetime import date
 from pathlib import Path
 
 PRESET_DOMAINS = [
-    "ai-agent", "coding", "data-science", "product-design", "business-model",
-    "trading-review", "content-ops", "learning", "gaming", "lifestyle", "pkm-decision",
+    "AI能力", "ai-agent",
+    "编程开发", "coding",
+    "数据科学", "data-science",
+    "产品设计", "product-design",
+    "商业运营", "business-model",
+    "金融投资", "trading-review",
+    "内容创作", "content-ops",
+    "教育学习", "learning",
+    "游戏玩家", "gaming",
+    "生活方式", "lifestyle",
+    "思维方法", "pkm-decision",
 ]
 
 PRESET_STYLES = [

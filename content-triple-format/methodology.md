@@ -36,7 +36,7 @@
 
 ## 真实案例
 
-### cartman-team-ai-agent-collab（团队 AI Agent 协作）
+### AI狼群战法（团队 AI Agent 协作）
 
 - 8 页 PPT
 - **`.md`**：人类 + AI 都读的源文字（每页 4-7 字段）
@@ -44,7 +44,7 @@
 - **`.html`**：浏览器直接看，键盘 ← → 翻页
 - **疗效**：0 返工 · 内容能被任何 AI 工具消化
 
-### social-ecom-skill（社交电商 × 两层拆解法）
+### 社交电商掘金术（社交电商 × 两层拆解法）
 
 - 8 页 PPT
 - **`.md`**：含 41 场景 / 6 板块 / 3 类型 / 90 天落地的全部信息
@@ -145,5 +145,5 @@
 ## 来源
 
 - 2026-07-07 huangrichao2020 提出想法 → Mavis 命名 3F Content
-- 实战：cartman-team-ai-agent-collab + social-ecom-skill 同时升级为 3 件套
+- 实战：AI狼群战法 + 社交电商掘金术 同时升级为 3 件套
 - 类比：SDR / spec-driven development / JAMStack / headless CMS

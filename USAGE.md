@@ -67,7 +67,7 @@ Agent 内部流程：
 2. 找到相关 case → 读 content.md 拿核心方法
 3. 提取有用部分 → 新建（or 更新）本地 pretty-skills case
 4. 标记 visibility（public / private / draft）
-5. 跟用户说：「学完了，已经加入 pkm-decision/缠论/」
+5. 跟用户说：「学完了，已经加入 思维方法/缠论/」
 ```
 
 **核心原则**：agent 永远不直接 `npm install xxx`，而是「学习 + 沉淀」到 pretty-skills。
@@ -79,7 +79,7 @@ Agent 内部流程：
 # agent 内部流程：
 new_case = {
   "name": "我的私人投资策略",
-  "domain": "trading-review",
+  "domain": "金融投资",
   "visibility": "private",   # ← 关键
   "tags": ["私人", "投资"]
 }

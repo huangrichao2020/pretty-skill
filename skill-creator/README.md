@@ -78,13 +78,13 @@ create.py 默认会弹出 picker（7 选 1，pretty-skills 锁定「手绘马卡
 **3 种调用方式**：
 ```bash
 # 方式 1：交互 shell 中跑 → 弹 picker
-python skill-creator/create.py --input my-knowledge.md --domain "trading-review"
+python skill-creator/create.py --input my-knowledge.md --domain "金融投资"
 
 # 方式 2：显式指定风格（跳过 picker）
-python skill-creator/create.py --input my-knowledge.md --domain "trading-review" --style "手绘马卡龙"
+python skill-creator/create.py --input my-knowledge.md --domain "金融投资" --style "手绘马卡龙"
 
 # 方式 3：agent 用 stdin/PIPE 调（自动 fallback 默认 + 提示）
-python skill-creator/create.py --input my-knowledge.md --domain "trading-review" < /dev/null  # 自动用默认
+python skill-creator/create.py --input my-knowledge.md --domain "金融投资" < /dev/null  # 自动用默认
 ```
 
 > ⚠️ **其他 agent 调用 pretty-skills 时如果跳过 picker 直接跑** = 视觉化失败 / 用户看到风格不对
@@ -99,7 +99,7 @@ python skill-creator/create.py --input my-knowledge.md --domain "trading-review"
 ```bash
 python skill-creator/create.py \
   --input my-knowledge.md \
-  --domain "trading-review" \
+  --domain "金融投资" \
   --style "深色科技风" \
   --output ./output/
 
@@ -122,7 +122,7 @@ python skill-creator/create.py \
 ```bash
 python skill-creator/create.py \
   --url https://zhuanlan.zhihu.com/p/xxxxxx \
-  --domain "pkm-decision" \
+  --domain "思维方法" \
   --style "马卡龙"
 ```
 
@@ -131,7 +131,7 @@ python skill-creator/create.py \
 ```bash
 python skill-creator/create.py \
   --input video-script.md \
-  --domain "content-ops" \
+  --domain "内容创作" \
   --style "深色科技风" \
   --pages 8
 ```
@@ -144,7 +144,7 @@ python skill-creator/create.py \
 |---|---|---|
 | `--input` | 是* | 输入 .md 文件路径 |
 | `--url` | 是* | 输入 URL（与 --input 二选一）|
-| `--domain` | 是 | 11 预设领域之一（ai-agent / coding / ...）|
+| `--domain` | 是 | 11 预设领域之一（AI能力 / 编程开发 / ...）|
 | `--style` | 否 | 视觉风格（马卡龙 / 古铜金 / 蓝白灰 / 深色科技风 / 城市插画 / 真实生活感）· 默认蓝白灰 |
 | `--pages` | 否 | PPT 页数（默认 9）|
 | `--output` | 否 | 输出目录（默认 ./output/）|
@@ -260,7 +260,7 @@ output/<domain>/<case-name>/
 ```bash
 $ python skill-creator/create.py \
     --input sample-knowledge.md \
-    --domain "trading-review" \
+    --domain "金融投资" \
     --case-name "chokepoint-test"
 ✅ manifest.json (public)
 ✅ content.md (6 页 · 自动分页)

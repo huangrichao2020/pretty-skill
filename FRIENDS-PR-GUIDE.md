@@ -15,9 +15,9 @@
 打开 https://github.com/huangrichao2020/pretty-skills/tree/main 看 11 个一级目录，选一个对你的内容最合适的：
 
 ```
-ai-agent/    coding/   data-science/   product-design/
-business-model/  trading-review/   content-ops/   learning/
-gaming/  lifestyle/   pkm-decision/
+AI能力/    编程开发/   数据科学/   产品设计/
+商业运营/  金融投资/   内容创作/   教育学习/
+游戏玩家/  生活方式/   思维方法/
 ```
 
 **没合适的？** 提 PR 新增（附 README + 至少 1 个 case）。

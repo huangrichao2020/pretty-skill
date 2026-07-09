@@ -137,17 +137,17 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 ├── README.md                           # 你正在看
 ├── _config.yml                         # Jekyll 配置（GitHub Pages）
 ├── index.html                          # GitHub Pages 入口
-├── ai-agent/                           # 11 领域 case 库（kebab-case 英文，对齐 knowhub）
-├── business-model/
-├── coding/
-├── content-ops/
-├── data-science/
-├── gaming/
-├── learning/
-├── lifestyle/
-├── pkm-decision/
-├── product-design/
-├── trading-review/
+├── AI能力/                           # 11 领域 case 库（kebab-case 英文，对齐 knowhub）
+├── 商业运营/
+├── 编程开发/
+├── 内容创作/
+├── 数据科学/
+├── 游戏玩家/
+├── 教育学习/
+├── 生活方式/
+├── 思维方法/
+├── 产品设计/
+├── 金融投资/
 ├── _模板/                              # 模板
 ├── assets/                             # 静态资源
 ├── content-triple-format/              # 3F Content 范式
@@ -160,8 +160,8 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 ```
 
 > **领域命名规则**：跟 knowhub 对齐的 6 个用 knowhub 名
-> （`ai-agent` / `business-model` / `content-ops` / `pkm-decision` / `trading-review`），
-> knowhub 没有的 5 个用 kebab-case 英文（`coding` / `data-science` / `product-design` / `gaming` / `learning` / `lifestyle`）。
+> （`AI能力` / `商业运营` / `内容创作` / `思维方法` / `金融投资`），
+> knowhub 没有的 5 个用 kebab-case 英文（`编程开发` / `数据科学` / `产品设计` / `游戏玩家` / `教育学习` / `生活方式`）。
 
 ---
 

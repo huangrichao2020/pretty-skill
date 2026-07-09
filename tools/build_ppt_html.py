@@ -6,7 +6,7 @@
 
 例：
   python3 tools/build_ppt_html.py \\
-    ai-agent/cartman-team-ai-agent-collab \\
+    AI能力/AI狼群战法 \\
     "团队如何与 AI Agent 高效协作" \\
     p0_cover p1_problem p2_vision p3_context_layers p4_observation p5_memory_evolve p6_human_role p7_takeaways
 """
@@ -53,7 +53,7 @@ def generate(case_dir: Path, case_title: str, page_images: list[str], page_notes
 def main():
     if len(sys.argv) < 3:
         print("用法: python3 build_ppt_html.py <case_dir> <case_title> [图片列表...]")
-        print("例:  python3 build_ppt_html.py ai-agent/cartman ... p0_cover p1_problem ...")
+        print("例:  python3 build_ppt_html.py AI能力/cartman ... p0_cover p1_problem ...")
         sys.exit(1)
 
     case_dir = Path(sys.argv[1])

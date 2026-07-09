@@ -1,0 +1,19 @@
+{
+  "name": "社交电商掘金术",
+  "domain": "AI能力",
+  "title": "社交电商 × 两层拆解法",
+  "visibility": "public",
+  "tags": ["社交电商", "GPT", "拆解法", "产品定位"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-07",
+  "last_updated": "2026-07-09",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 8,
+  "summary": "用两层拆解法定位社交电商赛道 · 9 张 AI 出图"
+}

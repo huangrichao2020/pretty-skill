@@ -62,7 +62,7 @@ https://github.com/huangrichao2020/pretty-skills
 - 社交电商两层拆解（social-ecom）
 - A 股卡脖子选股 · 主板版（@Kun 贡献 · 9 页 PPT + 10 MB PPTX）
 
-11 中文领域预设（ai-agent / coding / data-science / product-design / business-model / trading-review / content-ops / learning / gaming / lifestyle / pkm-decision），9 个还空着等全球开发者贡献。
+11 中文领域预设（AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 生活方式 / 思维方法），9 个还空着等全球开发者贡献。
 
 3 件套发布范式：
 - content.md（喂 LLM）
@@ -139,7 +139,7 @@ check-3f.py 自动校验：PR 合规才能 merge
 
 **哲学**：「4 自在」 · 观 / 化 / 照 / 渡
 
-**11 中文领域** 等你贡献：ai-agent / coding / data-science / product-design / business-model / trading-review / content-ops / learning / gaming / lifestyle / pkm-decision
+**11 中文领域** 等你贡献：AI能力 / 编程开发 / 数据科学 / 产品设计 / 商业运营 / 金融投资 / 内容创作 / 教育学习 / 游戏玩家 / 生活方式 / 思维方法
 
 **1 张图总结**：
 

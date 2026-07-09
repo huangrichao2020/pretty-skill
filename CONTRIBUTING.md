@@ -22,12 +22,12 @@
 
 | 类型 | 例子 | 领域 |
 |---|---|---|
-| **方法论** | 决策框架 / 思考模型 / 最佳实践 | pkm-decision / coding / product-design |
-| **案例分析** | 真实项目复盘 / 案例拆解 | business-model / trading-review / data-science |
-| **技能教程** | 工具使用 / 编程技巧 / 制作流程 | coding / content-ops / gaming |
-| **知识沉淀** | 学科总结 / 概念解释 / 历史复盘 | learning / pkm-decision / lifestyle |
-| **攻略 / 指南** | 游戏攻略 / 旅行指南 / 工具评测 | gaming / lifestyle / content-ops |
-| **可视化** | 信息图 / 数据可视化 / 思维导图 | data-science / pkm-decision / coding |
+| **方法论** | 决策框架 / 思考模型 / 最佳实践 | 思维方法 / 编程开发 / 产品设计 |
+| **案例分析** | 真实项目复盘 / 案例拆解 | 商业运营 / 金融投资 / 数据科学 |
+| **技能教程** | 工具使用 / 编程技巧 / 制作流程 | 编程开发 / 内容创作 / 游戏玩家 |
+| **知识沉淀** | 学科总结 / 概念解释 / 历史复盘 | 教育学习 / 思维方法 / 生活方式 |
+| **攻略 / 指南** | 游戏攻略 / 旅行指南 / 工具评测 | 游戏玩家 / 生活方式 / 内容创作 |
+| **可视化** | 信息图 / 数据可视化 / 思维导图 | 数据科学 / 思维方法 / 编程开发 |
 
 ---
 
@@ -75,7 +75,7 @@ cd "<11 领域之一>/<你的-case-名>"
 
 ```bash
 pip install pretty-skills
-pretty-skills create --input my-knowledge.md --domain "trading-review" --style "深色科技风"
+pretty-skills create --input my-knowledge.md --domain "金融投资" --style "深色科技风"
 # 自动生成 content.md + images/ + presentation.pptx + web.html + 锦绣 4 形态
 ```
 
@@ -154,17 +154,17 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 | 领域 | 范围 |
 |---|---|
-| **ai-agent** | LLM / Agent / 提示工程 / 机器学习 |
-| **coding** | 通用编程 / 架构 / 模式 / 最佳实践 / 前后端 |
-| **data-science** | 数据分析 / 可视化 / 统计 / BI |
-| **product-design** | 产品方法论 / UX / UI / 用户研究 |
-| **business-model** | 营销 / 增长 / 用户运营 / 商业模式 |
-| **trading-review** | A 股 / 港美股 / 加密货币 / 量化 |
-| **content-ops** | 视频 / 写作 / 直播 / 摄影 |
-| **learning** | 学科教育 / 语言学习 / 知识管理 |
-| **gaming** | 游戏攻略 / 角色养成 / 副本流程 / MOD |
-| **lifestyle** | 健康 / 时间管理 / 关系 / 旅行 |
-| **pkm-decision** | 决策框架 / 思维模型 / 心理学 |
+| **AI能力** | LLM / Agent / 提示工程 / 机器学习 |
+| **编程开发** | 通用编程 / 架构 / 模式 / 最佳实践 / 前后端 |
+| **数据科学** | 数据分析 / 可视化 / 统计 / BI |
+| **产品设计** | 产品方法论 / UX / UI / 用户研究 |
+| **商业运营** | 营销 / 增长 / 用户运营 / 商业模式 |
+| **金融投资** | A 股 / 港美股 / 加密货币 / 量化 |
+| **内容创作** | 视频 / 写作 / 直播 / 摄影 |
+| **教育学习** | 学科教育 / 语言学习 / 知识管理 |
+| **游戏玩家** | 游戏攻略 / 角色养成 / 副本流程 / MOD |
+| **生活方式** | 健康 / 时间管理 / 关系 / 旅行 |
+| **思维方法** | 决策框架 / 思维模型 / 心理学 |
 
 ---
 
@@ -191,12 +191,12 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ### manifest.json 必填详解（v3.11）
 
-每个 case 必须在 case 根目录加 `manifest.json`（[示例](../trading-review/chokepoint-mainboard/manifest.json)）：
+每个 case 必须在 case 根目录加 `manifest.json`（[示例](../金融投资/卡脖子猎手/manifest.json)）：
 
 ```json
 {
-  "name": "chokepoint-mainboard",
-  "domain": "trading-review",
+  "name": "卡脖子猎手",
+  "domain": "金融投资",
   "title": "卡脖子选股报告 · 主板专版",
   "visibility": "public",
   "tags": ["A股", "卡脖子", "选股", "供应链"],
@@ -229,12 +229,12 @@ git commit -m "feat: add 新领域名称 + 案例1"
 2. 加 `manifest.json`（含 visibility 字段）
 3. 更新 [INDEX.md](./INDEX.md) 的「所有 case 清单」表
 
-**v0.2 skill-creator 自动写**：用 `python skill-creator/create.py --input foo.md --domain "trading-review" --visibility private` 会自动生成 manifest.json。
+**v0.2 skill-creator 自动写**：用 `python skill-creator/create.py --input foo.md --domain "金融投资" --visibility private` 会自动生成 manifest.json。
 
 **人工参考 3 个现有 case**：
-- [ai-agent/cartman-team-ai-agent-collab/manifest.json](../ai-agent/cartman-team-ai-agent-collab/manifest.json)
-- [ai-agent/social-ecom-skill/manifest.json](../ai-agent/social-ecom-skill/manifest.json)
-- [trading-review/chokepoint-mainboard/manifest.json](../trading-review/chokepoint-mainboard/manifest.json)
+- [AI能力/AI狼群战法/manifest.json](../AI能力/AI狼群战法/manifest.json)
+- [AI能力/社交电商掘金术/manifest.json](../AI能力/社交电商掘金术/manifest.json)
+- [金融投资/卡脖子猎手/manifest.json](../金融投资/卡脖子猎手/manifest.json)
 
 ## 🚫 6 个反模式（PR 100% 退回）
 
@@ -310,7 +310,7 @@ v3.1 推荐用 skill-creator 工具（即将开源）。手动方式：
 
 ### Q: 中英文 case 名哪个好？
 
-都可以。**英文** (`chokepoint-mainboard`) 更适合 GitHub 搜索；**中文** (`小红书爆款拆解`) 更直观。
+都可以。**英文** (`卡脖子猎手`) 更适合 GitHub 搜索；**中文** (`小红书爆款拆解`) 更直观。
 
 ### Q: 我贡献的内容会被 AI 训练用吗？
 

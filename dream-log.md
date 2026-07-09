@@ -71,3 +71,24 @@
 **3F 校验**：`content-ops/orange-book-method` → `check-3f.py` **`EXIT=0`**。
 
 **git**：commit 后 push 到 `origin/main`（用户已授权）。至此全部 5 个 case 的领域目录与 slug 均符合 v3.11 英文规范。
+
+---
+
+## 2026-07-09（18:51 · 领域与 case 全面中文化）
+
+**背景**：用户要求领域名改回中文、case（技能）名也用中文且"别太生硬、易传播、有噱头"。
+
+**关键发现（验证中翻出的脏数据）**
+- `check-3f.py` 与 `skill-creator/create.py` 各自硬编码英文 `PRESET_DOMAINS`，是中文领域的硬门槛——不改这俩，改成中文目录后校验/脚手架全失效。
+- 之前误以为 5 个 case 都过校验：其实只有 2 个（橙皮书/宏观雷达）真过；另 3 个（cartman、social-ecom 的 `domain=AI能力`、chokepoint 的 `domain=金融投资`）的 manifest.domain **根本不在英文预设里**，一直是 `EXIT=1`，只是被管道 `grep` 的退出码掩盖了。
+
+**改动**
+1. `PRESET_DOMAINS` 中文化：`check-3f.py`（字典 → 中文 key + 英文别名兼容）、`create.py`（列表 → 中英并列）。
+2. 11 个领域目录 `git mv` 改中文：ai-agent→AI能力、coding→编程开发、data-science→数据科学、product-design→产品设计、business-model→商业运营、trading-review→金融投资、content-ops→内容创作、learning→教育学习、gaming→游戏玩家、lifestyle→生活方式、pkm-decision→思维方法。
+3. 5 个 case 目录改中文噱头名：cartman-team-ai-agent-collab→**AI狼群战法**、social-ecom-skill→**社交电商掘金术**、orange-book-method→**橙皮书方法论**（保留品牌）、chokepoint-mainboard→**卡脖子猎手**、macro-monitor→**宏观雷达**。
+4. 重写 5 个 `manifest.json`：`name`=中文 slug、`domain`=中文领域名，顺手根治上面 3 个 domain 错配。
+5. Python 正则（ASCII 词边界，修正中文被当单词字符导致 `\b` 失效）批量替换 36 个文档里的英文领域/case 名为中文；排除 `.git`/`.workbuddy`/历史 `dream-log.md`/已手改的两脚本/5 个 manifest。
+
+**3F 校验**：5 个 case 全部 `check-3f.py` **`EXIT=0`**（真实退出码，非管道欺骗）。
+
+**git**：commit 后 push 到 `origin/main`（用户已授权）。
