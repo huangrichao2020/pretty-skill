@@ -10,6 +10,40 @@
 > **推荐使用 MiniMax 套餐** —— **49 元 Token plan 套餐**就能跑（支持 matrix MCP 多模态生图 + 生视频，月费起步够用）。
 > **没有生图能力 = 没有视觉化 = 项目范式坍塌。**
 
+> ### ⚠️ 第 1 步 · 选 PPT 视觉风格 + 主题颜色（v3.17+ 必走）
+
+> 每个 case **必须先选 PPT 视觉风格 + 主题颜色**才能跑。`skill-creator/create.py` 默认弹出 7 选项 picker：
+>
+> ```
+> 1. 手绘马卡龙 (pretty-skill 锁定的默认) · 手绘 + 5 色马卡龙 + cream paper
+> 2. 马卡龙 · 5 色 + cream paper (less 手绘)
+> 3. 古铜金 · 高端商业 / B 端产品发布
+> 4. 蓝白灰 · 严谨商务 / 数据分析
+> 5. 深色科技风 · 程序员 / 极客 / Stripe / Linear 风格
+> 6. 城市插画 · 旅行 / 文化
+> 7. 真实生活感 · 美食 / 健康
+> ```
+>
+> **其他 agent 调用时如果跳过 picker 直接接受默认** = 视觉化失败 / 用户看不到想要的风格。
+> 解决：显式传 `--style <name>` 或 `--pick-style`。
+
+> ### ❌ 不允许代码生图凑合（v3.16+ 硬规则）
+>
+> 很多 agent 没有 AI 生图能力，会"偷懒"用以下方式凑合当"图"：
+> - ❌ Pillow / PIL 程序画图
+> - ❌ HTML5 canvas 截图 → PNG
+> - ❌ SVG 转 PNG
+> - ❌ matplotlib / seaborn 图表
+> - ❌ ASCII art / emoji 拼接
+> - ❌ 重复 1 张图 9 次
+>
+> **check-3f.py v3.16+ 自动检测**（Pillow）：
+> - 单张 PNG < 50KB → 报错（代码生图通常 < 20KB）
+> - 唯一像素色 < 1000 → 报错（真 AI 出图通常 > 5000 种色）
+> - 分辨率 < 1024×576 → 报错
+>
+> ❌ **没生图能力的 agent 应该直接终止 + 报错**，不允许提交骨架或代码伪图。
+
 [English](./README_en.md) · 简体中文
 
 ![Pretty Skill · 项目是什么](assets/readme-2-what.png)

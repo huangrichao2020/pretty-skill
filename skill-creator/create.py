@@ -31,6 +31,7 @@ v0.2 新增：
 """
 import argparse
 import json
+import os
 import re
 import sys
 from datetime import date
@@ -44,6 +45,57 @@ PRESET_DOMAINS = [
 PRESET_STYLES = [
     "马卡龙", "古铜金", "蓝白灰", "深色科技风", "城市插画", "真实生活感",
 ]
+
+# pretty-skill 锁定偏好（MEMORY § 11 · 2026-07-08 立）
+DEFAULT_STYLE = "手绘马卡龙"
+STYLE_DESCRIPTIONS = {
+    "手绘马卡龙": "手绘叙事风 + 5 色马卡龙（粉/薄荷/淡黄/淡蓝/薰衣草）+ cream paper 底 + 深棕文字 → 经典 pretty-skill 风格",
+    "马卡龙": "5 色马卡龙（粉/薄荷/淡黄/淡蓝/薰衣草）+ cream paper 底 → 简洁版马卡龙（less 手绘感）",
+    "古铜金": "古铜色 + 金色 + 深棕背景 → 高端商业 / B 端产品发布",
+    "蓝白灰": "蓝白灰极简 → 严谨商务 / 数据分析",
+    "深色科技风": "deep slate (#0A0E14) + cyan (#00D4AA) 强调 → 程序员 / 极客 / Stripe / Linear 风格",
+    "城市插画": "手绘城市建筑风 → 旅行 / 生活方式 / 文化",
+    "真实生活感": "写实摄影风 → 美食 / 健康 / 家居",
+}
+
+
+def pick_style_interactive() -> str:
+    """v3.17+ · 弹出 7 选项让用户选风格 · 显式交互
+
+    非交互 stdin（agent PIPE / 重定向 / EOF）→ 直接用默认「手绘马卡龙」+ 印提示
+    """
+    print("""
+╔════════════════════════════════════════════════════════════╗
+║  pretty-skill · 请选 PPT 视觉风格 + 主题颜色                  ║
+╚════════════════════════════════════════════════════════════╝
+
+选 1 个数字（默认 = 1 = pretty-skill 锁定的手绘马卡龙）：
+""")
+
+    options = list(STYLE_DESCRIPTIONS.items())
+    for i, (name, desc) in enumerate(options, 1):
+        marker = " ← pretty-skill 锁定的默认" if name == DEFAULT_STYLE else ""
+        print(f"  {i}. {name}{marker}")
+        print(f"     {desc}")
+
+    print()
+
+    # 非交互 stdin（agent 用 PIPE 调 create.py）→ 兜底默认
+    if not sys.stdin.isatty():
+        print(f"  ⚠️  检测到非交互 stdin（agent / 管道调用）→ 使用默认 = {DEFAULT_STYLE}")
+        print(f"  💡 如需选其它风格：传 --style <name> 或在交互 shell 中跑")
+        return DEFAULT_STYLE
+
+    while True:
+        raw = input(f"  请输入数字 (1-{len(options)}) 或直接回车（默认 = 1 = {DEFAULT_STYLE}）：").strip()
+        if raw == "":
+            print(f"  → 默认 = {DEFAULT_STYLE}")
+            return DEFAULT_STYLE
+        if raw.isdigit() and 1 <= int(raw) <= len(options):
+            chosen = options[int(raw) - 1][0]
+            print(f"  → 选了：{chosen}")
+            return chosen
+        print(f"  ⚠️  请重新输入 1-{len(options)} 范围内的数字")
 
 
 def parse_args():
@@ -70,8 +122,13 @@ NOTE（v0.2 限制）:
         help="11 预设领域之一（或「新增」= 走 PR 流程）",
     )
     parser.add_argument(
-        "--style", default="手绘马卡龙", choices=PRESET_STYLES,
-        help="视觉风格（默认「手绘马卡龙」= pretty-skill 锁定风格）",
+        "--style",
+        choices=PRESET_STYLES + [DEFAULT_STYLE],
+        help=f"视觉风格（7 选 1：{', '.join(PRESET_STYLES + [DEFAULT_STYLE])}）· 不传 = 弹出让用户选（默认 = {DEFAULT_STYLE}）",
+    )
+    parser.add_argument(
+        "--pick-style", action="store_true",
+        help="v3.17+ 显式弹出 interactive picker（默认未传也弹）",
     )
     parser.add_argument("--pages", type=int, default=9, help="PPT 页数（默认 9）")
     parser.add_argument("--output", default="./output/", help="输出父目录（默认 ./output/）")
@@ -89,6 +146,10 @@ NOTE（v0.2 限制）:
     parser.add_argument(
         "--summary", default="",
         help="case 的一句话简介（留空则自动从首页提取）",
+    )
+    parser.add_argument(
+        "--strict", action="store_true",
+        help="v3.16+ 严格模式：检测到无生图能力时强制报错（不允许骨架图）",
     )
     return parser.parse_args()
 
@@ -421,6 +482,38 @@ def main():
     if not input_path.exists():
         print(f"❌ 输入文件不存在: {input_path}")
         sys.exit(1)
+
+    # v3.17+ · 视觉风格 picker · 没传 --style 就弹出让用户选（跑通关键流程）
+    if not args.style or args.pick_style:
+        args.style = pick_style_interactive()
+
+    # v3.16+ · 严格模式检测 · 防止 agent 用代码生图凑合
+    if args.strict and not args.no_jinxiu:
+        has_api = bool(os.environ.get("MATRIX_API_KEY"))
+        if not has_api:
+            print("""
+❌ 严格模式（--strict）+ 生图环节默认开启 → 需要 AI 出图 API
+
+你没设环境变量 MATRIX_API_KEY，也没能调通的 AI 出图 API。
+
+pretty-skill **不允许**用以下方式凑合当图：
+  - Pillow / PIL 程序画图
+  - HTML5 canvas 截图 → PNG
+  - SVG → PNG 转码
+  - matplotlib / seaborn 图表
+  - ASCII art / emoji 拼接
+  - 重复 1 张图 9 次
+  - 空骨架 images/
+
+v3.16+ 规则：
+  没生图能力的 agent 应当**终止并报错**，不允许提交骨架或代码伪图。
+
+请：
+  A. 配 matrix MCP / MiniMax 套餐的环境变量 MATRIX_API_KEY
+  B. 升级 MiniMax 套餐（49 元 Token plan）https://minimax.io/
+  C. 切换到有生图能力的 agent（Mavis / Claude Code with MiniMax-M3 等）
+""")
+            sys.exit(2)
 
     # 1. 解析输入
     content = input_path.read_text(encoding="utf-8")

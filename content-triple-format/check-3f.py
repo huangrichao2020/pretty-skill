@@ -17,6 +17,8 @@
   □ images/ 目录存在且有 N 张 PNG（与 .pptx 页数对齐）
   □ prompts/ 目录存在（每页 60 行 prompt）
   □ manifest.json 必填（v3.11 起）· 含 visibility 合法字段
+  □ **图片真实性**（v3.16+）· 每张 PNG ≥ 50KB + ≥ 1024×576 + 唯一色 ≥ 1000
+    · 防止 agent 用 Pillow / canvas / SVG 转 PNG / matplotlib 凑合当"图"
 
 参考规范：
   - content-triple-format/README.md
@@ -27,6 +29,8 @@
 ⚠️ 前置条件 · 生图能力是必须的
    pretty-skill 所有视觉化都依赖 AI 出图。
    推荐使用 MiniMax 套餐（49 元 Token plan 套餐就够，支持 matrix MCP 多模态生图 + 生视频）。
+   ❌ 不允许用代码（Pillow / HTML canvas / SVG 转 PNG / matplotlib / ASCII）凑合当"图"代替真 AI 出图。
+   ❌ 没生图能力的 agent 应当**终止并报错**，不允许提交骨架图或代码伪图。
 """
 
 import argparse
@@ -36,6 +40,26 @@ import sys
 import zipfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
+
+# v3.16+ · 检测 agent 是否"代码生图"凑合（Pillow / HTML canvas / SVG 转 PNG / matplotlib）
+try:
+    from PIL import Image
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
+
+# 代码生图检测阈值（防止 agent 偷懒用 Pillow / canvas / SVG 转 PNG 凑合）
+MIN_IMAGE_BYTES = 50_000         # 单张 PNG < 50KB 几乎一定是占位 / 代码生成的"假图"
+MIN_IMAGE_PIXELS_W = 1024        # 至少 1024 宽度
+MIN_IMAGE_PIXELS_H = 576         # 至少 576 高度（16:9 基础）
+MIN_UNIQUE_COLORS = 1_000        # 唯一像素色 < 1000 几乎一定是色块 / SVG 描边图
+MIN_IMAGE_ASPECT_RATIOS = {       # 允许的纵横比（极宽容）
+    (16, 9): "16:9",
+    (4, 3): "4:3",
+    (3, 4): "3:4",
+    (9, 16): "9:16",
+    (1, 1): "1:1",
+}
 
 
 # ───────────────────────── 校验规则 ─────────────────────────
@@ -426,6 +450,87 @@ def check_consistency(case_dir: Path) -> tuple[bool, list[str]]:
     return len(errors) == 0, errors
 
 
+def check_real_images(case_dir: Path) -> tuple[bool, list[str]]:
+    """v3.16+ · 防止 agent 用代码（Pillow / canvas / SVG 转 PNG / matplotlib）凑合当"图"
+
+    检测规则（任一失败 → 报错）：
+      1. 每张 PNG ≥ 50 KB（代码生成的占位 / 文字渲染图通常 < 20KB）
+      2. 分辨率 ≥ 1024×576（16:9 基础）
+      3. 唯一像素色 ≥ 1000（PNG 转 PNG 的"假图"通常只有几十种色）
+      4. 纵横比在 16:9 / 4:3 / 3:4 / 9:16 / 1:1 之一
+
+    没装 Pillow 时返回警告（不阻断）—— Pillow 是 AI 出图的"图像分析"工具，缺它 = 不能严格 verify
+    """
+    if not HAS_PIL:
+        warn("Pillow 未装，无法做代码生图检测（pip install Pillow 可启用）—— 建议升级 CI 环境")
+        return True, []
+
+    errors = []
+    images_dir = case_dir / "images"
+    if not images_dir.exists():
+        return True, []  # 让 check_images_dir 处理缺失情况
+
+    pngs = sorted(images_dir.glob("*.png"))
+    if not pngs:
+        return True, []  # 无图让 check_images_dir 处理
+
+    for png_path in pngs:
+        name = png_path.name
+        bytes_size = png_path.stat().st_size
+
+        # 1. 文件大小
+        if bytes_size < MIN_IMAGE_BYTES:
+            errors.append(
+                f"❌ {name} 仅 {bytes_size // 1024} KB · 太小（阈值 {MIN_IMAGE_BYTES // 1024} KB）"
+                f" · 可能是代码生成（HTML / Pillow / ASCII / SVG 转 PNG）的占位图，"
+                f"请用 MiniMax 套餐 matrix MCP 真出图"
+            )
+            continue
+
+        # 2-4. Pillow 分析
+        try:
+            img = Image.open(png_path).convert("RGB")
+            w, h = img.size
+
+            # 2. 分辨率
+            if w < MIN_IMAGE_PIXELS_W or h < MIN_IMAGE_PIXELS_H:
+                errors.append(
+                    f"❌ {name} 分辨率 {w}×{h} 太小（阈值 {MIN_IMAGE_PIXELS_W}×{MIN_IMAGE_PIXELS_H}）"
+                    f" · 不可能高质量出图 · 请提高 matrix 出图 size 到 2K"
+                )
+                continue
+
+            # 3. 唯一像素色（动态缩放采样加速 · 1024x576 内扫描全图）
+            small = img.resize((256, 144))
+            unique_colors = len(set(small.getdata()))
+            if unique_colors < MIN_UNIQUE_COLORS:
+                errors.append(
+                    f"❌ {name} 唯一色彩 {unique_colors} 种 · 太单调（阈值 {MIN_UNIQUE_COLORS}）"
+                    f" · 可能是 SVG 描边 / 色块拼图 / 文字水印生成的假图"
+                    f" · 请用 MiniMax 套餐 matrix MCP 真出图"
+                )
+                continue
+
+            # 4. 纵横比
+            from math import gcd
+            g = gcd(w, h)
+            ar = (w // g, h // g)
+            ar_ok = any(
+                ar == (a[0] // gcd(a[0], a[1]), a[1] // gcd(a[0], a[1]))
+                for a in MIN_IMAGE_ASPECT_RATIOS
+            )
+            if not ar_ok:
+                warn(f"{name} 纵横比 {ar[0]}:{ar[1]} 非标（建议 16:9 / 3:4 / 9:16）")
+
+        except Exception as e:
+            warn(f"{name} Pillow 解析失败: {e}")
+
+    if not errors:
+        ok(f"图片真实性检测通过（{len(pngs)} 张 PNG 均为 AI 真出图）")
+        return True, []
+    return False, errors
+
+
 def check_manifest(case_dir: Path) -> tuple[bool, list[str]]:
     """v3.11 起必填 · 验证 manifest.json 存在 + visibility 合法 + 领域在 11 预设中"""
     errors = []
@@ -547,6 +652,11 @@ def main():
     all_ok = all_ok and ok_cons
     print()
 
+    print("┌─ 图片真实性检查（v3.16+ · 防止代码生图凑合）")
+    ok_ri, errs_ri = check_real_images(case_dir)
+    all_ok = all_ok and ok_ri
+    print()
+
     print("┌─ manifest.json 检查（v3.11 起必填）")
     ok_mf, errs_mf = check_manifest(case_dir)
     all_ok = all_ok and ok_mf
@@ -561,7 +671,7 @@ def main():
     else:
         print(f"{RED}❌ 有检查项失败 · PR 会被自动退回{NC}")
         print(f"\n{RED}失败原因：{NC}")
-        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons + errs_dom + errs_jx + errs_mf
+        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons + errs_dom + errs_jx + errs_ri + errs_mf
         for err in all_errors:
             print(f"  {err}")
         print(f"\n{YELLOW}📖 参考修复：{NC}")

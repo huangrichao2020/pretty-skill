@@ -42,6 +42,58 @@ pip install -e skill-creator/
 
 ## 🚀 5 分钟上手
 
+### ⚠️ 第 1 步 · 弹出让用户选 PPT 视觉风格 + 主题颜色（v3.17+ 必走）
+
+**这是关键流程** —— 没选风格就跑会毁掉整个项目。
+
+create.py 默认会弹出 picker（7 选 1，pretty-skill 锁定「手绘马卡龙」）：
+
+```
+╔════════════════════════════════════════════════════════════╗
+║  pretty-skill · 请选 PPT 视觉风格 + 主题颜色                  ║
+╚════════════════════════════════════════════════════════════╝
+
+选 1 个数字（默认 = 1 = pretty-skill 锁定的手绘马卡龙）：
+
+  1. 手绘马卡龙 ← pretty-skill 锁定的默认
+  2. 马卡龙
+  3. 古铜金
+  4. 蓝白灰
+  5. 深色科技风
+  6. 城市插画
+  7. 真实生活感
+```
+
+**7 个候选**：
+| 风格 | 美学描述 | 适用场景 |
+|---|---|---|
+| **手绘马卡龙** | 5 色马卡龙 + cream paper + 深棕文字 + 手绘 | pretty-skill 默认（讲故事 / 方法论）|
+| 马卡龙 | 5 色马卡龙 + cream paper（less 手绘）| 简洁马卡龙 |
+| 古铜金 | 古铜色 + 金色 + 深棕背景 | B 端 / 产品发布 |
+| 蓝白灰 | 极简蓝白灰 | 数据分析 / 严谨商务 |
+| 深色科技风 | deep slate + cyan 强调 | 程序员 / 极客 |
+| 城市插画 | 手绘城市建筑风 | 旅行 / 文化 |
+| 真实生活感 | 写实摄影风 | 美食 / 健康 |
+
+**3 种调用方式**：
+```bash
+# 方式 1：交互 shell 中跑 → 弹 picker
+python skill-creator/create.py --input my-knowledge.md --domain "金融投资"
+
+# 方式 2：显式指定风格（跳过 picker）
+python skill-creator/create.py --input my-knowledge.md --domain "金融投资" --style "手绘马卡龙"
+
+# 方式 3：agent 用 stdin/PIPE 调（自动 fallback 默认 + 提示）
+python skill-creator/create.py --input my-knowledge.md --domain "金融投资" < /dev/null  # 自动用默认
+```
+
+> ⚠️ **其他 agent 调用 pretty-skill 时如果跳过 picker 直接跑** = 视觉化失败 / 用户看到风格不对
+> 解决：让它们传 `--style <name>` 或 `--pick-style`
+
+### 第 2 步 · 调 matrix 出图
+
+使用 picker 选出的风格作为 `--style`，再调 matrix / DALL-E 出图。
+
 ### 输入：任意 .md
 
 ```bash

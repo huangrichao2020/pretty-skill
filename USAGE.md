@@ -151,3 +151,54 @@ CI 自动跑 `check-3f.py` 验证 3 件套齐全 + 锦绣合格 → merge。
 **pretty-skill = agent 的元知识库。**
 **用法 = clone + load + 学一下 + dream + PR。**
 **精髓 = 私密忽略，公开共享，参与越多越好。**
+
+---
+
+## 8. agent 没生图能力怎么办？（v3.16+ 硬规则）
+
+**❌ 强制终止 + 报错，不允许代码生图凑合**。
+
+| 反模式（禁止） | 原因 |
+|---|---|
+| ❌ Pillow / PIL 程序画图 | 不是真视觉化 |
+| ❌ HTML5 canvas 截图 → PNG | 文字渲染代替图 |
+| ❌ SVG → PNG 转码 | 矢量描边代替图 |
+| ❌ matplotlib / seaborn 图表 | 表格代替定制叙事图 |
+| ❌ ASCII art / emoji 拼接 | 文字渲染成 PNG |
+| ❌ 重复 1 张图 9 次 | 偷懒不当真出图 |
+| ❌ 提交空骨架 images/ | 没生图就假装提交 |
+
+**为什么禁止**：代码生图 = 工具箱伪造视觉化 = 项目范式坍塌。
+
+**正确做法**（agent 接到 pretty-skill 任务，检测自己）：
+
+```python
+def handle_pretty_skill_task(task):
+    if not has_image_generation_capability():
+        # 1. 终止流程
+        sys.exit(1)
+        # 2. 报错
+        raise RuntimeError(
+            "❌ pretty-skill 任务需要 AI 出图能力\n"
+            "本 agent 没配 matrix MCP / MiniMax 套餐\n"
+            "请：\n"
+            "  A. 升级 MiniMax 套餐（49 元 Token plan 起步）https://minimax.io/\n"
+            "  B. 切换到有生图能力的 agent（Mavis / MiniMax-M3 等）\n"
+            "  C. 或者手工调 matrix / DALL-E / 即梦 出图后再用本 agent 编排"
+        )
+    # 正常流程
+```
+
+**check-3f.py v3.16+ 代码层 verify**：
+
+```python
+# 每张 PNG 自动检查（即使 agent 想偷懒也会被 CI 拦下）
+✅ 文件 ≥ 50 KB
+✅ 分辨率 ≥ 1024×576
+✅ 唯一像素色 ≥ 1000
+✅ 纵横比 ∈ {16:9, 4:3, 3:4, 9:16, 1:1}
+```
+
+不满足 → PR 自动退回 + 报错文案引导用 MiniMax 套餐。
+
+> **附录**：pretty-skill 项目哲学「清晰 > 速度 · 多花 5 分钟讲清楚 = 100 倍可懂性提升」 —— 不允许代码生图凑合是这一哲学的代码层强制执行。
