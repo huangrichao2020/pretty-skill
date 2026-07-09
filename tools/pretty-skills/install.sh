@@ -102,9 +102,23 @@ fi
 echo
 log_ok "🎉 pretty-skills 装好了"
 echo
+
+# === Step 5: 体检环境能力 ===
+log_info "Step 5/5 · 体检环境能力（缺什么会提示怎么补）"
+DOCTOR_LIB="$TOOL_DST/lib/doctor.sh"
+if [ -f "$DOCTOR_LIB" ]; then
+  # shellcheck source=/dev/null
+  source "$DOCTOR_LIB"
+  run_doctor
+else
+  log_warn "找不到 doctor.sh，跳过体检"
+fi
+
+echo
 echo "试一下："
 echo "  ${BOLD}ps list${RESET}          # 看本地所有 skill"
 echo "  ${BOLD}ps info pretty-skills${RESET}   # 看详情"
 echo "  ${BOLD}ps add serenity-stock-choke${RESET}   # 装一个"
 echo "  ${BOLD}ps graph${RESET}        # 看依赖图"
+echo "  ${BOLD}ps doctor --explain${RESET}  # 体检 + 缺能力时体验会差在哪"
 echo

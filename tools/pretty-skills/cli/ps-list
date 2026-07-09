@@ -31,7 +31,12 @@ for skill_dir in "$PS_STORE_DIR"/*/; do
   manifest="$skill_dir/manifest.yaml"
   if [ -f "$manifest" ]; then
     version=$(grep -E '^version:' "$manifest" | head -1 | sed -E 's/^version:[[:space:]]+//' | tr -d '"')
-    description=$(grep -E '^description:' "$manifest" | head -1 | sed -E 's/^description:[[:space:]]+//' | sed -E 's/^"(.*)"$/\1/' | cut -c1-60)
+    # 多行 description: 取到下一个非缩进行，截前 60 字符
+    description=$(awk '
+      /^description:[[:space:]]*[|>+-]?/ { flag=1; sub(/^description:[[:space:]]*[|>+-]?[[:space:]]*/, ""); if (length($0)>0) print; next }
+      flag && /^[[:space:]]/ { print; next }
+      flag { flag=0 }
+    ' "$manifest" | head -1 | sed -E 's/^["'\'']?(.*)["'\''"]?$/\1/' | cut -c1-60)
   else
     version="?"
     description="(无 manifest.yaml)"

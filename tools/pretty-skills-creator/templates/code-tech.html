@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{{ title }} · 占位版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>{% raw %}
+  /* 技术深色风 · 适合 AI/编程类 skill
+     特点：黑底 + 终端感 + 绿色 monospace 强调 + 细线
+  */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @font-face {
+    font-family: "JetBrains Local";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: local("JetBrains Mono"), local("Fira Code"), local("SF Mono"), local("Menlo");
+  }
+
+  body {
+    font-family: "JetBrains Local", "SF Mono", "Menlo", "Consolas", "PingFang SC", sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    min-height: 100vh;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 顶部状态栏 — 模拟终端 */
+  .topbar {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8b949e;
+  }
+  .topbar-dot {
+    width: 8px; height: 8px; background: #3fb950; border-radius: 50%;
+    box-shadow: 0 0 6px #3fb950;
+  }
+  .topbar-prompt {
+    color: #58a6ff;
+  }
+  .topbar-status {
+    padding: 3px 10px;
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    font-size: 11px;
+  }
+  .topbar-status.complete {
+    background: rgba(63, 185, 80, 0.15);
+    color: #3fb950;
+    border-color: rgba(63, 185, 80, 0.4);
+  }
+
+  /* 主区 */
+  main {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+
+  /* 标题区 — 终端 prompt 风格 */
+  .title-block {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed #30363d;
+  }
+  .title-cmd {
+    color: #8b949e;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .title-cmd .prompt { color: #3fb950; }
+  .title-cmd .arg { color: #79c0ff; }
+  .title-cmd .flag { color: #ffa657; }
+  .title-cmd .string { color: #a5d6ff; }
+
+  .title-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: #f0f6fc;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .title-meta {
+    display: flex;
+    gap: 16px;
+    color: #8b949e;
+    font-size: 12px;
+  }
+  .title-meta span::before { content: "# "; color: #6e7681; }
+  .title-meta .val { color: #79c0ff; }
+
+  /* 描述 — 终端输出风格 */
+  .description {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 20px 24px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    margin-bottom: 32px;
+  }
+  .description::before {
+    content: "> ";
+    color: #3fb950;
+    font-weight: 700;
+  }
+
+  /* 触发词 — 代码标签 */
+  .triggers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .triggers span {
+    background: rgba(56, 139, 253, 0.15);
+    color: #79c0ff;
+    border: 1px solid rgba(56, 139, 253, 0.4);
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  .triggers span::before { content: "$ "; color: #8b949e; }
+
+  /* meta 网格 */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+  .meta-row { display: flex; gap: 12px; align-items: baseline; }
+  .meta-key {
+    color: #8b949e;
+    font-size: 12px;
+    min-width: 80px;
+  }
+  .meta-key::after { content: ":"; }
+  .meta-val {
+    color: #c9d1d9;
+    font-size: 13px;
+    word-break: break-all;
+  }
+
+  /* 底部 */
+  .footer {
+    border-top: 1px dashed #30363d;
+    padding-top: 16px;
+    font-size: 11px;
+    color: #6e7681;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-hint { color: #fbbf24; }
+  .footer-hint.complete { color: #3fb950; }
+{% endraw %}</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="topbar-dot"></span>
+    <span class="topbar-prompt">~/pretty-skill/{{ domain }}/{{ case }}</span>
+  </div>
+  <span class="topbar-status {{ status_class }}">{{ status_badge }}</span>
+</header>
+
+<main>
+  <section class="title-block">
+    <div class="title-cmd">
+      <span class="prompt">$</span> cat <span class="arg">{{ case }}</span>/<span class="flag">--title</span> <span class="string">"{{ title }}"</span>
+    </div>
+    <h1 class="title-text">{{ title }}</h1>
+    <div class="title-meta">
+      <span>domain <span class="val">{{ domain }}</span></span>
+      <span>created <span class="val">{{ created }}</span></span>
+      <span>contributor <span class="val">{{ contributor }}</span></span>
+    </div>
+  </section>
+
+  <article class="description">
+    {{ description }}
+  </article>
+
+  <div class="triggers">{{ trigger_html }}</div>
+
+  <section class="meta-grid">
+    <div class="meta-row">
+      <span class="meta-key">author</span>
+      <span class="meta-val">{{ contributor }}</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-key">domain</span>
+      <span class="meta-val">{{ domain }}</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-key">related</span>
+      <span class="meta-val">{{ related }}</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-key">path</span>
+      <span class="meta-val">pretty-skill/{{ domain }}/{{ case }}/web.html</span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>pretty-skill · placeholder · 3F Content pending</span>
+    <span class="footer-hint {{ status_class }}">{{ status_hint }}</span>
+  </footer>
+</main>
+</body>
+</html>

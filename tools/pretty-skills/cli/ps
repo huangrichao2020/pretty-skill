@@ -35,6 +35,7 @@ pretty-skills · 跨 agent 的 skill 管理器
   contribute <name>    把本地修改推回主项目（提 PR）
   sync                 批量 update = ps update（对所有 skill）
   create <name>        调用 pretty-skills-creator 创建新 skill
+  doctor               体检环境能力（缺什么提示什么）
   help                 看这个帮助
 
 示例:
@@ -60,6 +61,7 @@ case "$cmd" in
   contribute)  exec "$SCRIPT_DIR/ps-contribute" "$@" ;;
   sync)        exec "$SCRIPT_DIR/ps-update" --all "$@" ;;
   create)      exec "$SCRIPT_DIR/ps-create" "$@" ;;
+  doctor)      exec "$SCRIPT_DIR/ps-doctor" "$@" ;;
   help|-h|--help) usage ;;
   *)
     log_err "未知命令: $cmd"

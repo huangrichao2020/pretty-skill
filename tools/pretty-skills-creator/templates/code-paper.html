@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{{ title }} · 占位版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>{% raw %}
+  /* 学术 paper 风 · 适合长文/报告/research 类 skill
+     特点：白底、衬线、长文风格、参考线、metadata 完整
+  */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Newsreader", "Source Serif Pro", "Songti SC", "Source Han Serif SC", "Times New Roman", serif;
+    background: #fafaf7;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 0;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 顶部 metadata — 学术论文风格 */
+  .meta-top {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 32px 0;
+    border-bottom: 1px solid #e5e5e0;
+  }
+  .meta-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: -apple-system, "Helvetica Neue", "PingFang SC", sans-serif;
+    font-size: 12px;
+    color: #6b6b6b;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .meta-top-status {
+    padding: 4px 10px;
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #92400e;
+    font-size: 10px;
+  }
+  .meta-top-status.complete {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: #065f46;
+  }
+
+  /* 主区 — 学术论文版式 */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  /* 标题 */
+  .title-block {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .title-domain {
+    display: inline-block;
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #6b6b6b;
+  }
+  .title-text {
+    font-family: "Newsreader", "Source Serif Pro", "Songti SC", serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .title-sub {
+    font-family: -apple-system, "Helvetica Neue", "PingFang SC", sans-serif;
+    font-size: 14px;
+    color: #6b6b6b;
+    line-height: 1.5;
+  }
+  .title-byline {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #1a1a1a;
+  }
+  .title-byline strong { font-weight: 700; }
+
+  /* abstract */
+  .abstract {
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid #e5e5e0;
+    border-bottom: 1px solid #e5e5e0;
+  }
+  .abstract-label {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 12px;
+  }
+  .description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    text-align: justify;
+  }
+
+  /* triggers */
+  .triggers-block {
+    margin: 32px 0;
+  }
+  .triggers-label {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 12px;
+  }
+  .triggers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .triggers span {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    color: #1a1a1a;
+    background: #fafaf7;
+    border: 1px solid #1a1a1a;
+    padding: 4px 8px;
+  }
+
+  /* meta */
+  .meta-section {
+    margin: 32px 0;
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px dotted #d4d4d0;
+    font-size: 14px;
+  }
+  .meta-key {
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6b6b6b;
+  }
+  .meta-val { color: #1a1a1a; }
+
+  /* 底部 */
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid #1a1a1a;
+    font-family: -apple-system, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+    color: #6b6b6b;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer-hint { color: #92400e; }
+  .footer-hint.complete { color: #065f46; }
+{% endraw %}</style>
+</head>
+<body>
+
+<header class="meta-top">
+  <div class="meta-top-row">
+    <span>pretty-skill · {{ domain }}</span>
+    <span class="meta-top-status {{ status_class }}">{{ status_badge }}</span>
+  </div>
+</header>
+
+<main>
+  <section class="title-block">
+    <span class="title-domain">{{ domain }}</span>
+    <h1 class="title-text">{{ title }}</h1>
+    <p class="title-sub">渐进式元信息：占位版，等待完整 3F Content + 锦绣 4 形态</p>
+    <p class="title-byline">By <strong>{{ contributor }}</strong> · {{ created }}</p>
+  </section>
+
+  <section class="abstract">
+    <div class="abstract-label">Abstract</div>
+    <p class="description">{{ description }}</p>
+  </section>
+
+  <section class="triggers-block">
+    <div class="triggers-label">Triggers · 触发词</div>
+    <div class="triggers">{{ trigger_html }}</div>
+  </section>
+
+  <section class="meta-section">
+    <div class="meta-row">
+      <span class="meta-key">Related</span>
+      <span class="meta-val">{{ related }}</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-key">Path</span>
+      <span class="meta-val">pretty-skill/{{ domain }}/{{ case }}/web.html</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-key">Repository</span>
+      <span class="meta-val">github.com/huangrichao2020/pretty-skill</span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>占位版 · placeholder</span>
+    <span class="footer-hint {{ status_class }}">{{ status_hint }}</span>
+  </footer>
+</main>
+</body>
+</html>

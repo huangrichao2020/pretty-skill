@@ -26,14 +26,15 @@ if [ ! -d "$creator_dir" ]; then
 fi
 
 # 调 create_skill.py
-create_script="$creator_dir/create_skill.py"
+create_script="$creator_dir/scripts/create_skill.py"
 if [ ! -f "$create_script" ]; then
   log_err "$create_script 不存在（pretty-skills-creator 装坏了）"
   exit 1
 fi
 
 log_info "调 pretty-skills-creator 创建 $name ..."
-python3 "$create_script" "$name" --out "$PS_STORE"
+# 转发所有参数给 create_skill.py
+python3 "$create_script" "$name" --out-dir "$PS_STORE" "${@:2}"
 
 # 软链到所有 agent
 log_info "软链到 agent ..."

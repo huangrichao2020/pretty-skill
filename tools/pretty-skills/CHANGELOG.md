@@ -10,6 +10,32 @@
 - `ps audit` — 检查 manifest 是否合法 / 依赖是否完整
 - 自更新机制（`ps self update` 升级工具自身）
 
+## [0.1.1] - 2026-07-09
+
+### 新增
+- **`ps doctor`** — 环境能力体检（8 项检查）
+  - 关键：bash / git / curl
+  - 重要：python3 / gh / gh auth / ~/.local/bin in PATH
+  - 可选：生图能力（matrix MCP）/ jq
+  - `ps doctor --explain` 加一段"缺能力时体验会差在哪"
+  - `install.sh` 装完自动跑一次
+- **pretty-skills-creator 完整迁移**（4 件套生成器）
+  - `scripts/create_skill.py` — 校验输入 + 生成 4 件套（web.html + manifest.yaml + SKILL.md + CHANGELOG.md）
+  - `scripts/push.sh` — 提 PR helper（fork + 分支 + 标签）
+  - 4 风格 HTML 模板：image / code-swiss / code-tech / code-paper
+  - manifest.yaml 符合 pretty-skills schema（不是 json）
+  - 路径从 `<domain>/<case>/` 适配为 `tools/<name>/`
+- **路径修正**：
+  - `ps create` 找 create_skill.py 的路径修对（`scripts/create_skill.py`）
+  - `ps create` 转发所有参数给 create_skill.py
+  - `ps list` 处理多行 `description: |` 格式
+- **新文档** `tools/pretty-skills/docs/doctor.md` — 体检输出解读
+
+### 修复
+- BSD sed `\s` 不支持 → 改 `[[:space:]]`
+- bash `declare -A` 不支持 → 改纯 awk
+- symlink 路径不解析 → ps 主命令用 `readlink -f`
+
 ## [0.1.0] - 2026-07-09
 
 ### 新增
