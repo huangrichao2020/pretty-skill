@@ -1,0 +1,19 @@
+{
+  "name": "macro-monitor",
+  "domain": "金融投资",
+  "title": "宏观数据监控 · A股每日宏观经济数据自动获取与分析",
+  "visibility": "public",
+  "tags": ["A股", "宏观", "经济数据", "CPI", "PPI", "央行", "外汇储备", "数据监控"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-08",
+  "last_updated": "2026-07-08",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 7,
+  "summary": "WorkBuddy 环境下自动化宏观数据监控：用 WebFetch/WebSearch 替代 openclaw browser，从 Trading Economics、央行官网、东方财富等免费数据源获取当日 A 股宏观指标（CPI/PPI、外汇储备、逆回购、社融/M2 等），生成结构化报告。已适配 WorkBuddy 沙箱环境。"
+}

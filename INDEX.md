@@ -44,13 +44,14 @@
 | Agent知识 | [`公众号内容交付方法论`](./Agent知识/公众号内容交付方法论/) | **public** | 公众号, 桌面交付, mavis-browser | content.md + xxx讲解.pdf + 13 AI 出图 |
 | 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + xxx讲解.pdf + 锦绣 + presentation.pptx |
 | 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + xxx讲解.pdf + 锦绣 |
+| 金融投资 | [`macro-monitor`](./金融投资/macro-monitor/) | **public** | A股, 宏观, 经济数据, CPI, PPI, 数据监控 | content.md + xxx讲解.pdf + 锦绣 |
 | 内容创作 | [`橙皮书方法论`](./内容创作/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + xxx讲解.pdf + 锦绣 |
 | 内容创作 | [`公众号爆款操盘术`](./内容创作/公众号爆款操盘术/) | **public** | 公众号, 写作, 钩子链, 爆款 | content.md + xxx讲解.pdf + 锦绣 |
 | 编程开发 | [`git沙箱求生术`](./编程开发/git沙箱求生术/) | **public** | git, GitHub, SSH, HTTPS, fetch, 沙箱, 协作避坑 | content.md + xxx讲解.pdf + 锦绣 |
 | 编程开发 | [`领域增改避坑`](./编程开发/领域增改避坑/) | **public** | pretty-skill, PRESET_DOMAINS, check-3f, 中文化, 维护避坑 | content.md + xxx讲解.pdf + 锦绣 |
 | 玄学修炼 | [`占星入门12星座`](./玄学修炼/占星入门12星座/) | **public** | 占星, 12星座, 元素, 模式 | content.md + xxx讲解.pdf + 9 AI 出图 |
 
-> **11 个 case 全部默认 public** —— 提 PR 共享。
+> **12 个 case 全部默认 public** —— 提 PR 共享。
 
 ---
 
@@ -92,4 +93,4 @@ def load_pretty_skill(root="/path/to/pretty-skills"):
 
 ---
 
-<sub>最后更新：2026-07-10 · 11 个 case 全部 public</sub>
+<sub>最后更新：2026-07-10 · 12 个 case 全部 public</sub>

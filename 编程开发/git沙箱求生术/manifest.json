@@ -10,6 +10,7 @@
   "last_updated": "2026-07-09",
   "format": {
     "content_md": "content.md",
+    "case_pdf": "git沙箱求生术讲解.pdf",
     "web_html": "web.html",
     "锦绣": true,
     "presentation_pptx": false
