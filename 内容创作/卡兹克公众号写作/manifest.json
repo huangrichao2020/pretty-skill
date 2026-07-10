@@ -1,0 +1,38 @@
+{
+  "name": "卡兹克公众号写作",
+  "domain": "内容创作",
+  "title": "卡兹克公众号写作 · 用 AI 写不出来的活人感",
+  "visibility": "public",
+  "tags": [
+    "公众号",
+    "写作",
+    "卡兹克",
+    "活人感",
+    "方法论",
+    "5 原型",
+    "4 层自检",
+    "AI 内容创作"
+  ],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "original_author": "数字生命卡兹克（Khazix）",
+  "created": "2026-07-10",
+  "last_updated": "2026-07-10",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "卡兹克公众号写作讲解.pdf"
+  },
+  "page_count": 7,
+  "summary": "把数字生命卡兹克的公众号长文方法论沉淀成 pretty-skills 范式：5 种文章原型 + 7 大风格内核 + 4 层自检体系 + 6 类绝对禁区 + 5 种开头必杀技 + 5 种收尾 · 源自 khazix-writer 技能（414 行 SKILL.md）",
+  "source_skill": "~/.mavis/skills/khazix-writer/SKILL.md",
+  "trigger_keywords": [
+    "公众号",
+    "写作",
+    "长文",
+    "活人感",
+    "AI 写作",
+    "卡兹克"
+  ]
+}

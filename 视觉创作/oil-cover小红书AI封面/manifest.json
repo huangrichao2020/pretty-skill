@@ -1,0 +1,37 @@
+{
+  "name": "oil-cover小红书AI封面",
+  "domain": "视觉创作",
+  "title": "oil-cover 小红书 AI 工具封面方法论",
+  "visibility": "public",
+  "tags": [
+    "oil-cover",
+    "小红书",
+    "封面",
+    "AI 工具",
+    "视频封面",
+    "可视化",
+    "出图",
+    "方法论"
+  ],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "original_author": "oil 欧呦",
+  "created": "2026-07-10",
+  "last_updated": "2026-07-10",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "oil-cover小红书AI封面讲解.pdf"
+  },
+  "page_count": 7,
+  "summary": "把 oil 欧呦的小红书 AI 工具封面方法论沉淀成 pretty-skills 范式：5 大方法论支柱（稳定/清楚/干净/精致/一次成图）+ 2 种执行模式（脚本/Agent 自主）+ 12 项必填件 + 默认入口 SOP · 源自 oil-cover 技能（115 行 SKILL.md）",
+  "source_skill": "~/.mavis/skills/oil-cover/SKILL.md",
+  "trigger_keywords": [
+    "oil-cover",
+    "小红书封面",
+    "AI 工具封面",
+    "视频封面",
+    "首图"
+  ]
+}

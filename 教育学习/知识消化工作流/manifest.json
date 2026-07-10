@@ -1,0 +1,41 @@
+{
+  "name": "知识消化工作流",
+  "domain": "教育学习",
+  "title": "知识消化工作流 · 学习资料 → 多模态学习材料",
+  "visibility": "public",
+  "tags": [
+    "知识消化",
+    "学习材料",
+    "笔记",
+    "测验",
+    "幻灯片",
+    "思维导图",
+    "音频课程",
+    "多模态",
+    "教育"
+  ],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-10",
+  "last_updated": "2026-07-10",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "知识消化工作流讲解.pdf"
+  },
+  "page_count": 8,
+  "summary": "把学习材料生成分散工具沉淀成 5 格式统一工作流：notes/quiz/slides/mindmap/audio + 5 个年级适配（小学/初中/高中/大学/专业）+ 兴趣适配 + 4 阶段工作流 + 10 条反模式 · 源自 knowledge-digest 技能（698 行 SKILL.md）",
+  "source_skill": "~/.mavis/skills/knowledge-digest/SKILL.md",
+  "trigger_keywords": [
+    "知识消化",
+    "学习材料",
+    "笔记生成",
+    "测验",
+    "幻灯片",
+    "思维导图",
+    "音频课程",
+    "课件",
+    "教材转换"
+  ]
+}
