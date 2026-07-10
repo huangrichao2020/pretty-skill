@@ -116,3 +116,49 @@
 **技术坑记录**：
 - `git fetch` 走 SSH 在此沙箱**卡死**（120s 零输出，RC=124），但 `ssh -T`/`ls-remote`/之前的 push/HTTPS 下载均正常 → 是 SSH 协议 upload-pack 路径 stall，非认证问题。**公开仓可免认证用 HTTPS 智能 HTTP fetch**（`git fetch https://github.com/huangrichao2020/pretty-skills.git`）瞬时成功。
 - rebase 冲突中 `--ours`=目标分支(origin/main 新真相)、`--theirs`=正在重放的旧提交——方向别搞反。
+
+---
+
+## 2026-07-10
+
+**沉淀了什么 / 今日 commit 全景**
+
+- 远端拉到 9 个新 commit（`5c17d4b` → `daccd75`），主线特征：**PDF 化收尾 + 达尔文自迭代机制落地**。
+  1. `5c17d4b` docs(content-triple-format): PPT 流程 v3.20 升级 · 去 HTML 强化 .pptx 最佳实践
+  2. `55efd0c` docs(README): 重写 pretty-skills README · 丢 GitHub URL 即可用 + 8 张视觉证据
+  3. `67ffe34` docs(content-triple-format): onboarding-guide.md v3.21 升级 · 去 HTML 漏网
+  4. `7bf76dd` feat(内容创作,视觉创作,教育学习): **第一批** 转化 3 个高频 skill 为 pretty-skills 4 件套
+  5. `55eb61f` feat(做事技巧,数据科学,Agent知识,视觉创作,金融投资,编程开发): **第二批** 转化 17 个高频 skill 为 pretty-skills 4 件套
+  6. `422f5fa` feat(...): **第三批** 转化 16 case + **玄学修炼/dream-修炼达尔文自迭代** 元 case（10 页双引擎机制）
+  7. `633378e` docs(Agent知识/self-improving-agent): dream 修炼达尔文 v2 真实优化（4.0→7.7 涨 +3.7）
+  8. `a565f0d` docs(内容创作/卡兹克,视觉创作/oil-cover): dream 修炼达尔文 v2 真实优化（2 case 平均 +2.0 涨分）
+  9. `daccd75` docs(README): 微信交流群二维码入口(7 天内 7/17 前有效)
+- 本地待 push 1 个 commit `a328c82`（v3.20）：**创建 skill 流程去 web.html + 去 4 风格 HTML 模板**——`pretty-skills-creator/create_skill.py` / `push.sh` / `SKILL.md` 全面改成 `xxx讲解.pdf.placeholder.md` 必填，`skill-creator/create.py` 同步去 PPT → 改 PDF 视觉风格 picker；保留 9 case 的 `.pptx` + `presentation_pptx` 字段不动。
+- 本轮 rebase：`4a44a9d → a328c82`（仅 rebase commit hash 变化，内容同 v3.20 改造）。
+
+**新建/更新了哪些 case**
+
+- 3 批 skill 转化新增 36 个 case 目录（每批 = `README.md` + `content.md` + `manifest.json` 3 件套骨架，**全部缺 images/ + 讲解.pdf**——属达尔文自迭代池）：
+  - 第一批 3：`内容创作/卡兹克公众号写作`、`视觉创作/oil-cover小红书AI封面`、`教育学习/知识消化工作流`
+  - 第二批 17：横跨做事技巧 / 数据科学 / Agent知识 / 视觉创作 / 金融投资 / 编程开发
+  - 第三批 16：金融投资 4（company-brief / economic-impact-report / event-driven-analyzer / marginal-tracker）、视觉创作 5（comic-generator / finance-cartoon-creator / gif-sticker-generator / product-visual-creator / xiaohongshu-image-creator）、内容创作 2（wechat-article-creator / wechat-viral-article-creator）、社交主导 2（persona-lab / sales-powermap）、商业运营 1（social-media-insights）、做事技巧 1（project-manager-expert）、Agent知识 1（browser-act）
+- 1 个核心元 case：`玄学修炼/dream-修炼达尔文自迭代`（10 页 · 双引擎 9 维评分 · 8 条反例黑名单 · 4 human-in-loop CHECKPOINT）
+- 3 个达尔文 v2 优化 case：self-improving-agent（4.0→7.7）、卡兹克公众号写作（5.7→7.8）、oil-cover（6.0→7.8）—— content.md + 锦绣/readme.md 真实涨分，但**仍缺 images/ + 讲解.pdf**
+
+**3F 校验结果**
+
+- 全量 46 case 跑 `check-3f.py v3.19`（F3 只检 `*讲解.pdf`，不看 web.html）：
+  - **9 PASS**（含 v3.18 立的 5 原始 + v3.19 立的 4 case）：`AI狼群战法` / `Mavis做事心法` / `公众号内容交付方法论` / `社交电商掘金术` / `公众号爆款操盘术` / `橙皮书方法论` / `占星入门12星座` / `卡脖子猎手` / `宏观雷达`
+  - **37 FAIL**：全部因缺 `*讲解.pdf`（F3 强约束）。其中 36 个是达尔文自迭代骨架（无 images/）+ 1 个是 dream-修炼达尔文自迭代元 case 自身（机制性缺图，预期）
+- **本轮未自动补 PDF**：`tools/build_case_pdf.py` 强依赖 `images/p*.png`，37 个 case 全部 0 张图——按「无高价值内容不硬造」原则**不造骨架 PDF**。骨架 case 的 PDF 要等达尔文 2.0 多轮评分补 images/ + 锦绣真实素材后才能生成（机制设计如此，参考 `玄学修炼/dream-修炼达尔文自迭代/content.md` P3 / P9）。
+
+**PDF 状态**
+
+- 9/46 case 有 `*讲解.pdf`（v3.19 必填全齐）+ 37/46 case 缺（达尔文自迭代池）= 仓库 80% case 待 达尔文 2.0 持续补全。
+
+**git**
+
+- 本地 1 commit `a328c82` 领先 origin/main，本轮 rebase 后 push（用户已授权）。
+- 推送时沙箱 GitHub 网络状态：direct fetch 慢（`curl github.com 10s timeout 565KB received`），git proxy `127.0.0.1:7892` 不在 listen（RC=7）→ 走 `env -u http_proxy -u https_proxy` 直接 HTTPS fetch + push 可行（**仍非网络常态，参见 2026-07-09 沙箱 SSH 卡死记录**）。
+- dream-log 历史段未改写，本日新段插在 `---` 分隔符之后。
+
