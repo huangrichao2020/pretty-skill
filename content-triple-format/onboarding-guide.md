@@ -89,17 +89,28 @@ prs.save("presentation.pptx")
 
 完整脚本：`~/.mavis/bin/build_pptx_v2.py`（支持 image / editable 双模式）
 
-### Step 5 · 用 html-ppt-viewer 包图生成 `.html`
+### Step 5 · 用 build_case_pdf.py 生成 `<case_name>讲解.pdf`（F3 · 必填）
 
-不要直接用 .md 转 HTML！必须用图：
+> **v3.21 升级**：F3 = **PDF**（v3.19 起替代 web.html · GitHub 原生预览 · **必填**）。
 
-```html
-<div class="slide-thumb">
-  <img src="images/p0_cover.png" />
-</div>
+```bash
+python3 tools/build_case_pdf.py "<case_dir>" [--output <pdf_name>] [--open]
+
+# 示例
+python3 tools/build_case_pdf.py "Agent知识/AI狼群战法/"
+python3 tools/build_case_pdf.py "金融投资/长电科技600584/" --output "长电科技讲解.pdf" --open
 ```
 
-完整模板：`domains/_template/case/` 或 `~/.mavis/skills/html-ppt-viewer/`
+**关键规则**：
+- ✅ 文件名严格 = `<case_name>讲解.pdf`
+- ✅ A4 横版（297 × 210 mm）· cream paper #FFF7E8 背景 · #6B4423 文字色
+- ✅ 每个 PNG 占 1 页 · `page-break-after: always`
+- ✅ 嵌图证据：含 `/Subtype /Image`（纯文字 PDF = 退 PR）
+- ❌ ~~`.html` 阅读器~~（v3.19 起废止 · 用户强烈反馈）
+- ❌ 直接用 .md 转 HTML → PDF（损失图）
+
+完整规范：[content-triple-format/case-pdf-spec.md](./case-pdf-spec.md)
+生成脚本：`tools/build_case_pdf.py`（playwright + chromium）
 
 ---
 
@@ -108,9 +119,10 @@ prs.save("presentation.pptx")
 | 反模式 | 结果 | 怎么修 |
 |---|---|---|
 | 跳过 step 3（不出图直接写 .pptx） | 文字 PPT（丑） | 必须调 image_gen API |
-| 直接用 .md 转 .html | 纯文字网页（无图） | 必须用图嵌进 HTML |
+| 用 .html 包图生成演示版（v3.19 之前做法） | v3.19 起废止 · GitHub 不能预览 | 必须用 build_case_pdf.py 生成 `xxx讲解.pdf` |
 | .pptx 内嵌图但用 .md 改文案没同步 | 3 件套文案不一致 | 以 .md 为唯一真相源 |
 | 3 件套文件名不匹配（如 `case.pptx` + `index.html`） | 难以检索 | 必须同名同目录 |
+| ~~输出 `.html` 阅读器~~（v3.19 之前做法）| v3.19 起废止 · GitHub 不能预览 | 改用 `xxx讲解.pdf` 必填 |
 | 提交 .pdf 替代 .md | PDF 不是纯文本，diff / 搜索 / AI 处理弱 | 必须用 .md |
 | prompt 写满元注释（"X 色 强调 Y"） | AI 把元注释当文案画进去 | 元注释放进【风格锁】段，【画面要点】只描述内容 |
 
