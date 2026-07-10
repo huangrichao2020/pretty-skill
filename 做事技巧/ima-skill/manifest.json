@@ -1,0 +1,14 @@
+{
+  "name": "ima-skill",
+  "domain": "做事技巧",
+  "title": "IMA 笔记管理 · 知识库统一管理",
+  "visibility": "public",
+  "tags": ["IMA", "笔记管理", "知识库", "OpenAPI"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "IMA笔记管理讲解.pdf"},
+  "page_count": 3,
+  "summary": "统一 IMA OpenAPI 入口 · 笔记管理 + 知识库操作 6 类动作 · 智能识别场景",
+  "source_skill": "~/.mavis/skills/ima-skill/SKILL.md",
+  "trigger_keywords": ["知识库", "笔记管理", "上传到知识库", "搜索知识库"]
+}

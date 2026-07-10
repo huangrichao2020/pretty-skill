@@ -1,0 +1,20 @@
+{
+  "name": "pdf-reader",
+  "domain": "做事技巧",
+  "title": "PDF 读取技能 · PDF 内容提取与分析",
+  "visibility": "public",
+  "tags": ["pdf-reader", "PDF", "内容提取", "OCR", "文档分析"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "PDF读取技能讲解.pdf"
+  },
+  "page_count": 5,
+  "summary": "PDF 全文提取 + 结构分析 + 关键信息搜索 + 摘要生成 · 4 项核心能力 · 5 步工作流",
+  "source_skill": "~/.mavis/skills/pdf-reader/SKILL.md",
+  "trigger_keywords": ["读取 PDF", "提取 PDF 内容", "分析 PDF", "总结 PDF", "PDF 关键信息"]
+}

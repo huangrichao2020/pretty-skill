@@ -1,0 +1,14 @@
+{
+  "name": "auto-vlog-editor",
+  "domain": "视觉创作",
+  "title": "自动剪口播 · 口播视频自动剪辑",
+  "visibility": "public",
+  "tags": ["auto-vlog", "口播剪辑", "自动字幕", "画中画"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "自动剪口播讲解.pdf"},
+  "page_count": 3,
+  "summary": "口播自动剪辑 + 字幕 + 画中画 + 视频后期 · 4 步工作流 · 10x 速度提升",
+  "source_skill": "~/.mavis/skills/auto-vlog-editor/SKILL.md",
+  "trigger_keywords": ["剪口播", "自动剪辑", "自动字幕", "画中画"]
+}

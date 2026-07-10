@@ -1,0 +1,14 @@
+{
+  "name": "stock-analysis-v4",
+  "domain": "金融投资",
+  "title": "股票深度分析 v4 · 4 层架构 + 强制触发",
+  "visibility": "public",
+  "tags": ["stock-analysis-v4", "股票分析", "4层架构", "跨市场"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "股票深度分析v4讲解.pdf"},
+  "page_count": 4,
+  "summary": "4 层架构股票深度分析 · 腾讯 API + 网页搜索 + MCP + 缓存 · 强制触发 · 跨 A 股/港股/美股",
+  "source_skill": "~/.mavis/skills/stock-analysis-v4/SKILL.md",
+  "trigger_keywords": ["股票分析", "A股", "港股", "美股", "行情"]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "nano-banana-pro",
+  "domain": "视觉创作",
+  "title": "Nano Banana Pro · Gemini 3 Pro 图像生成",
+  "visibility": "public",
+  "tags": ["Gemini 3 Pro", "AI生图", "nano-banana-pro"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "NanoBananaPro讲解.pdf"},
+  "page_count": 3,
+  "summary": "Gemini 3 Pro Image · 文生图 + 图生图 + 图像编辑 + AI 绘画",
+  "source_skill": "~/.mavis/skills/nano-banana-pro/SKILL.md",
+  "trigger_keywords": ["AI 生图", "Gemini 3 Pro", "文生图", "图生图"]
+}

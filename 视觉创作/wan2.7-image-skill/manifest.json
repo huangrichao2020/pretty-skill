@@ -1,0 +1,14 @@
+{
+  "name": "wan2.7-image-skill",
+  "domain": "视觉创作",
+  "title": "Wan2.7 图像生成 · 多图组合 + 风格迁移",
+  "visibility": "public",
+  "tags": ["Wan2.7", "多图组合", "风格迁移", "图像编辑"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "Wan2.7图像生成讲解.pdf"},
+  "page_count": 3,
+  "summary": "Wan2.7 模型 · 文生图 + 多图组合 + 单图编辑 + 风格迁移 · 6 项能力",
+  "source_skill": "~/.mavis/skills/wan2.7-image-skill/SKILL.md",
+  "trigger_keywords": ["图像生成", "Wan2.7", "多图组合", "风格迁移"]
+}

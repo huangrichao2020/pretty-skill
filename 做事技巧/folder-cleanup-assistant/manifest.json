@@ -1,0 +1,14 @@
+{
+  "name": "folder-cleanup-assistant",
+  "domain": "做事技巧",
+  "title": "文件夹整理助手 · 安全清理 + 备份",
+  "visibility": "public",
+  "tags": ["folder-cleanup", "文件整理", "备份", "安全清理"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "文件夹整理助手讲解.pdf"},
+  "page_count": 3,
+  "summary": "清理前自动压缩备份 + 移动代替删除 · 跨平台 · 出错可恢复",
+  "source_skill": "~/.mavis/skills/folder-cleanup-assistant/SKILL.md",
+  "trigger_keywords": ["文件整理", "文件夹清理", "清理文件", "整理目录"]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "agent-browser",
+  "domain": "做事技巧",
+  "title": "Agent Browser · Rust 浏览器自动化",
+  "visibility": "public",
+  "tags": ["agent-browser", "Rust", "浏览器自动化", "网页抓取", "无头浏览器"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "AgentBrowser讲解.pdf"},
+  "page_count": 4,
+  "summary": "Rust 无头浏览器 · 快 + AI 友好 · 网页抓取 / 自动化测试 / 页面导航 / 表单填写 / 截图",
+  "source_skill": "~/.mavis/skills/agent-browser-2/SKILL.md",
+  "trigger_keywords": ["浏览器自动化", "网页抓取", "无头浏览器", "AI 代理"]
+}

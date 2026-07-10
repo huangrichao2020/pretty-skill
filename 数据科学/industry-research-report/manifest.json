@@ -1,0 +1,14 @@
+{
+  "name": "industry-research-report",
+  "domain": "数据科学",
+  "title": "行业研究报告生成器 · 数据驱动的深度研究",
+  "visibility": "public",
+  "tags": ["行业研究", "市场调研", "competitive landscape", "data-driven"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "行业研究报告生成器讲解.pdf"},
+  "page_count": 5,
+  "summary": "数据驱动行业研究 · 6 步工作流 · Markdown + DOCX + PDF 全格式 · 图表可视化",
+  "source_skill": "~/.mavis/skills/industry-research-report/SKILL.md",
+  "trigger_keywords": ["research report", "industry analysis", "market research", "行业研究"]
+}

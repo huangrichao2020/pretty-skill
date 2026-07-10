@@ -1,0 +1,21 @@
+{
+  "name": "doc-reader",
+  "domain": "做事技巧",
+  "title": "文档读取助手 · DOCX/XLSX/PDF 纯文本提取",
+  "visibility": "public",
+  "tags": ["doc-reader", "DOCX", "XLSX", "PDF", "文档读取", "纯文本提取", "Office"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-10",
+  "last_updated": "2026-07-10",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "文档读取助手讲解.pdf"
+  },
+  "page_count": 5,
+  "summary": "把 Office 文档（DOCX/XLSX/PDF）转成纯文本 + 保留结构 + 5 项提取能力 · 后续 LLM 直接消化",
+  "source_skill": "~/.mavis/skills/doc-reader/SKILL.md",
+  "trigger_keywords": ["读取 PDF", "提取 PDF 内容", "读取文档", "DOCX", "XLSX"]
+}

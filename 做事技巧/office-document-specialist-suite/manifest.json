@@ -1,0 +1,14 @@
+{
+  "name": "office-document-specialist-suite",
+  "domain": "做事技巧",
+  "title": "Office 文档四件套 · DOCX/XLSX/PDF/PPTX 全格式",
+  "visibility": "public",
+  "tags": ["Office", "四件套", "DOCX", "XLSX", "PDF", "PPTX", "Anthropic"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "Office文档四件套讲解.pdf"},
+  "page_count": 4,
+  "summary": "Anthropic 官方 Office 四件套 · 读 / 创建 / 编辑 / 修复 / 对比 / 重排 · 内置模板 + 代码模板",
+  "source_skill": "~/.mavis/skills/office-document-specialist-suite/SKILL.md",
+  "trigger_keywords": ["Office", "Word", "Excel", "PDF", "PPT", "文档处理"]
+}

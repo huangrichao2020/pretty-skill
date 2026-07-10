@@ -1,0 +1,14 @@
+{
+  "name": "remotion-video",
+  "domain": "视觉创作",
+  "title": "Remotion 知识讲解视频 · React 写视频",
+  "visibility": "public",
+  "tags": ["Remotion", "React视频", "知识讲解视频"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "Remotion视频讲解.pdf"},
+  "page_count": 4,
+  "summary": "React (Remotion) 写视频 · 卡脖子讲解 + 每日机会扫描模板 · 代码化 + 可编程 + 可复用",
+  "source_skill": "~/.mavis/skills/remotion-video/SKILL.md",
+  "trigger_keywords": ["做视频", "知识讲解视频", "React 写视频"]
+}

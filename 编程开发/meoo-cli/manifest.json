@@ -1,0 +1,14 @@
+{
+  "name": "meoo-cli",
+  "domain": "编程开发",
+  "title": "Meoo · 秒悟全栈应用构建",
+  "visibility": "public",
+  "tags": ["meoo", "秒悟", "全栈开发", "Supabase", "Deno"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "Meoo秒悟讲解.pdf"},
+  "page_count": 4,
+  "summary": "秒悟（Meoo）平台 · 一键全栈 · React/Vue + Supabase + Deno + AI · 完整生命周期",
+  "source_skill": "~/.mavis/skills/meoo-cli/SKILL.md",
+  "trigger_keywords": ["秒悟", "Meoo", "全栈应用", "Supabase"]
+}

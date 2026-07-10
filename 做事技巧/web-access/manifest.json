@@ -1,0 +1,14 @@
+{
+  "name": "web-access",
+  "domain": "做事技巧",
+  "title": "web-access · 联网操作统一入口",
+  "visibility": "public",
+  "tags": ["web-access", "联网操作", "网页抓取", "反爬", "动态渲染"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "web-access讲解.pdf"},
+  "page_count": 4,
+  "summary": "所有联网操作统一入口 · 搜索 + 抓取 + 登录 + 反爬 + 动态渲染 + 社交媒体",
+  "source_skill": "~/.mavis/skills/web-access/SKILL.md",
+  "trigger_keywords": ["联网", "网页抓取", "搜索", "登录网站", "反爬"]
+}

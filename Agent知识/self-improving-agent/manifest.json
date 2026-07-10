@@ -1,0 +1,14 @@
+{
+  "name": "self-improving-agent",
+  "domain": "Agent知识",
+  "title": "AI 自进化技能 · 持续学习 + 错误纠正",
+  "visibility": "public",
+  "tags": ["AI自进化", "持续学习", "错误纠正", "memory"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "AI自进化技能讲解.pdf"},
+  "page_count": 4,
+  "summary": "AI 代理持续学习 + 错误纠正 + 知识积累 · 集成 mavis memory · 5 步工作流",
+  "source_skill": "~/.mavis/skills/self-improving-agent/SKILL.md",
+  "trigger_keywords": ["AI 自进化", "错误纠正", "持续学习", "性能优化"]
+}

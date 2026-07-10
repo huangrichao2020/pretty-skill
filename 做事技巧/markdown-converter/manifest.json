@@ -1,0 +1,14 @@
+{
+  "name": "markdown-converter",
+  "domain": "做事技巧",
+  "title": "格式转换助手 · 20+ 格式转 Markdown",
+  "visibility": "public",
+  "tags": ["markdown-converter", "格式转换", "PDF转MD", "DOCX转MD", "YouTube字幕"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "格式转换助手讲解.pdf"},
+  "page_count": 4,
+  "summary": "PDF/Word/PPT/Excel/图片/音频/ZIP/YouTube 等 20+ 格式 → Markdown · 6 项关键能力 · 范围最广",
+  "source_skill": "~/.mavis/skills/markdown-converter/SKILL.md",
+  "trigger_keywords": ["转 markdown", "转换格式", "PDF 转 MD", "Word 转 MD", "PPT 转 MD"]
+}
