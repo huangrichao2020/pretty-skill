@@ -1,4 +1,6 @@
-# 3F Content 方法论
+# 3F Content 方法论 v3.20
+
+> **v3.20 重大变更**：去掉 `.html` 兜底路线，默认 `.pptx` 输出。详细背景见 mavis agent MEMORY.md · PPT 任务用户偏好 v2。
 
 ## 起源
 
@@ -16,16 +18,18 @@
               ↓
    ┌─────────┬─────────┐
    │         │         │
- .md        .pptx     .html
+  .md        .pptx     .pdf
    │         │         │
    └─────────┼─────────┘
               │
-       3 个不同表示
+       3 个不同表示（v3.20 默认 .pptx 真实文件 + .pdf 必填）
 ```
 
 - **`.md` 是数据**（纯文本 / 可 diff / 可 grep / 可被 LLM 消费）
-- **`.pptx` / `.html` 是表示**（视觉演示）
+- **`.pptx` / `.pdf` 是表示**（视觉演示）
 - **以 `.md` 为单一真相源**：任何 3 件套文案有出入，`.md` 为准
+
+> **v3.20 重要**：~~`.html`~~ 已不在 3 件套里。HTML 阅读器路线被废弃，PPT 任务默认走 `.pptx` 真实文件。
 
 ## 类比
 
@@ -41,7 +45,7 @@
 - 8 页 PPT
 - **`.md`**：人类 + AI 都读的源文字（每页 4-7 字段）
 - **`.pptx`**：21.8 MB · PowerPoint 双击打开
-- **`.html`**：浏览器直接看，键盘 ← → 翻页
+- **`.pdf`**：GitHub 原生预览
 - **疗效**：0 返工 · 内容能被任何 AI 工具消化
 
 ### 社交电商掘金术（社交电商 × 两层拆解法）
@@ -49,8 +53,16 @@
 - 8 页 PPT
 - **`.md`**：含 41 场景 / 6 板块 / 3 类型 / 90 天落地的全部信息
 - **`.pptx`**：19.3 MB
-- **`.html`**：浏览器阅读
 - **疗效**：skill 升级实战验证（vs 修复前的 25% 返工）
+
+### ⭐ 长电科技 600584 深度分析（2026-07-10 v3.20 实战验证）
+
+- 12 页 PPT
+- **`.md`**：9 大维度（基本面/消息/板块/行情/业绩/生态/卡脖子/K线/未来行情）
+- **`.pptx`**：33 MB · 16:9 · 12 节
+- **讲解图本身带中文 + 量化数据**（每页 100+ 数据点）
+- **疗效**：PPT 任务用户偏好 v2 实战验证 · 0 返工 0 中间审稿
+- 完整案例：`knowhub/domains/visual-creation/cases/2026-07-10-cdtech-ppt-v3.md`
 
 ## 反模式 vs 正例
 
@@ -89,7 +101,7 @@
 ```
 <case>/
 ├── content.md
-└── presentation.pptx    ← 缺 .html
+└── presentation.pptx    ← 缺 .pdf
 ```
 
 → 不收。3 件套必须齐全。
@@ -99,29 +111,34 @@
 ```
 <case>/
 ├── content.md           ← F1
-├── presentation.pptx    ← F2
-└── xxx讲解.pdf          ← F3（v3.19 替代 web.html）
+├── presentation.pptx    ← F2（v3.20 默认）
+└── xxx讲解.pdf          ← F3（v3.19 替代 web.html · GitHub 原生预览）
 ```
 
-## 工程流程
+## 工程流程（v3.20 · 默认走 .pptx）
 
 ```
 1. 列 N 页章节清单
    ↓
 2. 写 content.md（每页 4-7 字段，先！）
    ↓
-3. 写 60 行 prompt × N（每页）
+3. 写 5 段式 prompt × N（每页 · 共享 [4 STYLE] 段 · ≤ 60 行）
    ↓
-4. matrix 生成 N 张图（PNG）
+4. 4 并发跑 matrix MCP 出 N 张图（PNG · 2K · 16:9 · 讲解图带中文 + 数据）
    ↓
-5. python-pptx 嵌入 → presentation.pptx
+5. python-pptx 嵌入图片 → presentation.pptx（默认输出 · PowerPoint 双击打开）
    ↓
-6. build_case_pdf.py 渲染 → xxx讲解.pdf
+6. build_case_pdf.py 渲染 → xxx讲解.pdf（必填 · GitHub 原生预览）
    ↓
-7. 用 content.md 反查 .pptx/.html（如有出入以 .md 为准）
+7. 用 content.md 反查 .pptx/.pdf（如有出入以 .md 为准）
    ↓
 8. 3 件套归档 → domains/<area>/<case>/
 ```
+
+**v3.20 关键变化**：
+- ✅ 默认输出 `.pptx`（不是 HTML 阅读器）
+- ✅ 讲解图本身带中文 + 量化数据（不依赖 HTML 数据卡）
+- ❌ ~~HTML 阅读器兜底~~（已废止 · 用户强烈反馈）
 
 ## 适用范围
 
@@ -137,13 +154,17 @@
 
 | 用户说 | 触发 |
 |---|---|
-| "做 PPT / 课件 / 演示稿" | ppt-orchestrator → 3 件套输出 |
+| "做 PPT / 课件 / 演示稿" | ppt-orchestrator → 3 件套输出（v3.20 默认 .pptx） |
 | "上传到 xxx 仓库" | content-triple-format |
 | "AI 友好 / LLM 友好" | content-triple-format |
 | "把 PPT 转 markdown" | content-triple-format (F1 reverse) |
+| "做讲解图 / 出 pptx" | ai-image-to-pptx 技能（v3.20 默认路线） |
+| ~~"打包成 HTML / PPT 风格网页"~~ | ❌ 已废止（v3.20 反馈）|
 
 ## 来源
 
 - 2026-07-07 huangrichao2020 提出想法 → Mavis 命名 3F Content
 - 实战：AI狼群战法 + 社交电商掘金术 同时升级为 3 件套
+- v3.19 切换：HTML → PDF（GitHub 原生预览）
+- v3.20 升级：默认 `.pptx` 输出 · 去掉 HTML 阅读器兜底 · 讲解图本身带中文 + 数据
 - 类比：SDR / spec-driven development / JAMStack / headless CMS
