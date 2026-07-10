@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of an open folder on a desk containing 8 labeled files arranged neatly: 00-README, 01-标题, 02-正文, 03-封面, 04-配图1, 04-配图2, 04-配图3, 04-配图4. Each file has a small icon (text doc, image, etc). Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: 'Step 4 桌面文件夹交付 · 8 个文件结构'. Organized, satisfying mood. 16:9, 2K.

@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a wooden clipboard with a 12-item checklist, each with a checkbox. Center has a magnifying glass over the checklist. Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: '4 步开始 + 12 条自检清单'. Organized, helpful mood. 16:9, 2K.

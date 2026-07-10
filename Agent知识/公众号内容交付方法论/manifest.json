@@ -1,0 +1,25 @@
+{
+  "name": "公众号内容交付方法论",
+  "title": "公众号内容交付方法论 · 桌面文件夹交付流程",
+  "domain": "Agent知识",
+  "tags": [
+    "公众号",
+    "交付流程",
+    "桌面文件夹",
+    "内容创作",
+    "mavis-browser"
+  ],
+  "visibility": "public",
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-10",
+  "last_updated": "2026-07-10",
+  "format": {
+    "content_md": "content.md",
+    "web_html": "web.html",
+    "锦绣": false,
+    "presentation_pptx": false
+  },
+  "page_count": 13,
+  "summary": "从 10h 缩短到 30min 的公众号端到端交付方法论 · 5 步流程（调研/写/出图/桌面交付/用户粘贴）+ 桌面文件夹 8 文件结构 + mavis browser 工具栈 6 类失败清单 + 3 个反模式 + 5 个触发词"
+}

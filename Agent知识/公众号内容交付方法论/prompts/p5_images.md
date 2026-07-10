@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of an AI art pipeline: matrix MCP box with 5 image cards flowing out, each labeled (P0 封面, P1, P2, P3, P4), in pastel macaron colors. Cream paper background. Dark brown Chinese title at top: 'Step 3 出图 · 5 张配图'. Subtitle showing cost comparison: 'MiniMax 套餐 ¥49 / 9 张图'. Magical, efficient mood. 16:9, 2K.

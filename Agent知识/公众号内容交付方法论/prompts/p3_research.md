@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of a detective/researcher character holding a giant magnifying glass examining 3 floating question bubbles: '谁是读者', '痛是什么', '成功标准'. Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: 'Step 1 调研需求'. Cozy study mood with notebook and pencil on desk. 16:9, 2K.

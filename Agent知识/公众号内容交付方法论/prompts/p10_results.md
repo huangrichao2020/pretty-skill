@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 3 large colorful comparison callouts showing time savings: 写 4x (4h to 30min), 出图 18x (3h to 10min), 发布 600x (5h to 30sec), 总 20x (10h to 30min). Each has a clock or progress icon. Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: '量化疗效 · 从 10h 到 30min'. Motivational infographic mood. 16:9, 2K.

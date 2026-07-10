@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 3 warning signs on a wooden fence, each with a different anti-pattern icon: marketing homepage waste, iframe automation failure, picker swallowed by default. Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: '反模式库 · 3 个必避坑'. Cautionary mood with humor. 16:9, 2K.

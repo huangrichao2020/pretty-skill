@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 6 crossed-out tool icons in a danger zone: type (X), paste (X), upload (X), click menu (X), screenshot (X), with a warning sign. Each crossed icon has a small caption explaining the failure. Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: 'mavis browser 6 类失败清单'. Cautionary mood. 16:9, 2K.

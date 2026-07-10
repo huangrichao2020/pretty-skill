@@ -1,0 +1,1 @@
+Hand-drawn watercolor illustration of 5 floating speech bubbles with trigger words: 写公众号 / 公众号文章 / 明析小屋 / 配公众号 / 公众号配图. Each bubble has a small magic wand icon. Center has a magnifying glass showing keyword recognition. Cream paper background. Pastel macaron palette. Dark brown Chinese title at top: '触发词 · 让 Mavis 自动识别'. Magical, automation mood. 16:9, 2K.
