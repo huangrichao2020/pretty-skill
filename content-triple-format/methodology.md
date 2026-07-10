@@ -100,7 +100,7 @@
 <case>/
 ├── content.md           ← F1
 ├── presentation.pptx    ← F2
-└── web.html             ← F3
+└── xxx讲解.pdf          ← F3（v3.19 替代 web.html）
 ```
 
 ## 工程流程
@@ -116,7 +116,7 @@
    ↓
 5. python-pptx 嵌入 → presentation.pptx
    ↓
-6. html-ppt-viewer 套壳 → web.html
+6. build_case_pdf.py 渲染 → xxx讲解.pdf
    ↓
 7. 用 content.md 反查 .pptx/.html（如有出入以 .md 为准）
    ↓

@@ -15,9 +15,9 @@
   "last_updated": "2026-07-09",
   "format": {
     "content_md": "content.md",
-    "web_html": "web.html",
     "锦绣": true,
-    "presentation_pptx": false
+    "presentation_pptx": false,
+    "case_pdf": "AI狼群战法讲解.pdf"
   },
   "page_count": 8,
   "summary": "Cartman 多 agent 团队的高效协作方法论 · 9 张 AI 出图"

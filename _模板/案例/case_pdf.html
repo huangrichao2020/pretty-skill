@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{CASE_TITLE} · pretty-skills 讲解</title>
+<style>
+  /* pretty-skills 美学锁定 · cream paper + 深棕 + 手绘马卡龙 */
+  @page { size: A4 landscape; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+                 "Microsoft YaHei", "STHeiti", serif;
+    background: #FFF7E8;  /* cream paper */
+    color: #6B4423;        /* dark brown */
+  }
+
+  /* ===== 单页（每页 1 张图） ===== */
+  .page {
+    width: 297mm; height: 210mm;
+    page-break-after: always;
+    display: flex; flex-direction: column;
+    background: #FFF7E8;
+    padding: 14mm 16mm;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .page-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12pt; color: #8B6F47;
+    border-bottom: 1.5px solid #D4B896;
+    padding-bottom: 6mm; margin-bottom: 6mm;
+  }
+  .page-num {
+    background: #B8E0D2;  /* mint */
+    color: #6B4423; padding: 2px 12px;
+    border-radius: 12px; font-weight: 600;
+    font-size: 10pt;
+  }
+  .page-title {
+    font-weight: 600; font-size: 13pt;
+    max-width: 60%; text-align: right;
+  }
+
+  .page-image {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 4mm 0;
+  }
+  .page-image img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 4px 18px rgba(107, 68, 35, 0.15);
+  }
+
+  .page-footer {
+    display: flex; justify-content: space-between;
+    font-size: 10pt; color: #A0825C;
+    border-top: 1.5px solid #D4B896;
+    padding-top: 6mm; margin-top: 6mm;
+  }
+</style>
+</head>
+<body>
+{PAGES}
+</body>
+</html>

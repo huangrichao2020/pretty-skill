@@ -3,17 +3,22 @@
   "domain": "金融投资",
   "title": "卡脖子选股报告 · 主板专版 · 2026-07-07",
   "visibility": "public",
-  "tags": ["A股", "卡脖子", "选股", "供应链"],
+  "tags": [
+    "A股",
+    "卡脖子",
+    "选股",
+    "供应链"
+  ],
   "contributor": "@Kun",
   "contributor_github": "huangrichao2020",
   "created": "2026-07-08",
   "last_updated": "2026-07-08",
   "format": {
     "content_md": "content.md",
-    "web_html": "web.html",
     "锦绣": true,
     "presentation_pptx": true,
-    "pptx_size_mb": 10.6
+    "pptx_size_mb": 10.6,
+    "case_pdf": "卡脖子猎手讲解.pdf"
   },
   "page_count": 9,
   "summary": "卡脖子选股 · Serenity 供应链瓶颈方法论 · 9 页 + 9 张 AI 出图 + 10.6MB PPTX · 第 1 个真 case · @Kun 贡献"

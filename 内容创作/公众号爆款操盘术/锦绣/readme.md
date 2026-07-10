@@ -38,4 +38,4 @@
 
 - 封面：`cover-横屏.png` / `cover-竖屏.png`
 - 正文 4 图见 `../images/p0-p3.png`
-- slides：可由 `web.html` 4 页直接导出（本 case 未单独生成 8-12 张 slides，按需用 skill-creator 补）
+- slides：可由 `xxx讲解.pdf` 4 页直接导出（本 case 未单独生成 8-12 张 slides，按需用 skill-creator 补）

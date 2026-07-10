@@ -28,7 +28,7 @@
 - [本案例 prompt](./prompts/)
 - [本案例图片](./images/)
 - [完整 .pptx](./output/{case_name}.pptx)
-- [完整 .html](./web.html)
+- [完整 PDF 讲解版](./<case_name>讲解.pdf)
 
 ## 贡献者
 

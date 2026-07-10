@@ -123,7 +123,7 @@ prs.save("presentation.pptx")
 □ Step 2: prompts/ 下有对应 prompt 文件
 □ Step 3: images/ 下有 8 张 PNG（每页 1 张）
 □ Step 4: presentation.pptx 用 add_picture() 嵌图
-□ Step 5: web.html 用 <img src="..."> 嵌图
+□ Step 5: xxx讲解.pdf 用 build_case_pdf.py 自动生成
 □ 3 件套齐全且文件名一致
 □ README.md 写完
 ```

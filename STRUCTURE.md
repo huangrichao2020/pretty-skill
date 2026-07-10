@@ -152,7 +152,7 @@ pretty-skills/
 <领域>/<case>/
 ├── README.md                  ← case 说明（必填）
 ├── content.md                 ← 源文字（**必填** · 每页 4-7 字段）
-├── web.html                   ← PPT 演示版（**必填** · 中央大图 + 键盘翻页 + 全屏 + 演讲者模式）
+├── xxx讲解.pdf                ← F3 · PDF 讲解版（**必填** · v3.19 替代 web.html · GitHub 原生预览）
 ├── presentation.pptx          ← 真实 PowerPoint（**可选** · 仅二次编辑时生成 · 加 --with-pptx）
 ├── build_pptx.py              ← PPTX 生成脚本（推荐 · 可选时使用）
 ├── images/                    ← AI 出图原图（**必填** · ≥ 1 张/页）
@@ -192,7 +192,7 @@ CLI 工具，把任意知识一键变成 pretty-skills 完整目录（3F Content
 
 ### 输出
 
-- 完整 skill 目录：`content.md` + `images/` + `presentation.pptx` + `web.html` + **锦绣 PPT**
+- 完整 skill 目录：`content.md` + `images/` + `presentation.pptx` + `xxx讲解.pdf` + **锦绣 PPT**
 - 多平台素材：朋友圈 1 图 + 小红书 9 图 + 公众号 12 页 + 视频脚本
 
 ### 安装 + 使用
@@ -217,7 +217,7 @@ cp -r _模板/案例 "<16 领域之一>/<你的-case-名>"
 
 # 2. 编辑文件
 cd "<16 领域之一>/<你的-case-名>"
-# 改 content.md / build_pptx.py / web.html ...
+# 改 content.md / build_pptx.py / build_case_pdf.py ...
 
 # 3. 跑 check-3f.py 验证
 python content-triple-format/check-3f.py "<领域>/<case>"
@@ -260,7 +260,7 @@ python content-triple-format/check-3f.py "<领域>/<case>"
 
 # 2. 确认路径规范
 ls "<领域>/<case>/"
-# 应该有：content.md + web.html + images/ + output/<case_name>.pptx + prompts/ + 锦绣/
+# 应该有：content.md + xxx讲解.pdf + images/ + output/<case_name>.pptx + prompts/ + 锦绣/
 
 # 3. 确认领域是 11 预设之一 或 PR 新增
 # PR 模板自动给 16 领域下拉

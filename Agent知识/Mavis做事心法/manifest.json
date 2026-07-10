@@ -18,9 +18,9 @@
   "last_updated": "2026-07-09",
   "format": {
     "content_md": "content.md",
-    "web_html": "web.html",
     "锦绣": false,
-    "presentation_pptx": false
+    "presentation_pptx": false,
+    "case_pdf": "Mavis做事心法讲解.pdf"
   },
   "page_count": 12,
   "summary": "把 Mavis 的人格数据里可复用的方法论全部抽出来 · 6 步法做事流 + 沟通铁律 + 4 反模式 + 13 工程铁律 + 四自在哲学 · 让其他 agent 也能用这套方法"

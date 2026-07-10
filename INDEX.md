@@ -38,16 +38,17 @@
 
 | 领域 | case | visibility | tags | 内容形态 |
 |---|---|---|---|---|
-| Agent知识 | [`AI狼群战法`](./Agent知识/AI狼群战法/) | **public** | multi-agent, 协作 | content.md + web.html + 锦绣 |
-| Agent知识 | [`社交电商掘金术`](./Agent知识/社交电商掘金术/) | **public** | 社交电商, GPT | content.md + web.html + 锦绣 |
-| Agent知识 | [`Mavis做事心法`](./Agent知识/Mavis做事心法/) | **public** | 6步法, 沟通铁律, 反模式 | content.md + web.html + 13 AI 出图 |
-| 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + web.html + 锦绣 + presentation.pptx |
-| 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + web.html + 锦绣 |
-| 内容创作 | [`橙皮书方法论`](./内容创作/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + web.html + 锦绣 |
-| 内容创作 | [`公众号爆款操盘术`](./内容创作/公众号爆款操盘术/) | **public** | 公众号, 写作, 钩子链, 爆款 | content.md + web.html + 锦绣 |
-| 玄学修炼 | [`占星入门12星座`](./玄学修炼/占星入门12星座/) | **public** | 占星, 12星座, 元素, 模式 | content.md + web.html + 9 AI 出图 |
+| Agent知识 | [`AI狼群战法`](./Agent知识/AI狼群战法/) | **public** | multi-agent, 协作 | content.md + xxx讲解.pdf + 锦绣 |
+| Agent知识 | [`社交电商掘金术`](./Agent知识/社交电商掘金术/) | **public** | 社交电商, GPT | content.md + xxx讲解.pdf + 锦绣 |
+| Agent知识 | [`Mavis做事心法`](./Agent知识/Mavis做事心法/) | **public** | 6步法, 沟通铁律, 反模式 | content.md + xxx讲解.pdf + 13 AI 出图 |
+| Agent知识 | [`公众号内容交付方法论`](./Agent知识/公众号内容交付方法论/) | **public** | 公众号, 桌面交付, mavis-browser | content.md + xxx讲解.pdf + 13 AI 出图 |
+| 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + xxx讲解.pdf + 锦绣 + presentation.pptx |
+| 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + xxx讲解.pdf + 锦绣 |
+| 内容创作 | [`橙皮书方法论`](./内容创作/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + xxx讲解.pdf + 锦绣 |
+| 内容创作 | [`公众号爆款操盘术`](./内容创作/公众号爆款操盘术/) | **public** | 公众号, 写作, 钩子链, 爆款 | content.md + xxx讲解.pdf + 锦绣 |
+| 玄学修炼 | [`占星入门12星座`](./玄学修炼/占星入门12星座/) | **public** | 占星, 12星座, 元素, 模式 | content.md + xxx讲解.pdf + 9 AI 出图 |
 
-> **6 个 case 全部默认 public** —— 提 PR 共享。
+> **7 个 case 全部默认 public** —— 提 PR 共享。
 
 ---
 

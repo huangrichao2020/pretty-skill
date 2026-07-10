@@ -16,9 +16,9 @@
   "last_updated": "2026-07-09",
   "format": {
     "content_md": "content.md",
-    "web_html": "web.html",
     "锦绣": false,
-    "presentation_pptx": false
+    "presentation_pptx": false,
+    "case_pdf": "占星入门12星座讲解.pdf"
   },
   "page_count": 9,
   "summary": "用 4 元素（火/土/风/水）× 3 模式（开创/固定/变动）= 12 星座，把 12 星座从'算命'变成'性格方言字典'"

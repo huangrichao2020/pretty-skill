@@ -13,7 +13,7 @@
   □ content.md 存在且每页 4-7 字段
   □ presentation.pptx 存在且 ≥ 2 MB
   □ presentation.pptx 内嵌图（解 zip 看 ppt/media 目录）
-  □ web.html 存在且含 <img> 标签
+  □ xxx讲解.pdf 存在且 ≥ 50KB
   □ images/ 目录存在且有 N 张 PNG（与 .pptx 页数对齐）
   □ prompts/ 目录存在（每页 60 行 prompt）
   □ manifest.json 必填（v3.11 起）· 含 visibility 合法字段
@@ -211,7 +211,7 @@ def check_pptx(case_dir: Path) -> tuple[bool, list[str]]:
         # v3.2 改：PPTX 可选，warning 而非 error
         warn(f"presentation.pptx 不存在（v3.2 可选 · 90% 用户不需要）")
         warn(f"  · 仅当需要二次编辑时才生成（用 build_pptx.py）")
-        warn(f"  · 演示场景请用 web.html（必填 · PPT 演示版）")
+        warn(f"  · 演示场景请用「<name>讲解.pdf」（必填 · GitHub 原生预览）")
         return True, errors  # v3.2 软警告
 
     info(f"presentation.pptx 位置: {pptx_path.relative_to(case_dir.parent)}")
@@ -244,29 +244,52 @@ def check_pptx(case_dir: Path) -> tuple[bool, list[str]]:
     return True, errors  # v3.2 软警告模式
 
 
-def check_web_html(case_dir: Path) -> tuple[bool, list[str]]:
-    """检查 web.html · 含 <img> 标签"""
+def check_case_pdf(case_dir: Path) -> tuple[bool, list[str]]:
+    """检查 <name>讲解.pdf · v3.19 替代 web.html（GitHub 原生 PDF 预览）
+
+    规则：case 目录下必须有 *讲解.pdf 文件，且 ≥ 50KB
+    """
     errors = []
-    html_path = case_dir / "web.html"
+    pdf_paths = list(case_dir.glob("*讲解.pdf"))
 
-    if not html_path.exists():
-        errors.append(f"❌ web.html 不存在 ({html_path})")
+    if not pdf_paths:
+        errors.append(f"❌ *讲解.pdf 不存在（{case_dir}/）· 用 build_case_pdf.py 生成")
         return False, errors
 
-    content = html_path.read_text(encoding="utf-8")
+    # 取第一个匹配（一般只有一个）
+    pdf_path = pdf_paths[0]
 
-    # 检查 <img> 标签数量
-    img_count = len(re.findall(r"<img\b", content))
-    if img_count == 0:
-        errors.append("❌ web.html 不含任何 <img> 标签（疑似 .md 直接转 HTML）")
+    # 文件大小（PDF 内嵌 N 张图，50KB 起步；图越多越大）
+    size_kb = pdf_path.stat().st_size / 1024
+    if size_kb < 50:
+        errors.append(f"❌ {pdf_path.name} 仅 {size_kb:.0f} KB < 50KB（疑似纯文字 PDF）")
         return False, errors
 
-    ok(f"web.html 含 {img_count} 个 <img> 标签（嵌图证据）")
+    ok(f"{pdf_path.name} 大小合规 ({size_kb:.0f} KB ≥ 50KB)")
 
-    # 反向检查：是不是 .md 转 HTML（太多 <p> 文字）
-    p_count = len(re.findall(r"<p\b", content))
-    if p_count > 50 and img_count < 3:
-        warn(f"web.html <p> 文字 {p_count} 个 vs <img> 图 {img_count} 个 — 可能是文字网页")
+    # 检查 PDF magic bytes（%PDF-）
+    try:
+        with open(pdf_path, "rb") as f:
+            magic = f.read(5)
+        if not magic.startswith(b"%PDF-"):
+            errors.append(f"❌ {pdf_path.name} 不是合法 PDF（magic bytes 错）")
+            return False, errors
+        ok(f"{pdf_path.name} magic bytes 合法 (%PDF-)")
+    except Exception as e:
+        errors.append(f"❌ 读 PDF 失败: {e}")
+        return False, errors
+
+    # 反向检查：是不是纯文本转 PDF（PDF 不含 image object）
+    try:
+        content = pdf_path.read_bytes()
+        if b"/Subtype /Image" not in content and b"/Subtype/Image" not in content:
+            warn(f"{pdf_path.name} 不含 image object（疑似纯文字 PDF）")
+        else:
+            # 统计 image object 数量
+            image_count = content.count(b"/Subtype /Image") + content.count(b"/Subtype/Image")
+            ok(f"{pdf_path.name} 含 {image_count} 个 image object（嵌图证据）")
+    except Exception:
+        pass
 
     return len(errors) == 0, errors
 
@@ -603,7 +626,7 @@ def main():
     parser.add_argument(
         "case_dir",
         type=Path,
-        help="case 目录路径（应该包含 content.md / presentation.pptx / web.html）",
+        help="case 目录路径（应该包含 content.md / presentation.pptx / xxx讲解.pdf）",
     )
     parser.add_argument(
         "--strict", action="store_true",
@@ -633,9 +656,9 @@ def main():
     all_ok = all_ok and ok_pptx
     print()
 
-    print("┌─ F3 · web.html 检查")
-    ok_html, errs_html = check_web_html(case_dir)
-    all_ok = all_ok and ok_html
+    print("┌─ F3 · xxx讲解.pdf 检查（v3.19 · 替代 web.html · GitHub 原生预览）")
+    ok_pdf, errs_pdf = check_case_pdf(case_dir)
+    all_ok = all_ok and ok_pdf
     print()
 
     print("┌─ images/ 目录检查")

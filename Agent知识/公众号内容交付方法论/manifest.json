@@ -16,9 +16,9 @@
   "last_updated": "2026-07-10",
   "format": {
     "content_md": "content.md",
-    "web_html": "web.html",
     "锦绣": false,
-    "presentation_pptx": false
+    "presentation_pptx": false,
+    "case_pdf": "公众号内容交付方法论讲解.pdf"
   },
   "page_count": 13,
   "summary": "从 10h 缩短到 30min 的公众号端到端交付方法论 · 5 步流程（调研/写/出图/桌面交付/用户粘贴）+ 桌面文件夹 8 文件结构 + mavis browser 工具栈 6 类失败清单 + 3 个反模式 + 5 个触发词"

@@ -67,7 +67,7 @@ cd "<16 领域之一>/<你的-case-名>"
 # - 改 README.md（用例说明）
 # - 准备 images/（用 matrix / DALL-E / Midjourney 出 N 张图）
 # - 跑 build_pptx.py 生成 output/<case_name>.pptx
-# - 改 web.html（用 html-ppt-viewer 模板）
+# - 改 xxx讲解.pdf（用 build_case_pdf.py 自动生成）
 # - 生成 锦绣/（4 形态：封面 + 9图 + PPT + 视频脚本）
 ```
 
@@ -76,7 +76,7 @@ cd "<16 领域之一>/<你的-case-名>"
 ```bash
 pip install pretty-skills
 pretty-skills create --input my-knowledge.md --domain "金融投资" --style "深色科技风"
-# 自动生成 content.md + images/ + presentation.pptx + web.html + 锦绣 4 形态
+# 自动生成 content.md + images/ + presentation.pptx + xxx讲解.pdf + 锦绣 4 形态
 ```
 
 完整 onboarding：[content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md)
@@ -178,15 +178,15 @@ git commit -m "feat: add 新领域名称 + 案例1"
 > **没有生图能力 = 没有视觉化 = 项目范式坍塌。**
 
 1. **生图必填** —— 横屏封面 + 竖屏封面 + 8-12 讲解图都必须有（用 MiniMax 套餐的 matrix MCP）
-2. **必填 2 件**（content.md + web.html）—— HTML 是 PPT 演示版（必填）
+2. **必填 2 件**（content.md + xxx讲解.pdf）—— PDF 是 v3.19 必填的讲解版（GitHub 原生预览）
 3. **锦绣 3 样齐全**（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）—— v3.1 简化要求
-4. **`.md` 为单一真相** —— `web.html` / `presentation.pptx` / `锦绣` 内文以 `.md` 为准
+4. **`.md` 为单一真相** —— `xxx讲解.pdf` / `presentation.pptx` / `锦绣` 内文以 `.md` 为准
 5. **作者署名** —— `content.md` 顶部加作者 / 来源 / 日期
 6. **`manifest.json` 必填**（v3.11 新增） —— 每个 case 必须含 `manifest.json`，含 visibility 标识字段
 
 ### 范式变化说明（v3.2 重要）
 
-- ✅ `web.html` = **PPT 演示版**（必填 · 任何浏览器打开 + 键盘翻页 + 全屏 + 演讲者模式）
+- ✅ `xxx讲解.pdf` = **PDF 讲解版**（必填 · v3.19 替代 web.html · GitHub 原生预览）
 - ⚠️ `presentation.pptx` = **可选**（90% 用户不需要 · 仅当要二次编辑时才生成 · 加 `--with-pptx` 标志）
 - 详细规范：[content-triple-format/ppt-html-spec.md](./content-triple-format/ppt-html-spec.md)
 
@@ -207,7 +207,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
   "last_updated": "2026-07-08",
   "format": {
     "content_md": "content.md",
-    "web_html": "web.html",
+    "case_pdf": "<case_name>讲解.pdf",
     "锦绣": true,
     "presentation_pptx": true,
     "pptx_size_mb": 10.6
@@ -287,7 +287,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 ### Q: 我不会用 python-pptx 生成 PPT？
 
-**v3.2 起 PPTX 是可选的** —— 90% 用户不需要（用 web.html 就够演示）。
+**v3.2 起 PPTX 是可选的，v3.19 起 PDF 是必填的** —— 90% 用户不需要 PPTX（用 PDF 就够演示 + GitHub 原生预览）。
 仅当需要二次编辑时：
 看 [content-triple-format/onboarding-guide.md](./content-triple-format/onboarding-guide.md) Step 4 的代码示例，复制粘贴改改路径即可。
 
