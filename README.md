@@ -33,6 +33,22 @@
 
 ---
 
+## 📱 加群交流 · Pretty-skills 使用交流群
+
+<p align="center">
+  <img src="assets/readme-14-qrcode-wechat.png" alt="Pretty-skills 使用交流群微信二维码" width="260">
+</p>
+
+<p align="center">
+  <b>扫码进群</b> · 实战分享 / 问题解答 / case 灵感
+</p>
+
+<p align="center">
+  <sub>⏰ 二维码 7 天内(7 月 17 日前)有效，过期后会在此重新生成替换</sub>
+</p>
+
+---
+
 ## 🚀 一次上手 · 3 步（不需要任何命令）
 
 <p align="center">
