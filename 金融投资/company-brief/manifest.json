@@ -1,0 +1,14 @@
+{
+  "name": "company-brief",
+  "domain": "金融投资",
+  "title": "company-brief · 多市场上市公司速览",
+  "visibility": "public",
+  "tags": ["company-brief", "公司速览", "A 股", "港股", "美股", "visual-page"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "company-brief讲解.pdf"},
+  "page_count": 4,
+  "summary": "A 股/港股/美股 10 维度公司速览 · 5 路并行数据采集 · visual-page GUI · 来源支撑",
+  "source_skill": "~/.mavis/skills/company-brief/SKILL.md",
+  "trigger_keywords": ["公司速览", "上市公司", "A 股/港股/美股", "company brief"]
+}

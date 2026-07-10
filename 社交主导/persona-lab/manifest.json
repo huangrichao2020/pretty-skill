@@ -1,0 +1,14 @@
+{
+  "name": "persona-lab",
+  "domain": "社交主导",
+  "title": "persona-lab · 自媒体博主 17 维人格克隆",
+  "visibility": "public",
+  "tags": ["persona-lab", "博主解析", "17维人格", "抖音", "YouTube"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "persona-lab讲解.pdf"},
+  "page_count": 5,
+  "summary": "17 维人格克隆（人格/表达/视觉/受众 4 层）· 跨平台 · 视频理解 + LLM 综合",
+  "source_skill": "~/.mavis/skills/persona-lab/SKILL.md",
+  "trigger_keywords": ["解析博主", "parse-blogger", "拆解博主", "抖音博主"]
+}

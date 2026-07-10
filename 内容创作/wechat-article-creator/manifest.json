@@ -1,0 +1,14 @@
+{
+  "name": "wechat-article-creator",
+  "domain": "内容创作",
+  "title": "wechat-article-creator · 公众号文章创作助手",
+  "visibility": "public",
+  "tags": ["wechat-article-creator", "公众号", "推文", "爆款", "热点分析"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "wechat-article-creator讲解.pdf"},
+  "page_count": 4,
+  "summary": "热门话题和爆款文章汲取灵感 · 4 类风格 · 5 步工作流 · 完整闭环",
+  "source_skill": "~/.mavis/skills/wechat-article-creator/SKILL.md",
+  "trigger_keywords": ["公众号", "推文", "文章创作", "热点分析", "爆款文章"]
+}

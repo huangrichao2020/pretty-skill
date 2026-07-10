@@ -1,0 +1,14 @@
+{
+  "name": "economic-impact-report",
+  "domain": "金融投资",
+  "title": "economic-impact-report · 多市场股票经济影响报告",
+  "visibility": "public",
+  "tags": ["economic-impact-report", "宏观传导", "政策影响", "跨市场"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "economic-impact-report讲解.pdf"},
+  "page_count": 4,
+  "summary": "政策/宏观/产业/重大事件 → A 股/港股/美股 跨市场传导 · 重点中国因素扩散",
+  "source_skill": "~/.mavis/skills/economic-impact-report/SKILL.md",
+  "trigger_keywords": ["政策影响", "宏观冲击", "经济影响", "跨市场传导"]
+}

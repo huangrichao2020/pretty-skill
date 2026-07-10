@@ -1,0 +1,14 @@
+{
+  "name": "browser-act",
+  "domain": "Agent知识",
+  "title": "browser-act · 浏览器 Stealth 反爬",
+  "visibility": "public",
+  "tags": ["browser-act", "stealth-extract", "反爬", "SaaS", "公众号"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "browser-act讲解.pdf"},
+  "page_count": 4,
+  "summary": "浏览器 Stealth mode 反爬 · 5 大场景 · 4 步工作流 · Cookie 持久化 + JS 渲染 + 反指纹",
+  "source_skill": "~/.mavis/skills/browser-act/SKILL.md",
+  "trigger_keywords": ["抓公众号", "抓小红书", "反爬", "SaaS 抓取", "监控", "批量抓取"]
+}

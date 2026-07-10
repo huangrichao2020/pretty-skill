@@ -1,0 +1,14 @@
+{
+  "name": "marginal-tracker",
+  "domain": "金融投资",
+  "title": "marginal-tracker · 多市场股票投资论点边际跟踪器",
+  "visibility": "public",
+  "tags": ["marginal-tracker", "投资论点", "论点跟踪", "证伪条件"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "marginal-tracker讲解.pdf"},
+  "page_count": 4,
+  "summary": "投资论点持续监控 · 6 维度 + 证伪条件 · visual-page GUI 审查页面",
+  "source_skill": "~/.mavis/skills/marginal-tracker/SKILL.md",
+  "trigger_keywords": ["投资论点", "论点跟踪", "证伪条件", "持续监控"]
+}

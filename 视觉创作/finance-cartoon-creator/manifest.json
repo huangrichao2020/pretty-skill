@@ -1,0 +1,14 @@
+{
+  "name": "finance-cartoon-creator",
+  "domain": "视觉创作",
+  "title": "finance-cartoon-creator · 股市财经漫画角色线稿",
+  "visibility": "public",
+  "tags": ["finance-cartoon-creator", "财经漫画", "股票人物", "散户庄家"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "finance-cartoon-creator讲解.pdf"},
+  "page_count": 3,
+  "summary": "散户/庄家/游资/机构 4 类财经人物线稿 · 跨角色风格一致 · 透明 PNG 导出",
+  "source_skill": "~/.mavis/skills/finance-cartoon-creator/SKILL.md",
+  "trigger_keywords": ["画股市漫画", "财经人物", "散户庄家游资", "股票人物线稿"]
+}

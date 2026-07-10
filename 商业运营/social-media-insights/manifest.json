@@ -1,0 +1,14 @@
+{
+  "name": "social-media-insights",
+  "domain": "商业运营",
+  "title": "social-media-insights · 社媒洞察分析师",
+  "visibility": "public",
+  "tags": ["social-media-insights", "公众号分析", "小红书分析", "竞品分析"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "social-media-insights讲解.pdf"},
+  "page_count": 4,
+  "summary": "公众号 + 小红书竞品分析 + 选题洞察 + 行动建议 · 数据驱动内容运营",
+  "source_skill": "~/.mavis/skills/social-media-insights/SKILL.md",
+  "trigger_keywords": ["公众号分析", "小红书分析", "社媒洞察", "账号分析", "竞品分析"]
+}

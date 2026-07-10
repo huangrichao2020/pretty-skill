@@ -1,0 +1,14 @@
+{
+  "name": "project-manager-expert",
+  "domain": "做事技巧",
+  "title": "project-manager-expert · 项目管理专家",
+  "visibility": "public",
+  "tags": ["project-manager-expert", "项目管理", "里程碑", "建筑工程", "提醒"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "project-manager-expert讲解.pdf"},
+  "page_count": 3,
+  "summary": "PDF/Project 文件项目跟踪 + 里程碑 + cron 提醒 · 5 大能力 · 4 步工作流",
+  "source_skill": "~/.mavis/skills/project-manager-expert/SKILL.md",
+  "trigger_keywords": ["项目管理", "项目跟踪", "里程碑", "建筑工程", "每日提醒"]
+}

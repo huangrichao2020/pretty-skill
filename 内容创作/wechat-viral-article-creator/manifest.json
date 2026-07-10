@@ -1,0 +1,14 @@
+{
+  "name": "wechat-viral-article-creator",
+  "domain": "内容创作",
+  "title": "wechat-viral-article-creator · 公众号爆款创作专家",
+  "visibility": "public",
+  "tags": ["wechat-viral-article-creator", "爆款文章", "去AI化", "风格模仿"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "wechat-viral-article-creator讲解.pdf"},
+  "page_count": 4,
+  "summary": "选题策划 + 风格模仿 + 去 AI 化 · 5 项专长 · 4 类风格目标账号",
+  "source_skill": "~/.mavis/skills/wechat-viral-article-creator/SKILL.md",
+  "trigger_keywords": ["公众号爆款", "自媒体", "去AI化", "风格模仿", "人性化写作"]
+}

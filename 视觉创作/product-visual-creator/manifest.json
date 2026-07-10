@@ -1,0 +1,14 @@
+{
+  "name": "product-visual-creator",
+  "domain": "视觉创作",
+  "title": "product-visual-creator · 产品视觉创意师",
+  "visibility": "public",
+  "tags": ["product-visual-creator", "产品渲染", "概念设计", "包装设计"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "product-visual-creator讲解.pdf"},
+  "page_count": 4,
+  "summary": "6 类商业级产品视觉输出（渲染/概念/包装/广告/展示/场景）· 多角度生成 + 后期调优",
+  "source_skill": "~/.mavis/skills/product-visual-creator/SKILL.md",
+  "trigger_keywords": ["产品渲染", "概念设计", "包装设计", "广告海报", "product visual"]
+}

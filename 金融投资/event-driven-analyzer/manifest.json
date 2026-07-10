@@ -1,0 +1,14 @@
+{
+  "name": "event-driven-analyzer",
+  "domain": "金融投资",
+  "title": "event-driven-analyzer · 多市场事件驱动分析器",
+  "visibility": "public",
+  "tags": ["event-driven-analyzer", "事件驱动", "路径分析", "概率回报"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "event-driven-analyzer讲解.pdf"},
+  "page_count": 4,
+  "summary": "有确定日期事件 → 路径推演 + 概率 + 期望收益 · 7 类事件 · 5 步工作流",
+  "source_skill": "~/.mavis/skills/event-driven-analyzer/SKILL.md",
+  "trigger_keywords": ["并购重组", "要约收购", "再融资", "回购", "解禁", "监管诉讼"]
+}

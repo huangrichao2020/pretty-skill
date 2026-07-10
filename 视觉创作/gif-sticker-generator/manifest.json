@@ -1,0 +1,14 @@
+{
+  "name": "gif-sticker-generator",
+  "domain": "视觉创作",
+  "title": "gif-sticker-generator · Q版GIF动图表情包",
+  "visibility": "public",
+  "tags": ["gif-sticker-generator", "Q版", "GIF表情包", "中文配文"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "gif-sticker-generator讲解.pdf"},
+  "page_count": 3,
+  "summary": "照片 → Q版 GIF · 4 经典动作 + 中文配文 · 在线展示 + 下载",
+  "source_skill": "~/.mavis/skills/gif-sticker-generator/SKILL.md",
+  "trigger_keywords": ["表情包", "sticker", "GIF", "Q版", "动图"]
+}

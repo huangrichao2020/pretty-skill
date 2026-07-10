@@ -1,0 +1,14 @@
+{
+  "name": "comic-generator",
+  "domain": "视觉创作",
+  "title": "comic-generator · 文字故事转漫画",
+  "visibility": "public",
+  "tags": ["comic-generator", "漫画", "分镜", "story-to-comic"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "comic-generator讲解.pdf"},
+  "page_count": 4,
+  "summary": "文字故事自动分镜 + 漫画风格面板 + 完整页面合成 · 跨图角色一致",
+  "source_skill": "~/.mavis/skills/comic-generator/SKILL.md",
+  "trigger_keywords": ["生成漫画", "文字转漫画", "comic", "manga", "story to comic"]
+}

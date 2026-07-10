@@ -1,0 +1,14 @@
+{
+  "name": "sales-powermap",
+  "domain": "社交主导",
+  "title": "sales-powermap · B2B 销售攻单 Power Map",
+  "visibility": "public",
+  "tags": ["sales-powermap", "销售", "power map", "决策人", "组织架构"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "sales-powermap讲解.pdf"},
+  "page_count": 4,
+  "summary": "B2B 销售攻单 Power Map · 5 步闭环 · 决策链 + 关键决策人 + 攻单建议",
+  "source_skill": "~/.mavis/skills/sales-powermap/SKILL.md",
+  "trigger_keywords": ["卖", "客户", "power map", "决策人", "组织架构"]
+}

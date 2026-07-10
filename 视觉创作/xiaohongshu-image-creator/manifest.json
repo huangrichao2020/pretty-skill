@@ -1,0 +1,14 @@
+{
+  "name": "xiaohongshu-image-creator",
+  "domain": "视觉创作",
+  "title": "xiaohongshu-image-creator · 小红书 AI 作图助手",
+  "visibility": "public",
+  "tags": ["xiaohongshu-image-creator", "小红书", "封面", "作图", "AI 配图"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-10",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false, "case_pdf": "xiaohongshu-image-creator讲解.pdf"},
+  "page_count": 4,
+  "summary": "小红书专属竖版作图 · 6 类内容 · 爆款公式 · 平台尺寸适配",
+  "source_skill": "~/.mavis/skills/xiaohongshu-image-creator/SKILL.md",
+  "trigger_keywords": ["小红书", "封面", "种草", "配图", "作图"]
+}
