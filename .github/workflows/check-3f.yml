@@ -3,15 +3,35 @@ name: check-3f
 on:
   pull_request:
     paths:
-      - 'domains/**'
+      # 12 个中文预设领域（v3.18+）
+      - 'Agent知识/**'
+      - '编程开发/**'
+      - '数据科学/**'
+      - '产品设计/**'
+      - '商业运营/**'
+      - '金融投资/**'
+      - '内容创作/**'
+      - '教育学习/**'
+      - '游戏玩家/**'
+      - '情感领域/**'
+      - '做事技巧/**'
+      - '玄学修炼/**'
+      - '橙皮书/**'
+      - '社交主导/**'
+      - '视觉创作/**'
+      - '故事写作/**'
+      # 核心工具与模板
       - 'content-triple-format/**'
+      - 'skill-creator/**'
+      - '_模板/**'
+      - 'tools/**'
   push:
     branches: [main]
 
 jobs:
   validate-3f-content:
     runs-on: ubuntu-latest
-    name: Validate 3F Content (no text-only PPT/HTML)
+    name: Validate 3F Content (v3.20 PDF 时代)
     timeout-minutes: 5
 
     steps:
@@ -26,7 +46,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-pptx
+          # v3.20: check-3f.py F3 检测 *讲解.pdf · 需要 Pillow + pypdf
+          pip install Pillow pypdf
 
       - name: Run check-3f.py on changed case directories
         env:
@@ -34,30 +55,24 @@ jobs:
           NO_COLOR: '1'
           FORCE_COLOR: '0'
         run: |
-          echo "::group::🔍 3F Content 自动校验"
+          echo "::group::🔍 3F Content 自动校验 · v3.20 PDF 时代"
           set +e
 
-          # 找出所有 case 目录 · v3 结构：<12 中文领域>/<case>/
-          # 12 预设领域：Agent知识 编程开发 数据科学 产品设计 商业运营
-          #            金融投资 内容创作 教育学习 游戏玩家 情感领域 做事技巧 玄学修炼
-          # 也支持 PR 新增领域（有 README.md 就算）
+          # 找出所有 case 目录 · v3.20 结构：<中文领域>/<case>/
+          # 12 预设领域 + 4 备选 = 16 中文领域
           cases=()
-          for first_level_dir in */; do
-            # 跳过特殊目录
-            case "$first_level_dir" in
-              .git/*|content-triple-format/*|.github/*|skill-creator/*) continue ;;
-            esac
-            # 跳过非中文/英文领域目录的隐藏目录
-            case "$first_level_dir" in
-              .*) continue ;;
-            esac
-            # 跳过 _模板/ 目录（含下划线）
-            case "$first_level_dir" in
-              _*) continue ;;
-            esac
-            # 找这个领域下的所有 case
-            for case_dir in "$first_level_dir"*/; do
-              if [ -d "$case_dir" ] && ([ -f "$case_dir/content.md" ] || [ -f "$case_dir/presentation.pptx" ] || ls "$case_dir/output"/*.pptx 2>/dev/null > /dev/null); then
+          PRESET_DOMAINS=(
+            "Agent知识" "编程开发" "数据科学" "产品设计"
+            "商业运营" "金融投资" "内容创作" "教育学习"
+            "游戏玩家" "情感领域" "做事技巧" "玄学修炼"
+            "橙皮书" "社交主导" "视觉创作" "故事写作"
+          )
+          for domain in "${PRESET_DOMAINS[@]}"; do
+            [ -d "$domain" ] || continue
+            for case_dir in "$domain"*/; do
+              [ -d "$case_dir" ] || continue
+              # v3.20 case 判定：必须有 manifest.json 或 content.md
+              if [ -f "$case_dir/manifest.json" ] || [ -f "$case_dir/content.md" ]; then
                 cases+=("$case_dir")
               fi
             done
@@ -68,10 +83,12 @@ jobs:
             exit 0
           fi
 
-          echo "📂 发现 ${#cases[@]} 个 case 目录: ${cases[*]}"
+          echo "📂 发现 ${#cases[@]} 个 case 目录:"
+          printf '   - %s\n' "${cases[@]}"
           echo ""
 
           failed=0
+          failed_cases=()
           for case_dir in "${cases[@]}"; do
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             echo "🔍 检查: $case_dir"
@@ -80,6 +97,7 @@ jobs:
             rc=$?
             if [ $rc -ne 0 ]; then
               failed=$((failed + 1))
+              failed_cases+=("$case_dir")
             fi
             echo ""
           done
@@ -89,24 +107,35 @@ jobs:
             echo "❌ ${failed}/${#cases[@]} 个 case 未通过 3F Content 校验"
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             echo ""
-            echo "### ❌ 3F Content 校验失败" >> $GITHUB_STEP_SUMMARY
+            echo "### ❌ 3F Content 校验失败（v3.20 PDF 时代）" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "本 PR 修改的 ${failed} 个 case 未通过 3F Content 范式校验。" >> $GITHUB_STEP_SUMMARY
+            echo "本 PR 修改的 ${failed} 个 case 未通过 3F Content 范式校验：" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            printf '   %s\n' "${failed_cases[@]}" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**常见失败原因：**" >> $GITHUB_STEP_SUMMARY
-            echo "- .pptx 文件太小（< 1 MB）→ 可能是纯文字 PPT" >> $GITHUB_STEP_SUMMARY
-            echo "- .html 不含 \`<img>\` 标签 → 可能是 .md 直接转 HTML" >> $GITHUB_STEP_SUMMARY
-            echo "- images/ 目录缺失 → 跳过了 AI 出图步骤" >> $GITHUB_STEP_SUMMARY
+            echo "**v3.20 必填 5 件（缺一就挂）：**" >> $GITHUB_STEP_SUMMARY
+            echo "1. \`content.md\` — 源文字（人类 + AI 最高兼容）" >> $GITHUB_STEP_SUMMARY
+            echo "2. \`<case_name>讲解.pdf\` — **PDF 讲解版**（GitHub 原生预览 · ≥ 50KB）" >> $GITHUB_STEP_SUMMARY
+            echo "3. \`images/\` — AI 出图原图（PNG 数 = content.md 页数）" >> $GITHUB_STEP_SUMMARY
+            echo "4. \`prompts/\` — 出图 prompt 文件" >> $GITHUB_STEP_SUMMARY
+            echo "5. \`manifest.json\` — 含 visibility 字段（public/private/draft）" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**常见 v3.20 失败原因：**" >> $GITHUB_STEP_SUMMARY
+            echo "- 讲解 PDF 缺失或 < 50KB → 跑 \`python3 tools/build_case_pdf.py <case_dir>\`" >> $GITHUB_STEP_SUMMARY
+            echo "- manifest.json 缺 visibility 字段 → 加 \`\"visibility\": \"public\"\`" >> $GITHUB_STEP_SUMMARY
+            echo "- images/ PNG 数 ≠ content.md 页数 → 删/补 PNG" >> $GITHUB_STEP_SUMMARY
+            echo "- **没有 web.html**（v3.20 已废弃）→ 用 PDF 替代" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "**修复指南：**" >> $GITHUB_STEP_SUMMARY
-            echo "- [3F Content 范式](./content-triple-format/README.md)" >> $GITHUB_STEP_SUMMARY
-            echo "- [Onboarding 5 步流程](./content-triple-format/onboarding-guide.md)" >> $GITHUB_STEP_SUMMARY
-            echo "- [正反面对照](./content-triple-format/before-after-example.md)" >> $GITHUB_STEP_SUMMARY
-            echo "- [PR 拒绝标准](./CONTRIBUTING.md#-pr-拒绝标准硬指标-自动检测)" >> $GITHUB_STEP_SUMMARY
+            echo "- [3F Content 范式（v3.20）](./content-triple-format/README.md)" >> $GITHUB_STEP_SUMMARY
+            echo "- [PDF 讲解版规范](./content-triple-format/case-pdf-spec.md)" >> $GITHUB_STEP_SUMMARY
+            echo "- [5 步上手](./content-triple-format/onboarding-guide.md)" >> $GITHUB_STEP_SUMMARY
+            echo "- [PR 模板](./.github/PULL_REQUEST_TEMPLATE.md)" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "**本地复跑：**" >> $GITHUB_STEP_SUMMARY
             echo '```bash' >> $GITHUB_STEP_SUMMARY
-            echo "python3 content-triple-format/check-3f.py $case_dir" >> $GITHUB_STEP_SUMMARY
+            echo "python3 content-triple-format/check-3f.py <case_dir>" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
@@ -114,9 +143,9 @@ jobs:
           echo "✅ 全部 ${#cases[@]} 个 case 通过 3F Content 校验"
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
           echo ""
-          echo "### ✅ 3F Content 校验通过" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ 3F Content 校验通过（v3.20 PDF 时代）" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "${#cases[@]} 个 case 全部符合 3F Content 范式（.md + .pptx + .html + 图嵌入）" >> $GITHUB_STEP_SUMMARY
+          echo "${#cases[@]} 个 case 全部符合 v3.20 范式（.md + xxx讲解.pdf + images/ + prompts/ + manifest.json）" >> $GITHUB_STEP_SUMMARY
           echo "::group::"
 
       - name: Annotate PR with results

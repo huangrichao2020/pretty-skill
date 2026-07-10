@@ -1,13 +1,21 @@
 # pretty-skills
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub release](https://img.shields.io/github/v/release/huangrichao2020/pretty-skills)](https://github.com/huangrichao2020/pretty-skills/releases)
-[![5 agents](https://img.shields.io/badge/agents-5-7c3aed)](#-支持的-agent)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](tools/pretty-skills/docs/contributing.md)
-[![Made with Mavis](https://img.shields.io/badge/made%20with-Mavis-f59e0b.svg)](https://example.com)
-[![Edge-first](https://img.shields.io/badge/edge--first-OSS-0891b2)](tools/pretty-skills/docs/contributing.md)
+<p align="center">
+  <img src="assets/readme-1-banner.png" alt="pretty-skills · Agent 底层元 skill 库" width="100%">
+</p>
 
-> ✅ v0.1.0 · 5 agents · 边缘优先开源
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://github.com/huangrichao2020/pretty-skills/releases"><img src="https://img.shields.io/github/v/release/huangrichao2020/pretty-skills" alt="GitHub release"></a>
+  <a href="#-支持的-agent"><img src="https://img.shields.io/badge/agents-5-7c3aed" alt="5 agents"></a>
+  <a href="tools/pretty-skills/docs/contributing.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+  <a href="https://example.com"><img src="https://img.shields.io/badge/made%20with-Mavis-f59e0b.svg" alt="Made with Mavis"></a>
+  <a href="tools/pretty-skills/docs/contributing.md"><img src="https://img.shields.io/badge/edge--first-OSS-0891b2" alt="Edge-first"></a>
+</p>
+
+<p align="center">
+  <b>你的 Agent 底层元 skill 库 · 一张图同时适配 2.35:1 横幅 + 1:1 方形 · v3.21 PDF 时代</b>
+</p>
 
 ---
 
@@ -27,6 +35,10 @@
 ---
 
 ## 装pretty-skills，能干什么？
+
+<p align="center">
+  <img src="assets/readme-2-what.png" alt="pretty-skills 是什么" width="90%">
+</p>
 
 ### 1. **pretty-skills** — 管理你所有的 skill
 
@@ -79,6 +91,10 @@ ps contribute my-tweak
 ---
 
 ## 🌌 哲学 · 四自在
+
+<p align="center">
+  <img src="assets/readme-3-hub.png" alt="知识工程中枢" width="90%">
+</p>
 
 pretty-skills 的灵魂是**四自在** — 把项目从"装个工具"升华到"修行法门"。
 
@@ -133,6 +149,10 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 
 ## 📚 5 个 demo case · 看 pretty-skills 怎么用
 
+<p align="center">
+  <img src="assets/readme-4-domains.png" alt="12 个领域" width="90%">
+</p>
+
 | 领域 | Case | 一句话 | 形态 |
 |---|---|---|---|
 | `Agent知识` | **AI狼群战法** | Cartman 多 agent 团队的高效协作方法论 | content.md + 9 张 AI 出图 |
@@ -184,6 +204,16 @@ GitHub 的传统是"主项目维护者写 + 用户提 PR"，**pretty-skills 反�
 ```
 
 > **领域命名规则**：16 领域全部用中文（`Agent知识` / `编程开发` / `数据科学` / `产品设计` / `商业运营` / `金融投资` / `内容创作` / `教育学习` / `游戏玩家` / `情感领域` / `做事技巧` / `玄学修炼`） — **有噱头、易传播**。case 命名也用中文（如 `AI狼群战法` / `卡脖子猎手`）。
+
+---
+
+## 🤝 贡献流程
+
+<p align="center">
+  <img src="assets/readme-5-contribute.png" alt="如何贡献" width="90%">
+</p>
+
+详见 [CONTRIBUTING.md](CONTRIBUTING.md) · 6 硬规则 + 7 反模式 + v3.20 PDF 校验流程。
 
 ---
 
