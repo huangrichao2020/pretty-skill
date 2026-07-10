@@ -10,22 +10,25 @@
     "9-维评分",
     "pretty-skills-维护",
     "反例黑名单",
-    "human-in-loop"
+    "human-in-loop",
+    "三层自进化",
+    "skill-compaction",
+    "validation-记录"
   ],
   "contributor": "huangrichao2020",
   "contributor_github": "huangrichao2020",
   "original_designer": "花叔（达尔文 2.0）",
   "created": "2026-07-10",
-  "last_updated": "2026-07-10",
+  "last_updated": "2026-07-11",
   "format": {
     "content_md": "content.md",
     "锦绣": true,
     "presentation_pptx": false,
     "case_pdf": "dream-修炼达尔文自迭代讲解.pdf"
   },
-  "page_count": 10,
-  "summary": "pretty-skills 30+ case 的长期自迭代引擎：dream 修炼（每日 23:00 沉淀）+ 达尔文 2.0（每周/每月 9 维评分 + 多评委 + validation 回滚）+ human-in-loop（关键决策永远交人）· 9 维评分 3 维借达尔文 2.0 + 6 维 pretty-skills 专属",
-  "source_skill": "微信文章 达尔文 2.0（花叔）https://mp.weixin.qq.com/s/54pkSBImnc9mhEdOPf7EZw + arXiv 2605.23899 (SkillLens) + arXiv 2605.23904 (SkillOpt)",
+  "page_count": 12,
+  "summary": "pretty-skills 30+ case 的长期自迭代引擎（v1.1）：dream 修炼（每日 23:00 沉淀）+ 达尔文 2.0（每周/每月 9 维评分）+ Skill 三层自进化（路由/指令/资源三层 + 三问证据链）+ Skill Compaction（每 30 天压缩结构）+ human-in-loop（关键决策永远交人）",
+  "source_skill": "微信文章 达尔文 2.0（花叔）https://mp.weixin.qq.com/s/54pkSBImnc9mhEdOPf7EZw + arXiv 2605.23899 (SkillLens) + arXiv 2605.23904 (SkillOpt) + Datawhale Skill三层自进化（陈思州）https://mp.weixin.qq.com/s/sjDkObJjyPhIT8plHi5t9w",
   "trigger_keywords": [
     "dream 修炼",
     "达尔文",
@@ -33,14 +36,20 @@
     "9 维评分",
     "pretty-skills 维护",
     "反例黑名单",
+    "skill compaction",
+    "三层自进化",
+    "validation 记录",
     "self-evolving"
   ],
   "key_features": [
-    "双引擎：dream 修炼（每日）+ 达尔文 2.0（每周）",
+    "引擎1：dream 修炼（每日 23:00 沉淀新 case）",
+    "引擎2：达尔文 2.0（每周/每月 9 维评分 + 多评委 + validation 回滚）",
+    "引擎3：Skill 三层自进化（路由层/指令层/资源层 + 反馈三问）",
+    "引擎4：Skill Compaction（每 30 天压缩结构 + 压缩四问）",
     "9 维评分：3 维借达尔文 + 6 维 pretty-skills 专属",
-    "多评委独立审查（每轮新评委）",
+    "多评委独立审查（每轮新评委 · 避免锚定）",
     "validation-gated 回滚（分数没涨自动回滚）",
     "human-in-loop CHECKPOINT（关键决策不交 AI）",
-    "8 条反例黑名单（来自达尔文 + 实战踩坑）"
+    "8 条反例黑名单（达尔文原文 + 实战踩坑）"
   ]
 }
