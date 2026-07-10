@@ -5,6 +5,51 @@
 
 ---
 
+## 方法论更新 · 2026-07-11
+
+**来源**：Datawhale 陈思州 · https://mp.weixin.qq.com/s/sjDkObJjyPhIT8plHi5t9w
+
+**新增 Skill 三层自进化框架**（与现有 Dream 修炼达尔文 v1 互补）：
+
+### 三层按需加载
+- 路由层：name / description → Agent 决定是否调用
+- 指令层：SKILL.md 正文 → 任务流程 + 判断标准
+- 资源层：references/ → 细分场景按需读取
+
+### 反馈闭环写三问
+每条反馈抽象成规则时，必须回答：① 改了哪一层 ② 解决什么问题 ③ 用什么证明更好
+
+### Skill Compaction（定期压缩）
+- 每 30 天 / 积累 5 条新规则后检查
+- 主文件保持轻量；长期没触发的规则下沉或删除
+
+### Validation 决定发布
+- 候选版本 vs 历史版本跑任务对比
+- 更优 → 发布；内容变少 → 拒绝，记录负反馈
+
+### Mavis 自身待优化点
+- 用户反馈（飞书）= 证据 → 抽象成规则进 skill 层
+- pretty-skills auto-merge 应补任务验证层（不只是 check-3f）
+- 每条 skill CHANGELOG 记录「改了什么层 + 证据」
+
+---
+
+## 2026-07-11
+
+**沉淀了什么**
+- 从 Datawhale 陈思州文章学到 Skill 三层自进化框架，写入 MEMORY.md §0.3 + dream-log.md 方法论更新段。
+- 识别了现有 Dream 修炼达尔文 v1 的补充点：Compaction + Validation 两块尚未落地。
+
+**对现有 skill 的影响**
+- `玄学修炼/dream-修炼达尔文自迭代/`（4 件套）：补充 Compaction 检查 + Validation 记录格式，待下次迭代落地。
+- pretty-skills auto-merge：check-3f 通过后，应加简单任务验证 prompt 比对，当前未实现。
+
+**自我操作优化（MEMORY.md）**
+- 用户反馈闭环：飞书骂「公众号正文烂」这类话 → 立刻抽象成规则 → 写入 skill 对应层（不只是修完就忘）。
+- 三层框架让 skill 修改更有定位感：路由层问题改 description、指令层问题改 SKILL.md、资源层问题加 references/。
+
+---
+
 ## 2026-07-08
 
 **沉淀了什么**
@@ -162,3 +207,18 @@
 - 推送时沙箱 GitHub 网络状态：direct fetch 慢（`curl github.com 10s timeout 565KB received`），git proxy `127.0.0.1:7892` 不在 listen（RC=7）→ 走 `env -u http_proxy -u https_proxy` 直接 HTTPS fetch + push 可行（**仍非网络常态，参见 2026-07-09 沙箱 SSH 卡死记录**）。
 - dream-log 历史段未改写，本日新段插在 `---` 分隔符之后。
 
+---
+
+## 2026-07-11 · Skill 三层自进化（来源：Datawhale 陈思州）
+
+**沉淀了什么**
+- 从 Datawhale 陈思州文章（https://mp.weixin.qq.com/s/sjDkObJjyPhIT8plHi5t9w）学到 Skill 三层自进化框架，写入 MEMORY.md §0.3 + dream-log.md 方法论更新段。
+- 识别了现有 Dream 修炼达尔文 v1 的补充点：Compaction + Validation 两块尚未落地。
+
+**对现有 skill 的影响**
+- `玄学修炼/dream-修炼达尔文自迭代/`（4 件套）：补充 Compaction 检查 + Validation 记录格式，待下次迭代落地。
+- pretty-skills auto-merge：check-3f 通过后，应加简单任务验证 prompt 比对，当前未实现。
+
+**Mavis 自身操作优化（MEMORY.md）**
+- 用户反馈闭环：飞书骂「公众号正文烂」→ 立刻抽象成规则 → 写入 skill 对应层（不只是修完就忘）。
+- 三层框架让 skill 修改更有定位感：路由层问题改 description、指令层问题改 SKILL.md、资源层问题加 references/。
