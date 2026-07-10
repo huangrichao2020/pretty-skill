@@ -704,7 +704,7 @@ def main():
     else:
         print(f"{RED}❌ 有检查项失败 · PR 会被自动退回{NC}")
         print(f"\n{RED}失败原因：{NC}")
-        all_errors = errs_md + errs_pptx + errs_html + errs_imgs + errs_cons + errs_dom + errs_jx + errs_ri + errs_mf
+        all_errors = errs_md + errs_pptx + errs_pdf + errs_imgs + errs_cons + errs_dom + errs_jx + errs_ri + errs_mf
         for err in all_errors:
             print(f"  {err}")
         print(f"\n{YELLOW}📖 参考修复：{NC}")
