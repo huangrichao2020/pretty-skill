@@ -3,6 +3,8 @@
 > **任何知识 → 1 键生成完整 pretty-skills 目录（3F Content + 锦绣）**
 >
 > v3 核心工具。全球开发者 / 玩家都能用。
+>
+> **v3.20 改造**：去 web.html + 去 --with-pptx 必填 + 改"PPT 视觉风格"picker 为"PDF 视觉风格"
 
 > ### ⚠️ 前置条件 · 生图能力是必须的
 >
@@ -17,8 +19,8 @@
 CLI 工具，把任意知识（.md / URL / 笔记 / 你脑子里想的）一键变成 pretty-skills 完整目录：
 
 - `content.md`（4-7 字段/页 · **必填**）
-- `web.html`（PPT 演示版 · **必填**）
-- `output/<case_name>.pptx`（**可选** · 加 `--with-pptx` 才生成）
+- `xxx讲解.pdf`（PDF 演示版 · **必填** · v3.20 替代 v3.18 的 web.html）
+- `output/<case_name>.pptx`（**可选** · 加 `--with-pptx` 才生成 · v3.2 起的兜底）
 - `images/`（N 张 AI 出图 · **必填**）
 - `锦绣/`（v3.1 简化：横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md · **必填**）
 
@@ -42,7 +44,7 @@ pip install -e skill-creator/
 
 ## 🚀 5 分钟上手
 
-### ⚠️ 第 1 步 · 弹出让用户选 PPT 视觉风格 + 主题颜色（v3.17+ 必走）
+### ⚠️ 第 1 步 · 弹出让用户选 PDF 视觉风格 + 主题颜色（v3.17+ 必走 · v3.20 改文案）
 
 **这是关键流程** —— 没选风格就跑会毁掉整个项目。
 
@@ -50,7 +52,7 @@ create.py 默认会弹出 picker（7 选 1，pretty-skills 锁定「手绘马卡
 
 ```
 ╔════════════════════════════════════════════════════════════╗
-║  pretty-skills · 请选 PPT 视觉风格 + 主题颜色                  ║
+║  pretty-skills · 请选 PDF 视觉风格 + 主题颜色                  ║
 ╚════════════════════════════════════════════════════════════╝
 
 选 1 个数字（默认 = 1 = pretty-skills 锁定的手绘马卡龙）：
@@ -107,8 +109,8 @@ python skill-creator/create.py \
 # output/<domain>/<case-name>/
 # ├── content.md
 # ├── images/        # 9 张 AI 出图
-# ├── output/        # PPTX
-# ├── web.html
+# ├── output/        # PPTX（可选 · 加 --with-pptx 才生成）
+# ├── xxx讲解.pdf    # v3.20 必填（替代 v3.18 的 web.html）· 跑 build_case_pdf.py 生成
 # ├── prompts/       # 9 个 prompt 文件
 # └── 锦绣/          # v3.1 简化（按形式 · 不锁死平台）
 #     ├── cover-横屏.png
@@ -146,10 +148,10 @@ python skill-creator/create.py \
 | `--url` | 是* | 输入 URL（与 --input 二选一）|
 | `--domain` | 是 | 11 预设领域之一（Agent知识 / 编程开发 / ...）|
 | `--style` | 否 | 视觉风格（马卡龙 / 古铜金 / 蓝白灰 / 深色科技风 / 城市插画 / 真实生活感）· 默认蓝白灰 |
-| `--pages` | 否 | PPT 页数（默认 9）|
+| `--pages` | 否 | 案例 PDF 页数（默认 9）|
 | `--output` | 否 | 输出目录（默认 ./output/）|
 | `--no-jinxiu` | 否 | 跳过锦绣 3 样生成（仅生成 3F Content）|
-| `--with-pptx` | 否 | 生成真实 .pptx（v3.2 默认不生成）|
+| `--with-pptx` | 否 | 生成真实 .pptx（v3.2 默认不生成 · **已有的 .pptx 保留**）|
 | `--api-key` | 否 | AI 出图 API key（默认读环境变量 `MATRIX_API_KEY`）|
 
 ---
@@ -162,9 +164,8 @@ python skill-creator/create.py \
 2. skill-creator create               ← 5 分钟
    ├─ 解析输入 → content.md（4-7 字段/页）
    ├─ 调 matrix AI 出图（9 张）
-   ├─ python-pptx 嵌图 → presentation.pptx
-   ├─ html-ppt-viewer（v3.2 升级） → web.html（PPT 演示版 · 必填）
-   ├─ （可选）python-pptx → presentation.pptx
+   ├─ （可选）python-pptx 嵌图 → presentation.pptx
+   ├─ v3.20：写 xxx讲解.pdf.placeholder.md（必填 · 跑 build_case_pdf.py 生成真 PDF）
    └─ 锦绣 3 样生成（横屏封面 + 竖屏封面 + 8-12 讲解图 + 1 融合 md）
    ↓
 3. 人类编辑 / 调优视觉（30 分钟）        ← 30 分钟
@@ -231,8 +232,8 @@ mavis mcp call matrix matrix_generate_image '{"prompt": "...", "aspect_ratio": "
 | 版本 | 状态 | 目标 | 进度 |
 |---|---|---|---|
 | v0.1 | ✅ 已完成 | CLI 框架 + 命令行参数 + 12 领域 / 6 风格 + visibility 参数 | ✅ |
-| v0.2 | ✅ **v3.15 完成** | 真分页 · 真写 4 件套骨架（content.md + manifest.json + web.html + 锦绣 4 形态）+ prompts/ | ✅ 实测通过 |
-| v0.3 | 计划 | 真调 matrix 出图 · 嵌图到 PPTX · 跑 check-3f.py 自动验证 |
+| v0.2 | ✅ **v3.15 完成** | 真分页 · 真写 4 件套骨架（content.md + manifest.json + xxx讲解.pdf 占位 + 锦绣 4 形态）+ prompts/ | ✅ 实测通过 |
+| v0.3 | 计划 | 真调 matrix 出图 · 自动跑 build_case_pdf.py 生成 xxx讲解.pdf · 跑 check-3f.py 自动验证 |
 | v0.4 | 计划 | URL 输入支持（browser-act 集成）+ 自动 fetch + 转 .md |
 | v1.0 | 计划 | 完整 3F Content + 锦绣 + PR 模板 + CI 自动提 PR |
 | v2.0 | 计划 | Web UI（拖拽 .md / 输入 URL → 一键生成）|
@@ -245,8 +246,8 @@ mavis mcp call matrix matrix_generate_image '{"prompt": "...", "aspect_ratio": "
 output/<domain>/<case-name>/
 ├── content.md          (4-7 字段/页 · 按 H2 自动分页)
 ├── manifest.json       (含 --visibility 字段 · v3.11 PR 必填)
-├── web.html            (PPT 演示版骨架 · 用 _模板/案例/web.css)
-├── NEXT_STEPS.md       (5 步清单：编辑 → 出图 → 校验 → 提 PR)
+├── xxx讲解.pdf.placeholder.md   (v3.20 · PDF 占位说明 · 跑 build_case_pdf.py 生成真 PDF)
+├── NEXT_STEPS.md       (5 步清单：编辑 → 出图 → 跑 build_case_pdf.py → 校验 → 提 PR)
 ├── prompts/            (每页 1 个 matrix prompt 模板 · 手绘马卡龙风)
 └── 锦绣/                (4 形态占位 + .gitignore)
     ├── cover-横屏.png.placeholder
@@ -264,7 +265,7 @@ $ python skill-creator/create.py \
     --case-name "chokepoint-test"
 ✅ manifest.json (public)
 ✅ content.md (6 页 · 自动分页)
-✅ web.html (PPT 演示版骨架)
+✅ xxx讲解.pdf.placeholder.md (v3.20 · 替代 v3.18 的 web.html)
 ✅ 锦绣/ 4 形态骨架 (cover × 2 + 6 slides + readme.md)
 ✅ prompts/ 6 个 (matrix prompt 模板)
 ✅ NEXT_STEPS.md (接下来做什么)

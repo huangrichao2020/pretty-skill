@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
 """
-create_skill.py — pretty-skills-creator 主脚本
+create_skill.py — pretty-skills-creator 主脚本 · v3.20 PDF 时代
 
 被 `ps create <name>` 调用。生成一个新 skill 的 4 件套：
-  - web.html (4 风格之一)
+  - xxx讲解.pdf.placeholder.md（PDF 必填占位说明，跑 build_case_pdf.py 生成真 PDF）
   - manifest.yaml (符合 pretty-skills manifest schema)
   - SKILL.md (agent 加载入口)
   - CHANGELOG.md (空模板)
 
 校验：title ≥ 5 字 / description ≥ 100 字 / ≥ 3 个 trigger
+
+v3.20 改造：
+  - ❌ 删 web.html（GitHub 不能预览 + PPT 时代已被 PDF 替代）
+  - ❌ 删 4 风格 HTML 模板（image / code-swiss / code-tech / code-paper）
+  - ❌ 删 --style 参数（PPT 风格 picker 不再需要）
+  - ✅ 改用 build_case_pdf.py（PIL 直接合并 PNG → PDF · 零装饰）
+  - ✅ 4 件套：xxx讲解.pdf.placeholder.md + manifest.yaml + SKILL.md + CHANGELOG.md
 """
 from __future__ import annotations
 import argparse
-import json
 import sys
 from pathlib import Path
-
-TEMPLATES_DIR = Path(__file__).resolve().parent.parent / "templates"
-VALID_STYLES = ["image", "code-swiss", "code-tech", "code-paper"]
 
 
 def validate_inputs(args) -> list[str]:
@@ -34,64 +37,52 @@ def validate_inputs(args) -> list[str]:
         errors.append(f"description 太短 ({len(args.description)} 字)，至少 100 字")
     if len(args.triggers) < 3:
         errors.append(f"触发词太少 ({len(args.triggers)} 个)，至少 3 个")
-    if args.style not in VALID_STYLES:
-        errors.append(f"style '{args.style}' 不支持。可选：{VALID_STYLES}")
     return errors
 
 
-def load_template(style: str) -> str:
-    template_path = TEMPLATES_DIR / f"{style}.html"
-    if not template_path.exists():
-        raise FileNotFoundError(f"模板不存在：{template_path}")
-    return template_path.read_text(encoding="utf-8")
+def render_pdf_placeholder_md(args) -> str:
+    """生成 xxx讲解.pdf 的占位说明 · 告诉用户怎么用 build_case_pdf.py 跑出来"""
+    pdf_name = f"{args.title}讲解.pdf"
+    return f"""# {pdf_name} · 生成占位
 
+> **v3.20 PDF 时代**：每个 case 必须有 `{pdf_name}`（替代 v3.18 的 web.html）。
+> GitHub 原生 PDF 预览 + 邮件分享 + 离线阅读，全面胜出。
 
-def render_cover_html(args) -> str:
-    if args.cover_image:
-        return f'<img src="{args.cover_image}" alt="{args.title} 封面">'
-    return '<div class="cover-placeholder">🆕 占位版暂无封面 · 完整版稍后补</div>'
+## 用法
 
+```bash
+# 1. 把 AI 出图放到 images/ 目录
+ls images/*.png
+# slide-01.png / slide-02.png / ...  （每页 1 张图）
 
-def render_triggers_html(style: str, triggers: list[str]) -> str:
-    if style == "image":
-        return "".join(f"<span>{t}</span>" for t in triggers)
-    elif style == "code-swiss":
-        return "".join(f"<span>{t.upper()}</span>" for t in triggers)
-    elif style == "code-tech":
-        return "".join(f"<span>{t}</span>" for t in triggers)
-    elif style == "code-paper":
-        return "".join(f"<span>{t}</span>" for t in triggers)
-    return ""
+# 2. 跑 build_case_pdf.py 自动合并 → {pdf_name}
+python3 ../../tools/build_case_pdf.py "{args.name}"
+# 工具路径：pretty-skill/tools/build_case_pdf.py
 
+# 3. 校验
+python3 ../../content-triple-format/check-3f.py "{args.name}"
+# F3 · xxx讲解.pdf 存在且 ≥ 0.1 MB → 通过
+```
 
-def render_html(args) -> str:
-    from jinja2 import Template
-    template_src = load_template(args.style)
-    trigger_html = render_triggers_html(args.style, args.triggers)
-    cover_html = render_cover_html(args) if args.style == "image" else ""
+## 格式
 
-    status_badge = "🆕 占位 · 还在完善" if args.status == "placeholder" else "✅ 完整版"
-    status_hint = (
-        f"本 skill 当前为占位版 · 由 {args.contributor} 发起 · "
-        f"完整 content.md / 锦绣 4 形态 / 真实 .pptx 稍后补充"
-        if args.status == "placeholder"
-        else f"本 skill 已完整发布 · 由 {args.contributor} 维护"
-    )
+- PIL 直接合并 PNG（v3.20 极简版 · 5 行核心）
+- 零装饰：0 边框 / 0 页码 / 0 logo（用户明确要求）
+- 16:9 横屏（1920×1080 默认）
+- 文件大小：通常 1-5 MB（含 N 张图）
 
-    # 用 Jinja2 渲染（新模板）
-    return Template(template_src).render(
-        title=args.title,
-        name=args.name,
-        description=args.description,
-        contributor=args.contributor,
-        trigger_html=trigger_html,
-        related=args.related or "（暂无）",
-        created=args.created,
-        cover_html=cover_html,
-        status_class="" if args.status == "placeholder" else "complete",
-        status_badge=status_badge,
-        status_hint=status_hint,
-    )
+## 为什么不直接生成 web.html
+
+| 维度 | web.html（旧）| {pdf_name}（v3.20）|
+|---|---|---|
+| GitHub 预览 | ❌ 不能（JS 渲染）| ✅ 原生 PDF preview |
+| 邮件分享 | ❌ 多依赖 | ✅ 通用 |
+| 离线阅读 | ⚠️ 需浏览器 | ✅ 任意 PDF 阅读器 |
+| 文件大小 | 200-500 KB | 1-5 MB |
+| 视觉表现力 | ⭐⭐⭐⭐⭐ 中央大图 + 翻页 | ⭐⭐⭐⭐ PDF 平铺 |
+
+详见 `content-triple-format/case-pdf-spec.md`。
+"""
 
 
 def render_manifest_yaml(args) -> str:
@@ -117,6 +108,10 @@ agents:
   windsurf: true
 entry: SKILL.md
 homepage: https://github.com/huangrichao2020/pretty-skills/tree/main/tools/{args.name}
+format:
+  content_md: content.md
+  case_pdf: {args.title}讲解.pdf
+  jinxiu: false
 """
 
 
@@ -166,7 +161,7 @@ def render_changelog_md() -> str:
 
 def main():
     p = argparse.ArgumentParser(
-        description="生成新 skill 的 4 件套（web.html / manifest.yaml / SKILL.md / CHANGELOG.md）",
+        description="生成新 skill 的 4 件套（xxx讲解.pdf + manifest.yaml + SKILL.md + CHANGELOG.md）· v3.20 PDF 时代",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     p.add_argument("name", help="Skill 名（kebab-case，2-64 字符）")
@@ -175,12 +170,8 @@ def main():
     p.add_argument("--contributor", default="@anonymous", help="作者标识")
     p.add_argument("--triggers", nargs="+", required=True, help="触发词（≥ 3 个）")
     p.add_argument("--related", default="", help="关联资源描述")
-    p.add_argument("--cover-image", default="", help="封面图 URL（仅 image 风格使用）")
     p.add_argument("--tags", nargs="*", default=[], help="标签")
-    p.add_argument("--status", default="placeholder", choices=["placeholder", "complete"])
-    p.add_argument("--created", default="2026-07-09", help="创建日期 YYYY-MM-DD")
-    p.add_argument("--style", default="image", choices=VALID_STYLES,
-                   help="HTML 风格: image(生图式, 默认) / code-swiss(瑞士风) / code-tech(技术深色) / code-paper(学术 paper)")
+    p.add_argument("--created", default="2026-07-10", help="创建日期 YYYY-MM-DD")
     p.add_argument("--out-dir", required=True, help="输出目录")
     p.add_argument("--dry-run", action="store_true", help="只看输出，不写文件")
     args = p.parse_args()
@@ -192,38 +183,42 @@ def main():
             print(f"  - {e}", file=sys.stderr)
         sys.exit(1)
 
-    html = render_html(args)
+    pdf_placeholder = render_pdf_placeholder_md(args)
     manifest_yaml = render_manifest_yaml(args)
     skill_md = render_skill_md(args)
     changelog_md = render_changelog_md()
 
     out_dir = Path(args.out_dir) / args.name
+    pdf_name = f"{args.title}讲解.pdf.placeholder.md"
     if args.dry_run:
-        print(f"[dry-run] style: {args.style}")
         print(f"[dry-run] would write to: {out_dir}/")
-        print(f"  - web.html ({len(html)} bytes)")
+        print(f"  - {pdf_name} ({len(pdf_placeholder)} bytes)")
         print(f"  - manifest.yaml ({len(manifest_yaml)} bytes)")
         print(f"  - SKILL.md ({len(skill_md)} bytes)")
         print(f"  - CHANGELOG.md ({len(changelog_md)} bytes)")
-        print(f"\n[preview] web.html head:\n{html[:500]}\n")
+        print(f"\n[preview] xxx讲解.pdf 占位说明 head:\n{pdf_placeholder[:500]}\n")
         return
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "web.html").write_text(html, encoding="utf-8")
+    (out_dir / pdf_name).write_text(pdf_placeholder, encoding="utf-8")
     (out_dir / "manifest.yaml").write_text(manifest_yaml, encoding="utf-8")
     (out_dir / "SKILL.md").write_text(skill_md, encoding="utf-8")
     (out_dir / "CHANGELOG.md").write_text(changelog_md, encoding="utf-8")
 
-    print(f"✅ [{args.style}] {out_dir}/")
-    print(f"  - web.html ({len(html)} bytes)")
-    print(f"  - manifest.yaml ({len(manifest_yaml)} bytes)")
-    print(f"  - SKILL.md ({len(skill_md)} bytes)")
-    print(f"  - CHANGELOG.md ({len(changelog_md)} bytes)")
+    print(f"✅ v3.20 PDF 时代 · {out_dir}/")
+    print(f"  - {pdf_name}")
+    print(f"  - manifest.yaml")
+    print(f"  - SKILL.md")
+    print(f"  - CHANGELOG.md")
     print()
     print(f"下一步：")
-    print(f"  1. cd {out_dir} && 编辑 SKILL.md / manifest.yaml 补细节")
-    print(f"  2. ps add {args.name}  装到本地（先验）")
-    print(f"  3. ps contribute {args.name}  推回主项目（提 PR）")
+    print(f"  1. cd {out_dir}")
+    print(f"  2. 编辑 SKILL.md / manifest.yaml 补细节")
+    print(f"  3. 准备 images/*.png（每页 1 张图）")
+    print(f"  4. 跑 build_case_pdf.py 生成 {args.title}讲解.pdf：")
+    print(f"     python3 ../../tools/build_case_pdf.py \"{args.name}\"")
+    print(f"  5. ps add {args.name}  装到本地（先验）")
+    print(f"  6. ps contribute {args.name}  推回主项目（提 PR）")
 
 
 if __name__ == "__main__":

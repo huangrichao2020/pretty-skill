@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# push.sh — pretty-skills-creator 提 PR 到主项目
+# push.sh — pretty-skills-creator 提 PR 到主项目 · v3.20 PDF 时代
 #
 # 流程：
 # 1. 检查 gh auth（ps doctor 已跑过，这里再保险一次）
@@ -26,10 +26,16 @@ if ! gh auth status >/dev/null 2>&1; then
   exit 1
 fi
 
-# 校验文件
-for f in web.html manifest.yaml SKILL.md CHANGELOG.md; do
+# 校验文件（v3.20 PDF 时代 · 不再需要 web.html）
+for f in manifest.yaml SKILL.md CHANGELOG.md; do
   [ -f "$OUT_DIR/$f" ] || { echo "❌ 缺 $OUT_DIR/$f"; exit 1; }
 done
+
+# 校验 xxx讲解.pdf 占位说明（或真 PDF）
+if ! ls "$OUT_DIR"/*讲解.pdf* >/dev/null 2>&1; then
+  echo "❌ 缺 xxx讲解.pdf（或 .placeholder.md）"
+  exit 1
+fi
 
 # 读 manifest 拿 name + title
 NAME=$(python3 -c "import yaml; print(yaml.safe_load(open('$OUT_DIR/manifest.yaml'))['name'])" 2>/dev/null \
@@ -67,12 +73,12 @@ cp -R "$OUT_DIR"/. "tools/$NAME/"
 git add "tools/$NAME/"
 git commit -m "feat(tools/$NAME): placeholder '$NAME' via pretty-skills-creator
 
-- tools/$NAME/web.html (placeholder, $TITLE)
 - tools/$NAME/manifest.yaml (符合 pretty-skills manifest schema)
 - tools/$NAME/SKILL.md (agent 加载入口)
 - tools/$NAME/CHANGELOG.md
+- tools/$NAME/xxx讲解.pdf.placeholder.md（v3.20 · 跑 build_case_pdf.py 生成真 PDF）
 
-后续补完整 content.md / 真实 .pptx / 锦绣 4 形态走另一个 PR。
+后续补完整 content.md / 完整 xxx讲解.pdf / 锦绣 4 形态走另一个 PR。
 
 🤖 Generated with [pretty-skills-creator](https://github.com/$BASE_OWNER/$REPO/tree/main/tools/pretty-skills-creator)
 
@@ -89,21 +95,22 @@ PR_URL=$(gh pr create \
   --title "🆕 [tools/$NAME] $TITLE (placeholder)" \
   --body "## 占位版 PR（auto-deploy）
 
-由 pretty-skills-creator 自动生成。
+由 pretty-skills-creator 自动生成 · v3.20 PDF 时代
 
 ### 内容
 - 路径：\`tools/$NAME/\`
-- 必含：\`web.html\` ✅ / \`manifest.yaml\` ✅ / \`SKILL.md\` ✅ / \`CHANGELOG.md\` ✅
-- 待补：完整 content.md / 真实 .pptx / 锦绣 4 形态
+- 必含：\`xxx讲解.pdf.placeholder.md\` ✅ / \`manifest.yaml\` ✅ / \`SKILL.md\` ✅ / \`CHANGELOG.md\` ✅
+- 待补：完整 content.md / 完整 xxx讲解.pdf（跑 build_case_pdf.py）/ 锦绣 4 形态
 
 ### 标签
 - \`auto-deploy-placeholder\` — pretty-skills 端应自动 merge + 部署
 - \`skill-status:placeholder\` — 标记当前是占位版
 
 ### 验证（auto-deploy workflow 会做）
-- [x] web.html 最低质量（title ≥ 5 字 + description ≥ 100 字 + ≥ 1 img）
 - [x] manifest.yaml 符合 schema
-- [ ] 完整 3F Content（占位版可跳过）" \
+- [x] SKILL.md 最低质量（title ≥ 5 字 + description ≥ 100 字 + ≥ 3 triggers）
+- [ ] 完整 xxx讲解.pdf（占位版可跳过）
+- [ ] check-3f.py F3 必填 PDF（占位版可跳过）" \
   --label "auto-deploy-placeholder" \
   --label "skill-status:placeholder" \
   2>&1 | tail -3)
@@ -112,4 +119,4 @@ echo ""
 echo "✅ PR 提了：$PR_URL"
 echo ""
 echo "后续：主项目 GitHub Action 监听 auto-deploy-placeholder 标签 → 自动 merge → 部署 Git Pages"
-echo "完成后可分享 URL: https://${BASE_OWNER}.github.io/${REPO}/tools/${NAME}/web.html"
+echo "完成后可分享 URL: https://${BASE_OWNER}.github.io/${REPO}/tools/${NAME}/"

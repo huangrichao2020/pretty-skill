@@ -77,10 +77,13 @@ def pick_style_interactive() -> str:
     """v3.17+ · 弹出 7 选项让用户选风格 · 显式交互
 
     非交互 stdin（agent PIPE / 重定向 / EOF）→ 直接用默认「手绘马卡龙」+ 印提示
+
+    v3.20 改造：picker 文案从「PPT 视觉风格 + 主题颜色」改为「PDF 视觉风格 + 主题颜色」
+    （PPT 时代已结束，PDF 才是必填的演示载体）
     """
     print("""
 ╔════════════════════════════════════════════════════════════╗
-║  pretty-skills · 请选 PPT 视觉风格 + 主题颜色                  ║
+║  pretty-skills · 请选 PDF 视觉风格 + 主题颜色                  ║
 ╚════════════════════════════════════════════════════════════╝
 
 选 1 个数字（默认 = 1 = pretty-skills 锁定的手绘马卡龙）：
@@ -144,11 +147,11 @@ NOTE（v0.2 限制）:
         "--pick-style", action="store_true",
         help="v3.17+ 显式弹出 interactive picker（默认未传也弹）",
     )
-    parser.add_argument("--pages", type=int, default=9, help="PPT 页数（默认 9）")
+    parser.add_argument("--pages", type=int, default=9, help="案例 PDF 页数（默认 9）")
     parser.add_argument("--output", default="./output/", help="输出父目录（默认 ./output/）")
     parser.add_argument("--case-name", help="case 目录名（默认 = .md 文件名 kebab-case）")
     parser.add_argument("--no-jinxiu", action="store_true", help="跳过锦绣 4 形态骨架生成")
-    parser.add_argument("--no-open", action="store_true", help="跳过自动打开 web.html（默认会在浏览器打开 PPT 演示版）")
+    parser.add_argument("--no-open", action="store_true", help="跳过自动打开 xxx讲解.pdf（默认会在 PDF 阅读器打开）")
     parser.add_argument(
         "--visibility", default="public",
         choices=["public", "private", "draft"],
@@ -267,11 +270,13 @@ def to_kebab_case(s: str) -> str:
 
 # ───────────────────────── 文件生成 ─────────────────────────
 
-def write_manifest(case_dir: Path, args, page_count: int, summary: str):
+def write_manifest(case_dir: Path, args, page_count: int, summary: str, title: str = ""):
+    """v3.20 修 bug：title 参数之前没传（用了未定义变量 title）"""
+    case_title = title or case_dir.name
     manifest = {
         "name": case_dir.name,
         "domain": args.domain,
-        "title": case_dir.name,
+        "title": case_title,
         "visibility": args.visibility,
         "tags": ["待填"],
         "contributor": args.contributor,
@@ -280,7 +285,7 @@ def write_manifest(case_dir: Path, args, page_count: int, summary: str):
         "last_updated": str(date.today()),
         "format": {
             "content_md": "content.md",
-            "case_pdf": f"{title}讲解.pdf",
+            "case_pdf": f"{case_title}讲解.pdf",
             "锦绣": not args.no_jinxiu,
             "presentation_pptx": False,
         },
@@ -354,10 +359,15 @@ def write_jinxiu_skeleton(case_dir: Path, args, page_count: int):
 
 
 def write_web_html(case_dir: Path, title: str, pages: list[dict]):
-    """v3.19 占位：用 build_case_pdf.py 生成 PDF 替代
+    """v3.20 PDF 时代：用 build_case_pdf.py 生成 xxx讲解.pdf 替代 web.html
 
-    此函数保留 API 兼容性，但实际只生成 PDF 占位说明
-    用户跑 build_case_pdf.py 自动生成 xxx讲解.pdf
+    函数名保留（API 兼容），实际只生成 PDF 占位说明。
+    用户跑 build_case_pdf.py 自动生成 xxx讲解.pdf。
+
+    v3.20 改造记录：
+    - v3.18 之前：函数名是 write_web_html，输出 .html PPT 演示版
+    - v3.19：v3.18 → v3.19 切换时改过，函数名保留，输出改 PDF 占位
+    - v3.20：本轮确认（用户「创建 skill 流程里去 PPT/HTML」）
     """
     pdf_name = f"{title}讲解.pdf"
     pdf_path = case_dir / pdf_name
@@ -370,7 +380,8 @@ def write_web_html(case_dir: Path, title: str, pages: list[dict]):
         f"```bash\n"
         f"python3 tools/build_case_pdf.py \"{case_dir.name}\"\n"
         f"```\n\n"
-        f"输出：<case_dir>/{pdf_name}\n"
+        f"输出：<case_dir>/{pdf_name}\n\n"
+        f"v3.20 改造：v3.18 的 web.html 已删，改 xxx讲解.pdf（GitHub 原生 PDF 预览）。\n"
     )
     (case_dir / f"{title}讲解.pdf.placeholder.md").write_text(placeholder, encoding="utf-8")
     print(f"  ⚠️  PDF 占位说明已写入（{title}讲解.pdf.placeholder.md）")
@@ -407,14 +418,14 @@ def write_next_steps(case_dir: Path, args, page_count: int):
     """写 NEXT_STEPS.md · 接下来做什么"""
     next_md = f'''# Next Steps · 接下来做什么
 
-> v0.2 骨架生成完成 · **你需要做的 5 步**：
+> v0.2 骨架生成完成 · v3.20 PDF 时代 · **你需要做的 5 步**：
 
 ## 1. 看骨架（5 分钟）
 
 打开这两个文件：
 
 - `content.md` —— 看每页要点是否齐全
-- `web.html` —— 浏览器打开看 PPT 演示版是否 OK
+- `xxx讲解.pdf.placeholder.md` —— 看 PDF 占位说明（跑 build_case_pdf.py 生成真 PDF）
 
 ## 2. 调 matrix 出图（10-30 分钟，**可选**走 prompts/）
 
@@ -422,7 +433,7 @@ def write_next_steps(case_dir: Path, args, page_count: int):
 # 用 prompts/slide-NN.md 作为 prompt 模板
 # 调 matrix 或 DALL-E 出 16:9 2K PNG
 # 保存到对应位置：
-#   images/slide-NN.png   （喂 web.html）
+#   images/slide-NN.png   （喂 build_case_pdf.py）
 #   锦绣/slides/slide-NN.png   （锦绣用）
 #   锦绣/cover-横屏.png + cover-竖屏.png
 ```
@@ -457,9 +468,9 @@ git push origin main  # 提 PR
 
 ---
 
-> **v0.2 范围**：解析 .md → 4 件套骨架（content.md + manifest.json + web.html + 锦绣骨架）+ prompts 模板
+> **v0.2 范围**：解析 .md → 4 件套骨架（content.md + manifest.json + xxx讲解.pdf 占位 + 锦绣骨架）+ prompts 模板
 >
-> **v0.3 计划**：真调 matrix 出图 + 嵌图到 PPTX + 自动跑 check-3f
+> **v0.3 计划**：真调 matrix 出图 + 自动跑 build_case_pdf.py 生成 xxx讲解.pdf + 跑 check-3f
 '''
     (case_dir / "NEXT_STEPS.md").write_text(next_md, encoding="utf-8")
 
@@ -558,14 +569,14 @@ v3.16+ 规则：
 🔒 可见性：   {args.visibility}
 """)
 
-    write_manifest(output_dir, args, len(pages), summary)
+    write_manifest(output_dir, args, len(pages), summary, title=title)
     print(f"  ✅ manifest.json ({args.visibility})")
 
     write_content_md(output_dir, title, "", pages)
     print(f"  ✅ content.md ({len(pages)} 页)")
 
     write_web_html(output_dir, title, pages)
-    print(f"  ✅ web.html (PPT 演示版骨架)")
+    print(f"  ✅ xxx讲解.pdf.placeholder.md (PDF 演示版占位说明)")
 
     # v3.19+ · 自动用 PDF 阅读器打开「xxx讲解.pdf」（GitHub 原生 PDF 预览）
     if not args.no_open:

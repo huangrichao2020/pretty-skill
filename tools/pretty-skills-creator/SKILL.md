@@ -1,9 +1,10 @@
 ---
 name: pretty-skills-creator
 description: |
-  创建新 skill 的入口，自动带 4 风格 HTML 占位 + 可选 PPT。
+  创建新 skill 的入口，自动生成 4 件套骨架 + 必填 xxx讲解.pdf 占位说明。
   Use when 用户说"创建 skill / 做个新 skill / 做 skill / 沉淀到 pretty-skills / 提个新 skill"。
-  流程: ps create <name> → 填 metadata → 选 4 风格之一 → 自动生成 4 件套 → 提 PR。
+  流程: ps create <name> → 填 metadata → 自动生成 4 件套 → 跑 build_case_pdf.py 生成真 PDF → 提 PR。
+  v3.20 改造：去 web.html + 去 4 风格 HTML 模板 + 去 --style 参数。
 triggers:
   - 创建 skill
   - 做个新 skill
@@ -22,21 +23,21 @@ triggers:
 **pretty-skills-creator = 创建 skill 的 5 步流水线。**
 
 ```
-ps create <name>  --title "..." --description "..." --triggers a b c [--style image]
+ps create <name>  --title "..." --description "..." --triggers a b c
   → 校验输入（name / title / description / triggers）
-  → 生成 4 件套：web.html + manifest.yaml + SKILL.md + CHANGELOG.md
+  → 生成 4 件套：xxx讲解.pdf.placeholder.md + manifest.yaml + SKILL.md + CHANGELOG.md
   → 装到本地 store（ps create 自动软链 5 agent）
-  → 你填细节 → ps contribute → 提 PR
+  → 你填细节 + 准备图 → 跑 build_case_pdf.py → ps contribute → 提 PR
 ```
 
-## 4 风格
+## v3.20 改造
 
-| 风格 | 适合什么 | 例子 |
-|---|---|---|
-| **image**（生图式默认） | 视觉类 case / 故事 | 案例展示 / 训练营介绍 |
-| **code-swiss**（瑞士风） | 工具说明 / 文档型 | API 文档 / 配置说明 |
-| **code-tech**（技术深色） | 技术类 case | 调试案例 / 性能分析 |
-| **code-paper**（学术 paper） | 论文 / 研究 | 研究报告 / 白皮书 |
+| 改动 | 原因 |
+|---|---|
+| ❌ 删 web.html | GitHub 不能预览 + PPT 时代已废 |
+| ❌ 删 4 风格 HTML 模板 | 替代方案 = xxx讲解.pdf（GitHub 原生预览）|
+| ❌ 删 --style 参数 | PPT 风格 picker 没了，PDF 是统一的 PIL 合并 |
+| ✅ 加 xxx讲解.pdf.placeholder.md | 占位说明，告诉用户怎么跑 build_case_pdf.py |
 
 ## 必备参数
 
@@ -50,12 +51,12 @@ ps create <name>  --title "..." --description "..." --triggers a b c [--style im
 
 | 参数 | 默认 | 说明 |
 |---|---|---|
-| `--style` | `image` | 4 风格之一 |
 | `--contributor` | `@anonymous` | 你的标识 |
-| `--cover-image` | （无） | 封面图 URL（仅 image 风格） |
 | `--tags` | （无） | 标签列表 |
 | `--related` | （无） | 关联资源描述 |
 | `--out-dir` | （必填） | 输出目录 |
+| `--dry-run` | `false` | 只看输出，不写文件 |
+| `--created` | `2026-07-10` | 创建日期 YYYY-MM-DD |
 
 ## 完整流程
 
@@ -71,7 +72,6 @@ ps create my-new-skill \
 EOF
 )" \
   --triggers 触发词1 触发词2 触发词3 触发词4 \
-  --style code-tech \
   --contributor "huangrichao2020" \
   --tags "tag1" "tag2" \
   --related "knowhub 路径 / 关联 skill" \
@@ -85,30 +85,37 @@ EOF
 - ✅ title ≥ 5 字
 - ✅ description ≥ 100 字
 - ✅ triggers ≥ 3 个
-- ✅ style 在 4 选 1
 
 ### Step 3 · 生成 4 件套
 
 ```
 ~/.pretty-skills/store/my-new-skill/
-├── web.html              # 4 风格之一（image/code-swiss/code-tech/code-paper）
-├── manifest.yaml         # 符合 pretty-skills manifest schema
-├── SKILL.md              # agent 加载入口
-└── CHANGELOG.md          # 变更记录
+├── xxx讲解.pdf.placeholder.md   # 怎么跑 build_case_pdf.py 的说明
+├── manifest.yaml                # 符合 pretty-skills manifest schema
+├── SKILL.md                     # agent 加载入口
+└── CHANGELOG.md                 # 变更记录
 ```
 
-### Step 4 · 软链到 5 agent
-
-`ps create` 会自动把 `~/.pretty-skills/store/my-new-skill/` 软链到：
-- `~/.claude/skills/my-new-skill`
-- `~/.codex/skills/my-new-skill`
-- `~/.mavis/skills/my-new-skill`
-- `~/.cursor/skills/my-new-skill`
-- `~/.windsurf/skills/my-new-skill`
-
-### Step 5 · 提 PR
+### Step 4 · 准备图 + 跑 build_case_pdf.py
 
 ```bash
+cd ~/.pretty-skills/store/my-new-skill
+
+# 1. 准备 AI 出图（每页 1 张）
+# 用 matrix / DALL-E / 即梦 任意工具
+mkdir images
+# 把 PNG 放到 images/slide-01.png / slide-02.png / ...
+
+# 2. 跑 PIL 合并 → xxx讲解.pdf
+python3 ../../tools/build_case_pdf.py "my-new-skill"
+# 工具路径：pretty-skill/tools/build_case_pdf.py · v3.20 极简版（5 行核心）
+```
+
+### Step 5 · 软链到 5 agent + 提 PR
+
+```bash
+ps add my-new-skill           # 软链到 ~/.claude/ ~/.codex/ ~/.mavis/ ~/.cursor/ ~/.windsurf/
+
 cd ~/.pretty-skills/store/my-new-skill
 # 改 SKILL.md / manifest.yaml 补细节
 ps contribute my-new-skill
@@ -132,6 +139,6 @@ ps contribute my-new-skill
 
 - ❌ 没 `python3` → `ps create` 整个不能用
 - ❌ 没 `gh` / `gh auth` → `ps contribute` 不能用 → 退路：手动用 `bash scripts/push.sh` 或网页提 PR
-- ❌ 没 matrix MCP → image 风格不会自动生图 → 退路：手动用 Midjourney/即梦，再回填 `--cover-image`
+- ❌ 没 matrix MCP / AI 出图 API → 跑不出真 PDF → 退路：用占位图跑骨架（check-3f 跑通 F3 必填）
 
 跑 `ps doctor` 看完整体检。
