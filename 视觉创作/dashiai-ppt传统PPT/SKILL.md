@@ -36,7 +36,9 @@ bash render_goal_deck.sh → 生成 index.html
 导出 PPTX / PDF / HTML 单文件
 ```
 
-## Step 1：选风格
+## Step 1：选风格（先问用户）
+
+**必须先问用户选哪种风格，不要跳过这一步。**
 
 展示 12 套主题预览图：
 `/Users/tingchi/.mavis/agents/mavis/skills/dashiai-ppt/skills/dashiai-ppt/assets/skill/theme-style-grid.png`
@@ -74,3 +76,8 @@ npm --prefix "$SKILL_ROOT/project" run export:pptx -- <输出目录>/ppt output.
 ## Skill 根目录
 
 `/Users/tingchi/.mavis/agents/mavis/skills/dashiai-ppt/skills/dashiai-ppt/`
+
+## ⚠️ 反模式（已踩坑）
+
+1. **不要跳过选风格** — 必须先问用户选哪种风格，展示主题预览图，用户确认后再生成
+2. **讲解图不要出现页码标记** — 图里不要有"P1"/"P2"等标注；标题和内容直接表达，页码只在 PDF 合成时标注
