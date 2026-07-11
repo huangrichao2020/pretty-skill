@@ -19,9 +19,10 @@
   "last_updated": "2026-07-11",
   "format": {
     "content_md": "content.md",
-    "锦绣": false,
+    "锦绣": true,
+    "锦绣_slides": 9,
     "presentation_pptx": false,
-    "case_pdf": null
+    "case_pdf": "dashiai-ppt传统PPT讲解.pdf"
   },
   "page_count": 9,
   "summary": "真正可编辑的传统 PPT 生成工具：HTML PPT → 浏览器编辑（控制台/滑杆/换布局）→ 一键导出 PPTX。12 套视觉主题、1020 个版式页面、20 种页面角色（SWOT/波特五力/雷达图/瀑布图等）。适合正经汇报/分析模型/需要交付可编辑 PPTX 的场景。",
