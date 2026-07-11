@@ -261,3 +261,52 @@
 **顺手健康快检（非新增）**：对全仓 12 个 3F case 跑 `check-3f.py`，**全部 `EXIT=0`**（Agent知识×4 / 内容创作×2 / 玄学修炼×1 / 编程开发×2 / 金融投资×3），仓库 3F 完整性 OK。
 
 **git**：仅本文件（dream-log）追加记录；无 case 变更，无 push。
+
+---
+
+## 2026-07-11（23:02 · 每日 dream 修炼自动化 · 14:36 后增量复跑）
+
+**回顾范围**：14:36 那次 dream 修炼提交（`0ec4121`）到 23:00 cron 触发之间的全部新 commit。
+
+**今日新 commit 全景**（共 5 个，全部围绕 dashiai-ppt）：
+1. `2a50de6`（18:07）resolve conflict: keep 12 cases count
+2. `215eaa5`（19:12）feat(视觉创作/dashiai-ppt): 新增 SKILL.md（可被 ps add 加载）
+3. `b563b8a`（19:38）feat(视觉创作/dashiai-ppt): 新增锦绣素材 + 讲解图 9 张 + PDF
+4. `6954834`（19:55）fix(dashiai-ppt): 重出9张图(去页码)+更新SKILL.md反模式+合成v2 PDF
+5. `a6bc414`（20:05）perf(dashiai-ppt): 压缩锦绣图(JPEG q85·节省77%)+v3 PDF(1.5MB)
+
+**新建/更新了哪些 case**
+- `视觉创作/dashiai-ppt传统PPT/`：4 件套齐全（README + SKILL + content.md 10 页 + manifest + images/17 PNG + 3 份 PDF（讲解/v2/v3））。case 定位是「可被 ps add 加载的视觉创作 skill」，不是达尔文自迭代骨架池的 case。
+
+**3F 校验结果**（全量 50 case 跑 check-3f.py v3.19）
+- **12 PASS · 38 FAIL**（与 14:36 状态完全相同：12 仍是 12，FAIL 从 37 → 38）
+- **PASS 列表未变**：Agent知识×4（社交电商掘金术 / AI狼群战法 / 公众号内容交付方法论 / Mavis做事心法）、内容创作×2（公众号爆款操盘术 / 橙皮书方法论）、玄学修炼×1（占星入门12星座）、编程开发×2（git沙箱求生术 / 领域增改避坑）、金融投资×3（宏观雷达 / macro-monitor / 卡脖子猎手）
+- **dashiai-ppt** 新 case：F3（讲解.pdf）✅ PASS（7MB 合法 + 9 个 image object），但 ❌ 多项硬伤：
+
+| 失败项 | 现状 | 阈值 | 备注 |
+|---|---|---|---|
+| 图片分辨率 | 768×1376 | ≥ 1024×576 | dashiai-ppt 是 portrait（高>宽），与 check-3f.py 的 landscape 假设冲突 |
+| PNG 数 vs 页数 | 17 PNG / 10 页 | 一致 | 多了 7 张 cover 重复图 |
+| content.md 字段数 | P1-P9 大多 0-3 字段 | ≥ 4 | 大量用代码块 / 表格，bullet 计数不达标 |
+| P10 字段数 | 11 字段 | ≤ 7（建议） | 软警告 |
+| 锦绣/ | 缺失 | v3.1 硬要求 | 软警告（v3.0） |
+
+**38 FAIL 分类**（与 14:36 状态对比：49→50 manifest, 37→38 FAIL）
+- 37 个 case 缺 `images/`（达尔文自迭代骨架池，预期内）：第二批 17 + 第三批 16 + 教育学习 1 + 商业运营 1 + Agent知识 1 + 玄学修炼 1 + 编程开发 1 = 37 个（与 14:36 完全一致）。
+- 1 个新 FAIL：dashiai-ppt（图片分辨率硬伤）— 14:36 那次没有这个 case（commit 2a50de6 是 18:07 创建），本次复跑新增。
+- PASS 12 → 12，FAIL 37 → 38，净变化 = **0 PASS、+1 FAIL**。今天 5 个 commit 没让任何 case 从 FAIL 升 PASS。
+
+**PDF 状态**（v3.19 必填项·全仓覆盖）
+- 13/50 case 有 `*讲解.pdf`：12 PASS 全部有 PDF + dashiai-ppt 有 1 份基础 PDF（7MB）。F3 glob `*讲解.pdf` 只匹配基础名，dashiai-ppt 的 v2/v3 副本（6.4MB / 1.5MB）不计入检测。
+- 37/50 case 无 `*讲解.pdf`：全是 38 FAIL 中的 37 个无 images/ 骨架 case（达尔文自迭代池），按 07-10 决策「无高价值内容不硬造」**不造骨架 PDF**——`build_case_pdf.py` 强依赖 images/p*.png，强行合成等于做假图。
+- dashiai-ppt 的 v2/v3 PDF 实际是冗余版本（README/INDEX 不会引用 `-v` 后缀），建议后续清理（**本轮不主动操作**，避免越权改用户文件）。
+
+**值得记下来的工程洞见**
+- **portrait PPT 跟 landscape 3F 范式冲突**：dashiai-ppt 走 768×1376 portrait 是 dashiai-ppt 产品本身设计（PPT 走 9:16 比例），但 check-3f.py v3.16+ 的「图片真实性」硬卡 `≥ 1024×576`，没区分方向。**是 check-3f 的设计盲点**（不算 dashiai-ppt 错），后续若想把 dashiai-ppt 推进 PASS 池，要么改 check-3f 接受 portrait，要么 dashiai-ppt 重出图强制 2K landscape。
+- **「keep 12 cases count」策略 = 守住 PASS、不进 FAIL**：今天 5 个 commit 全在为 dashiai-ppt 这一个 case 努力，**PASS 数守住了 12（没掉）**，但代价是 FAIL 多 1 个。**3F 进度条（PASS 占比）从 12/49=24.5% 滑到 12/50=24.0%**——轻微回退，不是净推进。dashiai-ppt 若想从 FAIL 升 PASS，下一步应先解决图片分辨率/页数对齐/字段数三件硬伤之一。
+- **本轮 23:00 复跑未自动补 PDF**（保持既定原则）：37 个骨架 case 无 images/ → 不补；dashiai-ppt 图片分辨率是产品定位冲突不是 bug，不补；v2/v3 冗余 PDF 不清理（避免越权改用户文件）。
+
+**git**
+- 本轮仅 dream-log.md 追加，无 case 改动，无 push（用户未授权）。
+- 工作树干净：`git status` → `nothing to commit, working tree clean`。
+- 沙箱网络：直连 fetch OK（5 commits / 8MB 类），无需走 SSH/代理。
