@@ -1,0 +1,46 @@
+{
+  "name": "dashiai-ppt传统PPT",
+  "domain": "视觉创作",
+  "title": "dashiai-ppt传统PPT · 真正可编辑的 PPT 生成工具",
+  "visibility": "public",
+  "tags": [
+    "PPT",
+    "演示文稿",
+    "可编辑PPTX",
+    "dashiai-ppt",
+    "汇报材料",
+    "图表",
+    "分析模型"
+  ],
+  "contributor": "chuspeeism",
+  "contributor_github": "chuspeeism",
+  "original_designer": "chuspeeism",
+  "created": "2026-07-11",
+  "last_updated": "2026-07-11",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null
+  },
+  "page_count": 9,
+  "summary": "真正可编辑的传统 PPT 生成工具：HTML PPT → 浏览器编辑（控制台/滑杆/换布局）→ 一键导出 PPTX。12 套视觉主题、1020 个版式页面、20 种页面角色（SWOT/波特五力/雷达图/瀑布图等）。适合正经汇报/分析模型/需要交付可编辑 PPTX 的场景。",
+  "source_skill": "GitHub chuspeeism/dashiAI-ppt-skill（AGPL-3.0）https://github.com/chuspeeism/dashiAI-ppt-skill",
+  "trigger_keywords": [
+    "做传统PPT",
+    "做正经PPT",
+    "做可编辑PPT",
+    "用dashiai-ppt",
+    "汇报材料",
+    "演示文稿",
+    "传统ppt"
+  ],
+  "key_features": [
+    "HTML PPT 生成 → 浏览器编辑 → 导出真正可编辑 PPTX",
+    "12 套视觉主题（轻拟态/炫光紫绿/色谱图表/深色图谱/黑金/金色指数等）",
+    "1020 个版式页面 × 20 种页面角色",
+    "内置分析模型（SWOT/波特五力/PEST/商业模式画布/双钻等）",
+    "每一页自带控制台（滑杆/开关/下拉调节布局/图表/配色）",
+    "一键导出 HTML 单文件离线包 / PDF / 可编辑 PPTX"
+  ]
+}

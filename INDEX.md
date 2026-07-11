@@ -50,6 +50,7 @@
 | 编程开发 | [`git沙箱求生术`](./编程开发/git沙箱求生术/) | **public** | git, GitHub, SSH, HTTPS, fetch, 沙箱, 协作避坑 | content.md + xxx讲解.pdf + 锦绣 |
 | 编程开发 | [`领域增改避坑`](./编程开发/领域增改避坑/) | **public** | pretty-skill, PRESET_DOMAINS, check-3f, 中文化, 维护避坑 | content.md + xxx讲解.pdf + 锦绣 |
 | 玄学修炼 | [`占星入门12星座`](./玄学修炼/占星入门12星座/) | **public** | 占星, 12星座, 元素, 模式 | content.md + xxx讲解.pdf + 9 AI 出图 |
+| 视觉创作 | [`dashiai-ppt传统PPT`](./视觉创作/dashiai-ppt传统PPT/) | **public** | PPT, 可编辑PPTX, 汇报材料, 图表 | content.md + README.md |
 
 > **12 个 case 全部默认 public** —— 提 PR 共享。
 
