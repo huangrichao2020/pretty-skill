@@ -1,0 +1,20 @@
+{
+  "name": "PPT证据链战法",
+  "domain": "视觉创作",
+  "title": "PPT 证据链战法 · 用 CyberPPT 三段式让 AI 做的 PPT 每页都站得住",
+  "visibility": "public",
+  "tags": ["PPT", "AI生图", "CyberPPT", "证据链", "dashiai-ppt", "视觉创作", "三段式", "可编辑PPTX"],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-12",
+  "last_updated": "2026-07-12",
+  "format": {
+    "content_md": "content.md",
+    "case_pdf": "PPT证据链战法讲解.pdf",
+    "web_html": "web.html",
+    "锦绣": true,
+    "presentation_pptx": false
+  },
+  "page_count": 7,
+  "summary": "从 2026-07-12 dashiai-ppt 三段式工作流沉淀的可复用 PPT 方法论：AI 做 PPT 翻车根因是'先画图后找理由'的顺序错（空/虚/飘三类病），不在工具。借鉴 CyberPPT 三段式——段1 证据链（每页 conclusion+evidence_ids+conflicts 三件套，先过证据关）→ 段2 视觉蓝图（先选 layout 再填 props，视觉为论证服务）→ 段3 PPTX 重建（浏览器改稿导出可编辑 PPTX）；并守两条反模式：不跳过选风格、讲解图不标页码。"
+}

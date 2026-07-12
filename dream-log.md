@@ -5,6 +5,43 @@
 
 ---
 
+## 2026-07-12（每日 dream 修炼自动化）
+
+**回顾范围**：当日（07-12）与用户对话 + 工作成果（git）+ 今日 3 个 commit（f2347c9 / b060031 / 1c66a9d）。
+
+**沉淀了什么（高价值、非硬造）**
+
+- 今日真实工作 = 打磨 `视觉创作/dashiai-ppt传统PPT`：SKILL.md 借鉴 CyberPPT 引入**三段式工作流（段1 证据链 → 段2 视觉蓝图 → 段3 PPTX 重建）+ 核心原则「先过证据关再进视觉关」**；并新增 `传统PPT-v4.pdf`（纯图片拼接、去页眉页脚页码）。
+- 提炼出一条**与工具无关、可复用的 PPT 方法论**：AI 做 PPT 翻车根因是"先画图后找理由"的顺序错（空/虚/飘三类病），不在生成能力；解法把"立论"前置成显式三段，段1 每页用 `conclusion + evidence_ids + conflicts` 三件套结构化"凭什么成立"。
+- 这是从 dashiai-ppt 这次具体迭代里抽象出的通用工作流，独立成 case 比塞进工具 case 更干净、可迁移到任意 AI-PPT 工具。
+
+**新建/更新了哪些 case**
+
+- 新建 `视觉创作/PPT证据链战法/`（`check-3f.py` → **EXIT=0**）：
+  - content.md（7 页 × 7 字段，`## P0..P6`）
+  - web.html（含 `images/pN.png` 的 `<img>` 嵌入，可翻页演示）
+  - images/（恰好 7 张 PNG，= 页数；本地 Pillow+numpy 矢量渐变+噪声离线生成，字体 `/System/Library/Fonts/STHeiti Light.ttc`，未调用在线 AI 出图）
+  - `PPT证据链战法讲解.pdf`（413 KB · 7 页 · 7 个 image object，PIL 由 7 图合并）
+  - 锦绣/（cover-横屏 16:9 · cover-竖屏 9:16 · slides/ 10 张 16:9 · readme.md 融合稿三用）
+  - manifest.json（domain=视觉创作 · visibility=public · page_count=7）
+- `INDEX.md`：case 清单加 1 行 + 计数 **12 → 13**。
+
+**3F 校验结果**
+
+- 新 case `视觉创作/PPT证据链战法` 跑 `content-triple-format/check-3f.py` → **EXIT=0**（全部通过：F1 7 页字段合规 / F3 PDF 合规含 7 image object / images/ 7 PNG = 页数 / 一致性 OK / 图片真实性 7 张均过 / manifest 合规）。
+- 7 张 base PNG 实测：1280×720（16:9）、各 ≈1520KB、唯一色 5063-8580（≫ 800 阈值），过真实性检测。
+- 顺带复核：今日 3 个 commit 均围绕 dashiai-ppt 自身迭代，未改变其 FAIL 状态（portrait 分辨率/页数对齐等老问题仍在，属 check-3f 设计盲点，非本次范围）。
+
+**图片生成**
+
+- 本地 Pillow 12.3 + numpy 2.5 离线出图（字体 STHeiti Light.ttc），渐变底 + 光晕点缀 + 细噪声（±7）保证唯一色 ≫ 800；不依赖在线 AI 出图，稳定可复现。
+
+**git**
+
+- 本次 `git add` + `commit` 到**本地仓**（新 case + INDEX + dream-log）；**未 push**（push 到公开上游需用户明确确认）。
+
+---
+
 ## 方法论更新 · 2026-07-11
 
 **来源**：Datawhale 陈思州 · https://mp.weixin.qq.com/s/sjDkObJjyPhIT8plHi5t9w

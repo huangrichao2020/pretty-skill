@@ -53,8 +53,9 @@
 | 编程开发 | [`领域增改避坑`](./编程开发/领域增改避坑/) | **public** | pretty-skill, PRESET_DOMAINS, check-3f, 中文化, 维护避坑 | content.md + xxx讲解.pdf + 锦绣 |
 | 玄学修炼 | [`占星入门12星座`](./玄学修炼/占星入门12星座/) | **public** | 占星, 12星座, 元素, 模式 | content.md + xxx讲解.pdf + 9 AI 出图 |
 | 视觉创作 | [`dashiai-ppt传统PPT`](./视觉创作/dashiai-ppt传统PPT/) | **public** | PPT, 可编辑PPTX, 汇报材料, 图表 | content.md + README.md |
+| 视觉创作 | [`PPT证据链战法`](./视觉创作/PPT证据链战法/) | **public** | PPT, AI生图, CyberPPT, 证据链, dashiai-ppt, 视觉创作, 三段式, 可编辑PPTX | content.md + xxx讲解.pdf + 锦绣 |
 
-> **12 个 case 全部默认 public** —— 提 PR 共享。
+> **13 个 case 全部默认 public** —— 提 PR 共享。
 
 ---
 
