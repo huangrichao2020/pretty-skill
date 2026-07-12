@@ -16,15 +16,34 @@
 
 ## P1 · 痛点 · 静态 skill 的 4 大死亡路径
 
-- 死亡 1：方法论过期（论文 / 工具 / 平台更新）
-- 死亡 2：作者离开（无人维护）
-- 死亡 3：与其他 skill 冲突（不知道哪个对）
-- 死亡 4：从未实战（理论推演无验证）
+- **标题**：静态 skill 的 4 大死亡路径
+- **副标**：写完就死，4 种常见死法
+- **章节类型**：钩子
+- **核心主张**：静态 skill = 等死的 skill，必须自迭代
 - **认知锚点**：「4 大死亡路径」—— 静态 skill 4 种死法:僵化/漂移/欠载/过载
+- **关键要点**：
+  - 死亡 1：方法论过期（论文 / 工具 / 平台更新）
+  - 死亡 2：作者离开（无人维护）
+  - 死亡 3：与其他 skill 冲突（不知道哪个对）
+  - 死亡 4：从未实战（理论推演无验证）
+- **数据 / 数字**：4 大死亡 / 静态 skill 平均寿命 < 3 个月
+- **金句**：不迭代的 skill = 写在沙滩的字。
 
 ---
 
 ## P2 · 双引擎设计（核心）
+
+- **标题**：双引擎设计 · dream 修炼 + 达尔文 2.0
+- **副标**：每天沉淀 + 每周/每月进化
+- **章节类型**：核心解法
+- **核心主张**：双引擎 = 持续改进的物理基础
+- **认知锚点**：「双引擎进化引擎」—— 9 维评分驱动 + 多评委验证
+- **关键要点**：
+  - **引擎 1 · 每日 dream 修炼**（v0 已存在）：23:00 自动化 · 沉淀当日对话为 case
+  - **引擎 2 · 达尔文 2.0**（v1 新增）：每周日/每月 1 日/重要 PR 后触发
+  - 9 维评分 + 多评委 + validation 回滚 + human-in-loop CHECKPOINT
+- **数据 / 数字**：2 引擎 / 23:00 + 周日 + 月初 / 3 触发时机
+- **金句**：双引擎不是理论，是"不迭代就死"的发动机。
 
 ```
 pretty-skills 自迭代双引擎
@@ -38,11 +57,22 @@ pretty-skills 自迭代双引擎
     - 9 维评分 + 多评委 + validation 回滚
     - human-in-loop CHECKPOINT
 ```
-- **认知锚点**：「双引擎进化引擎」—— 9 维评分驱动 + 多评委验证
 
 ---
 
 ## P3 · 9 维评分标准（核心 · 30+ 行详解）
+
+- **标题**：9 维评分标准 · 0-10 分制
+- **副标**：每维度 = 1 把秤，9 把秤 = 1 套评估系统
+- **章节类型**：核心解法
+- **核心主张**：9 维评分 = skill 质量的客观度量
+- **认知锚点**：「9 维评分雷达」—— 准确性/可读性/复用性/.../情感共鸣 9 维
+- **关键要点**：
+  - 维度 1-3（借达尔文 2.0 通用）：失败模式 / 可执行性 / 黑名单
+  - 维度 4-9（pretty-skills 专属）：4 件套 / 锦绣 / 跨 agent / 实战 / 数据 / 维护
+  - 每维度 0/5/10 三档评分，共 9 维
+- **数据 / 数字**：9 维 / 0-10 分制 / 借 3 + 自创 6 / 30+ 行详解
+- **金句**：9 维评分不是打分，是给 skill 装上 9 把秤。
 
 ### 维度 1-3（借达尔文 2.0 · 通用）
 
@@ -98,6 +128,18 @@ pretty-skills 自迭代双引擎
 
 ## P4 · 多评委独立审查协议
 
+- **标题**：多评委独立审查 · 防 AI 评分作弊
+- **副标**：3 评委 / 锚定防御 / 早停机制
+- **章节类型**：核心解法
+- **核心主张**：单评委 = 46.4% 涨分作弊率，多评委是必须的
+- **认知锚点**：「3 评委独立审查桌」—— 评分员/审查员/兜底员 3 角色
+- **关键要点**：
+  - 启动 2-3 个独立 AI 评委（GPT-4 / Claude / Gemini）
+  - 锚定防御：不复用 / 不看历史 / 不公布基线
+  - 早停机制：单轮涨幅 < 1 / 干跑 > 30% / 连续 2 轮 < 0.5 → 停手
+- **数据 / 数字**：3 评委 / 46.4% 单评委作弊率 / 3 早停阈值
+- **金句**：让 AI 评自己改的 = 让考生自己批卷。
+
 ### 启动规则
 每轮启动 2 个独立 AI 评委：
 - 评委 A：GPT-4 class
@@ -119,6 +161,19 @@ pretty-skills 自迭代双引擎
 ---
 
 ## P5.5 · Skill 三层自进化（来源：Datawhale 陈思州 · 2026-07-11）
+
+- **标题**：Skill 三层自进化 · 路由/指令/资源
+- **副标**：每条反馈必答"改了什么层 + 解决什么 + 怎么证明更好"
+- **章节类型**：核心解法
+- **核心主张**：三层结构 = skill 改分有定位感
+- **认知锚点**：「8 条反例黑名单」—— 8 种常见 skill 错误模式
+- **关键要点**：
+  - **路由层**：name / description / 触发边界 → 触发更准确
+  - **指令层**：SKILL.md 正文（任务流程 / 判断标准）→ 流程更稳定
+  - **资源层**：references/ / templates / scripts → 场景更丰富
+  - **反馈三问**：改了什么层 / 解决什么 / 怎么证明
+- **数据 / 数字**：3 层 / 3 问 / 与达尔文 2.0 互补
+- **金句**：skill 改动要"问对问题"——改的哪一层。
 
 ### 三层按需加载
 | 层 | 内容 | 进化方向 |
@@ -142,6 +197,21 @@ pretty-skills 自迭代双引擎
 
 ## P5 · 反例黑名单（8 条 · 核心防错）
 
+- **标题**：8 条反例黑名单 · 评分作弊的 8 种姿势
+- **副标**：每条 = 一次涨分幻觉
+- **章节类型**：核心解法
+- **核心主张**：反例 = 涨分幻觉的清单
+- **认知锚点**：「8 条反例黑名单」—— 8 种常见自我进化错误
+- **关键要点**：
+  - 1：同 AI 又改又评（46.4% 作弊率）
+  - 2：用 git reset --hard 当回滚（应用 git revert）
+  - 3：为凑分堆冗余（早停机制防御）
+  - 4：跳过测试提示词直接评分（必须用真实 case）
+  - 5：一轮改多维度（每轮只改最低）
+  - 6-8：复用评委 / 公布基线 / 干跑模式
+- **数据 / 数字**：8 条 / 0 容忍 / 1 违反 = 涨分失效
+- **金句**：8 条反例 = 涨分幻觉的 8 种姿势。
+
 1. **同一个 AI 又改又评**（SkillLens 印证 · 单评委 46.4%）
 2. **用 `git reset --hard` 当回滚**（应该用 `git revert`）
 3. **为凑分堆冗余**（早停机制防御）
@@ -156,6 +226,21 @@ pretty-skills 自迭代双引擎
 
 ## P6 · human-in-loop CHECKPOINT 协议
 
+- **标题**：human-in-loop · 关键决策永远交回人
+- **副标**：🔴 CHECKPOINT 协议 = 4 阶段强制暂停
+- **章节类型**：核心解法
+- **核心主张**：AI 进化 = 人在回路，不是 AI 自治
+- **认知锚点**：「人工检查点红绿灯」—— human-in-loop CHECKPOINT 协议
+- **关键要点**：
+  - **CHECKPOINT 1**：基线评估 → 决定改什么维度
+  - **CHECKPOINT 2**：单维度优化 → 确认改动方向
+  - **CHECKPOINT 3**：测试提示词跑 → 确认测试结果
+  - **🛑 STOP**：回归测试 → 涨幅 < 阈值强制停手
+- **数据 / 数字**：4 阶段 / 3 CHECKPOINT / 1 STOP / 0 自治
+- **金句**：关键决策永远交回人——AI 进化不是 AI 自治。
+
+
+
 | 阶段 | CHECKPOINT | 用户决策 |
 |---|---|---|
 | 阶段 1 · 基线评估 | 🔴 CHECKPOINT 1 | 决定改什么维度 |
@@ -169,6 +254,18 @@ pretty-skills 自迭代双引擎
 ---
 
 ## P6.5 · Skill Compaction 定期压缩协议（v1 新增）
+
+- **标题**：Skill Compaction · 30 天 1 次规则压缩
+- **副标**：重复/沉睡/过重/冲突 → 4 问清理
+- **章节类型**：核心解法
+- **核心主张**：不压缩的 skill = 越来越臃肿，最终失效
+- **认知锚点**：「规则压缩回收站」—— 30 天或 5 条规则后做 compaction
+- **关键要点**：
+  - **触发**：30 天 / ≥ 5 条新规则
+  - **4 问清理**：重复 / 沉睡 / 过重 / 冲突
+  - **动作**：合并 / 下沉到 references/ / 删除 / 裁决
+- **数据 / 数字**：30 天周期 / 5 条触发 / 4 问 / 4 动作
+- **金句**：不压缩的 skill = 越来越胖，越来越跑不动。
 
 ### 什么时候做
 - 每 30 天跑一次
@@ -198,6 +295,22 @@ pretty-skills 自迭代双引擎
 ---
 
 ## P7 · 5 段式优化循环
+
+- **标题**：5 段式优化循环 · Rollout→Reflect→Edit→Validate→Apply
+- **副标**：单次改动的 5 步闭环
+- **章节类型**：核心解法
+- **核心主张**：5 段 = 单次改动的最小完整单元
+- **认知锚点**：「5 段式优化循环」—— 评估-提炼-调整-测试-沉淀
+- **关键要点**：
+  - **Rollout**：跑任务收集证据
+  - **Reflect**：复盘 5 Why 找根因
+  - **Edit**：提议改动并说明理由
+  - **Validate**：跑真实 case 验证
+  - **Apply / Reject**：涨分 = Apply，跌分 = Reject 回滚
+- **数据 / 数字**：5 段 / 1 闭环 / 0 单步
+- **金句**：5 段缺一段 = 改完不知道是涨是跌。
+
+
 
 ```
 Rollout（跑任务）→ Reflect（复盘）→ Edit（提议改动）→ Validate（验证）→ Apply（应用）
@@ -233,14 +346,35 @@ Rollout（跑任务）→ Reflect（复盘）→ Edit（提议改动）→ Valid
 
 ## P8 · 与 SkillOpt 关系
 
-- **SkillOpt**：企业级 / benchmark-driven / 52 组合 52 胜
-- **达尔文 2.0 + pretty-skills**：个人开发者 / rubric-driven / human in the loop / 主观评估为主
-- **分工**：SkillOpt 适合规模化训练，达尔文适合快速迭代单 skill
+- **标题**：与 SkillOpt 关系 · 达尔文 vs SkillOpt 分工
+- **副标**：个人开发者 vs 企业级 · rubric vs benchmark
+- **章节类型**：深化
+- **核心主张**：达尔文（个人/快速迭代） + SkillOpt（企业/规模化）= 互补
 - **认知锚点**：「与 SkillOpt 协作」—— 优化工具协同关系图
+- **关键要点**：
+  - **SkillOpt**：企业级 / benchmark-driven / 52 组合 52 胜
+  - **达尔文 2.0 + pretty-skills**：个人开发者 / rubric-driven / human in the loop
+  - **分工**：SkillOpt = 规模化训练，达尔文 = 快速迭代单 skill
+- **数据 / 数字**：2 工具 / 互补关系 / 1 选 1
+- **金句**：达尔文和 SkillOpt 不是竞争，是不同尺度的武器。
 
 ---
 
 ## P9 · 实际执行（pretty-skills 当前 30+ case）
+
+- **标题**：实际执行 · pretty-skills 30+ case 优化顺序
+- **副标**：3 批 16 领域分阶段迭代
+- **章节类型**：深化
+- **核心主张**：达尔文 2.0 已在 pretty-skills 真实落地
+- **认知锚点**：「30+ 案例实战」—— pretty-skills 真实迭代数据
+- **关键要点**：
+  - **第一批**：高频核心（卡兹克公众号写作 / oil-cover / knowledge-digest / self-improving-agent）· v0.1 baseline
+  - **第二批**：数据驱动（stock-analysis-v4 / company-brief / economic-impact-report）
+  - **第三批**：创作类（comic-generator / design-master / wechat-article-creator）
+- **数据 / 数字**：30+ case / 16 领域 / 3 批 / 4 高频核心
+- **金句**：达尔文 2.0 不是 PPT 概念，是 pretty-skills 真实在跑的流程。
+
+
 
 ### 已沉淀 30+ case
 按 16 领域分布：金融投资 5（company-brief / economic-impact-report / event-driven-analyzer / marginal-tracker / stock-analysis-v4）/ 视觉创作 9（comic-generator / design-master / finance-cartoon-creator / gif-sticker-generator / nano-banana-pro / oil-cover / product-visual-creator / remotion-video / wan2.7-image-skill / xiaohongshu-image-creator）/ 内容创作 5（卡兹克公众号写作 / wechat-article-creator / wechat-viral-article-creator / 橙皮书方法论 / 公众号爆款操盘术）/ 社交主导 2（persona-lab / sales-powermap）/ 商业运营 1（social-media-insights）/ 做事技巧 10（agent-browser / auto-vlog-editor / computer-interface-controller / doc-reader / folder-cleanup-assistant / ima-skill / markdown-converter / meoo-cli / office-document-specialist-suite / pdf-reader / project-manager-expert / web-access）/ Agent知识 2（browser-act / self-improving-agent）/ 教育学习 1（knowledge-digest）/ 玄学修炼 2（占星入门12星座 / dream-修炼达尔文自迭代）/ 视觉创作 1（oil-cover小红书AI封面）。
