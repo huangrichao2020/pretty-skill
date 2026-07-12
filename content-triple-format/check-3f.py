@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""check-3f.py · 3F Content 自动校验脚本 · 2026-07-08
+"""check-3f.py · 3F Content 自动校验脚本 · v3.23（2026-07-12 · 公众号写作心法升级）
 
 用法：
   python3 check-3f.py <case-dir>
   # 例：python3 check-3f.py domains/ai-training/cartman-team-ai-agent-collab
 
 退出码：
-  0 = 全部通过
+  0 = 全部通过（或仅软警告 · v3.23 不阻断老 case）
   1 = 有检查项失败（可被 GitHub Actions / pre-commit 拦截 PR）
 
 检查项（任一失败 → PR 拒绝）：
@@ -17,8 +17,13 @@
   □ images/ 目录存在且有 N 张 PNG（与 .pptx 页数对齐）
   □ prompts/ 目录存在（每页 60 行 prompt）
   □ manifest.json 必填（v3.11 起）· 含 visibility 合法字段
-  □ **图片真实性**（v3.16+）· 每张 PNG ≥ 50KB + ≥ 1024×576 + 唯一色 ≥ 1000
+  □ **图片真实性**（v3.16+）· 每张 PNG ≥ 50KB + ≥ 1024×576 + 唯一色 ≥ 800
     · 防止 agent 用 Pillow / canvas / SVG 转 PNG / matplotlib 凑合当"图"
+
+v3.23 新增软警告（不阻断老 case · 新 case 必填）：
+  □ **认知锚点字段**（必填）· 每页 `- **认知锚点**：...` · 写给 AI 出图 prompt 用
+  □ **Shot List**（必填）· 必画 ≤ 6 张 · 防"画册"陷阱
+    · 来源：小克碎碎谈「1个skill把长文变配图」（2026-06-13）
 
 参考规范：
   - content-triple-format/README.md
@@ -157,6 +162,26 @@ def check_content_md(case_dir: Path) -> tuple[bool, list[str]]:
 
     if not errors:
         ok(f"content.md 全部 {page_count} 页字段合规")
+
+    # ───────── v3.23 增项 · 认知锚点字段（软警告） ─────────
+    # 不阻断，向导式（v3.23 必填 · v3.20 老 case 不强制）
+    anchor_count = 0
+    for page_content in pages:
+        if re.search(r"^- \*\*认知锚点\*\*[：:]", page_content, re.MULTILINE):
+            anchor_count += 1
+    if anchor_count == 0:
+        warn("v3.23 · 所有页都缺「认知锚点」字段（写给 AI 出图 prompt 用的『图像灵魂』）")
+        warn("  · 加 1 个：- **认知锚点**：<画面主体> + <动作/关系> + <反差或隐喻>")
+    else:
+        ok(f"v3.23 · {anchor_count}/{page_count} 页有「认知锚点」")
+
+    # ───────── v3.23 增项 · Shot List（防"画册"陷阱 · 软警告） ─────────
+    if not re.search(r"^### Shot List", content, re.MULTILINE):
+        warn("v3.23 · 缺 Shot List（生图前必填 · 必画 ≤ 6 张 · 防画册陷阱）")
+        warn("  · 模板在 _模板/案例/content.md.template 底部")
+        warn("  · 8-12 页 → 通常 3-5 张必画 + 2-3 张选画")
+    else:
+        ok("v3.23 · Shot List 存在")
 
     return len(errors) == 0, errors
 
