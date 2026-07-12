@@ -144,22 +144,6 @@
 
 ---
 
-## 🤖 支持 5 个 Agent
-
-pretty-skills 装一次，5 个 agent 都能用：
-
-| Agent | 你说"做一份 XX" 给它 | 它会自动调用 |
-|---|---|---|
-| **MiniMax Code**（推荐 · 完整 Mavis agent 体验）| 飞书 / 终端对话 | Mavis + matrix MCP + 5 路数据采集 |
-| **Claude Code** | 终端 / VSCode 插件 | Mavis + matrix MCP |
-| **Codex**（OpenAI CLI）| 终端 | Mavis + matrix MCP |
-| **Cursor** | VSCode 集成 | Mavis + matrix MCP |
-| **Windsurf** | VSCode 集成 | Mavis + matrix MCP |
-
-5 个 agent 共享同一份 skill 库（`~/.mavis/skills/` + `~/.pretty-skills/store/`），不会重复装。
-
----
-
 ## 🌌 哲学 · 四自在
 
 pretty-skills 的灵魂是**四自在** — 把项目从"装个工具"升华到"修行法门"。
