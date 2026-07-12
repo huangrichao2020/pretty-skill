@@ -22,19 +22,29 @@ triggers:
 
 HTML PPT 生成 → 浏览器编辑控制台改稿 → 一键导出真正可编辑的 .pptx。
 
-## 工作流
+## 三段式工作流（借鉴 CyberPPT）
+
+**段1: 证据链** → **段2: 视觉蓝图** → **段3: PPTX 重建**
 
 ```
 用户需求（自然语言）
   ↓
-整理 goal.json（结构化需求）
+段1: 写证据链
+  → 每页 slides[].evidence.conclusion：这页凭什么成立
+  → evidence_ids[]：引用 text 字段中的数据 key
+  → conflicts[]：需回避或说明的矛盾（可选）
   ↓
-bash render_goal_deck.sh → 生成 index.html
+段2: 选 layout 填视觉蓝图
+  → layout:query 选页
+  → inspect:layout + props:safe 填 props
+  → bash render_goal_deck.sh → index.html
   ↓
-浏览器打开 → 控制台编辑（文字/布局/图表/配色）
-  ↓
-导出 PPTX / PDF / HTML 单文件
+段3: 浏览器编辑 + 导出
+  → 控制台改稿（文字/布局/图表/配色）
+  → 导出 PPTX / PDF / HTML
 ```
+
+> **核心原则**: 先过"证据关"再进"视觉关"——如果某页说不出"凭什么成立"，先补 evidence 再选 layout。
 
 ## Step 1：选风格（先问用户）
 
