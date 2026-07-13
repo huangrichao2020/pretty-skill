@@ -1,0 +1,26 @@
+{
+  "name": "杂志风公众号品鉴",
+  "domain": "内容创作",
+  "title": "杂志风公众号品鉴 · 排版 + 叙事 + 配图 三套可复用规则",
+  "visibility": "public",
+  "tags": [
+    "公众号",
+    "排版",
+    "叙事",
+    "配图",
+    "杂志风",
+    "AI味"
+  ],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-13",
+  "last_updated": "2026-07-13",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "杂志风公众号品鉴讲解.pdf"
+  },
+  "page_count": 8,
+  "summary": "从原公众号「推荐好用的 PPT skill」2026-06-30 提炼排版/叙事/配图 3 套规则 · 16 条铁律 + 4 张参考图 + 7 维自检"
+}
