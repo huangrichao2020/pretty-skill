@@ -63,7 +63,7 @@
 
 **Step 3 · 选风格 → 拿到 .pptx / .pdf**
 
-> agent 会自动：
+> agent 会调用内置的股票分析skill和ppt skill：
 > 1. 5 路并行采集数据（基本面 + 财务 + 股东 + 公告 + 风险 + 行业新闻）
 > 2. 共享风格段 + 5 段式 prompt 出 12 张讲解图（带中文 + 量化数据）
 > 3. python-pptx 嵌入 → 真实 `.pptx` 文件 · PowerPoint 双击直接打开
