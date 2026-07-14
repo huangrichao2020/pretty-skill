@@ -1,0 +1,142 @@
+{
+  "name": "strategy-h5-tool",
+  "domain": "内容创作",
+  "title": "strategy-h5-tool · 攻略类 H5 小工具制作",
+  "version": "v2.0",
+  "visibility": "public",
+  "tags": [
+    "h5-minitool",
+    "小红书",
+    "攻略",
+    "知识可视化",
+    "交互",
+    "生图",
+    "path-map",
+    "theme-color",
+    "xhs-ops",
+    "运营工作流",
+    "knowledge-base",
+    "双维选择"
+  ],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-14",
+  "upgraded": "2026-07-14",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": false
+  },
+  "page_count": 8,
+  "summary": "v2 = v1 制作 6 步 + 运营 6 阶段（信号研究→账号定位→选题评分→视觉包装→评分检查→发布清单）。小工具本质 = 知识的网页讲解版。9 宫格讲不清 7 天行程 → 双维选择（天数 × 节奏）+ 9 条攻略线 + AI 路径地图 + CSS 变量主题。方法论 + 实战（杭州烟雨 1.8MB zip）",
+  "source_skill": "~/.mavis/agents/mavis/workspace/hangzhou-tool/",
+  "operational_skeleton": "~/.mavis/agents/mavis/workspace/.skill/xhs-ops/ (Xiangyu-CAS/xiaohongshu-ops-skill)",
+  "case_study": {
+    "name": "杭州烟雨",
+    "path": "~/Desktop/杭州烟雨-小工具.zip",
+    "size": "1.8MB",
+    "plans": 9,
+    "spots": 11,
+    "images": 11,
+    "lines_of_code": 1666,
+    "score_phase2": 8,
+    "score_phase4": "8-9 (全维度匹配)"
+  },
+  "upgrade_history": [
+    {
+      "from": "v1",
+      "to": "v2",
+      "date": "2026-07-14",
+      "trigger": "装 xhs-ops skill，发现 6 阶段工作流可借鉴",
+      "added": [
+        "6 阶段运营工作流（信号研究→账号定位→选题评分→视觉包装→评分检查→发布清单）",
+        "5 维选题评分表（热度/匹配/互动/可写性/风险）",
+        "5 维度评分检查表（定位/结构/转化/辨识度/可持续）",
+        "14 条发布清单（内容侧 7 + 技术侧 14）",
+        "knowledge-base 5 类目录结构（accounts/topics/patterns/actions/reviews）",
+        "Viral Copy 4 步链路（URL→分析→生图→发布前确认）"
+      ],
+      "borrowed_from": "Xiangyu-CAS/xiaohongshu-ops-skill (SKILL.md + 9 references + persona.md + knowledge-base)",
+      "not_borrowed": [
+        "OpenClaw 浏览器自动登录（mavis 不用 OpenClaw）",
+        "评论自动回复（违反 Review-First 原则）",
+        "knowledge-base 直接照抄（我们有 pretty-skills 体系，只借鉴结构）"
+      ]
+    }
+  ],
+  "trigger_keywords": [
+    "做攻略 H5",
+    "小工具",
+    "知识可视化",
+    "小红书攻略",
+    "选你的玩法",
+    "双维选择",
+    "城市攻略",
+    "杭州攻略",
+    "成都攻略",
+    "西安攻略",
+    "做攻略 H5 之前先调研",
+    "选题评分",
+    "5 维评分",
+    "信号研究",
+    "抓首页推荐流",
+    "发布清单",
+    "14 条自检",
+    "knowledge-base 沉淀"
+  ],
+  "stack": [
+    "matrix-mcp (生图)",
+    "sips (缩图/转 jpeg)",
+    "minitool-zip-builder (打包规范)",
+    "HTML+CSS+JS (单页应用)",
+    "SVG (路径地图)",
+    "CSS Variables (主题切换)",
+    "web_search (信号研究/抓攻略)",
+    "xhs-ops skill (运营 6 阶段骨架)"
+  ],
+  "method": "6 阶段运营 + 6 步制作：信号研究→账号定位→选题评分→视觉包装→评分检查→发布清单 → 调研→矩阵→配图→H5 编码→校验→打包 → 沉淀 knowledge-base",
+  "phases": [
+    {
+      "id": 0,
+      "name": "信号研究",
+      "when": "发布前 1-2 周 / 换城市时",
+      "duration_minutes": 30,
+      "outputs": ["候选池 10-20 条", "标题骨架 3-5 个", "封面层级模板"]
+    },
+    {
+      "id": 1,
+      "name": "账号定位",
+      "when": "首次 / 改方向时",
+      "duration_minutes": 15,
+      "outputs": ["4 变量", "人设关键词 3-5", "内容支柱 3", "红线清单"]
+    },
+    {
+      "id": 2,
+      "name": "选题评分",
+      "when": "每次发布前",
+      "duration_minutes": 10,
+      "outputs": ["3-5 条候选选题", "5 维评分表"]
+    },
+    {
+      "id": 3,
+      "name": "视觉包装",
+      "when": "制作期",
+      "duration_minutes": 60,
+      "outputs": ["封面", "配图 3-6 张", "路径地图", "风格色主题"]
+    },
+    {
+      "id": 4,
+      "name": "评分检查",
+      "when": "发布前 30 分钟",
+      "duration_minutes": 10,
+      "outputs": ["5 维度检查表", "风险标注"]
+    },
+    {
+      "id": 5,
+      "name": "发布清单",
+      "when": "发布前最后一步",
+      "duration_minutes": 5,
+      "outputs": ["14 条自检结果", "发布按钮就位"]
+    }
+  ]
+}
