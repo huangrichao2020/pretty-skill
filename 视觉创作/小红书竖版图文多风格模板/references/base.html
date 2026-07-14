@@ -6,21 +6,7 @@
   <link rel="stylesheet" href="themes.css">
   <style>
     /* 1440×1920 竖版 3:4 · 7 段骨架 */
-    /* 默认主题从 themes.css 加载（5 大风格之一）*/
-    :root {
-      --bg: #fff5f5;
-      --accent: #ffb5ba;
-      --accent-soft: rgba(255, 181, 186, 0.2);
-      --accent-bright: #a2d2ff;
-      --highlight: #16a34a;
-      --text: #14171e;
-      --text-muted: #6b7280;
-      --card: #ffffff;
-      --card-border: #ffd1d4;
-      --font-cn: "Patrick Hand", "Caveat", "KaiTi", "楷体", cursive;
-      --font-en: "Caveat", "Patrick Hand", cursive;
-      --font-display: var(--font-en);
-    }
+    /* CSS 变量由 themes.css 的 5 套主题控制（通过 <html data-theme="..."> 切换）*/
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       width: 1440px;

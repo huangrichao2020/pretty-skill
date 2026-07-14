@@ -7,14 +7,27 @@
   "contributor": "huangrichao2020",
   "created": "2026-07-14",
   "updated": "2026-07-14",
-  "version": "v1",
-  "format": {"content_md": "content.md", "锦绣": false, "presentation_pptx": false, "case_pdf": false, "html_template": "references/base.html", "css_themes": "references/themes.css"},
+  "version": "v1+实战",
+  "format": {"content_md": "content.md", "锦绣": false, "presentation_pptx": false, "case_pdf": false, "html_template": "references/base.html", "css_themes": "references/themes.css", "batch_script": "scripts/batch_render_case001_v2.py", "case_json": "scripts/CASE001_19chapters.json", "case_output_dir": "~/Desktop/小红书_CASE001_手绘风回测/"},
   "page_count": 4,
-  "summary": "5 大 AI 生图风格（对齐 knowhub style-catalog：商务科技/博物图鉴/手绘科教/真实生活感/城市插画）+ 1 套 HTML 骨架（1440×1920 · 7 段结构） + 5 套 CSS 主题（data-theme 切换）",
-  "source_skill": "原创沉淀 · 来源素材 ~/Desktop/小红书_造物者说_CASE001/ + 风格对齐 knowhub/domains/visual-creation/references/style-catalog.md",
+  "summary": "5 大 AI 生图风格（对齐 knowhub style-catalog：商务科技/博物图鉴/手绘科教/真实生活感/城市插画）+ 1 套 HTML 骨架（1440×1920 · 7 段结构） + 5 套 CSS 主题（data-theme 切换） + batch 脚本（输入 1 份 JSON 出 N 张图） + CASE 001 实战回测（20 张手绘风图）",
+  "source_skill": "原创沉淀 · 来源素材 ~/Desktop/小红书_造物者说_CASE001/ 20 张原图 + 风格对齐 knowhub/domains/visual-creation/references/style-catalog.md",
   "trigger_keywords": ["小红书竖版", "访谈风图文", "5大风格", "knowhub风格", "商务科技", "博物图鉴", "手绘科教", "真实生活感", "城市插画", "1440x1920", "3:4竖版", "CSS变量模板"],
+  "实战验证": {
+    "date": "2026-07-14",
+    "5_风格测试": "5/5 调性正确（商务蓝/博物墨绿/手绘粉/真实黄/城市米）",
+    "1_期访谈实测": "CASE 001 真实 19 章 + 1 封面，20 张图全部跑通",
+    "batch_脚本": "scripts/batch_render_case001_v2.py 通用模板",
+    "output_dir": "~/Desktop/小红书_CASE001_手绘风回测/ · 20 张 PNG + 1 张 20 章缩略总览"
+  },
+  "known_issues": [
+    {"id": 1, "desc": "re.sub 匹配 cards div 提前终止 → 章节页数据卡残留", "priority": "中", "fix": "改 2 层 div 匹配或 BeautifulSoup 解析"},
+    {"id": 2, "desc": "Mac 缺装饰字体（Caveat / DM Serif Display / Inter）", "priority": "低", "fix": "brew install --cask font-caveat font-dm-serif"},
+    {"id": 3, "desc": "cover 分支用 re.sub 强删章节元素 → 极端数据残留风险", "priority": "低", "fix": "cover 用独立 HTML 模板"}
+  ],
   "changelog": [
     {"version": "v0", "date": "2026-07-14", "summary": "初版 · 黑金/橙/绿/红/紫蓝 5 套自创配色"},
-    {"version": "v1", "date": "2026-07-14", "summary": "升级 · 5 风格对齐 knowhub style-catalog（商务科技/博物图鉴/手绘科教/真实生活感/城市插画），替换 themes.css 5 套 CSS 变量 + 重写 content.md"}
+    {"version": "v1", "date": "2026-07-14", "summary": "升级 · 5 风格对齐 knowhub style-catalog（商务科技/博物图鉴/手绘科教/真实生活感/城市插画），替换 themes.css 5 套 CSS 变量 + 重写 content.md"},
+    {"version": "v1+实战", "date": "2026-07-14", "summary": "5 风格实测 + 1 期访谈实测（CASE 001 真实 20 张回测）+ batch 脚本 + 3 个已知 issues 标 v0 跑 3-6 个月实战"}
   ]
 }

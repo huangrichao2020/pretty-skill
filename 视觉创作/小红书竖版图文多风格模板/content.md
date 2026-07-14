@@ -151,11 +151,30 @@
 > 选风格 = 选受众 + 选场景 + 选传播渠道。
 > 5 风格对齐 knowhub = 1 套 HTML 模板 + 5 套 CSS 变量 = 5 套可切换的视觉系统。
 
+### v1 实战验证（2026-07-14）
+
+| 验证项 | 结果 |
+|---|---|
+| 5 风格调性切换（data-theme 切换） | ✅ 5/5 风格渲染调性正确（商务蓝/博物墨绿/手绘粉/真实黄/城市米） |
+| 1 期访谈实测（CASE 001 真实 19 章 + 封面） | ✅ 20 张图全部跑通，手绘风调性稳定 |
+| batch 脚本工业化 | ✅ `scripts/batch_render_case001_v2.py` 输入 JSON 出 N 张图 |
+| 跨图风格一致（同主题多张） | ✅ 20 张同主题调性统一 |
+| 中文字体（PingFang SC fallback） | ✅ 中文正常渲染 |
+| 装饰字体（Caveat / DM Serif Display / Inter） | ⚠️ Mac 没装，fallback 到系统字体（italic 模拟手写感） |
+
+### 已知 Issues（v0 跑出来的 bug，3-6 个月实战中边用边修）
+
+| # | Issue | 影响 | 临时方案 | 优先级 |
+|---|---|---|---|---|
+| 1 | `re.sub` 用 `.*?` 匹配 `<div class="cards">` 提前终止 → 章节页数据卡残留 base.html 原"开发出身"等 | 章节页数据卡不显示本章数据 | 改用 2 层 div 匹配 `<div class="cards">[\s\S]*?</div>\s*\n\s*</div>` 或 BeautifulSoup 解析 | 中 |
+| 2 | Mac 缺装饰字体（Caveat / DM Serif Display / Patrick Hand / Inter） | 手写 / 衬线 / 装饰字体 fallback 到系统 | 装 `brew install --cask font-caveat font-dm-serif` 或生产用 AI 生图 | 低 |
+| 3 | cover 分支用 re.sub 强删章节元素 → 复杂章节数据残留风险 | 极端章节数据可能留尾巴 | cover 用独立 HTML 模板（不共享 base.html） | 低 |
+
 ### 接下来 3 件事
 
-1. **跑 5 风格实测**：用 `base.html` + 5 个 `data-theme` 各出 1 张预览图，确认调性区分度
-2. **写 1 份 Puppeteer 批量截图脚本**：输入 1 个 JSON（19 章内容）→ 自动切换 5 主题 → 输出 19 × 5 = 95 张图
-3. **沉淀到 knowhub**：跑 3-6 个月实战后，按 9 维评分升级 v2 → 反哺到 knowhub `visual-creation/domain/`
+1. **跑 3-6 个月实战**：拿 5-10 期真实访谈填模板，标 9 维评分
+2. **修 Issue #1**：用 2 层 div 匹配或 BeautifulSoup 解析
+3. **沉淀到 knowhub**：9 维评分 ≥ 7 分后，反哺到 `knowhub/domains/visual-creation/`
 
 ### 不适用
 
@@ -163,8 +182,8 @@
 - 动态内容（带动画/视频）—— 这是静态图文模板
 - 1 张图 1 个信息（快闪型）—— 7 段骨架太重
 
-### v0 → v1 升级说明
+### v0 → v1 升级 + 实战记录
 
 - **v0**（2026-07-14）：黑金/橙/绿/红/紫蓝 5 套配色（自创）
 - **v1**（2026-07-14）：5 风格对齐 knowhub style-catalog（商务科技/博物图鉴/手绘科教/真实生活感/城市插画）—— 人类反馈触发升级
-- **v2 计划**：跑 1 期实测后，按 9 维评分 + dream 修炼达尔文 2.0 升级
+- **v1+实战**（2026-07-14）：5 风格实测 + 1 期访谈实测（CASE 001 真实 20 张回测）+ batch 脚本 + 3 个已知 issues 标 v0 跑 3-6 个月实战
