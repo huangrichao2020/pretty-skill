@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="black-gold">
+<html lang="zh-CN" data-theme="hand-drawn">
 <head>
   <meta charset="UTF-8">
   <title>访谈图文 · {{栏目名}} · {{编号}}</title>
   <link rel="stylesheet" href="themes.css">
   <style>
     /* 1440×1920 竖版 3:4 · 7 段骨架 */
+    /* 默认主题从 themes.css 加载（5 大风格之一）*/
     :root {
-      --bg: #000;
-      --accent: #d4a857;
-      --accent-soft: rgba(212, 168, 87, 0.1);
-      --text: #fff;
-      --text-muted: #888;
-      --card: #1a1a1a;
-      --card-border: rgba(212, 168, 87, 0.3);
+      --bg: #fff5f5;
+      --accent: #ffb5ba;
+      --accent-soft: rgba(255, 181, 186, 0.2);
+      --accent-bright: #a2d2ff;
+      --highlight: #16a34a;
+      --text: #14171e;
+      --text-muted: #6b7280;
+      --card: #ffffff;
+      --card-border: #ffd1d4;
+      --font-cn: "Patrick Hand", "Caveat", "KaiTi", "楷体", cursive;
+      --font-en: "Caveat", "Patrick Hand", cursive;
+      --font-display: var(--font-en);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -21,7 +27,7 @@
       height: 1920px;
       background: var(--bg);
       color: var(--text);
-      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      font-family: var(--font-cn, "PingFang SC"), "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
       position: relative;
       overflow: hidden;
     }

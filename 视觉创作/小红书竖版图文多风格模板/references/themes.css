@@ -1,67 +1,106 @@
-/* themes.css · 5 套配色 · 通过 <html data-theme="..."> 切换
+/* themes.css · 5 大 AI 生图风格（对齐 knowhub style-catalog）
    1440×1920 竖版 3:4
+   切换方式: <html data-theme="corporate-tech | museum-catalog | hand-drawn | real-life | city-illustration">
 */
 
-/* ===== 1. 黑金 · 高端访谈（默认） ===== */
-html[data-theme="black-gold"] {
-  --bg: #000;
-  --accent: #d4a857;
-  --accent-soft: rgba(212, 168, 87, 0.1);
-  --text: #fff;
-  --text-muted: #888;
-  --card: #1a1a1a;
-  --card-border: rgba(212, 168, 87, 0.3);
-}
-
-/* ===== 2. 橙白灰 · 阳光日常 ===== */
-html[data-theme="sun-orange"] {
-  --bg: #fafaf9;
-  --accent: #f59e0b;
-  --accent-soft: rgba(245, 158, 11, 0.1);
-  --text: #1f1f1f;
+/* ===== 1. 🏢 商务科技 Corporate Tech =====
+   clean infographic · blue-white-gray · rounded cards · grid layout */
+html[data-theme="corporate-tech"] {
+  --bg: #fafafa;
+  --accent: #1e3a5f;        /* deep blue */
+  --accent-soft: rgba(30, 58, 95, 0.08);
+  --accent-bright: #3b82f6;  /* bright blue */
+  --highlight: #d63031;      /* red accent */
+  --text: #14171e;
   --text-muted: #6b7280;
-  --card: #fff7ed;
-  --card-border: rgba(245, 158, 11, 0.3);
+  --card: #ffffff;
+  --card-border: #e5e7eb;
+  --font-cn: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-en: "Inter", "SF Pro", -apple-system, sans-serif;
+  --font-display: var(--font-cn);
 }
 
-/* ===== 3. 绿白 · 知识清新 ===== */
-html[data-theme="forest-green"] {
-  --bg: #f0fdf4;
-  --accent: #16a34a;
-  --accent-soft: rgba(22, 163, 74, 0.1);
-  --text: #0f172a;
-  --text-muted: #64748b;
-  --card: #dcfce7;
-  --card-border: rgba(22, 163, 74, 0.3);
-}
-
-/* ===== 4. 红白 · 警示/热点 ===== */
-html[data-theme="warning-red"] {
-  --bg: #fef2f2;
-  --accent: #dc2626;
-  --accent-soft: rgba(220, 38, 38, 0.1);
-  --text: #1f1f1f;
+/* ===== 2. 📖 博物图鉴 Museum / Catalog =====
+   encyclopedia · cream + 墨绿/深蓝 · soft gradient · DM Serif Display */
+html[data-theme="museum-catalog"] {
+  --bg: #f7f5f0;             /* cream white */
+  --accent: #2f6f5e;          /* dark green */
+  --accent-soft: rgba(47, 111, 94, 0.1);
+  --accent-bright: #1e3a5f;   /* deep blue */
+  --highlight: #c97b3f;       /* ochre */
+  --text: #14171e;
   --text-muted: #6b7280;
-  --card: #fee2e2;
-  --card-border: rgba(220, 38, 38, 0.3);
+  --card: #ffffff;
+  --card-border: rgba(47, 111, 94, 0.25);
+  --gold-line: #c9a14a;        /* 装饰金线 */
+  --font-cn: "Noto Serif CJK SC", "思源宋体", "PingFang SC", serif;
+  --font-en: "DM Serif Display", "Georgia", serif;
+  --font-display: var(--font-en);
 }
 
-/* ===== 5. 紫蓝白 · 科技 / AI ===== */
-html[data-theme="tech-purple"] {
-  --bg: #f5f3ff;
-  --accent: #6366f1;
-  --accent-soft: rgba(99, 102, 241, 0.1);
-  --text: #1e1b4b;
-  --text-muted: #64748b;
-  --card: #ede9fe;
-  --card-border: rgba(99, 102, 241, 0.3);
+/* ===== 3. ✏️ 手绘科教 Hand-drawn Edu =====
+   doodle · macaron palette · crayon texture · kawaii icons */
+html[data-theme="hand-drawn"] {
+  --bg: #fff5f5;             /* cream pink */
+  --accent: #ffb5ba;          /* pink */
+  --accent-soft: rgba(255, 181, 186, 0.2);
+  --accent-bright: #a2d2ff;   /* blue */
+  --highlight: #16a34a;       /* mint green */
+  --text: #14171e;
+  --text-muted: #6b7280;
+  --card: #ffffff;
+  --card-border: #ffd1d4;
+  --macaron-pink: #ffb5ba;
+  --macaron-blue: #bde0fe;
+  --macaron-mint: #c7f0bd;
+  --macaron-yellow: #ffe5a5;
+  --macaron-lavender: #d8bfd8;
+  --font-cn: "Patrick Hand", "Caveat", "KaiTi", "楷体", cursive;
+  --font-en: "Caveat", "Patrick Hand", cursive;
+  --font-display: var(--font-en);
+}
+
+/* ===== 4. 📝 真实生活感 Real Life =====
+   photorealistic · sticky note · handwriting · paper texture */
+html[data-theme="real-life"] {
+  --bg: #faf9f5;             /* paper white */
+  --accent: #fff9a8;          /* sticky note yellow */
+  --accent-soft: rgba(255, 249, 168, 0.4);
+  --accent-bright: #1e3a8f;   /* ballpoint pen blue */
+  --highlight: #d63031;       /* marker red */
+  --text: #1e3a8f;            /* pen blue */
+  --text-muted: #6b7280;
+  --card: #fff9a8;            /* sticky note */
+  --card-border: rgba(0, 0, 0, 0.08);
+  --paper-fold: rgba(0, 0, 0, 0.05);
+  --font-cn: "Caveat", "Kalam", "KaiTi", "楷体", cursive;
+  --font-en: "Caveat", "Kalam", cursive;
+  --font-display: var(--font-en);
+}
+
+/* ===== 5. 🗺️ 城市插画 City Illustration =====
+   watercolor · ink outline · chinese painting · 宣纸米色 */
+html[data-theme="city-illustration"] {
+  --bg: #f4ede0;             /* 宣纸米色 */
+  --accent: #2c2c2c;          /* 水墨黑 */
+  --accent-soft: rgba(44, 44, 44, 0.1);
+  --accent-bright: #c04851;   /* 朱红 */
+  --highlight: #5b7c99;       /* 装饰蓝 */
+  --text: #2c2c2c;
+  --text-muted: rgba(44, 44, 44, 0.6);
+  --card: #ffffff;
+  --card-border: rgba(44, 44, 44, 0.2);
+  --ink-light: rgba(44, 44, 44, 0.3);
+  --font-cn: "Noto Serif CJK SC", "思源宋体", "KaiTi", "楷体", serif;
+  --font-en: "Caveat", "Patrick Hand", cursive;
+  --font-display: var(--font-cn);
 }
 
 /* ===== 使用示例 ===== */
 /*
-  <html data-theme="black-gold">  -- 黑金
-  <html data-theme="sun-orange">  -- 橙白灰
-  <html data-theme="forest-green"> -- 绿白
-  <html data-theme="warning-red">  -- 红白
-  <html data-theme="tech-purple">  -- 紫蓝白
+  <html data-theme="corporate-tech">     -- 🏢 商务科技
+  <html data-theme="museum-catalog">     -- 📖 博物图鉴
+  <html data-theme="hand-drawn">         -- ✏️ 手绘科教
+  <html data-theme="real-life">          -- 📝 真实生活感
+  <html data-theme="city-illustration">  -- 🗺️ 城市插画
 */
