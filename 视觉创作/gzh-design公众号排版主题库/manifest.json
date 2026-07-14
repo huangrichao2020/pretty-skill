@@ -1,0 +1,54 @@
+{
+  "name": "gzh-design公众号排版主题库",
+  "domain": "视觉创作",
+  "title": "gzh-design 公众号排版主题库（摸鱼小李 jl01 方法论沉淀）",
+  "visibility": "public",
+  "tags": [
+    "公众号",
+    "排版",
+    "主题库",
+    "wechat-delivery",
+    "gzh-design",
+    "RedSkill",
+    "Markdown转HTML",
+    "内容创作"
+  ],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "original_author": "摸鱼小李",
+  "original_skill": "RedSkill jl01 / gzh-design",
+  "source_url": "https://redskill.xiaohongshu.net/skill/jl01",
+  "users_upstream": 309,
+  "created": "2026-07-14",
+  "last_updated": "2026-07-14",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "锦绣_slides": 7,
+    "presentation_pptx": false,
+    "case_pdf": "gzh-design公众号排版主题库讲解.pdf"
+  },
+  "page_count": 7,
+  "summary": "把摸鱼小李的 gzh-design（RedSkill jl01 · 309 人用）公众号排版引擎的方法论和主题库骨架沉淀进 pretty-skills。7 套起步主题（pure-paper/tech-blue/business-gold/literary-green/finance-red/ai-purple/vibrant-pop）+ 5 步排版 pipeline（归一化→结构识别→主题渲染→装饰→输出）+ 10 条反模式。补 wechat-delivery v3.22 的主题库短板。不真装本机。",
+  "trigger_keywords": [
+    "公众号排版",
+    "公众号主题",
+    "gzh-design",
+    "jl01",
+    "wechat-delivery 主题库",
+    "公众号样式",
+    "Markdown转公众号"
+  ],
+  "key_features": [
+    "7 套起步主题（每个含配色/字体/间距/装饰 4 元组）",
+    "5 步排版 pipeline：md/docx/pdf/纯文本 → 公众号 HTML",
+    "10 条反模式（外链 CSS / 装饰边框 / 字号过小 / A 股配色等）",
+    "可执行 spec（render_to_gzh.py 伪代码 + 命令）",
+    "零本机依赖：只沉淀方法论，不真装 redskill"
+  ],
+  "integration": {
+    "loads_into": "wechat-delivery",
+    "fills_gap": "主题库 + 排版 HTML 渲染（v3.22 缺这两块）",
+    "next_version": "wechat-delivery v3.23 加载本主题库"
+  }
+}
