@@ -1,0 +1,14 @@
+{
+  "name": "小红书竖版图文多风格模板",
+  "domain": "视觉创作",
+  "title": "小红书竖版图文多风格模板 · 1440×1920 · 1 套骨架 + 5 套配色",
+  "visibility": "public",
+  "tags": ["小红书", "竖版图文", "访谈栏目", "黑金风", "5风格", "1440x1920", "3:4竖版", "CSS变量"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-14",
+  "format": {"content_md": "content.md", "锦绣": false, "presentation_pptx": false, "case_pdf": false, "html_template": "references/base.html", "css_themes": "references/themes.css"},
+  "page_count": 4,
+  "summary": "1 套 HTML 骨架 + 5 套 CSS 配色变量（黑金/橙/绿/红/紫蓝），7 段结构（页眉/章节号/标题/正文/金句/数据卡/页脚），1440×1920 小红书竖版",
+  "source_skill": "原创沉淀 · 来源素材 ~/Desktop/小红书_造物者说_CASE001/ 20 张原图",
+  "trigger_keywords": ["小红书竖版", "访谈风图文", "黑金风", "5套配色", "1440x1920", "3:4竖版", "CSS变量模板"]
+}

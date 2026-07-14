@@ -1,0 +1,67 @@
+/* themes.css · 5 套配色 · 通过 <html data-theme="..."> 切换
+   1440×1920 竖版 3:4
+*/
+
+/* ===== 1. 黑金 · 高端访谈（默认） ===== */
+html[data-theme="black-gold"] {
+  --bg: #000;
+  --accent: #d4a857;
+  --accent-soft: rgba(212, 168, 87, 0.1);
+  --text: #fff;
+  --text-muted: #888;
+  --card: #1a1a1a;
+  --card-border: rgba(212, 168, 87, 0.3);
+}
+
+/* ===== 2. 橙白灰 · 阳光日常 ===== */
+html[data-theme="sun-orange"] {
+  --bg: #fafaf9;
+  --accent: #f59e0b;
+  --accent-soft: rgba(245, 158, 11, 0.1);
+  --text: #1f1f1f;
+  --text-muted: #6b7280;
+  --card: #fff7ed;
+  --card-border: rgba(245, 158, 11, 0.3);
+}
+
+/* ===== 3. 绿白 · 知识清新 ===== */
+html[data-theme="forest-green"] {
+  --bg: #f0fdf4;
+  --accent: #16a34a;
+  --accent-soft: rgba(22, 163, 74, 0.1);
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --card: #dcfce7;
+  --card-border: rgba(22, 163, 74, 0.3);
+}
+
+/* ===== 4. 红白 · 警示/热点 ===== */
+html[data-theme="warning-red"] {
+  --bg: #fef2f2;
+  --accent: #dc2626;
+  --accent-soft: rgba(220, 38, 38, 0.1);
+  --text: #1f1f1f;
+  --text-muted: #6b7280;
+  --card: #fee2e2;
+  --card-border: rgba(220, 38, 38, 0.3);
+}
+
+/* ===== 5. 紫蓝白 · 科技 / AI ===== */
+html[data-theme="tech-purple"] {
+  --bg: #f5f3ff;
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.1);
+  --text: #1e1b4b;
+  --text-muted: #64748b;
+  --card: #ede9fe;
+  --card-border: rgba(99, 102, 241, 0.3);
+}
+
+/* ===== 使用示例 ===== */
+/*
+  <html data-theme="black-gold">  -- 黑金
+  <html data-theme="sun-orange">  -- 橙白灰
+  <html data-theme="forest-green"> -- 绿白
+  <html data-theme="warning-red">  -- 红白
+  <html data-theme="tech-purple">  -- 紫蓝白
+*/
