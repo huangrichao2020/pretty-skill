@@ -43,6 +43,7 @@
 | Agent知识 | [`Mavis做事心法`](./Agent知识/Mavis做事心法/) | **public** | 6步法, 沟通铁律, 反模式 | content.md + xxx讲解.pdf + 13 AI 出图 |
 | Agent知识 | [`公众号内容交付方法论`](./Agent知识/公众号内容交付方法论/) | **public** | 公众号, 桌面交付, mavis-browser | content.md + xxx讲解.pdf + 13 AI 出图 |
 | 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + xxx讲解.pdf + 锦绣 + presentation.pptx |
+| 金融投资 | [`4维融合诊断PPTX`](./金融投资/4维融合诊断PPTX/) | **public** | 复盘, 4维融合, PPTX, macaron5色, daily-market-review | content.md + xxx讲解.pdf + 8 AI 出图 |
 | 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + xxx讲解.pdf + 锦绣 |
 | 金融投资 | [`macro-monitor`](./金融投资/macro-monitor/) | **public** | A股, 宏观, 经济数据, CPI, PPI, 数据监控 | content.md + xxx讲解.pdf + 锦绣 |
 | 内容创作 | [`橙皮书方法论`](./内容创作/橙皮书方法论/) | **public** | 橙皮书, 方法论, 写作 | content.md + xxx讲解.pdf + 锦绣 |
@@ -95,4 +96,4 @@ def load_pretty_skill(root="/path/to/pretty-skills"):
 
 ---
 
-<sub>最后更新：2026-07-13 · 13 个 case 全部 public</sub>
+<sub>最后更新：2026-07-14 · 14 个 case 全部 public</sub>

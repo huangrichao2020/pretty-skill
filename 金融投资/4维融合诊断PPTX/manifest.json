@@ -1,0 +1,26 @@
+{
+  "name": "4维融合诊断PPTX",
+  "domain": "金融投资",
+  "title": "4 维融合诊断 PPTX · 复盘 + 出图 + 拼装一站式",
+  "visibility": "public",
+  "tags": [
+    "复盘",
+    "4维融合",
+    "PPTX",
+    "macaron5色",
+    "daily-market-review",
+    "市场诊断"
+  ],
+  "contributor": "huangrichao2020",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-14",
+  "last_updated": "2026-07-14",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": true,
+    "presentation_pptx": false,
+    "case_pdf": "4维融合诊断PPTX讲解.pdf"
+  },
+  "page_count": 8,
+  "summary": "把 A 股复盘工作流沉淀为可复用 case：daily-market-review 拉 4 维数据 + matrix MCP 出 8 张 macaron 5 色手绘图 + python-pptx 拼 8 页深度版 PPTX · 30 分钟交付"
+}
