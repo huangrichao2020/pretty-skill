@@ -1,0 +1,30 @@
+{
+  "name": "H5设计转H5滑动",
+  "domain": "做事技巧",
+  "version": "1.0.0",
+  "created": "2026-07-16",
+  "visibility": "public",
+  "format": "note",
+  "contributor": "Mavis",
+  "description": "1920×1080 设计的桌面端 PPT/作品 → H5 端支持左滑右滑翻页的轻量级方法论",
+  "files": {
+    "readme": "README.md"
+  },
+  "images": [
+    "images/桌面1920.png",
+    "images/手机iPhone.png"
+  ],
+  "tags": [
+    "H5适配",
+    "触屏滑动",
+    "viewport",
+    "响应式",
+    "PPT",
+    "1920设计"
+  ],
+  "related_skills": [
+    "aliyun-server-ops",
+    "skill-arsenal实战"
+  ],
+  "source": "ai10088.com/skill-arsenal 实战"
+}
