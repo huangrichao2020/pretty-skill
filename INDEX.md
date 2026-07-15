@@ -39,9 +39,9 @@
 | 领域 | case | visibility | tags | 内容形态 |
 |---|---|---|---|---|
 | Agent知识 | [`AI狼群战法`](./Agent知识/AI狼群战法/) | **public** | multi-agent, 协作 | content.md + xxx讲解.pdf + 锦绣 |
-| Agent知识 | [`社交电商掘金术`](./Agent知识/社交电商掘金术/) | **public** | 社交电商, GPT | content.md + xxx讲解.pdf + 锦绣 |
 | Agent知识 | [`Mavis做事心法`](./Agent知识/Mavis做事心法/) | **public** | 6步法, 沟通铁律, 反模式 | content.md + xxx讲解.pdf + 13 AI 出图 |
-| Agent知识 | [`公众号内容交付方法论`](./Agent知识/公众号内容交付方法论/) | **public** | 公众号, 桌面交付, mavis-browser | content.md + xxx讲解.pdf + 13 AI 出图 |
+| 商业运营 | [`社交电商掘金术`](./商业运营/社交电商掘金术/) | **public** | 社交电商, GPT | content.md + xxx讲解.pdf + 锦绣 |
+| 内容创作 | [`公众号内容交付方法论`](./内容创作/公众号内容交付方法论/) | **public** | 公众号, 桌面交付, mavis-browser | content.md + xxx讲解.pdf + 13 AI 出图 |
 | 金融投资 | [`卡脖子猎手`](./金融投资/卡脖子猎手/) | **public** | 卡脖子, 选股 | content.md + xxx讲解.pdf + 锦绣 + presentation.pptx |
 | 金融投资 | [`4维融合诊断PPTX`](./金融投资/4维融合诊断PPTX/) | **public** | 复盘, 4维融合, PPTX, macaron5色, daily-market-review | content.md + xxx讲解.pdf + 8 AI 出图 |
 | 金融投资 | [`宏观雷达`](./金融投资/宏观雷达/) | **public** | A股, 宏观, 早报 | content.md + xxx讲解.pdf + 锦绣 |

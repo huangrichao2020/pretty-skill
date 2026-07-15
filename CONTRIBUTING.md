@@ -234,7 +234,7 @@ git commit -m "feat: add 新领域名称 + 案例1"
 
 **人工参考 3 个现有 case**：
 - [Agent知识/AI狼群战法/manifest.json](../Agent知识/AI狼群战法/manifest.json)
-- [Agent知识/社交电商掘金术/manifest.json](../Agent知识/社交电商掘金术/manifest.json)
+- [商业运营/社交电商掘金术/manifest.json](../商业运营/社交电商掘金术/manifest.json)
 - [金融投资/卡脖子猎手/manifest.json](../金融投资/卡脖子猎手/manifest.json)
 
 ## 🚫 6 个反模式（PR 100% 退回）

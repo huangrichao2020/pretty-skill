@@ -95,14 +95,14 @@ web.html 作为 PPT 演示版非常出色（中央大图 + 键盘翻页 + 全屏
 python3 tools/build_case_pdf.py <case_dir> [title] [--output <pdf_name>] [--open]
 
 # 示例（自动模式）
-python3 tools/build_case_pdf.py "Agent知识/公众号内容交付方法论/"
+python3 tools/build_case_pdf.py "内容创作/公众号内容交付方法论/"
 
 # 示例（自定义输出名）
-python3 tools/build_case_pdf.py "Agent知识/公众号内容交付方法论/" \
+python3 tools/build_case_pdf.py "内容创作/公众号内容交付方法论/" \
                                 --output "公众号交付手册.pdf"
 
 # 示例（生成后自动打开）
-python3 tools/build_case_pdf.py "Agent知识/公众号内容交付方法论/" --open
+python3 tools/build_case_pdf.py "内容创作/公众号内容交付方法论/" --open
 ```
 
 ### 依赖

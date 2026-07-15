@@ -128,4 +128,4 @@ npx skills add jimliu/baoyu-skills -g
 
 - 视觉设计相关 → `pretty-skills/视觉创作/baoyu-design/`（本地化 Claude Design）
 - 中文排版 + AI 审美黑名单 → `Mavis memory/distillation-review.md` 第 3 条
-- sansheng-distill 提到的"12 家前人绝活"之一 → `pretty-skills/Agent知识/拆书-skill/`
+- sansheng-distill 提到的"12 家前人绝活"之一 → `pretty-skills/内容创作/拆书-skill/`

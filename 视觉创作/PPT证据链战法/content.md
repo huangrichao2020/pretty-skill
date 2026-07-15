@@ -131,6 +131,6 @@
 
 - **视觉创作/dashiai-ppt传统PPT/** —— 通用商务 PPT 主题池（13+ 主题 / 轻拟态 / 玻璃糖果 / 色谱图表 A 股首选等）
 - **视觉创作/zhongguose-ppt-skill/** —— 中国色 PPT 体系（6 主题色 + 12 步工作流 + 中英双语 + 字体子集）
-- **Agent知识/拆书-skill/** —— sansheng-distill v0（单文件零外链 / 5 层结构 / 思维导图 3 铁律）
+- **内容创作/拆书-skill/** —— sansheng-distill v0（单文件零外链 / 5 层结构 / 思维导图 3 铁律）
 
 3 个 PPT skill 按气质挑：科技/产品 → CyberPPT（这里）；通用商务 → dashiai-ppt；文化/历史/中式 → zhongguose。

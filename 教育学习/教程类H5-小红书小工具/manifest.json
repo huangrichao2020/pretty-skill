@@ -1,0 +1,53 @@
+{
+  "name": "教程类H5-小红书小工具",
+  "domain": "教育学习",
+  "title": "教程类 H5 · 小红书小工具",
+  "subtitle": "AI 生图 + SPA 课程架构 + 离线 H5 zip = 在小红书「小工具」发布的多课程 H5 互动产品",
+  "visibility": "public",
+  "tags": [
+    "教程类H5",
+    "小红书小工具",
+    "H5课程",
+    "SPA架构",
+    "杂志海报风",
+    "AI生图",
+    "离线H5",
+    "多课程",
+    "教程",
+    "公众号"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-14",
+  "last_updated": "2026-07-14",
+  "format": {
+    "skill_md": "SKILL.md",
+    "readme": "README.md",
+    "templates": "templates/",
+    "examples": "examples/ai-knowledge-stack/"
+  },
+  "summary": "5 步工作流（主题规划 → 内容准备 → 视觉准备 → 代码编写 → 打包上传）+ 4 大关键决策（图必须拍平 / JS 用反引号 / 图里 0 中文 / logo 强调主题）+ 5 条反模式（评分小工具 / 多 HTML / 内嵌 script / 绝对路径 / logo 内部框架）+ 6 项自检清单。基于 2026-07-14「零基础入门 AI 知识」7 节课 H5 实战沉淀，跑 1 次可复用，下个主题直接套模板改 data.js。",
+  "source_case": "examples/ai-knowledge-stack/",
+  "case_published": "小红书创作者中心 → 小工具",
+  "trigger_keywords": [
+    "做教程类H5",
+    "小红书小工具",
+    "H5课程",
+    "离线H5课程",
+    "多节课H5",
+    "SPA课程页",
+    "教程类H5模板"
+  ],
+  "reusability": {
+    "templates_provided": true,
+    "examples_provided": true,
+    "estimated_reuse_time": "30-60 分钟 / 次（不含内容写作）"
+  },
+  "limitations": [
+    "H5 容器不支持 LLM / AI 推理（纯静态规则引擎）",
+    "H5 容器不联网（所有资源必须打包）",
+    "H5 容器禁 CSP unsafe-inline（脚本必须外置）",
+    "5-7 节是推荐区间（< 5 太单薄，> 7 读者疲劳）"
+  ],
+  "maturity": "实战验证 1 次（2026-07-14），待跑 3-6 个月实战稳定后升 knowhub"
+}
