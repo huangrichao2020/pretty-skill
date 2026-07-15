@@ -1,0 +1,15 @@
+{
+  "name": "baoyu-skills",
+  "domain": "内容创作",
+  "title": "baoyu-skills · 宝玉的内容创作 skill 矩阵",
+  "visibility": "public",
+  "tags": ["baoyu-skills", "宝玉", "封面", "小红书", "PPT", "故事漫画", "插图", "信息图", "提示词工程"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-15",
+  "status": "case草稿-待clone验证",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false},
+  "page_count": 5,
+  "summary": "宝玉(jimliu)开源的 5 个内容创作 sub-skill 矩阵 · 文章插图/封面/小红书/PPT/故事漫画 · 风格×布局二维选择 · 配置化 Prompt 工程范本",
+  "source_skill": "https://github.com/JimLiu/baoyu-skills",
+  "trigger_keywords": ["baoyu", "宝玉", "封面图", "小红书配图", "PPT", "信息图", "故事漫画", "提示词工程"]
+}
