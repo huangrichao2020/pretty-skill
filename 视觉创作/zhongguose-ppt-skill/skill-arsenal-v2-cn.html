@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>比养 Agent 更重要的是养你的 skill 武器库 · 中国色版</title>
+<style>
+/* === 7 主题色变量合同 === */
+:root, .theme-feiquan {
+  --c-ink: #1a1f1c;
+  --c-paper: #fafaf7;
+  --c-mist: #f4f2ed;
+  --c-fog: #e8e3d8;
+  --c-line: #d4cebe;
+  --c-accent: #497568;
+  --c-accent-rgb: 73, 117, 104;
+  --c-accent-on: #ffffff;
+  --c-accent-soft: #c5d6cb;
+  --c-accent-50: #e8efeb;
+  --c-gray: #6b6258;
+  --c-warn: #9e3b3b;
+  --c-warn-bg: #f9eded;
+  --c-good: #497568;
+  --c-good-bg: #e8efeb;
+  --c-user-bg: #2a2a25;
+  --c-user-on: #fafaf7;
+  --c-seal-bg: #9e3b3b;
+}
+.theme-cyberppt {
+  --c-ink: #0A2540; --c-paper: #FFFFFF; --c-mist: #F4F6FA; --c-fog: #E5E9F2; --c-line: #D5DCE8;
+  --c-accent: #2563EB; --c-accent-rgb: 37, 99, 235; --c-accent-on: #ffffff; --c-accent-soft: #93C5FD; --c-accent-50: #EFF6FF;
+  --c-gray: #6B7A99; --c-warn: #DC2626; --c-warn-bg: #FEF2F2; --c-good: #059669; --c-good-bg: #ECFDF5;
+  --c-user-bg: #1F2937; --c-user-on: #FFFFFF; --c-seal-bg: #DC2626;
+}
+.theme-lotus {
+  --c-ink: #2a221a; --c-paper: #f5f0e8; --c-mist: #ebe5d8; --c-fog: #ddd5c5; --c-line: #c9b8a0;
+  --c-accent: #b08d5a; --c-accent-rgb: 176, 141, 90; --c-accent-on: #0a0a0a; --c-accent-soft: #d9c6b3; --c-accent-50: #f0e8d9;
+  --c-gray: #5a4a3a; --c-warn: #a04a2a; --c-warn-bg: #f5e8db; --c-good: #7a8a5a; --c-good-bg: #ebe8d8;
+  --c-user-bg: #3a3025; --c-user-on: #f5f0e8; --c-seal-bg: #a04a2a;
+}
+.theme-xiang {
+  --c-ink: #0e1a2a; --c-paper: #f0f4f8; --c-mist: #dde4ed; --c-fog: #c5d2e0; --c-line: #93a8c0;
+  --c-accent: #4A76A8; --c-accent-rgb: 74, 118, 168; --c-accent-on: #ffffff; --c-accent-soft: #b0c5dc; --c-accent-50: #dde4ed;
+  --c-gray: #5a6878; --c-warn: #a04a4a; --c-warn-bg: #f0e0e0; --c-good: #4A76A8; --c-good-bg: #dde4ed;
+  --c-user-bg: #1a2a3a; --c-user-on: #f0f4f8; --c-seal-bg: #a04a4a;
+}
+.theme-crimson {
+  --c-ink: #2a0a0a; --c-paper: #f5eded; --c-mist: #e8d5d5; --c-fog: #d5b8b8; --c-line: #b08a8a;
+  --c-accent: #9E3B3B; --c-accent-rgb: 158, 59, 59; --c-accent-on: #ffffff; --c-accent-soft: #d5a5a5; --c-accent-50: #f0d5d5;
+  --c-gray: #6a4a4a; --c-warn: #9E3B3B; --c-warn-bg: #f0d5d5; --c-good: #7a5a3a; --c-good-bg: #f0e5d5;
+  --c-user-bg: #3a1a1a; --c-user-on: #f5eded; --c-seal-bg: #9E3B3B;
+}
+.theme-crow {
+  --c-ink: #2a2410; --c-paper: #f8f0d0; --c-mist: #f0e5b8; --c-fog: #e0d098; --c-line: #c0a868;
+  --c-accent: #E6C24D; --c-accent-rgb: 230, 194, 77; --c-accent-on: #0a0a0a; --c-accent-soft: #f0d97a; --c-accent-50: #f5e8b0;
+  --c-gray: #6a5a30; --c-warn: #a04a2a; --c-warn-bg: #f0e0c8; --c-good: #7a6a3a; --c-good-bg: #f0e5b8;
+  --c-user-bg: #3a3018; --c-user-on: #f8f0d0; --c-seal-bg: #a04a2a;
+}
+.theme-mountain {
+  --c-ink: #1a201a; --c-paper: #f0f4ec; --c-mist: #d8e0d0; --c-fog: #b8c5b0; --c-line: #98a890;
+  --c-accent: #B2C9B2; --c-accent-rgb: 178, 201, 178; --c-accent-on: #0a0a0a; --c-accent-soft: #d0dccd; --c-accent-50: #e0e8d8;
+  --c-gray: #5a6050; --c-warn: #8a4a2a; --c-warn-bg: #f0d8c8; --c-good: #6a8a5a; --c-good-bg: #d8e0c8;
+  --c-user-bg: #2a302a; --c-user-on: #f0f4ec; --c-seal-bg: #8a4a2a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  background: var(--c-mist);
+  color: var(--c-ink);
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", "STSong", "宋体", -apple-system, "PingFang SC", "Microsoft YaHei", serif;
+  overflow: hidden; user-select: none;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--c-mist); }
+.stage::before, .stage::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 8px;
+  background: linear-gradient(to bottom, var(--c-accent-soft), transparent);
+  pointer-events: none;
+}
+.stage::before { top: 0; }
+.stage::after { bottom: 0; transform: scaleY(-1); }
+
+.slide { position: absolute; inset: 0; display: none; padding: 50px 90px; opacity: 0; overflow: hidden; background: var(--c-paper); color: var(--c-ink); }
+.slide.active { display: flex; flex-direction: column; opacity: 1; }
+
+.slide-num { position: absolute; top: 18px; right: 30px; font-family: "Songti SC", "STSong", serif; font-size: 14px; letter-spacing: 3px; color: var(--c-gray); font-weight: 500; z-index: 10; display: flex; align-items: center; gap: 8px; }
+.slide-num .current { color: var(--c-accent); font-weight: 700; font-size: 22px; font-family: "Noto Serif SC", "Songti SC", serif; }
+.slide-num .slash { color: var(--c-line); }
+.slide-num .total { color: var(--c-gray); font-size: 14px; }
+
+.slide-seal { position: absolute; top: 50px; right: 30px; width: 64px; height: 64px; border: 3px solid var(--c-seal-bg); border-radius: 4px; display: none; align-items: center; justify-content: center; font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; font-size: 13px; font-weight: 700; color: var(--c-seal-bg); letter-spacing: 2px; text-align: center; line-height: 1.1; transform: rotate(-4deg); z-index: 11; opacity: 0.85; }
+.slide-seal::before { content: ""; position: absolute; inset: 4px; border: 1px solid var(--c-seal-bg); }
+.slide-seal.show { display: flex; }
+
+.h1 { font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", "Songti SC", serif; font-size: 64px; font-weight: 700; line-height: 1.15; color: var(--c-ink); letter-spacing: 0.04em; }
+.h1 .accent { color: var(--c-accent); border-bottom: 3px solid var(--c-accent); padding-bottom: 4px; }
+.h2 { font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", "Songti SC", serif; font-size: 42px; font-weight: 700; line-height: 1.2; color: var(--c-ink); margin-bottom: 14px; letter-spacing: 0.03em; }
+.h2 .accent { color: var(--c-accent); }
+.h3 { font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", "Songti SC", serif; font-size: 24px; font-weight: 600; line-height: 1.4; color: var(--c-ink); margin-bottom: 10px; }
+.sub { font-size: 18px; color: var(--c-gray); margin-top: 8px; font-weight: 400; font-family: "Noto Serif SC", serif; }
+.body { font-size: 18px; line-height: 1.65; color: var(--c-ink); font-family: "Noto Serif SC", serif; }
+.body-lg { font-size: 22px; line-height: 1.5; color: var(--c-ink); font-family: "Noto Serif SC", serif; }
+
+.tag { display: inline-block; padding: 4px 16px; background: var(--c-accent); color: var(--c-accent-on); font-family: "Noto Serif SC", serif; font-size: 13px; font-weight: 600; letter-spacing: 4px; margin-bottom: 14px; position: relative; }
+.tag::before, .tag::after { content: ""; position: absolute; top: 0; width: 6px; height: 100%; background: var(--c-paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%, 0 100%, 100% 100%); }
+.tag::before { left: -3px; }
+.tag::after { right: -3px; transform: scaleX(-1); }
+.tag-gray { background: var(--c-fog); color: var(--c-gray); }
+.tag-red { background: var(--c-warn); }
+.tag-green { background: var(--c-good); }
+.tag-ink { background: var(--c-ink); }
+
+.card { background: var(--c-paper); border: 1px solid var(--c-line); border-radius: 2px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(var(--c-accent-rgb), 0.06); position: relative; }
+.card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--c-accent), var(--c-accent-soft), var(--c-accent)); }
+.card-grid { display: grid; gap: 16px; }
+.card-grid-2 { grid-template-columns: 1fr 1fr; }
+.card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.card-title { font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; font-size: 18px; font-weight: 700; color: var(--c-ink); margin-bottom: 4px; }
+.card-desc { font-size: 14px; color: var(--c-gray); line-height: 1.5; font-family: "Noto Serif SC", serif; }
+
+table { width: 100%; border-collapse: collapse; background: var(--c-paper); font-size: 15px; font-family: "Noto Serif SC", serif; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--c-line); }
+th { background: var(--c-mist); color: var(--c-ink); font-weight: 700; font-family: "STKaiti", "KaiTi", "楷体", serif; }
+tr:last-child td { border-bottom: none; }
+
+.bad { color: var(--c-warn); font-weight: 600; }
+.good { color: var(--c-good); font-weight: 600; }
+.accent { color: var(--c-accent); font-weight: 600; }
+
+.quote { font-family: "STKaiti", "KaiTi", "楷体", "Noto Serif SC", serif; font-size: 28px; font-weight: 700; line-height: 1.35; color: var(--c-ink); padding-left: 24px; border-left: 4px solid var(--c-accent); letter-spacing: 0.02em; }
+.quote-sm { font-family: "STKaiti", "KaiTi", "楷体", "Noto Serif SC", serif; font-size: 20px; font-weight: 700; line-height: 1.35; color: var(--c-ink); padding-left: 20px; border-left: 3px solid var(--c-accent); letter-spacing: 0.02em; }
+
+.flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.flow-node { background: var(--c-paper); border: 2px solid var(--c-accent); color: var(--c-ink); padding: 10px 20px; font-size: 16px; font-weight: 600; font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; }
+.flow-node.start, .flow-node.end { background: var(--c-accent); color: var(--c-accent-on); border-color: var(--c-accent); }
+.flow-arrow { font-size: 22px; color: var(--c-accent); font-weight: 400; font-family: "Songti SC", serif; }
+.flow-col { display: flex; flex-direction: column; gap: 6px; }
+.flow-col .flow-node { text-align: center; }
+.flow-col .flow-arrow { text-align: center; font-size: 18px; }
+
+.tree { background: #1a1f1c; color: #c5d6cb; font-family: "STKaiti", "KaiTi", "楷体", "SF Mono", Menlo, monospace; font-size: 14px; line-height: 1.7; border: 1px solid var(--c-accent); padding: 16px 20px; white-space: pre; overflow: hidden; }
+.tree .d { color: var(--c-accent-soft); }
+.tree .f { color: #fff; }
+.tree .g { color: #c5d6cb; font-weight: 600; }
+
+.kbd { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(26, 31, 28, 0.85); color: #fafaf7; padding: 8px 18px; border: 1px solid var(--c-accent); font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; font-size: 12px; letter-spacing: 1px; z-index: 100; }
+
+.theme-switcher { position: fixed; top: 50%; right: 18px; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 50; pointer-events: auto; }
+.theme-switcher-label { font-size: 9px; color: var(--c-gray); text-align: center; margin-bottom: 4px; font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; text-transform: uppercase; letter-spacing: 1px; writing-mode: vertical-rl; }
+.theme-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); position: relative; }
+.theme-dot:hover { transform: scale(1.15); }
+.theme-dot.active { border-color: var(--c-ink); transform: scale(1.2); box-shadow: 0 0 0 2px var(--c-paper), 0 0 0 4px var(--c-accent), 0 4px 12px rgba(0, 0, 0, 0.4); }
+.theme-dot::after { content: attr(data-name); position: absolute; right: 36px; top: 50%; transform: translateY(-50%); background: var(--c-ink); color: var(--c-paper); padding: 3px 8px; border-radius: 3px; font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+.theme-dot:hover::after { opacity: 1; }
+
+.bullet { list-style: none; }
+.bullet li { font-size: 17px; line-height: 1.6; padding-left: 22px; position: relative; margin-bottom: 8px; color: var(--c-ink); font-family: "Noto Serif SC", serif; }
+.bullet li::before { content: "·"; position: absolute; left: 4px; top: 0; color: var(--c-accent); font-weight: 700; font-size: 22px; line-height: 1; }
+
+.big-num { font-family: "STKaiti", "KaiTi", "楷体", "Noto Serif SC", serif; font-size: 88px; font-weight: 700; color: var(--c-accent); line-height: 1; letter-spacing: -2px; }
+
+.metric-row { display: flex; gap: 14px; }
+.metric { flex: 1; background: var(--c-paper); border: 1px solid var(--c-line); padding: 14px; position: relative; }
+.metric::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--c-accent); }
+.metric-num { font-family: "STKaiti", "KaiTi", "楷体", "Noto Serif SC", serif; font-size: 36px; font-weight: 700; color: var(--c-accent); line-height: 1; margin-bottom: 4px; }
+.metric-label { font-size: 12px; color: var(--c-gray); font-family: "Noto Serif SC", serif; }
+
+.flex-row { display: flex; gap: 18px; }
+.flex-col { display: flex; flex-direction: column; gap: 12px; }
+.mt-8 { margin-top: 8px; } .mt-12 { margin-top: 12px; } .mt-16 { margin-top: 16px; } .mt-20 { margin-top: 20px; } .mt-24 { margin-top: 24px; } .mt-32 { margin-top: 32px; }
+.gap-grow { flex: 1; }
+
+.gun-icon { width: 200px; height: 200px; background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-accent-soft) 100%); border: 4px solid var(--c-accent); display: flex; align-items: center; justify-content: center; font-size: 100px; margin: 0 auto 28px; box-shadow: 0 12px 32px rgba(var(--c-accent-rgb), 0.35); border-radius: 8px; position: relative; }
+.gun-icon::before, .gun-icon::after { content: ""; position: absolute; width: 14px; height: 14px; background: var(--c-paper); border-radius: 50%; }
+.gun-icon::before { top: -7px; left: -7px; }
+.gun-icon::after { bottom: -7px; right: -7px; }
+
+.tagline { display: inline-block; background: var(--c-ink); color: var(--c-paper); padding: 10px 24px; font-family: "Noto Serif SC", "STKaiti", "KaiTi", "楷体", serif; font-size: 16px; font-weight: 500; letter-spacing: 0.05em; border: 2px solid var(--c-accent); }
+.tagline-blue { background: var(--c-accent); color: var(--c-accent-on); border-color: var(--c-accent); }
+
+.split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.section-title { font-family: "STKaiti", "KaiTi", "楷体", serif; font-size: 16px; font-weight: 700; color: var(--c-accent); letter-spacing: 4px; margin-bottom: 8px; }
+.cta-q { font-family: "STKaiti", "KaiTi", "楷体", "Noto Serif SC", serif; font-size: 32px; font-weight: 700; color: var(--c-ink); line-height: 1.3; margin-bottom: 12px; letter-spacing: 0.02em; }
+.cta-q .accent { color: var(--c-accent); }
+.cta-q-num { font-size: 32px; font-weight: 700; color: var(--c-accent-soft); margin-right: 14px; font-family: "STKaiti", "KaiTi", "楷体", serif; }
+
+.arch-tile { background: var(--c-paper); border: 1px solid var(--c-accent); padding: 6px 10px; font-size: 11px; color: var(--c-ink); text-align: center; font-weight: 500; font-family: "Noto Serif SC", serif; }
+.arch-tile-dark { background: var(--c-ink); border: 1px solid var(--c-accent); padding: 6px 10px; font-size: 11px; color: var(--c-accent-soft); text-align: center; font-weight: 500; font-family: "Noto Serif SC", serif; }
+
+.demo-scene { transition: transform 0.2s ease; }
+.demo-scene:hover { transform: translateY(-2px); }
+
+.chat-window { background: var(--c-paper); border: 2px solid var(--c-accent); box-shadow: 0 4px 20px rgba(var(--c-accent-rgb), 0.12); display: flex; flex-direction: column; overflow: hidden; height: 100%; max-height: 720px; }
+.chat-titlebar { display: flex; align-items: center; gap: 6px; padding: 10px 16px; background: var(--c-mist); border-bottom: 2px solid var(--c-accent); }
+.chat-dot { width: 10px; height: 10px; border-radius: 50%; }
+.chat-dot.r { background: var(--c-warn); }
+.chat-dot.y { background: #c5a540; }
+.chat-dot.g { background: var(--c-good); }
+.chat-title { margin-left: 10px; font-size: 12px; color: var(--c-gray); font-weight: 500; font-family: "Noto Serif SC", serif; }
+.chat-body { flex: 1; padding: 16px 20px; overflow-y: auto; background: var(--c-mist); display: flex; flex-direction: column; gap: 10px; }
+.bubble { max-width: 80%; padding: 10px 14px; font-size: 14px; line-height: 1.6; word-break: break-word; position: relative; font-family: "Noto Serif SC", serif; border: 1px solid var(--c-line); }
+.bubble.user { align-self: flex-end; background: var(--c-user-bg); color: var(--c-user-on); border-color: var(--c-user-bg); border-radius: 14px 14px 3px 14px; }
+.bubble.mavis { align-self: flex-start; background: var(--c-paper); color: var(--c-ink); border-color: var(--c-accent-soft); border-radius: 14px 14px 14px 3px; }
+.bubble.mavis .bubble-tag { display: inline-block; font-size: 10px; font-weight: 700; color: var(--c-accent); margin-right: 6px; letter-spacing: 2px; font-family: "STKaiti", "KaiTi", "楷体", serif; }
+.bubble-meta { font-size: 10px; color: var(--c-gray); margin-top: 4px; font-family: "Noto Serif SC", serif; }
+.bubble.user .bubble-meta { color: rgba(250, 250, 247, 0.7); text-align: right; }
+.bubble code { font-family: "SF Mono", Menlo, monospace; font-size: 12px; background: rgba(0,0,0,0.08); padding: 0 5px; border-radius: 2px; }
+.bubble.mavis code { background: var(--c-mist); color: var(--c-accent); }
+.chat-input { display: flex; gap: 8px; padding: 10px 14px; background: var(--c-paper); border-top: 2px solid var(--c-accent); }
+.chat-input-box { flex: 1; background: var(--c-mist); padding: 8px 12px; font-size: 12px; color: var(--c-gray); font-family: "Noto Serif SC", serif; }
+.chat-send { background: var(--c-accent); color: var(--c-accent-on); padding: 8px 14px; font-size: 12px; font-weight: 600; font-family: "Noto Serif SC", serif; }
+
+.scroll-end { display: block; text-align: center; font-family: "STKaiti", "KaiTi", "楷体", serif; font-size: 12px; letter-spacing: 4px; color: var(--c-gray); margin-top: 16px; }
+</style>
+</head>
+<body class="theme-feiquan">
+<div class="stage" id="stage">
+
+<!-- ============== P0 封面 ============== -->
+<section class="slide" data-slide="0">
+  <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div class="gun-icon">⚔️</div>
+    <div class="h1" style="text-align:center;">比养 <span class="accent">Agent</span> 更重要的</div>
+    <div class="h1" style="text-align:center; margin-top: 12px;">是养你的 <span class="accent">skill 武器库</span></div>
+    <div class="sub" style="text-align:center; margin-top: 24px; font-family: 'STKaiti', 'KaiTi', '楷体', serif; letter-spacing: 0.1em;">六月从 prompt 到 loop 的进化路径</div>
+    <div class="tagline" style="margin: 36px auto 0; display:block; text-align:center;">你养的不是 agent，是你的军火库</div>
+    <div style="margin-top: 32px; font-size: 18px; color: var(--c-gray); letter-spacing: 6px; text-align: center; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">汀池 · 黄日超</div>
+  </div>
+  <div class="slide-num"><span class="current">壹</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal show">中国色<br>实战</div>
+</section>
+
+<!-- ============== P1 痛点 ============== -->
+<section class="slide" data-slide="1">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-red">痛点</span>
+    <div class="h2">所有人都在养 agent，但养错了</div>
+    <div class="sub" style="margin-top: 4px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">一年过去了，你留下了什么？</div>
+    <div class="flex-row" style="margin-top: 16px; flex: 1;">
+      <div class="card" style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <div style="background: var(--c-accent); color: var(--c-accent-on); padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: 2px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">你花时间在</div>
+          <div style="font-size: 12px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">看起来都在进步</div>
+        </div>
+        <ul class="bullet" style="margin-top: 4px;">
+          <li>每天写新 prompt 喂 AI（每个任务重新写）</li>
+          <li>调参数（这次对了，下次又不对）</li>
+          <li>换更好的模型（GPT-4 → Claude → Gemini）</li>
+          <li>每次都从 0 开始</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--c-line); font-size: 13px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <b style="color: var(--c-accent);">算下来一年：</b>
+          <span style="font-family: 'SF Mono', Menlo, monospace; color: var(--c-ink);">100+ prompt · 3 个模型 · N 次调参</span>
+        </div>
+      </div>
+      <div class="card" style="flex: 1; background: var(--c-warn-bg);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <div style="background: var(--c-warn); color: #fff; padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: 2px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">但一年后</div>
+          <div style="font-size: 12px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">啥也没攒下</div>
+        </div>
+        <ul class="bullet" style="margin-top: 4px;">
+          <li>100+ prompt → 找不到了</li>
+          <li>调好的参数 → 忘了，下次又调</li>
+          <li>换模型 → 之前的经验全废</li>
+          <li>从头来过 100 次</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--c-warn); font-size: 14px; color: var(--c-warn); font-weight: 700; font-family: 'STKaiti', 'KaiTi', '楷体', serif; letter-spacing: 0.1em;">
+          净 留 存 ＝ 零
+        </div>
+      </div>
+    </div>
+    <div class="quote mt-16" style="font-size: 32px;">
+      <span style="color: var(--c-gray);">agent = 一次性工具（用完即弃）</span>
+      <span style="color: var(--c-accent); font-weight: 800;">  ·  </span>
+      <span style="color: var(--c-ink); font-weight: 700;">skill = 越攒越多的资产</span>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">贰</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">痛点</div>
+</section>
+
+<!-- ============== P1.5 对话 1 ============== -->
+<section class="slide" data-slide="2">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <div class="h2">对话 一</div>
+    <div class="sub mt-8" style="margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">用户让 Mavis 写 PPT · 改了五次</div>
+    <div class="chat-window" style="flex: 1; max-height: 720px;">
+      <div class="chat-titlebar">
+        <div class="chat-dot r"></div><div class="chat-dot y"></div><div class="chat-dot g"></div>
+        <div class="chat-title">Mavis Code · 演示项目</div>
+        <div style="margin-left: 14px; display: flex; gap: 3px;">
+          <div style="padding: 3px 8px; background: var(--c-accent-50); color: var(--c-accent); border: 1px solid var(--c-accent-soft); font-size: 10px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">skill-arsenal-talk</div>
+        </div>
+      </div>
+      <div class="chat-body">
+        <div class="bubble user">我周末有个分享，主题是"养 skill 武器库"，你帮我出个 8 幕大纲</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>好嘞，8 幕：P0 封面 · P1 痛点 · P2 总纲 · P3 范式 · P4 harness · P5 loop · P6 demo · P7 CTA<div class="bubble-meta">3 分钟 · 草稿</div></div>
+        <div class="bubble user">P3 不对，再想想</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>改了，v2<div class="bubble-meta">v2 · P3 改写</div></div>
+        <div class="bubble user">P5 数据不准，PASS 数量错</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>PASS 是 12/50，我之前写错了<div class="bubble-meta">v3 · 数据修正</div></div>
+        <div class="bubble user">P6 节奏卡 1.5min 不够</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>v4，调到 2min<div class="bubble-meta">v4 · 节奏调整</div></div>
+        <div class="bubble user">算了，我让你改了 5 次了，每次都从 0 写 ...</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>👀 看到第 5 次 · 这正是 skill / context 化的时机<div class="bubble-meta">v5 · 触发 skill 化</div></div>
+      </div>
+      <div class="chat-input">
+        <div class="chat-input-box">输入消息 ...</div>
+        <div class="chat-send">发送</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">叁</span><span class="slash">/</span><span class="total">廿贰</span></div>
+</section>
+
+<!-- ============== P2 总纲 ============== -->
+<section class="slide" data-slide="3">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag">总纲</span>
+    <div class="h2">五阶进化 + 一旁支 · <span class="accent">context → skill</span></div>
+    <div class="flow mt-12" style="justify-content: center;">
+      <div class="flow-node start">Agent</div><div class="flow-arrow">→</div>
+      <div class="flow-node">Prompt</div><div class="flow-arrow">→</div>
+      <div class="flow-node">Context</div><div class="flow-arrow">→</div>
+      <div class="flow-node start">Skill</div><div class="flow-arrow">→</div>
+      <div class="flow-node">Harness</div><div class="flow-arrow">→</div>
+      <div class="flow-node end">Loop</div>
+    </div>
+    <table class="mt-12" style="flex: 1;">
+      <thead><tr><th style="width: 14%;">概念</th><th style="width: 54%;">一句话</th><th style="width: 12%;">何时出现</th><th>关键事件</th></tr></thead>
+      <tbody>
+        <tr><td><b>Agent</b></td><td>跑任务的执行者 · 一次性的</td><td>起点</td><td style="color: var(--c-gray);">不在时间主轴上</td></tr>
+        <tr><td><b>Prompt</b></td><td>临时凑的脚手架 · 第一次写出能用的</td><td>2023</td><td style="color: var(--c-gray);">LLM API 开放 · ChatGPT 出圈</td></tr>
+        <tr style="background: var(--c-accent-50);"><td><b>Context</b></td><td>把 prompt 沉淀成可复用资产</td><td>2024</td><td style="color: var(--c-gray);">上下文窗口变长 · system prompt 出现</td></tr>
+        <tr style="background: var(--c-accent-50);"><td><b><span style="color: var(--c-accent);">Skill</span></b></td><td><b>把 context 进化成可分发武器</b></td><td><b>2025</b></td><td style="color: var(--c-gray);"><b>pretty-skills 仓库 · 12 领域</b></td></tr>
+        <tr><td><b>Harness</b></td><td>给 agent 装决策栈 + 评委 + 护栏 + 评分</td><td>2026 初</td><td style="color: var(--c-gray);">dream 修炼达尔文 v2 · 9 维评分</td></tr>
+        <tr><td><b>Loop</b></td><td>读场景 → 写手册 → 自动跑 → 人审 → 再用</td><td>2026 中</td><td style="color: var(--c-gray);">taste-skill 范式 + human-in-the-loop</td></tr>
+      </tbody>
+    </table>
+    <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 10px 14px; background: var(--c-mist); border: 1px dashed var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+      <span style="display: inline-block; padding: 3px 10px; background: var(--c-gray); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; flex-shrink: 0;">2025 旁支</span>
+      <div style="font-size: 14px; color: var(--c-ink);">
+        <b style="color: var(--c-ink);">MCP</b> · 把"24 小时跑的能力"封装成可调用的服务
+        <span style="color: var(--c-gray); font-size: 12px; margin-left: 6px;">— 与 Skill 同年出现 · 走的是"持续在线"路线 · 不在主链 5 阶里</span>
+      </div>
+    </div>
+    <div class="quote-sm mt-12">prompt 是为了解决问题尝试干活 · <span class="accent">context → skill</span> 是稳定干活后总结出来的武器</div>
+  </div>
+  <div class="slide-num"><span class="current">肆</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">总纲</div>
+</section>
+
+<!-- ============== P3 范式 ============== -->
+<section class="slide" data-slide="4">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag">范式</span>
+    <div class="h2">从脚手架变武器</div>
+    <div class="split-2" style="margin-top: 12px; flex: 1;">
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="section-title" style="color: var(--c-warn);">脚手架 · prompt</div>
+        <ul class="bullet" style="margin-top: 10px;">
+          <li>第 3 次写同一个 prompt → 该提 context / skill</li>
+          <li>改 1 个 prompt 改到第 5 版 → 该入 context</li>
+          <li>解释"不是这个意思"3 遍 → 该沉淀反例</li>
+        </ul>
+        <div class="big-num mt-16" style="text-align:center;">× 5</div>
+        <div style="text-align:center; font-size: 16px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">prompt 写五遍</div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="section-title" style="color: var(--c-good);">武器 · skill</div>
+        <div style="background: var(--c-paper); border: 2px solid var(--c-good); padding: 20px; margin-top: 10px; position: relative;">
+          <div class="big-num" style="color: var(--c-good); text-align:center;">× 30</div>
+          <div style="text-align:center; font-size: 16px; color: var(--c-gray); margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">1 个 skill 用三十次</div>
+          <div style="font-size: 14px; color: var(--c-gray); border-top: 1px solid var(--c-fog); padding-top: 12px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+            真实案例 · <span class="accent">dashiai-ppt</span> · 一周 6 commit，从 v0 到 v3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quote mt-12">context 工程 = 把 agent 的失败变成你的资产</div>
+  </div>
+  <div class="slide-num"><span class="current">伍</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">范式</div>
+</section>
+
+<!-- ============== P3.5 skill 是什么 ============== -->
+<section class="slide" data-slide="5">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-ink">定义</span>
+    <div class="h2">skill 是什么 · 一个 <span class="accent">SKILL.md</span> 文件</div>
+    <div class="split-2 mt-16" style="flex: 1;">
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="section-title">三句话说清</div>
+        <ul class="bullet" style="margin-top: 10px;">
+          <li><b>物理形态</b> · 一个 <code>SKILL.md</code> 文件 + frontmatter</li>
+          <li><b>装载方式</b> · agent 启动时 load 进来 · 像装 1 个"插件"</li>
+          <li><b>作用</b> · 把"提示词"变成"可复用的工作流"</li>
+        </ul>
+        <div class="card mt-12" style="background: var(--c-accent-50);">
+          <div style="font-size: 14px; color: var(--c-ink); line-height: 1.6; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+            <b style="color: var(--c-accent);">提示词</b> = 你跟 agent 说的话 · 1 次性 · 容易忘<br>
+            <b style="color: var(--c-good);">skill / context</b> = 你写给 agent 看的说明书 · 可复用 · 不会忘
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column;">
+        <div class="section-title">真实 SKILL.md 长这样</div>
+        <div style="background: #1a1f1c; border: 1px solid var(--c-accent); padding: 16px 20px; font-family: 'STKaiti', 'KaiTi', '楷体', "SF Mono", Menlo, monospace; font-size: 12px; line-height: 1.65; color: #c5d6cb; flex: 1; overflow: hidden;">
+<span style="color: var(--c-accent-soft);">---</span>
+<span style="color: #fff;">name:</span> <span style="color: var(--c-accent-soft);">ai-image-to-pptx</span>
+<span style="color: #fff;">description:</span> 制作 PPT / 汇报材料时使用
+  · 5 步 pipeline · 6 商务科技主题
+<span style="color: var(--c-accent-soft);">---</span>
+<span style="color: var(--c-gray);"># ai-image-to-pptx</span>
+
+<span style="color: #fff;">## 触发词</span>
+  · 做 PPT · 讲解图 · 出 .pptx
+
+<span style="color: #fff;">## 5 步 pipeline</span>
+  1. 选题  2. 风格  3. 配图
+  4. 排版  5. 导出
+
+<span style="color: #fff;">## 反模式</span>
+  - 不加风格默认 = 全白 PPT
+  - 不写认知锚点 = 图生完没重点
+  ...
+        </div>
+        <div style="font-size: 12px; color: var(--c-gray); margin-top: 8px; text-align: center; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          ↑ 这就是 1 个 skill · 60 行 · 装好就能用 30+ 次
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">陆</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">定义</div>
+</section>
+
+<!-- ============== P3.7 对话 2 ============== -->
+<section class="slide" data-slide="6">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <div class="h2">对话 二</div>
+    <div class="sub mt-8" style="margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">用户问"能沉淀吗" · Mavis 教 3 步抽 skill</div>
+    <div class="chat-window" style="flex: 1; max-height: 720px;">
+      <div class="chat-titlebar">
+        <div class="chat-dot r"></div><div class="chat-dot y"></div><div class="chat-dot g"></div>
+        <div class="chat-title">Mavis Code · 演示项目</div>
+      </div>
+      <div class="chat-body">
+        <div class="bubble user">（接上）能不能别每次从 0 开始？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>这正是 skill / context 化的时机<br>我帮你抽 3 步：<br>① 找模板：<code>内容创作/ai-image-to-pptx</code><br>② 填字段：8 幕结构 + 4 阶进化图<br>③ 入库：<code>pretty-skills v0.1</code><div class="bubble-meta">3 步 · context 工程</div></div>
+        <div class="bubble user">下次我直接说"用 ai-image-to-pptx 做 XX 主题"就行？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>对，下次 0 改稿直接出<br>你以后说"用 ai-image-to-pptx 做 XX"，我自动套模板<div class="bubble-meta">✓ context / skill 入库</div></div>
+        <div class="bubble user">那以前我让你改的 5 版大纲呢？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>已经入反模式黑名单<br>下次自动避开这 5 个错<div class="bubble-meta">✓ 反例沉淀</div></div>
+        <div class="bubble user">听起来挺简单，但我不记得 ps 命令</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>我帮你装好<br><code>ps add ai-image-to-pptx</code> + <code>ps list</code> 查一下<div class="bubble-meta">✓ 装好</div></div>
+      </div>
+      <div class="chat-input">
+        <div class="chat-input-box">输入消息 ...</div>
+        <div class="chat-send">发送</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">柒</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+</section>
+
+<!-- ============== P4 拐点 ============== -->
+<section class="slide" data-slide="7">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-gray">拐点</span>
+    <div class="h2">三个判断时机 · 到了就提 skill</div>
+    <div class="card-grid card-grid-3 mt-16" style="flex: 1;">
+      <div class="card"><div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 48px; font-weight: 700; color: var(--c-warn); line-height: 1;">3</div><div class="card-title mt-8">第三次写同一个 prompt</div><div class="card-desc" style="margin-top: 6px;">说明这事不是一次性的 · 该提 context / skill</div></div>
+      <div class="card"><div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 48px; font-weight: 700; color: var(--c-warn); line-height: 1;">5</div><div class="card-title mt-8">第五版还在改</div><div class="card-desc" style="margin-top: 6px;">脚手架已经压不住 · 该入 context</div></div>
+      <div class="card"><div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 48px; font-weight: 700; color: var(--c-warn); line-height: 1;">3</div><div class="card-title mt-8">解释"不是这个意思"三遍</div><div class="card-desc" style="margin-top: 6px;">反例没沉淀 · 该入反模式黑名单</div></div>
+    </div>
+    <div class="quote-sm mt-16">三 / 五 / 三 · 三次机会，没接住 = 这次机会也没了</div>
+  </div>
+  <div class="slide-num"><span class="current">捌</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+  <div class="slide-seal">拐点</div>
+</section>
+
+<!-- ============== P5 harness 是什么 ============== -->
+<section class="slide" data-slide="8">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-ink">概念</span>
+    <div class="h2">harness 是什么</div>
+    <div class="card-grid card-grid-4 mt-16" style="flex: 1;">
+      <div class="card"><div style="font-size: 36px;">🎯</div><div class="card-title mt-6">决策栈</div><div class="card-desc">每一步走什么、怎么走、不走会怎样</div></div>
+      <div class="card"><div style="font-size: 36px;">⚖️</div><div class="card-title mt-6">评委</div><div class="card-desc">谁打分 · 多个评委 = 不靠 LLM 单点</div></div>
+      <div class="card"><div style="font-size: 36px;">🛡️</div><div class="card-title mt-6">护栏</div><div class="card-desc">高风险行动黑名单 · 不可越界</div></div>
+      <div class="card"><div style="font-size: 36px;">📊</div><div class="card-title mt-6">评分</div><div class="card-desc">9 维评分 · 自迭代 = 越用越好</div></div>
+    </div>
+    <div class="quote-sm mt-16">harness 不是给你跑的，是给 agent 跑的</div>
+  </div>
+  <div class="slide-num"><span class="current">玖</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+  <div class="slide-seal">概念</div>
+</section>
+
+<!-- ============== P6 9 维评分 ============== -->
+<section class="slide" data-slide="9">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-gray">数据</span>
+    <div class="h2">九维评分 · dream 修炼达尔文 v2</div>
+    <div class="flex-row" style="margin-top: 10px; flex: 1;">
+      <div style="flex: 1.5;">
+        <table>
+          <thead><tr><th style="width: 6%;">#</th><th>维度</th><th style="width: 16%;">基线</th><th>优化目标</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>失败模式编码</td><td class="bad">3/10</td><td class="good">8/10</td></tr>
+            <tr><td>2</td><td>可执行具体性</td><td>6/10</td><td class="good">8/10</td></tr>
+            <tr><td>3</td><td>高风险行动黑名单</td><td class="bad">2/10</td><td class="good">9/10</td></tr>
+            <tr><td>4</td><td>4 件套完整度</td><td class="bad">3/10</td><td class="good">7/10</td></tr>
+            <tr><td>5</td><td>锦绣素材</td><td class="bad">1/10</td><td class="good">6/10</td></tr>
+            <tr><td>6</td><td>跨 agent 兼容性</td><td>5/10</td><td class="good">7/10</td></tr>
+            <tr><td>7</td><td>实战验证</td><td class="bad">3/10</td><td class="good">7/10</td></tr>
+            <tr><td>8</td><td>内容数据支撑</td><td>5/10</td><td class="good">8/10</td></tr>
+            <tr><td>9</td><td>维护者活跃度</td><td class="good">8/10</td><td class="good">9/10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+        <div class="card" style="background: var(--c-ink); color: #fff;">
+          <div class="card-title" style="color: var(--c-accent-soft);">self-improving-agent v2</div>
+          <div style="display:flex; gap: 12px; margin-top: 10px;">
+            <div style="flex: 1; background: rgba(255,255,255,0.08); padding: 12px; text-align:center;">
+              <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 32px; font-weight: 700; color: var(--c-gray);">4.0</div>
+              <div style="font-size: 11px; color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">v1 基线</div>
+            </div>
+            <div style="flex: 1; background: rgba(255,255,255,0.08); padding: 12px; text-align:center;">
+              <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 32px; font-weight: 700; color: var(--c-accent-soft);">7.7</div>
+              <div style="font-size: 11px; color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">v2 优化后</div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top: 8px; font-size: 13px; color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">七天 +3.7 涨分</div>
+        </div>
+      </div>
+    </div>
+    <div class="quote-sm mt-12">每条 commit 走一遍 9 维 · 涨分才有意义</div>
+  </div>
+  <div class="slide-num"><span class="current">拾</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">数据</div>
+</section>
+
+</div>
+
+
+<!-- ============== P6.5 对话 3 ============== -->
+<section class="slide" data-slide="10">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <div class="h2">对话 三</div>
+    <div class="sub mt-8" style="margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">用户问"失败怎么记" · Mavis 亮 9 维评分</div>
+    <div class="chat-window" style="flex: 1; max-height: 720px;">
+      <div class="chat-titlebar">
+        <div class="chat-dot r"></div><div class="chat-dot y"></div><div class="chat-dot g"></div>
+        <div class="chat-title">Mavis Code · 演示项目</div>
+      </div>
+      <div class="chat-body">
+        <div class="bubble user">你修了几次？每次失败都记吗？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>9 维评分 + 多评委 + validation 回滚<br><code>dream-log.md</code> 368 行 · 每条 commit 都标了根因<div class="bubble-meta">3 件套</div></div>
+        <div class="bubble user">9 维是啥？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>[亮 9 维评分表]<br>1. 失败模式编码 3→8<br>2. 可执行具体性 6→8<br>3. 高风险行动黑名单 2→9<br>4. 4 件套完整度 3→7<br>5. 锦绣素材 1→6<br>6. 跨 agent 兼容性 5→7<br>7. 实战验证 3→7<br>8. 内容数据支撑 5→8<br>9. 维护者活跃度 8→9<div class="bubble-meta">v1 → v2 · +3.7 涨分</div></div>
+        <div class="bubble user">所以你每次失败都会修？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>不会 · 9 维涨分才修<br>不涨分 = 不入库 = 白修<div class="bubble-meta">validation 回滚</div></div>
+        <div class="bubble user">听起来好严，不累吗？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>第 1 周累 · 第 4 周同类错 0 次<br>第 8 周新 case 跑一遍 = PASS<div class="bubble-meta">✓ loop 跑通</div></div>
+      </div>
+      <div class="chat-input">
+        <div class="chat-input-box">输入消息 ...</div>
+        <div class="chat-send">发送</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">拾壹</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+</section>
+
+<!-- ============== P7 反面 ============== -->
+<section class="slide" data-slide="11">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-red">反例</span>
+    <div class="h2">harness 反面 · 靠 LLM 当裁判的 3 个坑</div>
+    <div class="card-grid card-grid-3 mt-16" style="flex: 1;">
+      <div class="card" style="background: var(--c-warn-bg);"><div style="font-size: 32px;">🐢</div><div class="card-title mt-6">慢</div><div class="card-desc">LLM 跑 1 轮 = 几秒到几十秒，循环里叠加就是分钟级</div></div>
+      <div class="card" style="background: var(--c-warn-bg);"><div style="font-size: 32px;">🎲</div><div class="card-title mt-6">不可控</div><div class="card-desc">温度 0 也会漂 · 同输入可能出不同评分</div></div>
+      <div class="card" style="background: var(--c-warn-bg);"><div style="font-size: 32px;">💥</div><div class="card-title mt-6">单点失败</div><div class="card-desc">token 限流 / API 挂 / 上下文爆 = 整个 loop 停</div></div>
+    </div>
+    <div class="quote-sm mt-16">单一 LLM 评分 = 看似自动 = 实际脆弱</div>
+  </div>
+  <div class="slide-num"><span class="current">拾贰</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+  <div class="slide-seal">反例</div>
+</section>
+
+<!-- ============== P8 正面 ============== -->
+<section class="slide" data-slide="12">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag tag-green">正例</span>
+    <div class="h2">harness 正面 · dream 修炼达尔文 v2</div>
+    <div class="split-2 mt-16" style="flex: 1;">
+      <div class="card">
+        <div class="section-title" style="color: var(--c-good);">四件套</div>
+        <ul class="bullet" style="margin-top: 10px;">
+          <li>9 维评分（量化）</li>
+          <li>多评委（不靠 LLM 单点）</li>
+          <li>validation 回滚（涨分才入库）</li>
+          <li>反模式黑名单（防同类错）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="section-title" style="color: var(--c-good);">自迭代流程</div>
+        <div class="flow-col mt-8">
+          <div class="flow-node" style="text-align:center;">跑 1 次任务</div>
+          <div class="flow-arrow" style="text-align:center;">↓</div>
+          <div class="flow-node" style="text-align:center;">9 维评分</div>
+          <div class="flow-arrow" style="text-align:center;">↓</div>
+          <div class="flow-node" style="text-align:center;">涨分？→ 入库</div>
+          <div class="flow-arrow" style="text-align:center;">↓</div>
+          <div class="flow-node end" style="text-align:center;">下次跑 = 涨了</div>
+        </div>
+      </div>
+    </div>
+    <div class="quote-sm mt-12">harness = 把"我也觉得"换成"9 维 + 多评委 + 回滚"</div>
+  </div>
+  <div class="slide-num"><span class="current">拾叁</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+  <div class="slide-seal">正例</div>
+</section>
+
+<!-- ============== P8.5 架构图 ============== -->
+<section class="slide" data-slide="13">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag" style="background: var(--c-ink);">架构</span>
+    <div class="h2">pretty-skills · <span class="accent">三层架构 + 真实证据</span></div>
+    <div class="sub mt-8" style="margin-bottom: 12px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">内容层用方法论层连接工具层 · 跟其他 skill 库最大的区别</div>
+    <div style="flex: 1; display: flex; gap: 14px; padding: 4px 0;">
+      <div style="flex: 1.2; display: flex; flex-direction: column; gap: 6px;">
+        <div style="background: var(--c-paper); border: 2px solid var(--c-accent); padding: 10px 14px; box-shadow: 0 3px 12px rgba(var(--c-accent-rgb), 0.10); position: relative;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--c-accent), var(--c-accent-soft), var(--c-accent));"></div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="background: var(--c-accent); color: var(--c-accent-on); padding: 4px 10px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">L1</div>
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 14px; font-weight: 700; color: var(--c-ink);">内容层</div>
+            <div style="font-size: 11px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">16 领域 × 62 case · 12 PASS</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin-top: 6px;">
+            <div class="arch-tile">Agent知识</div><div class="arch-tile">视觉创作</div><div class="arch-tile">内容创作</div><div class="arch-tile">金融投资</div>
+            <div class="arch-tile">编程开发</div><div class="arch-tile">做事技巧</div><div class="arch-tile">玄学修炼</div>
+            <div class="arch-tile" style="background: var(--c-accent-50); color: var(--c-accent); font-weight: 700;">+10 领域</div>
+          </div>
+          <div style="font-size: 10px; color: var(--c-gray); margin-top: 4px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">每个领域：case / SKILL.md / content.md / 锦绣/</div>
+        </div>
+        <div style="display: flex; justify-content: center; margin: -1px 0;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 2px; height: 8px; background: var(--c-accent);"></div>
+            <div style="font-size: 9px; color: var(--c-accent); font-weight: 600; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">↑↓ 沉淀 / 抽取</div>
+            <div style="width: 2px; height: 8px; background: var(--c-accent);"></div>
+          </div>
+        </div>
+        <div style="background: var(--c-ink); border: 2px solid var(--c-accent-soft); padding: 10px 14px; box-shadow: 0 3px 12px rgba(0, 0, 0, 0.20); position: relative;">
+          <div style="position: absolute; top: -7px; right: 14px; background: var(--c-accent); color: var(--c-accent-on); padding: 2px 7px; font-size: 9px; font-weight: 700; letter-spacing: 1px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">核心</div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="background: var(--c-accent-soft); color: var(--c-ink); padding: 4px 10px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">L2</div>
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 14px; font-weight: 700; color: #fff;">方法论层</div>
+            <div style="font-size: 11px; color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">3F 校验 + dream-log + 自迭代</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 6px;">
+            <div class="arch-tile-dark">check-3f.py</div><div class="arch-tile-dark">9 维评分</div><div class="arch-tile-dark">多评委</div><div class="arch-tile-dark">validation 回滚</div>
+          </div>
+          <div style="font-size: 10px; color: var(--c-accent-soft); margin-top: 4px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">dream-log.md 每天 23:00 复盘 · 368 行 · 这是其他 skill 库没有的层</div>
+        </div>
+        <div style="display: flex; justify-content: center; margin: -1px 0;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 2px; height: 8px; background: var(--c-accent);"></div>
+            <div style="font-size: 9px; color: var(--c-accent); font-weight: 600; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">↑↓ 调用 / 反馈</div>
+            <div style="width: 2px; height: 8px; background: var(--c-accent);"></div>
+          </div>
+        </div>
+        <div style="background: var(--c-paper); border: 2px solid var(--c-accent); padding: 10px 14px; box-shadow: 0 3px 12px rgba(var(--c-accent-rgb), 0.10);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="background: var(--c-accent); color: var(--c-accent-on); padding: 4px 10px; font-size: 11px; font-weight: 700; letter-spacing: 1px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">L3</div>
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 14px; font-weight: 700; color: var(--c-ink);">工具层</div>
+            <div style="font-size: 11px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">ps CLI + skill-creator · 10 个子命令</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: 6px;">
+            <div class="arch-tile">ps add</div><div class="arch-tile">ps create</div><div class="arch-tile">ps list</div><div class="arch-tile">ps contribute</div><div class="arch-tile">ps doctor</div>
+            <div class="arch-tile">ps graph</div><div class="arch-tile">ps info</div><div class="arch-tile">ps update</div><div class="arch-tile">ps rm</div>
+            <div class="arch-tile" style="background: var(--c-accent-50); color: var(--c-accent); font-weight: 700;">+ skill-creator</div>
+          </div>
+          <div style="font-size: 10px; color: var(--c-gray); margin-top: 4px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">CLI = 跟方法论层对话的入口</div>
+        </div>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
+        <div style="background: var(--c-paper); border: 2px solid var(--c-good); padding: 10px 12px; position: relative;">
+          <div style="position: absolute; margin-top: -22px; margin-left: -2px; background: var(--c-good); color: #fff; padding: 2px 8px; font-size: 9px; font-weight: 700; font-family: 'STKaiti', 'KaiTi', '楷体', serif; letter-spacing: 1px;">L1 真实</div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 12px; font-weight: 700; color: var(--c-ink);">case 文件树 · 视觉创作/PPT证据链战法/</div>
+          </div>
+          <div class="tree" style="font-size: 10px; line-height: 1.55; padding: 8px 12px;"><span class="d">~/knowledge/pretty-skills/视觉创作/PPT证据链战法/</span>
+<span class="f">├──</span> <span class="g">content.md</span>          <span class="d"># 7 页 × 7 字段</span>
+<span class="f">├──</span> <span class="g">web.html</span>            <span class="d"># 翻页演示</span>
+<span class="f">├──</span> <span class="g">images/</span>             <span class="d"># 7 张 PNG · 1280×720</span>
+<span class="f">├──</span> <span class="g">锦绣/</span>               <span class="d"># 横屏+竖屏 cover + slides</span>
+<span class="f">├──</span> <span class="g">manifest.json</span>       <span class="d"># domain=视觉创作 · visibility=public</span>
+<span class="f">└──</span> <span class="g">PPT证据链战法讲解.pdf</span>  <span class="d"># 7 image object · 413KB</span></div>
+        </div>
+        <div style="background: var(--c-ink); border: 2px solid var(--c-accent-soft); padding: 10px 12px; position: relative;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 12px; font-weight: 700; color: #fff;">L2 真实 · dream-log.md 2026-07-12 真实片段</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.3); color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', "SF Mono", Menlo, monospace; font-size: 10px; line-height: 1.55; padding: 8px 12px; border-left: 2px solid var(--c-accent-soft);">
+            <div style="color: var(--c-accent-soft);">## 2026-07-12（每日 dream 修炼自动化）</div>
+            <div><span style="color: var(--c-gray);">沉淀：</span>新建 <span style="color: #fff;">视觉创作/PPT证据链战法</span></div>
+            <div><span style="color: var(--c-gray);">       content.md (7页×7字段) + web.html + 7 PNG</span></div>
+            <div><span style="color: var(--c-gray);">3F 校验：</span><span style="color: var(--c-accent-soft); font-weight: 700;">check-3f.py → EXIT=0</span> <span style="color: var(--c-gray);">(F1/F3/对齐/真实性/manifest 全过)</span></div>
+            <div><span style="color: var(--c-gray);">INDEX.md：</span>case 计数 12 → 13</div>
+            <div style="margin-top: 4px; color: var(--c-gray);">## 2026-07-13（每日 dream 修炼自动化）</div>
+            <div><span style="color: var(--c-gray);">结论：今日无新增沉淀（无对话/无 commit/无文件改动）</span></div>
+            <div><span style="color: var(--c-gray);">健康快检：</span>14 case 跑 check-3f → <span style="color: var(--c-accent-soft); font-weight: 700;">13 PASS / 1 FAIL</span></div>
+            <div><span style="color: var(--c-gray);">FAIL：视觉创作/dashiai-ppt</span></div>
+            <div><span style="color: var(--c-gray);">  （portrait 768×1376 vs check 假设冲突，</span></div>
+            <div><span style="color: var(--c-gray);">   属 check-3f 设计盲点，非本次范围）</span></div>
+          </div>
+        </div>
+        <div style="background: var(--c-paper); border: 2px solid var(--c-accent); padding: 10px 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 12px; font-weight: 700; color: var(--c-ink);">L3 真实 · ps doctor 真实输出</div>
+          </div>
+          <div style="background: var(--c-ink); color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', "SF Mono", Menlo, monospace; font-size: 10px; line-height: 1.55; padding: 8px 12px;">
+            <div><span style="color: #fff;">$ ps doctor</span></div>
+            <div><span style="color: var(--c-accent-soft);">✓</span> 16 领域已装  · 62 case 已注册</div>
+            <div><span style="color: var(--c-accent-soft);">✓</span> check-3f.py 在 PATH</div>
+            <div><span style="color: var(--c-accent-soft);">✓</span> dream-log.md 368 行 · 今日 23:00 cron 已就位</div>
+            <div><span style="color: #c5a540;">⚠</span> 1 case FAIL: 视觉创作/dashiai-ppt（设计盲点）</div>
+            <div><span style="color: #fff;">→</span> 总分 4.0 / 7.7（达尔文 v2 后）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quote-sm mt-8">三层架构 = 16 领域有方法论撑 · 方法论有 CLI 跑 · 真实证据看得见</div>
+  </div>
+  <div class="slide-num"><span class="current">拾肆</span><span class="slash\">/</span><span class="total\">廿贰</span></div>
+  <div class="slide-seal">架构</div>
+</section>
+
+<!-- ============== P9 数据 ============== -->
+<section class="slide" data-slide="14">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag">数据</span>
+    <div class="h2">pretty-skills · 七天 122 commits</div>
+    <div class="metric-row mt-12">
+      <div class="metric"><div class="metric-num">16</div><div class="metric-label">领域</div></div>
+      <div class="metric"><div class="metric-num">62</div><div class="metric-label">case</div></div>
+      <div class="metric"><div class="metric-num">122</div><div class="metric-label">commits · 七天</div></div>
+      <div class="metric" style="background: var(--c-ink);"><div class="metric-num" style="color: var(--c-accent-soft);">12<span style="font-size: 18px; color: #fff;">/50</span></div><div class="metric-label" style="color: var(--c-accent-soft);">3F PASS · 24%</div></div>
+    </div>
+    <div class="flex-row mt-12" style="flex: 1;">
+      <div style="flex: 1; display:flex; flex-direction:column;">
+        <div class="section-title">16 领域目录树 · 真实 ls 输出</div>
+        <div class="tree" style="flex: 1;"><span class="d">~/knowledge/pretty-skills/</span>
+<span class="f">├──</span> <span class="g">产品设计</span>
+<span class="f">├──</span> <span class="g">做事技巧</span>           <span class="d"># 11 case</span>
+<span class="f">├──</span> <span class="g">内容创作</span>           <span class="d"># 9 case</span>
+<span class="f">├──</span> <span class="g">商业运营</span>           <span class="d"># 2 case</span>
+<span class="f">├──</span> <span class="g">情感领域</span>
+<span class="f">├──</span> <span class="g">故事写作</span>
+<span class="f">├──</span> <span class="g">教育学习</span>
+<span class="f">├──</span> <span class="g">数据科学</span>
+<span class="f">├──</span> <span class="g">橙皮书</span>
+<span class="f">├──</span> <span class="g">游戏玩家</span>
+<span class="f">├──</span> <span class="g">玄学修炼</span>           <span class="d"># 3 case · 1 PASS</span>
+<span class="f">├──</span> <span class="g">社交主导</span>
+<span class="f">├──</span> <span class="g">编程开发</span>           <span class="d"># 4 case · 2 PASS</span>
+<span class="f">├──</span> <span class="g">金融投资</span>           <span class="d"># 10 case · 3 PASS</span>
+<span class="f">├──</span> <span class="g">视觉创作</span>           <span class="d"># 15 case · 1 PASS</span>
+<span class="f">└──</span> <span class="g">Agent知识</span>          <span class="d"># 6 case · 4 PASS</span></div>
+      </div>
+      <div style="flex: 1; display:flex; flex-direction:column; gap: 10px;">
+        <div class="card">
+          <div class="section-title">为什么七天做到 122 commits</div>
+          <ul class="bullet" style="margin-top: 8px;">
+            <li>每天 dream-log 复盘 = 1 天 17+ commit</li>
+            <li>9 维评分跑 case = PASS 涨分</li>
+            <li>反例 → 反模式黑名单 → 同类错不再犯</li>
+          </ul>
+        </div>
+        <div class="card" style="background: var(--c-accent-50);">
+          <div class="section-title">loop 真在跑</div>
+          <div style="font-size: 13px; color: var(--c-ink); margin-top: 6px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+            <code style="background:#fff; padding: 1px 5px; color: var(--c-accent);">dream-log.md</code> 368 行
+            · 每条 commit 都标了根因
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">拾伍</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">数据</div>
+</section>
+
+<!-- ============== P9.5 演示图 3 场景 ============== -->
+<section class="slide" data-slide="15">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag" style="background: var(--c-ink);">运转</span>
+    <div class="h2">pretty-skills · <span class="accent">三个状态下怎么工作（真实命令）</span></div>
+    <div class="sub mt-8" style="margin-bottom: 12px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">对话时匹配 · 干活时执行 · 修炼时迭代</div>
+    <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; align-content: center;">
+      <div class="demo-scene" style="background: var(--c-paper); border: 2px solid var(--c-accent); padding: 16px 18px; box-shadow: 0 4px 16px rgba(var(--c-accent-rgb), 0.10); display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: var(--c-accent); color: var(--c-accent-on); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">💬</div>
+          <div>
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 16px; font-weight: 700; color: var(--c-ink);">对话时</div>
+            <div style="font-size: 11px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">场景 一 · 匹配 · 16 领域自动定位</div>
+          </div>
+        </div>
+        <div style="background: var(--c-user-bg); color: var(--c-user-on); padding: 8px 12px; border-radius: 14px 14px 3px 14px; font-size: 13px; align-self: flex-end; max-width: 85%;">我要做一个公众号排版</div>
+        <div style="background: var(--c-paper); color: var(--c-ink); padding: 8px 12px; border: 1px solid var(--c-accent-soft); border-radius: 14px 14px 14px 3px; font-size: 13px; align-self: flex-start; max-width: 85%;">
+          <div style="color: var(--c-accent); font-weight: 700; font-size: 10px; margin-bottom: 2px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">Mavis</div>
+          触发 <code style="background: var(--c-mist); padding: 1px 5px; color: var(--c-accent); font-size: 11px;">ps list</code> 找匹配
+        </div>
+        <div style="background: var(--c-ink); color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', "SF Mono", Menlo, monospace; font-size: 11px; line-height: 1.65; padding: 10px 12px;">
+          <div><span style="color: #fff;">$</span> ps list --match "公众号排版"</div>
+          <div><span style="color: var(--c-accent-soft);">✓</span> <span style="color: #fff;">视觉创作/gzh-design</span>          <span style="color: var(--c-gray);">(score 0.92)</span></div>
+          <div><span style="color: var(--c-accent-soft);">✓</span> <span style="color: #fff;">内容创作/公众号爆款操盘术</span>   <span style="color: var(--c-gray);">(score 0.81)</span></div>
+          <div style="color: var(--c-gray);">  命中 2/62 · 自动加载 gzh-design 7 主题</div>
+        </div>
+        <div style="background: var(--c-accent-50); border: 1px dashed var(--c-accent-soft); padding: 8px 12px; font-size: 12px; color: var(--c-ink); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <b style="color: var(--c-accent);">↓ 16 领域自动匹配</b> · 命中 → 加载 SKILL.md
+        </div>
+        <div style="font-size: 11px; color: var(--c-accent); text-align: center; font-weight: 600; padding-top: 4px; border-top: 1px solid var(--c-line); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">对话 ↔ 库匹配</div>
+      </div>
+      <div class="demo-scene" style="background: var(--c-paper); border: 2px solid var(--c-good); padding: 16px 18px; box-shadow: 0 4px 16px rgba(var(--c-accent-rgb), 0.10); display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: var(--c-good); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">⚙️</div>
+          <div>
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 16px; font-weight: 700; color: var(--c-ink);">干活时</div>
+            <div style="font-size: 11px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">场景 二 · 执行 · 5 步 pipeline</div>
+          </div>
+        </div>
+        <div style="background: var(--c-ink); color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', "SF Mono", Menlo, monospace; font-size: 11px; line-height: 1.65; padding: 10px 12px;">
+          <div><span style="color: #fff;">$</span> Mavis run skill <span style="color: #fff;">gzh-design</span> \</div>
+          <div>    --input "公众号排版"</div>
+          <div style="color: var(--c-gray);">  1. 选题   → 5 主题骨架</div>
+          <div style="color: var(--c-gray);">  2. 风格   → 商务科技蓝白灰</div>
+          <div style="color: var(--c-gray);">  3. 配图   → 4 张（封面+插图）</div>
+          <div style="color: var(--c-gray);">  4. 排版   → 锦绣 7 主题</div>
+          <div style="color: var(--c-gray);">  5. 导出   → 公众号文章.md</div>
+          <div style="margin-top: 2px;"><span style="color: var(--c-accent-soft);">✓</span> <span style="color: #fff;">5/5 PASS · 18.4s</span></div>
+        </div>
+        <div style="background: var(--c-good-bg); border: 1px dashed var(--c-accent-soft); padding: 8px 12px; font-size: 12px; color: var(--c-ink); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <b style="color: var(--c-good);">↓ skill 走完 5 步</b> · 自动 0 返工
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--c-good); border-radius: 8px; color: #fff; font-weight: 600; font-size: 13px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <span style="background: #fff; color: var(--c-good); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">✓</span>
+          输出 · 公众号文章.md
+        </div>
+        <div style="font-size: 11px; color: var(--c-good); text-align: center; font-weight: 600; padding-top: 4px; border-top: 1px solid var(--c-line); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">skill → 工具调用</div>
+      </div>
+      <div class="demo-scene" style="background: var(--c-ink); border: 2px solid var(--c-accent-soft); padding: 16px 18px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20); display: flex; flex-direction: column; gap: 10px; color: #fff;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="background: var(--c-accent-soft); color: var(--c-ink); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">🌙</div>
+          <div>
+            <div style="font-family: 'STKaiti', 'KaiTi', '楷体', serif; font-size: 16px; font-weight: 700; color: #fff;">修炼时</div>
+            <div style="font-size: 11px; color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">场景 三 · 迭代 · 23:00 自动复盘</div>
+          </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.35); color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', "SF Mono", Menlo, monospace; font-size: 11px; line-height: 1.65; padding: 10px 12px; border-left: 2px solid var(--c-accent-soft);">
+          <div><span style="color: #fff;">$</span> 23:00 cron → check-3f.py</div>
+          <div style="color: var(--c-gray);">  扫描 14 case 含 *讲解.pdf ...</div>
+          <div><span style="color: var(--c-accent-soft);">✓</span> PASS (13):</div>
+          <div style="color: #c5d6cb;">  Agent知识×4 · 内容创作×2 ·</div>
+          <div style="color: #c5d6cb;">  玄学×1 · 编程×2 · 视觉×1 · 金融×3</div>
+          <div><span style="color: #c5a540;">⚠</span> FAIL (1): 视觉创作/dashiai-ppt</div>
+          <div style="color: var(--c-gray);">  (portrait vs check 假设冲突 · 设计盲点)</div>
+          <div style="color: #fff; margin-top: 2px;">→ dream-log.md 写入今日复盘</div>
+        </div>
+        <div style="background: rgba(197, 214, 203, 0.12); border: 1px dashed var(--c-accent-soft); padding: 8px 12px; font-size: 12px; color: var(--c-accent-soft); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <b style="color: #fff;">↓ 涨分才入库</b> · 反模式进黑名单
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--c-accent-soft); border-radius: 8px; color: var(--c-ink); font-weight: 600; font-size: 13px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <span style="background: var(--c-ink); color: var(--c-accent-soft); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">✓</span>
+          新版 · skill v2 入库
+        </div>
+        <div style="font-size: 11px; color: var(--c-accent-soft); text-align: center; font-weight: 600; padding-top: 4px; border-top: 1px solid rgba(197, 214, 203, 0.2); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">复盘 → 库迭代</div>
+      </div>
+    </div>
+    <div class="quote-sm mt-8">三场景闭环 = 对话匹配 → 干活执行 → 修炼迭代 · 真实命令看得见</div>
+  </div>
+  <div class="slide-num"><span class="current">拾陆</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+  <div class="slide-seal">运转</div>
+</section>
+
+<!-- ============== P10-P11 对话 4/5 ============== -->
+<section class="slide" data-slide="16">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <div class="h2">对话 四</div>
+    <div class="sub mt-8" style="margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">用户问"loop 怎么跑" · Mavis 讲 5 步节奏</div>
+    <div class="chat-window" style="flex: 1; max-height: 720px;">
+      <div class="chat-titlebar"><div class="chat-dot r"></div><div class="chat-dot y"></div><div class="chat-dot g"></div><div class="chat-title">Mavis Code · 演示项目</div></div>
+      <div class="chat-body">
+        <div class="bubble user">loop 怎么跑起来？节奏是啥？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>5 步：1. 做任务 · 失败 · 2. 挖根因 · 5 Why · 3. 改 skill · 加反模式 · 4. 入库 · commit · 5. 复盘 · dream-log<div class="bubble-meta">loop 5 步</div></div>
+        <div class="bubble user">看起来我之前都在 1-2 步就停了</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>对，90% 的人停在第 2 步 · 挖到根因 = 不修 · 改 skill = 不会改 · 入库 = 懒得写 · 复盘 = 忘了<div class="bubble-meta">卡点分布</div></div>
+        <div class="bubble user">那怎么办？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>别一次跑 5 步 · 只跑 1 步 = 跑通 1 次 · 第 2 周加 1 步 · 第 4 周 5 步全跑<div class="bubble-meta">✓ 渐进</div></div>
+        <div class="bubble user">一周能跑通吗？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>我自己 7 天 122 commits · pretty-skills 就是这么跑出来的<div class="bubble-meta">✓ 7 天实证</div></div>
+      </div>
+      <div class="chat-input"><div class="chat-input-box">输入消息 ...</div><div class="chat-send">发送</div></div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">拾柒</span><span class="slash">/</span><span class="total\">廿贰</span></div>
+</section>
+
+<section class="slide" data-slide="17">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <div class="h2">对话 五</div>
+    <div class="sub mt-8" style="margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">用户问"我今天该做什么" · Mavis 给 3 件事</div>
+    <div class="chat-window" style="flex: 1; max-height: 720px;">
+      <div class="chat-titlebar"><div class="chat-dot r"></div><div class="chat-dot y"></div><div class="chat-dot g"></div><div class="chat-title">Mavis Code · 演示项目</div></div>
+      <div class="chat-body">
+        <div class="bubble user">听着挺好，但我现在该做啥？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>3 件事：① 写 1 个你自己的 skill · ② 跑 1 个真实任务 · ③ 写下来给别人看<div class="bubble-meta">3 件事</div></div>
+        <div class="bubble user">我写什么 skill？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>你最常做的那个活 · 比如「公众号排版」「交易复盘」「H5 攻略」 · 从你做过 3 次以上的事情里挑<div class="bubble-meta">选 skill 原则</div></div>
+        <div class="bubble user">我做过的事情很多，怎么选？</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>1 个判断标准：是不是「我不在场也能跑」 · 是 → 提 skill · 否 → 留 prompt<div class="bubble-meta">✓ 1 句话选 skill</div></div>
+        <div class="bubble user">懂了，我去挑</div>
+        <div class="bubble mavis"><span class="bubble-tag">Mavis</span>👊 去吧 · 挑完告诉我，我帮你走 3 步入库<div class="bubble-meta">✓ CTA 触发</div></div>
+      </div>
+      <div class="chat-input"><div class="chat-input-box">输入消息 ...</div><div class="chat-send">发送</div></div>
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">拾捌</span><span class="slash">/</span><span class="total">廿贰</span></div>
+</section>
+
+<!-- ============== P12 对比 ============== -->
+<section class="slide" data-slide="19">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%;">
+    <span class="tag">收尾 · 关键对撞</span>
+    <div class="h2">harness（事后修正）vs loop（流程里就把控）</div>
+    <div class="sub mt-8" style="margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">五步 vs 五步 · pretty-skills 是事后修 · taste-skill 是全程控 + 自动跑 + 人审</div>
+    <div class="split-2" style="flex: 1; gap: 20px; align-items: stretch;">
+      <div class="card" style="display: flex; flex-direction: column;">
+        <div class="section-title" style="color: var(--c-accent); display: flex; justify-content: space-between; align-items: center;">
+          <span>harness 五步 · 事后修正</span>
+          <span style="font-size: 12px; color: var(--c-gray); font-weight: 500; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">pretty-skills 真在跑</span>
+        </div>
+        <div style="font-size: 13px; color: var(--c-gray); margin-top: 4px; margin-bottom: 10px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">先做砸 · 再找根因 · 再修 skill · 再入库 · 再复盘</div>
+        <div class="flow-col" style="gap: 4px; flex: 1; justify-content: center;">
+          <div class="flow-node" style="text-align: center; font-size: 14px; padding: 7px 14px;">1. 做任务 · 失败</div>
+          <div class="flow-arrow" style="font-size: 13px;">↓</div>
+          <div class="flow-node" style="text-align: center; font-size: 14px; padding: 7px 14px;">2. 挖根因 · 5 Why</div>
+          <div class="flow-arrow" style="font-size: 13px;">↓</div>
+          <div class="flow-node" style="text-align: center; font-size: 14px; padding: 7px 14px;">3. 改 skill · 加反模式</div>
+          <div class="flow-arrow" style="font-size: 13px;">↓</div>
+          <div class="flow-node" style="text-align: center; font-size: 14px; padding: 7px 14px;">4. 入库 · commit</div>
+          <div class="flow-arrow" style="font-size: 13px;">↓</div>
+          <div class="flow-node end" style="text-align: center; font-size: 14px; padding: 7px 14px;">5. 复盘 · dream-log</div>
+        </div>
+        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--c-line); font-size: 12px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <span class="accent" style="color: var(--c-accent);">关键词</span> · 9 维评分 + 多评委 + validation 回滚
+        </div>
+      </div>
+      <div class="card" style="display: flex; flex-direction: column; background: var(--c-accent-50);">
+        <div class="section-title" style="color: var(--c-good); display: flex; justify-content: space-between; align-items: center;">
+          <span>loop 五步 · 全程控 + 自动跑 + 人审</span>
+          <span style="font-size: 12px; color: var(--c-gray); font-weight: 500; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">taste-skill 范式</span>
+        </div>
+        <div style="font-size: 13px; color: var(--c-gray); margin-top: 4px; margin-bottom: 8px; font-family: 'STKaiti', 'KaiTi', '楷体', serif;">读场景 → 写手册 → Pre-flight → 定时跑 → 人审</div>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--c-line); font-size: 12px; color: var(--c-gray); font-family: 'STKaiti', 'KaiTi', '楷体', serif;">
+          <span class="good">关键词</span> · 约束原则 ≠ 模板 · human-in-the-loop · 让 AI 推断设计语言
+        </div>
+      </div>
+    </div>
+    <div class="quote-sm mt-10" style="text-align:center; border-left-color: var(--c-good);">
+      harness <strong style="color: var(--c-accent);">事后修</strong> · loop <strong style="color: var(--c-good);">全程控 + 自动跑 + 人审</strong> · 真正成熟的 skill 库两个都要
+    </div>
+  </div>
+  <div class="slide-num"><span class="current">贰拾</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal">对撞</div>
+</section>
+
+<!-- ============== P13 CTA ============== -->
+<section class="slide" data-slide="20" style="background: var(--c-ink);">
+  <div style="width:100%; max-width:1700px; margin:0 auto; display:flex; flex-direction:column; height:100%; color: #fff; justify-content: center;">
+    <span class="tag" style="background: var(--c-accent);">CTA</span>
+    <div class="h2" style="color: #fff;">三个问题</div>
+    <div class="cta-q" style="color: #fff; margin-top: 30px;"><span class="cta-q-num">一.</span>你现在的 <span class="accent" style="color: var(--c-accent-soft);">prompt</span> 有几页？</div>
+    <div class="cta-q" style="color: #fff;"><span class="cta-q-num">二.</span>你有自己的 <span class="accent" style="color: var(--c-accent-soft);">skill 库</span> 吗？</div>
+    <div class="cta-q" style="color: #fff;"><span class="cta-q-num">三.</span>你的 <span class="accent" style="color: var(--c-accent-soft);">loop</span> 跑起来了吗？</div>
+    <div class="tagline" style="margin: 32px auto 0; display:table; font-size: 18px;">先养出第 1 个 skill，剩下的 loop 自己会跑</div>
+  </div>
+  <div class="slide-num" style="color: var(--c-accent-soft);"><span class="current">贰拾壹</span><span class="slash">/</span><span class="total">廿贰</span></div>
+  <div class="slide-seal" style="border-color: var(--c-accent-soft); color: var(--c-accent-soft);">CTA</div>
+</section>
+
+</div>
+
+<!-- 主题色切换器 -->
+<nav class="theme-switcher" id="themeSwitcher">
+  <div class="theme-switcher-label">主题色</div>
+  <button class="theme-dot active" data-theme="feiquan"    data-name="飞泉绿"     style="background:#497568"></button>
+  <button class="theme-dot"        data-theme="cyberppt"   data-name="CyberPPT"    style="background:#2563EB"></button>
+  <button class="theme-dot"        data-theme="lotus"      data-name="藕丝秋"     style="background:#D9C6B3"></button>
+  <button class="theme-dot"        data-theme="xiang"      data-name="湘蓝"       style="background:#4A76A8"></button>
+  <button class="theme-dot"        data-theme="crimson"    data-name="绛缨"       style="background:#9E3B3B"></button>
+  <button class="theme-dot"        data-theme="crow"       data-name="鸦黄"       style="background:#E6C24D"></button>
+  <button class="theme-dot"        data-theme="mountain"   data-name="山岚"       style="background:#B2C9B2"></button>
+</nav>
+
+<div class="kbd">← / → 翻页 · F 全屏 · T 切主题 · O 概览</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+let overviewMode = false;
+
+function show(idx) {
+  if (idx < 0 || idx >= slides.length) return;
+  slides.forEach((s, i) => { s.classList.toggle('active', i === idx); });
+  current = idx;
+}
+
+function next() { show(Math.min(current + 1, slides.length - 1)); }
+function prev() { show(Math.max(current - 1, 0)); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(slides.length - 1);
+  else if (e.key === 'f' || e.key === 'F') {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen();
+  }
+  else if (e.key === 't' || e.key === 'T') {
+    const THEMES = ['feiquan','cyberppt','lotus','xiang','crimson','crow','mountain'];
+    const cur = document.body.className.replace('theme-','');
+    const nextT = THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length];
+    applyTheme(nextT);
+  }
+  else if (e.key === 'o' || e.key === 'O') {
+    overviewMode = !overviewMode;
+    if (overviewMode) {
+      slides.forEach(s => {
+        s.style.display = 'flex'; s.style.position = 'relative'; s.style.inset = 'auto';
+        s.style.width = '20%'; s.style.height = 'auto'; s.style.minHeight = '200px';
+        s.style.transform = 'scale(0.16)'; s.style.transformOrigin = 'top left';
+        s.style.overflow = 'hidden';
+      });
+    } else {
+      slides.forEach((s, i) => { s.style.cssText = ''; s.classList.toggle('active', i === current); });
+    }
+  }
+});
+
+const THEME_KEY = 'skill-arsenal-theme';
+const themeDots = document.querySelectorAll('.theme-dot');
+function applyTheme(t) {
+  document.body.className = 'theme-' + t;
+  try { localStorage.setItem(THEME_KEY, t); } catch(e) {}
+  themeDots.forEach(d => d.classList.toggle('active', d.dataset.theme === t));
+}
+themeDots.forEach(d => d.onclick = () => applyTheme(d.dataset.theme));
+let saved = 'feiquan';
+try { saved = localStorage.getItem(THEME_KEY) || 'feiquan'; } catch(e) {}
+applyTheme(saved);
+
+show(0);
+</script>
+</body>
+</html>
