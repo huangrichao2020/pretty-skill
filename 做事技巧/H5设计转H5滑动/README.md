@@ -9,17 +9,29 @@
 
 ## 一句话定位
 
-1920×1080 设计的桌面端 PPT/作品，**H5 适配 = viewport 修复 + 等比缩放 + 触屏滑动翻页**。保留桌面端设计不变 + H5 端按 vh 适配 + 横向 stage 居中裁剪。
+1920×1080 设计的桌面端 PPT/作品，**H5 适配 = 强制横屏 + min scale 完整显示**。保留桌面端设计不变 + H5 竖屏提示用户旋转 + 横屏下 min 等比缩放完整显示 22 幕。
 
-## 5 步工作流
+## ⚠️ v1 失败方案（2026-07-16 实战踩坑）
+
+第一次实现用 vh 优先 + 横向 stage 居中裁剪：让每段占满屏幕高度，stage 视觉 1500×844 横向居中裁剪到 390 视口。
+
+**真机问题**：
+- iPhone Safari 上 `transform: translateX + scale` 组合在某些 iOS 版本有渲染异常
+- 用户反馈"全部溢出屏幕"
+- 横向裁剪让设计核心内容（印章、左侧大标题）被裁
+
+**结论**：放弃 vh 优先裁剪方案，改用强制横屏。
+
+## v2 方案（当前 · 强制横屏）
 
 | 步 | 动作 | 关键 |
 |---|---|---|
 | 1 | 修 viewport meta | `width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no` |
 | 2 | 触屏滑动 JS | `touchstart`/`touchend` + 40px 阈值 + 800ms 内触发 |
-| 3 | stage 自适应 | `transform: scale(vh/STAGE_H) translateX((vw-visualW)/2)` + 横向居中裁剪 |
-| 4 | 进度条 | 顶部绿条 + 左上 "1/22" 计数 + 主题色变量 |
-| 5 | 桌面端兼容 | 不改 stylesheet · JS inline 改 width/height · desktop 1920×1080 不动 |
+| 3 | 竖屏检测（CSS） | `@media (orientation: portrait) and (max-width: 900px)` → 隐藏 stage + 显示 portrait-hint |
+| 4 | 横屏 stage（JS） | `transform: translate(offsetX, offsetY) scale(min(vw/1920, vh/1080))` + 居中显示 |
+| 5 | 进度条 | 顶部绿条 + 左上 "1/22" 计数 + 主题色变量 |
+| 6 | 桌面端兼容 | `if (max-width: 900px) isMobile` → 否则原 1920×1080 不动 |
 
 ## 关键代码
 
@@ -58,7 +70,7 @@ document.addEventListener('touchend', e => {
 }, { passive: true });
 ```
 
-### 3. stage 自适应（vh 优先 + 横向居中 + 左右裁剪）
+### 3. stage 自适应（v2 · 强制横屏 + min scale 居中）
 
 ```javascript
 const STAGE_W = 1920, STAGE_H = 1080;
@@ -67,21 +79,86 @@ const stage = document.getElementById('stage');
 function fitStage() {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  // vh 优先：每段占满屏幕高度；stage 横向居中，左右裁剪
-  const scale = vh / STAGE_H;
-  const visualW = STAGE_W * scale;
-  const offsetX = (vw - visualW) / 2;
-  stage.style.transformOrigin = 'top left';
-  stage.style.transform = `translateX(${offsetX}px) scale(${scale})`;
-  stage.style.width = STAGE_W + 'px';
-  stage.style.height = STAGE_H + 'px';
-  document.body.style.width = vw + 'px';
-  document.body.style.height = vh + 'px';
-  document.body.style.overflow = 'hidden';
+  // H5 强制横屏：竖屏被 CSS 拦截（显示 portrait-hint）
+  // 横屏下：min scale 完整显示，stage 居中
+  const isMobile = matchMedia('(max-width: 900px)').matches;
+  if (isMobile) {
+    const scale = Math.min(vw / STAGE_W, vh / STAGE_H);
+    const visualW = STAGE_W * scale;
+    const visualH = STAGE_H * scale;
+    const offsetX = (vw - visualW) / 2;
+    const offsetY = (vh - visualH) / 2;
+    stage.style.transformOrigin = 'top left';
+    stage.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    stage.style.width = STAGE_W + 'px';
+    stage.style.height = STAGE_H + 'px';
+    document.body.style.width = vw + 'px';
+    document.body.style.height = vh + 'px';
+    document.body.style.overflow = 'hidden';
+  } else {
+    // 桌面端 1920×1080 不动
+    stage.style.transform = '';
+    stage.style.transformOrigin = '';
+    stage.style.width = '';
+    stage.style.height = '';
+    document.body.style.width = '';
+    document.body.style.height = '';
+    document.body.style.overflow = '';
+  }
 }
 window.addEventListener('resize', fitStage);
 window.addEventListener('orientationchange', () => setTimeout(fitStage, 100));
 fitStage();
+```
+
+### 3.5. 竖屏提示 CSS（关键 · 强制横屏核心）
+
+```css
+#portrait-hint {
+  position: fixed; inset: 0;
+  background: var(--c-paper, #fafaf7);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Songti SC", "STSong", serif;
+  text-align: center;
+  padding: 40px;
+}
+#portrait-hint .hint-icon {
+  font-size: 72px; margin-bottom: 28px;
+  animation: rotate-hint 2.4s ease-in-out infinite;
+  display: inline-block;
+}
+#portrait-hint .hint-text {
+  font-size: 26px; font-weight: 700; margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+#portrait-hint .hint-sub {
+  font-size: 15px; opacity: 0.55; line-height: 1.6;
+  max-width: 320px;
+}
+@keyframes rotate-hint {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+}
+/* 竖屏窄屏：显示提示 + 隐藏 stage */
+@media (orientation: portrait) and (max-width: 900px) {
+  .stage { display: none !important; }
+  #portrait-hint { display: flex !important; }
+  #progress-bar, #progress-text, #h5-swipe-hint { display: none !important; }
+}
+```
+
+### 3.6. 竖屏提示 DOM
+
+```html
+<div id="portrait-hint">
+  <span class="hint-icon">📱</span>
+  <div class="hint-text">请横屏查看</div>
+  <div class="hint-sub">将手机旋转 90°<br>横屏获得最佳演示体验</div>
+</div>
 ```
 
 ### 4. 进度条 CSS
@@ -109,20 +186,29 @@ fitStage();
 
 ## 取舍：3 种 H5 适配策略
 
-| 策略 | 实现 | 优点 | 缺点 |
+| 策略 | 实现 | 优点 | 缺点 | 推荐度 |
+|---|---|---|---|---|
+| **A. vw 等比** | `scale = vw/1920` | 每段占满屏幕宽度 | 段高 219px，下面 625px 空白（iPhone） | ⭐⭐ |
+| **B. vh 等比 + 横向裁剪** | `scale = vh/1080` + `translateX` 居中 | 每段占满屏幕高度 | 左右裁剪 + iOS Safari 渲染异常 | ⭐（失败）|
+| **C. min 等比** | `scale = min(vw/1920, vh/1080)` | 完整可见 | 段高 219px，下面 625px 空白（iPhone）| ⭐⭐ |
+| **D. 强制横屏 + min 等比（v2 推荐）** | 竖屏提示 + 横屏下走 C | 横屏 22 幕完整可见 | 需用户旋转手机 | ⭐⭐⭐⭐⭐ |
+
+**推荐 D（v2 方案）**：
+- 横屏 844×390 → min scale = 0.361 → 22 幕占满 692×390 视口（左右 76 居中）
+- 用户能横屏看完整 22 幕
+- 桌面 1920×1080 完全不动
+
+**为什么不用 A/C**：iPhone portrait 视口 390×844，22 幕在 219×390 内，下方 625px 留白 → 用户看不到完整 22 幕，体验差。
+
+**为什么 B 失败**：iOS Safari 上 `transform: translateX + scale` 组合在某些版本有渲染异常，stage 视觉内容真机溢出屏幕。
+
+## 实战对比（v2）
+
+| 状态 | 桌面 1920×1080 | iPhone 竖屏 390×844 | iPhone 横屏 844×390 |
 |---|---|---|---|
-| **A. vw 等比**（推荐） | `scale = vw/1920` | 每段占满屏幕宽度 | 段高 219px，下面 625px 空白（iPhone） |
-| **B. vh 等比 + 横向裁剪** | `scale = vh/1080` + `translateX` 居中 | 每段占满屏幕高度 | 左右裁剪（设计 1500px 宽只看到中间 390px） |
-| **C. min 等比** | `scale = min(vw/1920, vh/1080)` | 完整可见 | 段高 219px，下面 625px 空白（iPhone） |
-
-**推荐 B**：用户能"滑动翻页"是核心需求，每段必须占满屏幕高度。横向裁剪是设计 1920 宽固有限制（A/C 留白多，22 幕看 1 幕就跳，体验差）。
-
-## 实战对比
-
-| 状态 | 桌面 1920×1080 | H5 iPhone 390×844 |
-|---|---|---|
-| 改造前 | ✓ 正常 | ❌ 横屏溢出 / 缩太小 / 无翻页手势 |
-| 改造后 | ✓ 正常（不变） | ✓ 每段占满屏幕 + 左右滑翻页 + 进度条 |
+| 改造前 | ✓ 正常 | ❌ 横屏溢出 / 缩太小 / 无翻页手势 | ❌ 体验差 |
+| v1 改造后 | ✓ 正常（不变） | ⚠️ 真机渲染异常 / 用户拒绝 | ❌ 留白多 |
+| **v2 改造后** | ✓ 正常（不变） | ✓ "请横屏查看" 提示 + 旋转动画 | ✓ 22 幕完整可见 + 触屏滑动 |
 
 ## 反模式（必避坑）
 
