@@ -1,6 +1,6 @@
 # baoyu-skills · 宝玉的内容创作 skill 矩阵
 
-> **一句话定位**：5 个 sub-skill 一把抓 · 文章插图 / 封面 / 小红书 / PPT / 故事漫画 · 风格×布局二维选择 · 配置化 Prompt 工程的范本。
+> **一句话定位**：21 个 sub-skill 一把抓 · 风格×布局二维选择 · 配置化 Prompt 工程 · 强制 prompt 文件 + 批量 + confirm 三件套。
 
 ---
 
@@ -9,54 +9,118 @@
 **页数**：5 页 · **领域**：内容创作
 **作者**：宝玉 xp（@jimliu）
 **仓库**：`github.com/JimLiu/baoyu-skills`
-**状态**：case 草稿（未实跑 · 待 GitHub 网络恢复后 clone 验证）
+**clone 状态**：✅ 已 clone 到 `pretty-skills/内容创作/baoyu-skills/baoyu-skills/`
+**实战笔记**：✅ 已读 3 个核心 sub-skill 的 SKILL.md
 
 ## 核心论点
 
-Prompt 工程的终局是 **"消失"**——不让你写"你是一个资深设计师,请用…风格…",而是用 `--style notion` / `--layout pyramid` 这种参数代替。**审美的事交给 skill,用户只管选参数**。
+Prompt 工程的终局是 **"消失"**——不让你写"你是一个资深设计师,请用…风格…",而是用 `--style notion` / `--layout dense` 这种参数代替。**审美的事交给 skill,用户只管选参数**。
 
-## 5 个 sub-skill 速查表
+## 21 个 sub-skill（实测 · 2026-07-15）
 
-| Skill | 适用场景 | 核心卖点 | 常用命令 |
-|---|---|---|---|
-| **baoyu-xhs-images** | 小红书运营 / 知识卡片 | 风格×布局二维选择,一键多图 | `/baoyu-xhs-images post.md --style notion` |
-| **baoyu-infographic** | 技术原理 / 流程图 | **20 种布局 + 17 种风格** | `/baoyu-infographic arch.md --layout pyramid` |
-| **baoyu-cover-image** | 博客/公众号封面 | 5 维度定制(类型/配色/渲染/文字/氛围) | `/baoyu-cover-image blog.md --quick` |
-| **baoyu-slide-deck** | 技术分享 / 汇报 | 自动生成大纲,出 PPTX/PDF | `/baoyu-slide-deck talk.md --style blueprint` |
-| **baoyu-comic** | 讲故事 / 寓教于乐 | 知识漫画,能控制分镜 | `/baoyu-comic story.md --art manga` |
+### 内容生成（核心矩阵）
 
-## 内容即数据
+| Skill | 风格 | 布局 | 适用 | 核心命令 |
+|---|---|---|---|---|
+| **baoyu-xhs-images** | 12 视觉风格 | 8 布局 | 小红书 / 微信图文 / 知识卡片 | `--style notion --layout dense` |
+| **baoyu-infographic** | 22 视觉风格 | 21 布局 | 高密度信息大图 / 可视化 | `--layout bento-grid` |
+| **baoyu-cover-image** | 5 维度定制 | — | 博客/公众号封面 | `--quick` |
+| **baoyu-slide-deck** | — | — | PPT/汇报 | `--style blueprint` |
+| **baoyu-comic** | — | — | 故事漫画/分镜 | `--art manga` |
+| **baoyu-diagram** | — | — | 架构图/流程图 | — |
+| **baoyu-article-illustrator** | — | — | 技术文章配图 | — |
 
-直接读你的 **Markdown 文章**,自动提取关键信息生成 PPT/图表,不用重新喂一遍内容。
+### 内容转换
 
-## 风格字典（学得到）
+| Skill | 作用 |
+|---|---|
+| **baoyu-markdown-to-html** | Markdown → 含 Mermaid 的单文件 HTML |
+| **baoyu-format-markdown** | 格式化/美化 |
+| **baoyu-translate** | 翻译 |
+| **baoyu-url-to-markdown** | URL → Markdown |
+| **baoyu-wechat-summary** | 公众号文章摘要 |
+| **baoyu-electron-extract** | Electron 应用内容提取 |
+| **baoyu-compress-image** | 图片压缩 |
+| **baoyu-image-gen** | 通用图片生成 |
 
-**风格（style）选项**（部分）：
-- `notion`（干净、黑白线条）
-- `blueprint`（蓝图风）
-- `manga`（漫画风）
-- 还有 ~17 种...
+### 内容发布
 
-**布局（layout）选项**（部分）：
-- `pyramid`（金字塔）
-- `timeline`（时间线）
-- `dense`（密集干货）
-- 还有 ~20 种...
+| Skill | 作用 |
+|---|---|
+| **baoyu-post-to-wechat** | 公众号发布 |
+| **baoyu-post-to-weibo** | 微博发布 |
+| **baoyu-post-to-x** | X/Twitter 发布 |
 
-## 安装（待 clone 验证）
+### 实验性
+
+| Skill | 作用 |
+|---|---|
+| **baoyu-danger-gemini-web** | Gemini Web 抓取（高风险） |
+| **baoyu-danger-x-to-markdown** | X 抓转 md（高风险） |
+| **baoyu-youtube-transcript** | YouTube 字幕 |
+
+## 实战笔记（看真实代码学到的 · 关键约束）
+
+### 1. 三件套（所有生成类 skill 都有）
+
+```text
+a) 强制 prompt 文件（prompt-NN-{type}-{slug}.md）—— reproducibility 记录
+b) 批量生成（默认 4 张/组，可调 1-8）—— 用 backend 原生 batch 或 parallel tool calls
+c) 默认 confirm（不跳过）—— 必须用 --yes / "直接生成" 才跳过
+```
+
+### 2. 风格×布局矩阵
+
+**baoyu-xhs-images** 12 风格：
+`cute` / `fresh` / `warm` / `bold` / `minimal` / `retro` / `pop` / `notion` / `chalkboard` / `study-notes` / `screen-print` / `sketch-notes`
+
+8 布局：
+`sparse` / `balanced` / `dense` / `list` / `comparison` / `flow` / `mindmap` / `quadrant`
+
+**baoyu-infographic** 22 风格 + 21 布局（覆盖范围更广，包括 `linear-progression` / `bento-grid` / `iceberg` / `story-mountain` 等长尾场景）
+
+### 3. Preferences 系统（EXTEND.md）
+
+```text
+优先级 1: .baoyu-skills/<skill>/EXTEND.md  (项目级)
+优先级 2: ${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/<skill>/EXTEND.md
+优先级 3: $HOME/.baoyu-skills/<skill>/EXTEND.md  (用户级)
+```
+
+支持：preferred layout/style / default aspect ratio / language / preferred image backend / custom style definitions。
+
+### 4. Reference image 3 种用法
+
+| Usage | 作用 |
+|---|---|
+| `direct` | 文件直接传给 backend 作参考图 |
+| `style` | 提取风格特征（线条/质感/氛围）拼到 prompt |
+| `palette` | 提取 hex 颜色拼到 prompt |
+
+### 5. 不允许的事（反模式）
+
+- ❌ 用 SVG/HTML/CSS 假装生成位图 → 必须 raster
+- ❌ 用 ImageMagick/Pillow 在生成的图上"修"文字 → 重生成
+- ❌ 用 subagent 单纯为并行渲染图 → subagent 只用于 prompt 探索
+
+### 6. 跨 harness 适配
+
+支持 Claude Code（`AskUserQuestion` / `SendUserFile`） / Cursor（`AskQuestion` / `cursor-ide-browser`） / Codex Agent（`functions.*`）— 每个跑哪个 image backend 是动态决策（Codex `imagegen` > Cursor `GenerateImage` > Hermes `image_generate` > 非 native backend）。
+
+## 安装（已验证）
 
 ```bash
-# 网络恢复后执行
+# 走 npx 一键安装
 npx skills add jimliu/baoyu-skills
-# 或
+# 全局
 npx skills add jimliu/baoyu-skills -g
 ```
 
-需要 Claude Code / Trae / Cursor 这类"能动手"的 AI 工具。
+需要 Claude Code / Trae / Cursor / Codex Agent 这类"能动手"的 AI 工具。
 
 ## 触发词
 
-"封面" / "小红书配图" / "信息图" / "PPT" / "故事漫画" / "宝玉" / "baoyu" / "技术配图" / "排版"
+"封面" / "小红书配图" / "信息图" / "PPT" / "故事漫画" / "宝玉" / "baoyu" / "技术配图" / "排版" / "公众号文章配图" / "高密度信息大图"
 
 ---
 
@@ -64,3 +128,4 @@ npx skills add jimliu/baoyu-skills -g
 
 - 视觉设计相关 → `pretty-skills/视觉创作/baoyu-design/`（本地化 Claude Design）
 - 中文排版 + AI 审美黑名单 → `Mavis memory/distillation-review.md` 第 3 条
+- sansheng-distill 提到的"12 家前人绝活"之一 → `pretty-skills/Agent知识/拆书-skill/`
