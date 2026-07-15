@@ -1,0 +1,16 @@
+{
+  "name": "sansheng-distill",
+  "domain": "Agent知识",
+  "title": "sansheng-distill · AI 拆书蒸馏 skill",
+  "visibility": "public",
+  "tags": ["sansheng-distill", "拆书", "AI蒸馏", "知识网页", "Fable5", "叁笙早安AI"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-15",
+  "status": "case草稿-待clone验证",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false},
+  "page_count": 5,
+  "summary": "丢一本电子书进去,吐出一张能点能跳的 HTML 单页(5 层结构:一眼看全书/逐章详读/书魂/行动自检/该信几分)· 5 步工作流 · 完整闭环",
+  "source_skill": "https://github.com/sandypoli-boop/sansheng-distill",
+  "source_article": "https://mp.weixin.qq.com/s/UyjUDmGftFkHwtGkbSg9-w",
+  "trigger_keywords": ["拆书", "读书蒸馏", "AI拆书", "sansheng", "叁笙早安AI", "知识蒸馏"]
+}
