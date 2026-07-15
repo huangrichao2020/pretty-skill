@@ -1,0 +1,70 @@
+{
+  "name": "prd-master产品PRD写作",
+  "domain": "产品设计",
+  "version": "1.0.0",
+  "visibility": "public",
+  "format": "case",
+  "contributor": "Mavis",
+  "created": "2026-07-15",
+  "source": "RedSkill商店 prd-master@1.0.1",
+  "description": "用证据支撑的决策文档 · 8步工作流 + 8段框架 + 7路由 + 强制边界 + 对抗审查",
+  "files": {
+    "content": "content.md",
+    "pdf": "prd-master产品PRD写作讲解.pdf",
+    "skill": "SKILL.md",
+    "readme": "README.md",
+    "images_dir": "images/",
+    "prompts_dir": "prompts/",
+    "jinxiu_dir": "锦绣/"
+  },
+  "images": [
+    "images/p1.png",
+    "images/p2.png",
+    "images/p3.png",
+    "images/p4.png",
+    "images/p5.png",
+    "images/p6.png",
+    "images/p7.png",
+    "images/p8.png",
+    "images/p9.png"
+  ],
+  "prompts": [
+    "prompts/README.md",
+    "prompts/p0_cover.md",
+    "prompts/p1.md",
+    "prompts/p2.md",
+    "prompts/p3.md",
+    "prompts/p4.md",
+    "prompts/p5.md",
+    "prompts/p6.md",
+    "prompts/p7.md",
+    "prompts/p8.md"
+  ],
+  "jinxiu": [
+    "锦绣/cover-横屏.png",
+    "锦绣/cover-竖屏.png",
+    "锦绣/readme.md",
+    "锦绣/slides/slide-1.png",
+    "锦绣/slides/slide-2.png",
+    "锦绣/slides/slide-3.png",
+    "锦绣/slides/slide-4.png",
+    "锦绣/slides/slide-5.png",
+    "锦绣/slides/slide-6.png",
+    "锦绣/slides/slide-7.png",
+    "锦绣/slides/slide-8.png",
+    "锦绣/slides/slide-9.png"
+  ],
+  "tags": [
+    "PRD",
+    "产品需求",
+    "决策文档",
+    "证据驱动",
+    "对抗审查",
+    "产品设计"
+  ],
+  "related_skills": [
+    "dashiai-ppt",
+    "wechat-delivery",
+    "CyberPPT"
+  ]
+}
