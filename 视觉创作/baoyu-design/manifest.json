@@ -1,0 +1,15 @@
+{
+  "name": "baoyu-design",
+  "domain": "视觉创作",
+  "title": "baoyu-design · 本地化 Claude Design 的 Agent skill",
+  "visibility": "public",
+  "tags": ["baoyu-design", "宝玉", "Claude Design", "UI设计", "本地化", "设计系统", "Figma导入"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-15",
+  "status": "case草稿-待clone验证",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false},
+  "page_count": 4,
+  "summary": "把 Claude Design 的设计引擎本地化,Cursor/Claude Code/Codex 都能跑 · 自包含 HTML 输出 · 支持 Figma .fig 导入建设计系统 · 团队协作友好",
+  "source_skill": "https://github.com/JimLiu/baoyu-design",
+  "trigger_keywords": ["baoyu-design", "宝玉", "Claude Design", "UI mockup", "本地设计", "Figma 导入", "设计系统", "自包含 HTML"]
+}
