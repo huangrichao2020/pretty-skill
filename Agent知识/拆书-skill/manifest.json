@@ -1,16 +1,17 @@
 {
   "name": "sansheng-distill",
   "domain": "Agent知识",
-  "title": "sansheng-distill · AI 拆书蒸馏 skill",
+  "title": "sansheng-distill · AI 拆书蒸馏 skill (Mavis 自创 v0)",
   "visibility": "public",
-  "tags": ["sansheng-distill", "拆书", "AI蒸馏", "知识网页", "Fable5", "叁笙早安AI"],
+  "tags": ["sansheng-distill", "拆书", "AI蒸馏", "知识网页", "Fable5", "叁笙早安AI", "Mavis自创"],
   "contributor": "huangrichao2020",
   "created": "2026-07-15",
-  "status": "case草稿-待clone验证",
+  "version": "v0",
+  "status": "v0-case草稿-流程跑通-占位文本-待LLM接入",
   "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false},
   "page_count": 5,
-  "summary": "丢一本电子书进去,吐出一张能点能跳的 HTML 单页(5 层结构:一眼看全书/逐章详读/书魂/行动自检/该信几分)· 5 步工作流 · 完整闭环",
-  "source_skill": "https://github.com/sandypoli-boop/sansheng-distill",
+  "summary": "Mavis 自创 v0 · 5 层结构骨架 + 思维导图 3 铁律 + 单文件零外链 + 批判四连问 · 占位文本 · 待 LLM 接入",
+  "source_skill": "https://github.com/sandypoli-boop/sansheng-distill (当前私有不可访问)",
   "source_article": "https://mp.weixin.qq.com/s/UyjUDmGftFkHwtGkbSg9-w",
-  "trigger_keywords": ["拆书", "读书蒸馏", "AI拆书", "sansheng", "叁笙早安AI", "知识蒸馏"]
+  "trigger_keywords": ["拆书", "读书蒸馏", "AI拆书", "sansheng", "叁笙早安AI", "知识蒸馏", "5层结构", "思维导图3铁律"]
 }
