@@ -122,6 +122,8 @@ v4  (终)      → 实战 3-6 个月后升 knowhub methodology
 
 ## 关联沉淀
 
-- `视觉创作/PPT证据链战法/` —— 现有 PPT skill（CyberPPT 风格，不互斥）
-- `视觉创作/dashiai-ppt传统PPT/` —— 大狮 PPT（通用商务风格，不互斥）
+- `视觉创作/PPT证据链战法/` —— 现有 PPT skill（CyberPPT 风格，**v2 升级加 7 主题色切换器**，2026-07-15）
+  - web.html v2 7 主题色 = CyberPPT（默认） + **本 skill 6 中国色**
+  - 1 个 HTML = 7 套配色选 1 套（不用换模板）
+- `视觉创作/dashiai-ppt传统PPT/` —— 大狮 PPT（通用商务风格，13+ 主题，A 股首选色谱图表）
 - 安装路径：`~/.minimax/.../workspace/skills/zhongguose-ppt-skill/`（已装，pretty-skills 仓库**不重复 copy**，只沉淀 case 草稿）

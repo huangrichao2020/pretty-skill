@@ -74,3 +74,16 @@
 - **主题预览图**：`~/.mavis/agents/mavis/skills/dashiai-ppt/skills/dashiai-ppt/assets/skill/theme-style-grid.png`
 - **版式库清单**：`~/.mavis/agents/mavis/skills/dashiai-ppt/skills/dashiai-ppt/references/layout-pool.md`
 - **导出引擎（MIT）**：`~/.mavis/agents/mavis/skills/dashiai-ppt/skills/dashiai-ppt/project/packages/html-deck-to-pptx`
+
+---
+
+## 关联 skill（2026-07-15 cross-link）
+
+- **PPT证据链战法**（`视觉创作/PPT证据链战法/`）—— CyberPPT 风格 + 7 主题色 HTML 攻略小工具（v2 升级，2026-07-15）
+  - 特点：3 段式证据链 + 单文件 HTML 阅读器 + 7 主题色切换器（CyberPPT + 6 中国色）
+  - 适用：科技/产品演示，1 个 HTML 在多色系之间切
+- **zhongguose-ppt-skill**（`视觉创作/zhongguose-ppt-skill/`）—— 中国色 PPT 体系（6 主题色 + 12 步工作流）
+  - 来源：木渡川（参考归藏）· 已装 RedSkill 商店
+  - 适用：文化/历史/品牌/中式演示
+
+**3 个 PPT skill 按气质挑**：通用商务 → dashiai-ppt（这里）；科技/产品 → PPT证据链战法；中式/文化 → zhongguose。
