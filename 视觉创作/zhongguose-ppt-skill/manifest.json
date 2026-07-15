@@ -1,0 +1,18 @@
+{
+  "name": "zhongguose-ppt-skill",
+  "domain": "视觉创作",
+  "title": "zhongguose-ppt-skill · 中国色汇报演示体系",
+  "visibility": "public",
+  "tags": ["zhongguose", "中国色", "中国风", "PPT", "汇报", "中英双语", "木渡川", "归藏"],
+  "contributor": "huangrichao2020",
+  "created": "2026-07-15",
+  "version": "v1.0.0",
+  "status": "已安装到RedSkill商店 · pretty-skills case草稿",
+  "format": {"content_md": "content.md", "锦绣": true, "presentation_pptx": false},
+  "page_count": 5,
+  "summary": "中国色 PPT 体系 · 6 主题色 + 12 步工作流 + 中英双语层级 + 字体子集 + 6 个 scripts · 作者木渡川 · 参考归藏 guizang-ppt-skill",
+  "source_skill": "https://redskill.xiaohongshu.net/ (RedSkill 商店)",
+  "source_credit": "木渡川 (Muduchuan) · 参考归藏 (guizang) · 封面字体令東 qiji-font",
+  "installed_path": "/Users/tingchi/.minimax/sessions/mvs_75c1b109d4944d258f877a4610876129/workspace/skills/zhongguose-ppt-skill",
+  "trigger_keywords": ["中国色", "中国风", "中式", "东方审美", "国风PPT", "zhongguose", "传统色", "木渡川", "归藏", "中式汇报"]
+}
