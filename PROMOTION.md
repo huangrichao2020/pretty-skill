@@ -72,7 +72,7 @@ pretty-skills v3.13 上线：https://github.com/huangrichao2020/pretty-skills
 
 仓库里已经有 3 个真实 case：
 - Agent知识/AI狼群战法（团队与 AI 协作 8 页）
-- Agent知识/社交电商掘金术（社交电商两层拆解 8 页）
+- 商业运营/社交电商掘金术（社交电商两层拆解 8 页）
 - 金融投资/卡脖子猎手（A 股卡脖子选股 9 页 · @Kun）
 
 9 个领域等待全球开发者贡献。
