@@ -1,0 +1,23 @@
+Zhongguose Cover font notice
+
+Original font project: qiji-font (齊伋體)
+Original copyright: Copyright (c) 2020, Lingdong Huang
+Upstream source: https://github.com/LingDong-/qiji-font
+Embedded seed provenance: historical QIJIC TTF SHA-256
+EA2A8E8E750C420E9698DF54D63A1EEF24AC76ECA53B1D17A4714935965F818B
+Embedded seed WOFF2 SHA-256:
+D865F6D20EC514FF7EA93CC1EC51A1C01F98647CFA97FF0EFD724E5202AEF782
+
+Runtime rebuild source: qiji-combo.ttf from qiji-font release 0.0.4
+Pinned source TTF SHA-256: F842291B039E9C5AE69EDFE924EDBE28B3CFBA91BCAC95791BF1FBC11DB330CF
+Primary URL: https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji-combo.ttf
+Verified fallback: https://unpkg.com/@raycosine/qiji-font@0.0.4/qiji-combo.ttf
+The full source font is downloaded to the user's cache only when rebuilding a subset;
+it is not bundled with this SkillHub-compatible edition or copied into decks.
+License: SIL Open Font License, Version 1.1 (see OFL-1.1.txt)
+Reserved Font Name declared upstream: QIJI
+
+The WOFF2 files distributed by zhongguose-ppt-skill are format-converted or
+subset Modified Versions. Their primary family and PostScript names are changed
+to Zhongguose Cover / ZhongguoseCover so they do not use the Reserved Font Name.
+They remain licensed under the SIL Open Font License, Version 1.1.
