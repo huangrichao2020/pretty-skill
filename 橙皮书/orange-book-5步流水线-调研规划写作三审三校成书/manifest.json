@@ -1,0 +1,128 @@
+{
+  "name": "orange-book-five-stage-pipeline",
+  "display_name": "橙皮书 5 步流水线",
+  "domain": "橙皮书",
+  "title": "橙皮书 5 步流水线 · 30-60 天搞懂一个陌生领域 + 沉淀成书",
+  "subtitle": "5 阶段（调研/规划/写作/审校/构建）+ 5 道质量门 + 4 底层原则 + 9 本实战",
+  "visibility": "public",
+  "tags": [
+    "橙皮书",
+    "orange-book",
+    "做书",
+    "扫盲",
+    "领域入门",
+    "5 阶段流水线",
+    "三审三校",
+    "事实核查",
+    "PDF",
+    "DOCX",
+    "EPUB",
+    "教程",
+    "指南",
+    "手册",
+    "5 阶段",
+    "5 道门"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "knowhub/domains/orange-book",
+    "source_origin": "knowhub 长期方法论沉淀",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 橙皮书域本批第 1 个 case · 摘掉空领域 · pretty-skills 16 领域 0 空域中第 1 个补上",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "knowhub/domains/orange-book/ (31 文件 · 7 methodology + 9 cases + 4 tools + styles.css)"
+  },
+  "page_count": 6,
+  "summary": "橙皮书 5 步流水线：用做一本书的方法快速搞懂一个陌生领域。5 阶段（调研 30% / 规划 10% / 写作 30% / 审校 20% / 构建 10%）+ 5 道质量门（内容审校/风格审校/细节打磨/事实核查独立/全书一致性）+ 4 底层原则（结构先行/并行化/真入门=能讲清/事实优先于流畅）。4 件工具脚本（init-project / build.js / build-pdf.js / update.sh）。9 本实战橙皮书：Claude Code / Codex / Hermes / Loop / Obsidian / Harness / Skills / Polymarket / Source Code Analysis。源自 knowhub orange-book 域（31 文件），2026-07-17 沉淀至 pretty-skills 橙皮书域。",
+  "key_concepts": [
+    "5 阶段流水线",
+    "5 道质量门",
+    "4 底层原则",
+    "多 agent 并行",
+    "事实核查独立",
+    "真入门 = 能讲清",
+    "Penguin 三段式封面",
+    "30-60 天 1 本橙皮书"
+  ],
+  "use_cases": [
+    "用户说'做一本 X 的书'",
+    "用户说'快速搞懂 X 领域'",
+    "用户说'扫盲 X'",
+    "用户说'给团队做培训资料'",
+    "用户说'出版社交稿'",
+    "用户说'做橙皮书'",
+    "用户说'做 PDF 手册'",
+    "用户说'做 EPUB'",
+    "用户说'领域入门'"
+  ],
+  "triggers": [
+    "橙皮书",
+    "做一本书",
+    "做本 PDF",
+    "做完整指南",
+    "扫盲",
+    "快速搞懂",
+    "领域入门",
+    "系统性资料",
+    "教程",
+    "XX 手册",
+    "完整指南",
+    "出版社",
+    "EPUB",
+    "DOCX",
+    "PDF"
+  ],
+  "anti_patterns": [
+    "堆料不消化（收藏夹满 = 没入门）",
+    "无地图（东看一篇西看一篇）",
+    "单人单打（自己一个人写）",
+    "事实失真（信息茧房反复传播）",
+    "串行审校（5 道门并发才行）",
+    "作者 + 审校者共用知识库（第 4 道门不独立）"
+  ],
+  "red_lines": [
+    "不复述未授权完整作品",
+    "不写未经验证的事实",
+    "不强行给领域下'终极结论'",
+    "事实核查必须 WebSearch 查一手源"
+  ],
+  "default_settings": {
+    "时长": "30-60 天 / 1 本橙皮书",
+    "团队": "6-10 调研 agent + 多写作 agent + 5 审校 agent 并行",
+    "输出": "PDF / DOCX / EPUB 3 套",
+    "5 阶段": "调研 30% / 规划 10% / 写作 30% / 审校 20% / 构建 10%",
+    "5 道门": "并发审校 / 第 4 道门独立 WebSearch",
+    "4 原则": "结构先行 / 并行化 / 真入门=能讲清 / 事实优先"
+  },
+  "input_minimum": [
+    "目标领域（用户想搞懂的领域）",
+    "用户角色（个人学习 / 团队培训 / 出版社交稿）",
+    "时间预算（30 天 / 60 天 / 不限）"
+  ],
+  "input_optional": [
+    "读者画像（小白 / 进阶 / 专家）",
+    "输出格式偏好（PDF / DOCX / EPUB）",
+    "风格参考（手绘 / 商务 / 杂志风）",
+    "章节粒度（大章 / 小节）"
+  ],
+  "related_skills": [
+    "knowhub/domains/orange-book (31 文件 · 7 methodology + 9 cases + 4 tools)",
+    "knowhub/domains/content-ops (11 文件 · 内容运营)",
+    "pretty-skills/内容创作/橙皮书方法论（pretty-skills 已有 · 互补）",
+    "pretty-skills/内容创作/公众号爆款操盘术（公众号 5 段钩子链）"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "knowhub orange-book 长期方法论沉淀（31 文件 · 9 本实战橙皮书），已稳定 3+ 月。pretty-skills 橙皮书域本批第 1 个 case · 摘掉空领域（0 case → 1 case）· pretty-skills 16 领域 0 空域中第 1 个补上"
+    }
+  ]
+}

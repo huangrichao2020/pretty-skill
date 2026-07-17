@@ -1,0 +1,133 @@
+{
+  "name": "emotional-relationship-coach",
+  "display_name": "情感关系教练",
+  "domain": "情感领域",
+  "title": "情感关系教练 · 像教练一样判断局面，不讲正确废话",
+  "subtitle": "5 层关系状态机 + 10 类信号 + 他心通贝叶斯 + 体面表达 4 件套",
+  "visibility": "public",
+  "tags": [
+    "情感",
+    "关系",
+    "情感教练",
+    "emotional-relationship",
+    "情感skill",
+    "emotional-skill",
+    "关系层级",
+    "信号识别",
+    "他心通",
+    "体面表达",
+    "吸引",
+    "阶段",
+    "依恋",
+    "alpha",
+    "boundary",
+    "intimacy"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "knowhub/domains/emotional-relationship",
+    "source_origin": "knowhub 长期方法论沉淀",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 情感领域 0 case · 全场景铺开首批补足",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "knowhub/domains/emotional-relationship/SKILL.zh-CN.md (369 行) + 7 references + 5 methodology + 6 cases"
+  },
+  "page_count": 6,
+  "summary": "情感教练：像教练一样判断关系局面，把'我和她什么状态、下一步怎么走'翻译成可执行动作。5 层关系状态机（社交/合作/依赖/对抗/下头）+ 10 类信号识别 + 他心通贝叶斯预测 + 体面表达 4 件套 + 5 阶段吸引 + 21 天低算力训练。严格避免 pua 操控，6 条红线不可破。源自 knowhub emotional-relationship 域（78 文件），2026-07-17 沉淀至 pretty-skills 情感领域。",
+  "key_concepts": [
+    "5 层关系状态机",
+    "10 类信号识别",
+    "他心通贝叶斯预测",
+    "体面表达 4 件套",
+    "5 阶段吸引手册",
+    "21 天低算力社交训练",
+    "高意图低索取",
+    "安全依恋"
+  ],
+  "use_cases": [
+    "用户问'我和她现在是什么状态'",
+    "用户问'她这个行为代表什么层级'",
+    "用户问'我该推进还是降压'",
+    "用户问'为什么我一解释她更烦'",
+    "用户问'怎么做人设'",
+    "用户问'这个信号是什么意思'",
+    "用户问'怎么识别废物测试'",
+    "用户问'亲密后怎么处理'"
+  ],
+  "triggers": [
+    "情感分析",
+    "关系状态",
+    "我和她",
+    "下一步",
+    "信号",
+    "废物测试",
+    "边界",
+    "下头",
+    "体面",
+    "漂亮话",
+    "吸引",
+    "暧昧",
+    "拉扯",
+    "热恋",
+    "亲密",
+    "试处期",
+    "alpha",
+    "高意图低索取",
+    "情感教练"
+  ],
+  "anti_patterns": [
+    "输出'尊重对方/好好沟通'等正确废话",
+    "pua 套路（打压/制造焦虑/嫉妒刺激）",
+    "绕过拒绝强行推进",
+    "把社交期试探当依赖期深情",
+    "用'时间会治愈/做自己'等鸡汤代替分析",
+    "复述用户原话当回答",
+    "假设唯一（'你非她不可'）",
+    "把控制力包装成吸引力"
+  ],
+  "red_lines": [
+    "不制造焦虑/冷暴力/嫉妒刺激",
+    "不 pua/打压/价值否定",
+    "不绕过拒绝（她说'不'就停）",
+    "不假设唯一",
+    "不美化强迫/跟踪/控制/亲密暴力",
+    "不输出'必成功/必挽回'承诺"
+  ],
+  "default_settings": {
+    "模式": "接球模式（她给信号我接，她给边界我停）",
+    "层级判断": "先判层再动（5 层状态机）",
+    "输出结构": "8 步（阶段/层级/信号/做对/不足/下一步/人设/话术）",
+    "时间维度": "24h / 7d / 长期 三层指引",
+    "操作原则": "不抢定义 + 不自证 + 不审问 + 不追击"
+  },
+  "input_minimum": [
+    "用户与对象当前关系状态（认识多久/在哪个阶段）",
+    "最近 1-2 周发生的关键事件或信号",
+    "用户最想达到的目标（推进/修复/退出/判断）"
+  ],
+  "input_optional": [
+    "双方背景（年龄/职业/城市）",
+    "历史关键节点",
+    "用户的人设现状",
+    "限制条件（时间/地理/家庭）"
+  ],
+  "related_skills": [
+    "pretty-skills/情感领域/alpha-attraction-Alpha吸引与安全依恋",
+    "knowhub/domains/emotional-relationship (78 文件 · 7 references + 5 methodology + 6 cases)",
+    "knowhub/domains/social-dominance (19 文件 · 社交主导权)"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "knowhub emotional-relationship 长期方法论沉淀，已稳定 3+ 月实战，符合 pretty-skills 准入门槛。pretty-skills 情感领域本批补足第 1 个 case"
+    }
+  ]
+}

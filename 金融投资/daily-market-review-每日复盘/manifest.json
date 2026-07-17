@@ -1,0 +1,114 @@
+{
+  "name": "daily-market-review",
+  "display_name": "每日复盘",
+  "domain": "金融投资",
+  "title": "每日复盘 · A 股日度体检 · 四层融合框架",
+  "subtitle": "L0 人性 / L1 情绪 / L2 产业 / L3 证据 + 否决权 L0 > L1 > L3 > L2",
+  "visibility": "public",
+  "tags": [
+    "A股",
+    "复盘",
+    "daily-market-review",
+    "四层融合",
+    "住相信号",
+    "STW",
+    "情绪周期",
+    "涨停",
+    "炸板率",
+    "板块资金流",
+    "下周机会",
+    "下月机会"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "mavis agent daily-market-review",
+    "source_origin": "mavis agent skill",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 金融投资域本批第 13 个 case · 与 portfolio-diagnosis 互补",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "mavis agent daily-market-review/SKILL.md (228 行)"
+  },
+  "page_count": 6,
+  "summary": "A 股每日复盘：4 层融合框架给市场做日度体检。L0 人性（5 维住相信号 + 6 执念阶段，最高否决权）/ L1 情绪（STW 周期：冰点/复苏/高潮/退潮）/ L2 产业（催化是政策/业绩/题材？）/ L3 证据（Tier A/B/C/D 评级）。5 步诊断 SOP：拿数据 → L0 5 维 → L1 STW → L2 产业 → L3 评级。3 时段使用：开盘前 / 盘中 / 收盘后。源自 mavis agent daily-market-review（228 行），2026-07-17 沉淀至 pretty-skills 金融投资域。",
+  "key_concepts": [
+    "4 层融合框架",
+    "L0 否决权",
+    "5 维住相信号",
+    "6 执念阶段",
+    "STW 情绪周期",
+    "5 步诊断 SOP",
+    "板块资金流"
+  ],
+  "use_cases": [
+    "用户问'今天大盘怎么样'",
+    "用户问'A 股收盘分析'",
+    "用户问'下周机会'",
+    "用户问'下月机会'",
+    "用户问'现在该不该减仓'",
+    "用户问'情绪周期到哪了'"
+  ],
+  "triggers": [
+    "复盘",
+    "大盘",
+    "今日行情",
+    "收盘",
+    "下周机会",
+    "下月机会",
+    "情绪周期",
+    "STW",
+    "涨停家数",
+    "炸板",
+    "住相信号"
+  ],
+  "anti_patterns": [
+    "只罗列数据不诊断",
+    "只看单一层（情绪或产业）",
+    "L0 崩了还按 L2 操作",
+    "复盘完没下周/下月方向",
+    "退潮期抄底",
+    "高潮期追涨"
+  ],
+  "red_lines": [
+    "不复述未授权的研究报告",
+    "不预测具体点位",
+    "不构成具体投资建议（仅供研究参考）",
+    "不夸大策略胜率"
+  ],
+  "default_settings": {
+    "风格": "数据 + 诊断 + 行动 三段式",
+    "否决权": "L0 > L1 > L3 > L2",
+    "诊断 SOP": "5 步（数据 / L0 / L1 / L2 / L3）",
+    "使用时段": "开盘前 + 盘中 + 收盘后",
+    "输出": "可视化复盘卡片 + daily 日志"
+  },
+  "input_minimum": [
+    "复盘日期（默认今日）",
+    "用户关注的方向（指数/板块/持仓）"
+  ],
+  "input_optional": [
+    "关注板块（用户自选）",
+    "时间维度（今日/本周/本月）",
+    "历史对比（同环比）"
+  ],
+  "related_skills": [
+    "pretty-skills/金融投资/portfolio-diagnosis-持仓诊断（组合体检）",
+    "pretty-skills/金融投资/serenity-stock-choke-A股卡脖子（产业链分析）",
+    "pretty-skills/金融投资/4维融合诊断PPTX（4 层融合 PPT 模板）",
+    "mavis agent daily-market-review（源）",
+    "mavis agent serenity-stock-choke（产业链）"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "mavis agent daily-market-review 实战稳定 1+ 月，用户多次调用（早报/周末复盘/关键节点）。金融投资域本批第 13 个 case"
+    }
+  ]
+}

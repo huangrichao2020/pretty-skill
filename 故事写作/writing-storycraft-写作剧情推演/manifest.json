@@ -1,0 +1,128 @@
+{
+  "name": "writing-storycraft",
+  "display_name": "写作剧情推演",
+  "domain": "故事写作",
+  "title": "写作剧情推演 · 把经历与想法讲成好故事",
+  "subtitle": "18 个独立方法论 + 4 个 references · 剧情推演 / 真实故事转剧情 / 角色 / 潜台词",
+  "visibility": "public",
+  "tags": [
+    "写作",
+    "剧情",
+    "故事",
+    "writing",
+    "storycraft",
+    "住相",
+    "钩子",
+    "潜台词",
+    "反套路",
+    "章节审计",
+    "平台写作",
+    "寓言",
+    "高考作文",
+    "江湖叙事",
+    "真实经历",
+    "剧情推演"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "knowhub/domains/writing-storycraft",
+    "source_origin": "knowhub 长期方法论沉淀",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 故事写作域本批第 2 个 case · 配合 zhihu-short-story-知乎风短篇 互补",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "knowhub/domains/writing-storycraft/ (30 文件 · 18 methods + 4 references + 1 case + 2 methodology)"
+  },
+  "page_count": 6,
+  "summary": "写作剧情推演：把经历与想法讲成好故事。18 个独立方法论分 3 层：哲学层（01-05：空性/住相/引擎/事件/节奏）+ 流程层（06-12：转剧情/潜台词/空间/钩子/审计/单章/平台）+ 应用层（13-18：江湖短文/小说演化/长文/寓言/关键词作文）。4 个 references 提供场景深挖（剧情演化/沉浸式场景/真实经历推演/章节质检）。1 个 case：关系即剧情推演。源自 knowhub writing-storycraft 域（30 文件），2026-07-17 沉淀至 pretty-skills 故事写作域。",
+  "key_concepts": [
+    "18 个独立方法论",
+    "住相碰撞剧情引擎",
+    "沉浸式潜台词",
+    "空间即人心",
+    "钩子回声动态库",
+    "章节审计反套路",
+    "真实经历转剧情",
+    "4 层感知节奏"
+  ],
+  "use_cases": [
+    "用户问'写剧情用什么方法'",
+    "用户问'怎么把真事写成故事'",
+    "用户问'潜台词怎么写'",
+    "用户问'钩子怎么设计'",
+    "用户问'章节怎么审计'",
+    "用户问'公众号/知乎/小红书写作差异'",
+    "用户问'寓言怎么写'",
+    "用户问'高考关键词作文'"
+  ],
+  "triggers": [
+    "写剧情",
+    "故事",
+    "潜台词",
+    "钩子",
+    "审计",
+    "反套路",
+    "住相",
+    "人物",
+    "空间",
+    "押韵",
+    "寓言",
+    "高考作文",
+    "议论散文",
+    "江湖叙事",
+    "犀利观点",
+    "小短文",
+    "公众号",
+    "知乎",
+    "小红书"
+  ],
+  "anti_patterns": [
+    "用'我愣住了/全场寂静'等模板句",
+    "心理直接解释（不用动作/物件外化）",
+    "故事=角色被动跟着剧情走",
+    "拼凑真人真事（隐私+侵权）",
+    "钩子掉了不回收",
+    "伏笔没收完",
+    "写完就发不审计"
+  ],
+  "red_lines": [
+    "不复述/续写/洗写未授权完整作品",
+    "不写未成年人性内容",
+    "不把真实普通人写成罪犯/出轨者/施暴者",
+    "不美化强迫/跟踪/控制/亲密暴力"
+  ],
+  "default_settings": {
+    "风格": "清晰 > 速度 · 多花 5 分钟讲清楚 = 100 倍可懂性",
+    "路由": "触什么读什么（不一次加载全部 18 方法）",
+    "审计": "静默质检（不展示给用户）",
+    "复述标准": "能用'因为-所以-但是-最终'完整复述"
+  },
+  "input_minimum": [
+    "用户要写的场景/类型（剧情/寓言/短文/平台文章）",
+    "用户的具体问题（钩子/潜台词/审计等）"
+  ],
+  "input_optional": [
+    "字数（短篇/长篇/800-1200 字/6000+ 字）",
+    "平台（公众号/知乎/小红书/抖音）",
+    "用户提供的素材（大纲/真事/灵感）"
+  ],
+  "related_skills": [
+    "pretty-skills/故事写作/zhihu-short-story-知乎风短篇（8 步 SOP + 反转 5 条件 · 知乎风短篇专项）",
+    "knowhub/domains/writing-storycraft (30 文件 · 完整 18 方法 + 4 references)",
+    "pretty-skills/内容创作/公众号爆款操盘术（公众号 5 段钩子链）",
+    "pretty-skills/内容创作/杂志风公众号品鉴（公众号排版风格）"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "knowhub writing-storycraft 长期方法论沉淀（30 文件），已稳定 3+ 月实战。故事写作域本批第 2 个 case，与知乎风短篇（3F 范式 8 步 SOP）互补"
+    }
+  ]
+}

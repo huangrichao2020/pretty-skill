@@ -1,0 +1,125 @@
+{
+  "name": "alpha-attraction-secure-attachment",
+  "display_name": "Alpha 吸引与安全依恋",
+  "domain": "情感领域",
+  "title": "Alpha 吸引与安全依恋 · 高意图低索取的吸引力系统",
+  "subtitle": "5 维框架 + 3 依恋类型 + 7 场景话术 · 不制造焦虑的吸引力",
+  "visibility": "public",
+  "tags": [
+    "情感",
+    "关系",
+    "Alpha",
+    "高意图低索取",
+    "吸引力",
+    "依恋",
+    "安全依恋",
+    "焦虑型",
+    "回避型",
+    "安全型",
+    "alpha-attraction",
+    "secure-attachment",
+    "frame",
+    "boundary"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "how-to-agent/skills/emotional-skill",
+    "source_origin": "how-to-agent 长期实战沉淀",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 情感领域本批第 2 个 case · 与 emotional-relationship-情感关系教练 互补",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "how-to-agent/skills/emotional-skill/SKILL_技能说明中文版.md (217 行) + 4 references"
+  },
+  "page_count": 6,
+  "summary": "Alpha 吸引：高意图低索取的吸引力系统。区别于 pua 套路（打压/焦虑/控制），本 skill 是 5 维框架（框架力/欲望感/节奏/稳定/边界）+ 3 依恋类型理解（焦虑/回避/安全）+ 7 场景话术（自拍/烦躁/试探/冷淡/委屈/主动靠近/关系定义）。6 条红线（不焦虑/不 pua/不绕过拒绝/不假设唯一/不控制/不承诺必成）。源自 how-to-agent emotional-skill，2026-07-17 沉淀至 pretty-skills 情感领域。",
+  "key_concepts": [
+    "高意图低索取",
+    "5 维 Alpha 框架",
+    "3 大依恋类型",
+    "追逃循环",
+    "框架力",
+    "节奏控制",
+    "情绪稳定",
+    "边界感",
+    "安全感生成"
+  ],
+  "use_cases": [
+    "用户问'怎么理解依恋系统'",
+    "用户问'怎么识别她是什么依恋类型'",
+    "用户问'焦虑型/回避型怎么相处'",
+    "用户问'怎么自然表达喜欢但不求认可'",
+    "用户问'亲密后她变冷怎么接'",
+    "用户问'追逃循环怎么跳出'"
+  ],
+  "triggers": [
+    "alpha",
+    "高意图",
+    "低索取",
+    "吸引力",
+    "依恋",
+    "焦虑型",
+    "回避型",
+    "安全型",
+    "框架",
+    "节奏",
+    "安全感",
+    "Alpha 男人",
+    "强势吸引",
+    "试处期",
+    "亲密"
+  ],
+  "anti_patterns": [
+    "把'高意图'做成'高索取'",
+    "pua 套路（打压/价值否定/嫉妒刺激）",
+    "焦虑型 + 回避型组合没识别（追逃循环）",
+    "表演'不在乎'（不自然）",
+    "逼问'我们什么关系'",
+    "把安全型拖成焦虑型（焦虑传染）",
+    "用边界感做武器反击"
+  ],
+  "red_lines": [
+    "不制造焦虑/冷暴力/嫉妒刺激",
+    "不 pua/打压/价值否定",
+    "不绕过拒绝（她说'不'就停）",
+    "不假设唯一",
+    "不控制/跟踪/监视",
+    "不输出'必成功/必挽回'承诺"
+  ],
+  "default_settings": {
+    "风格": "高意图低索取",
+    "核心公式": "知道要去哪 + 不强求她立刻跟上",
+    "5 维评估": "框架力 + 欲望感 + 节奏 + 稳定 + 边界",
+    "表达原则": "自然 + 经得起转述 + 闺蜜复盘",
+    "情绪原则": "自己负责 + 不甩对方",
+    "边界原则": "自己的底线 + 尊重她的'不'"
+  },
+  "input_minimum": [
+    "她的依恋类型（焦虑/回避/安全/不确定）",
+    "当前关系阶段（认识/吸引/暧昧/拉扯/热恋）",
+    "用户最想解决的问题（高索取/追逃循环/亲密后变冷）"
+  ],
+  "input_optional": [
+    "用户当前人设（5 维评估）",
+    "具体场景（7 场景话术按需加载）",
+    "限制条件（时间/地理/家庭）"
+  ],
+  "related_skills": [
+    "pretty-skills/情感领域/emotional-relationship-情感关系教练（判断+指引）",
+    "knowhub/domains/emotional-relationship (78 文件 · 顶层方法论)",
+    "how-to-agent/skills/emotional-skill (源 217 行 SKILL + 4 references)"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "how-to-agent emotional-skill 长期实战沉淀（217 行 + 4 references），与 knowhub emotional-relationship 互补（一个判断/一个吸引）。情感领域本批第 2 个 case"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "name": "self-media-script",
+  "display_name": "自媒体口播稿生成器",
+  "domain": "内容创作",
+  "title": "自媒体口播稿生成器 · 把 knowhub 方法论变成可录的口播 + 配图 + 多平台发布包",
+  "subtitle": "9 模板 × 3 账号（情感/Agent/交易）× 5 平台（抖音/小红书/B站/公众号/视频号）",
+  "visibility": "public",
+  "tags": [
+    "自媒体",
+    "口播",
+    "口播稿",
+    "抖音",
+    "小红书",
+    "B站",
+    "公众号",
+    "视频号",
+    "封面",
+    "配图",
+    "情感",
+    "Agent",
+    "交易",
+    "self-media",
+    "video-script",
+    "social-media",
+    "content-creation"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "mavis agent self-media-script",
+    "source_origin": "mavis agent skill",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 内容创作域本批第 16 个 case · knowhub 方法论 → 自媒体内容的翻译层",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "mavis agent self-media-script/SKILL.md (366 行) + 9 模板 + 3 账号路由 + 5 平台适配"
+  },
+  "page_count": 6,
+  "summary": "自媒体口播稿生成器：把 knowhub 方法论翻译成可发的内容。3 账号（情感关系/定制 Agent/股市交易）× 9 模板（A 江湖观点 / B 金句+案例+行动 / C 情绪翻译 / D 每日AI实践 / E 架构科普 / F 工具测评 / G 每日复盘 / H 错误模式 / I 盘面诊断）× 5 平台（抖音/小红书/B站/公众号/视频号）。完整发布包 5 大产物（口播/封面prompt/配图prompt/平台标题/平台简介）。视频生产工具栈：Remotion+Manim 知识讲解 / HTML+GSAP 小红书 / WhisperX+auto-editor 口播剪辑。源自 mavis agent self-media-script（366 行），2026-07-17 沉淀至 pretty-skills 内容创作域。",
+  "key_concepts": [
+    "9 种内容模板",
+    "3 账号路由",
+    "5 平台适配",
+    "1 稿 5 用",
+    "5 大产物",
+    "视频生产工具栈",
+    "账号识别",
+    "方法论翻译层"
+  ],
+  "use_cases": [
+    "用户说'帮我写口播稿'",
+    "用户说'帮我写一条抖音/小红书/B站内容'",
+    "用户说'把这个方法论变成一条短视频'",
+    "用户说'帮我生成选题和脚本'",
+    "用户说'做知识讲解动画'",
+    "用户说'做小红书风格 HTML'",
+    "用户说'生成封面/配图'",
+    "用户说'短视频工具选型'"
+  ],
+  "triggers": [
+    "口播稿",
+    "口播素材",
+    "抖音选题",
+    "小红书笔记",
+    "剧本",
+    "封面",
+    "生成视频",
+    "配图提示词",
+    "复盘口播",
+    "知识讲解动画",
+    "小红书HTML",
+    "个人口播",
+    "视频生产"
+  ],
+  "anti_patterns": [
+    "硬搬方法论术语",
+    "账号错位（情感号讲 Agent）",
+    "平台不匹配（抖音内容发公众号）",
+    "单形态产出（只给口播稿）",
+    "封面 prompt 模糊（不能出图）",
+    "标题千篇一律（5 平台通用）"
+  ],
+  "red_lines": [
+    "不复述未授权完整作品",
+    "不模仿在世作者具体表达",
+    "不把真实普通人写成罪犯/出轨者",
+    "不宣称'必爆款/必上榜'"
+  ],
+  "default_settings": {
+    "风格": "翻译层（方法论 → 内容）",
+    "账号识别": "关键词自动路由（情感/Agent/交易）",
+    "模板": "9 模板按账号匹配",
+    "平台": "5 平台默认全覆盖",
+    "输出": "5 大产物（口播/封面/配图/标题/简介）"
+  },
+  "input_minimum": [
+    "账号类型（情感/Agent/交易/不确定）",
+    "要翻译的方法论（来源 knowhub 域）",
+    "目标平台（抖音/小红书/B站/公众号/视频号）"
+  ],
+  "input_optional": [
+    "内容类型（A-I 9 模板之一）",
+    "字数（200-300 / 300-500 / 800-1200）",
+    "时长（30-60s / 3-10min）",
+    "风格（手绘/商务/杂志风）"
+  ],
+  "related_skills": [
+    "pretty-skills/内容创作/wechat-delivery-公众号端到端交付（公众号深耕）",
+    "pretty-skills/内容创作/公众号爆款操盘术（5 段钩子链）",
+    "pretty-skills/内容创作/杂志风公众号品鉴（公众号排版风格）",
+    "pretty-skills/故事写作/writing-storycraft-写作剧情推演（写作方法）",
+    "mavis agent self-media-script（源 366 行）"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "mavis agent self-media-script 实战稳定 1+ 月。内容创作域本批第 16 个 case · 与其他 15 case 形成'翻译层'补足"
+    }
+  ]
+}

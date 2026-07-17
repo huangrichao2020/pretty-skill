@@ -1,0 +1,114 @@
+{
+  "name": "portfolio-diagnosis",
+  "display_name": "持仓诊断",
+  "domain": "金融投资",
+  "title": "持仓诊断 · 组合体检 · 四层融合 + A/B/C/D 分级",
+  "subtitle": "L0/L1 整体判断 + L2/L3 逐只判断 + A 持有 / B 观察 / C 减仓 / D 清仓",
+  "visibility": "public",
+  "tags": [
+    "A股",
+    "持仓",
+    "组合体检",
+    "portfolio-diagnosis",
+    "四层融合",
+    "分级",
+    "A/B/C/D",
+    "评级",
+    "操作建议",
+    "截图识别",
+    "实时行情"
+  ],
+  "contributor": "Mavis",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-07-17",
+  "last_updated": "2026-07-17",
+  "format": {
+    "content_md": "content.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "mavis agent portfolio-diagnosis",
+    "source_origin": "mavis agent skill",
+    "merge_reason": "按 pretty-skills 收口硬规则（2026-07-16）· 金融投资域本批第 14 个 case · 与 daily-market-review 互补",
+    "merge_method": "3F Content 范式 P0-P5 重写（出版局讲解版）",
+    "complete_methodology_retained_in": "mavis agent portfolio-diagnosis/SKILL.md (149 行) + references"
+  },
+  "page_count": 6,
+  "summary": "A 股持仓诊断：组合体检 = 四层融合（L0/L1 整体 + L2/L3 逐只）+ A/B/C/D 分级（A 持有 / B 观察 / C 减仓 / D 清仓）+ 3 时间维度操作建议（24h / 7d / 长期）。输入 3 方式（截图 / 文本 / 口头）+ 输出 6 区块 widget（汇总 / 全景 / 详情 / 操作 / 风险）。L0 5 维住相信号先判整体（≥3 灯 = 整体减仓），不逐只看。源自 mavis agent portfolio-diagnosis（149 行），2026-07-17 沉淀至 pretty-skills 金融投资域。",
+  "key_concepts": [
+    "四层融合",
+    "L0/L1 整体",
+    "L2/L3 逐只",
+    "A/B/C/D 分级",
+    "组合体检",
+    "3 时间维度操作建议",
+    "6 区块 widget"
+  ],
+  "use_cases": [
+    "用户问'分析我的持仓'",
+    "用户问'诊断持仓'",
+    "用户问'看看我的股票'",
+    "用户问'持仓复盘'",
+    "用户问'我的股票有没有行情'",
+    "用户问'该不该止损'",
+    "用户问'该加仓还是减仓'"
+  ],
+  "triggers": [
+    "分析持仓",
+    "诊断持仓",
+    "我的股票",
+    "持仓复盘",
+    "该不该",
+    "加仓",
+    "减仓",
+    "止损",
+    "清仓",
+    "组合体检"
+  ],
+  "anti_patterns": [
+    "逐只点评（无分级无组合）",
+    "只看技术面不看四层",
+    "L0 崩了还按 L2 操作",
+    "没时间维度（只说'现在'）",
+    "D 级 0 处理（高风险不优先）"
+  ],
+  "red_lines": [
+    "不复述未授权研究报告",
+    "不预测具体点位",
+    "不构成具体投资建议",
+    "不夸大策略胜率"
+  ],
+  "default_settings": {
+    "风格": "四层融合 + 4 评级 + 3 时间维度",
+    "否决权": "L0 > L1 > L3 > L2",
+    "输入方式": "截图 / 文本 / 口头",
+    "输出形式": "6 区块 widget",
+    "操作时间": "24h / 7d / 长期"
+  },
+  "input_minimum": [
+    "持仓列表（截图/文本/口头）",
+    "成本价 + 持股数量（如知道）"
+  ],
+  "input_optional": [
+    "是否两融账户",
+    "关注板块",
+    "操作偏好（保守/平衡/激进）"
+  ],
+  "related_skills": [
+    "pretty-skills/金融投资/daily-market-review-每日复盘（市场体检）",
+    "pretty-skills/金融投资/serenity-stock-choke-A股卡脖子（产业链）",
+    "pretty-skills/金融投资/4维融合诊断PPTX（PPT 模板）",
+    "mavis agent portfolio-diagnosis（源）",
+    "mavis agent daily-market-review（市场体检）",
+    "mavis agent serenity-stock-choke（产业链）",
+    "mavis agent technical-signal（个股技术面）"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-07-17",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "mavis agent portfolio-diagnosis 实战稳定 1+ 月，用户多次调用（截图+文本）。金融投资域本批第 14 个 case"
+    }
+  ]
+}
