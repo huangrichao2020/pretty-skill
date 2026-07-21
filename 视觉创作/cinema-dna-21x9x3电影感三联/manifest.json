@@ -1,0 +1,69 @@
+{
+  "name": "cinema-dna-21x9x3电影感三联",
+  "domain": "视觉创作",
+  "version": "1.0.0",
+  "created": "2026-07-22",
+  "visibility": "public",
+  "format": "case",
+  "contributor": "Mavis",
+  "description": "电影感三联镜头叙事 · 3镜头合同（建立世界/建立关系/留下余韵）+ 现场摄影 5+ 参数 + Anti-AI 纪律 + 光学缺陷 + Triptych 节奏",
+  "files": {
+    "content": "content.md",
+    "pdf": "cinema-dna-21x9x3电影感三联讲解.pdf",
+    "skill": "SKILL.md",
+    "readme": "README.md",
+    "images_dir": "images/",
+    "prompts_dir": "prompts/",
+    "jinxiu_dir": "锦绣/"
+  },
+  "images": [
+    "images/triptych-demo.jpg",
+    "images/hotel-pink-ritual-triptych.jpg",
+    "images/venice-palace-triptych.jpg",
+    "images/green-water-memory-triptych.png",
+    "images/journey-west-original-epic-triptych.png",
+    "images/eastern-palace-triptych.png",
+    "images/courthouse-witness-triptych.png",
+    "images/dumpling-shop-triptych.png",
+    "images/army-fisheye-first-person-triptych.png",
+    "images/cabaret-aftermath-triptych.png",
+    "images/go-shadow-ink-triptych.png",
+    "images/green-girl-wide-aperture-triptych.png",
+    "images/blue-sea-large-ship-triptych.png",
+    "images/industrial-ensemble-ledger-triptych.png",
+    "images/hotel-pink-ritual-triptych.jpg",
+    "images/warm-narrative-overview.png"
+  ],
+  "prompts": [
+    "prompts/README.md",
+    "prompts/p0_cover.md",
+    "prompts/p1.md",
+    "prompts/p2.md",
+    "prompts/p3.md",
+    "prompts/p4.md",
+    "prompts/p5.md",
+    "prompts/p6.md",
+    "prompts/p7.md",
+    "prompts/p8.md"
+  ],
+  "tags": [
+    "电影感",
+    "21:9",
+    "三联镜头",
+    "triptych",
+    "叙事",
+    "镜头语言",
+    "Anti-AI",
+    "光学缺陷",
+    "高级感",
+    "Mavis 工具栈适配"
+  ],
+  "related_skills": [
+    "scroll-world滚动驱动相机",
+    "dashiai-ppt传统PPT",
+    "H5设计转H5滑动",
+    "ai-image-to-pptx-AI生图PPT",
+    "wechat-delivery"
+  ],
+  "source": "dacnay816y62-hub/cinema-dna-21x9x3 (GitHub 39 stars, 2026-07-20)"
+}
