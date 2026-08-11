@@ -1,0 +1,105 @@
+{
+  "name": "群像文字游戏模板",
+  "display_name": "群像文字游戏模板",
+  "domain": "故事写作",
+  "title": "群像文字游戏模板 · 把群像文变成可玩的文字游戏",
+  "subtitle": "元模板 + 实例化配方 + DM 运行流 · 一篇群像文 = 一个沉浸式文字游戏 skill",
+  "visibility": "public",
+  "tags": [
+    "群像",
+    "文字游戏",
+    "沉浸式",
+    "互动叙事",
+    "分支剧情",
+    "第七人",
+    "死光节点",
+    "剧本杀",
+    "饭局",
+    "模板",
+    "Agent 游戏",
+    "玩家代理"
+  ],
+  "contributor": "小源/WorkBuddy",
+  "contributor_github": "huangrichao2020",
+  "created": "2026-08-11",
+  "last_updated": "2026-08-11",
+  "format": {
+    "content_md": "SKILL.md",
+    "锦绣": false,
+    "presentation_pptx": false,
+    "case_pdf": null,
+    "source_skill": "novel-evolution 动态库范式（relationships/world-state/active-threads）抽取改造 + 群戏三要点/四要素/死光节点",
+    "merge_reason": "pretty-skills 故事写作域第 4 个 case；与 group-portrait-群像戏 配对——本文写群像，本模板把它变成可玩的游戏",
+    "merge_method": "元模板（fixed/schema + fixed/genres + workflow/dm-runtime）+ 已实例化 demo（饭局文字游戏）"
+  },
+  "page_count": 7,
+  "summary": "一个'群像文 → 文字游戏'的生成器元模板。玩家以'第七人'身份卷入同一事件，中途不断做判断与真实答复，改写人物关系、推动剧情，最终在'死光节点'引爆所有诉求的碰撞。schema 抽取自 novel-evolution 动态库（人物关系库/世界状态/剧情线），复用其'fixed(方法论+配置)+workflow(执行流)'目录结构并纯提示词化。配套 5 步实例化配方，一台群像文即可产出一个具体可玩的游戏 skill；已附《最后一顿散伙饭》饭局 demo。",
+  "key_concepts": [
+    "第七人视角",
+    "玩家代理点",
+    "关系网实时改写",
+    "死光节点",
+    "裹挟事件",
+    "世界独立于玩家",
+    "实例化配方"
+  ],
+  "use_cases": [
+    "用户想把一个群像故事做成能玩的文字游戏",
+    "用户要批量生成不同场景的文字游戏 skill（一场群像局 = 一个游戏 skill）",
+    "用户说'做个文字游戏/互动剧本/沉浸式群像/第七人视角'",
+    "用户想把公众号/知乎/小红书的群像文变成可交互叙事"
+  ],
+  "triggers": [
+    "文字游戏",
+    "群像游戏",
+    "沉浸式",
+    "互动剧本",
+    "第七人",
+    "分支剧情",
+    "剧本杀",
+    "饭局游戏",
+    "可玩",
+    "Agent 游戏"
+  ],
+  "anti_patterns": [
+    "玩家只是旁观者（错，玩家必须能干预剧情）",
+    "NPC 围着玩家转（错，世界独立于玩家运转）",
+    "没有死光节点（群像失去引爆点）",
+    "分支不回写关系网（选择无重量）",
+    "把模板当成品（模板是生产线，不是一局游戏）"
+  ],
+  "red_lines": [
+    "不复述/续写/洗写未授权完整作品",
+    "不写未成年人性内容",
+    "不把真实普通人写成罪犯/出轨者/施暴者",
+    "不美化强迫/跟踪/控制/亲密暴力"
+  ],
+  "default_settings": {
+    "角色数": "3-7 人（含玩家第七人）",
+    "分支点": "4-8 个玩家代理点",
+    "结局": "3-5 种（基于关系/线索/立场组合）",
+    "时长": "20-40 分钟一局",
+    "风格": "服从 genre，不跳出基调"
+  },
+  "input_minimum": [
+    "一个裹挟事件（把人摁在同一时空）",
+    "每个角色的核心诉求（不能重复）"
+  ],
+  "input_optional": [
+    "场景类型（饭局/春节/董事会/婚礼/同学会/密室）",
+    "目标平台",
+    "死光节点设计"
+  ],
+  "related_skills": [
+    "pretty-skills/故事写作/group-portrait-群像戏（先写群像，本模板把它变成游戏）",
+    "pretty-skills/故事写作/writing-storycraft-写作剧情推演（引用方法 02/04/09）"
+  ],
+  "validation_history": [
+    {
+      "date": "2026-08-11",
+      "type": "沉淀",
+      "verdict": "pass",
+      "notes": "从 novel-evolution 动态库抽取 schema 并纯提示词化，复用 fixed+workflow 结构；含完整实例化配方 + 饭局 demo。与 group-portrait-群像戏 配对构成'写→玩'闭环。"
+    }
+  ]
+}
