@@ -56,8 +56,6 @@
 | 视觉创作 | [`PPT证据链战法`](./视觉创作/PPT证据链战法/) | **public** | PPT, AI生图, CyberPPT, 证据链, dashiai-ppt, 视觉创作, 三段式, 可编辑PPTX | content.md + xxx讲解.pdf + 锦绣 |
 | 故事写作 | [`zhihu-short-story-知乎风短篇`](./故事写作/zhihu-short-story-知乎风短篇/) | **public** | 短篇, 知乎, 盐选, 反转, 钩子, 八拍结构, 言情, 古言, 权谋, 悬疑, 爽文 | content.md + manifest.json |
 | 故事写作 | [`writing-storycraft-写作剧情推演`](./故事写作/writing-storycraft-写作剧情推演/) | **public** | 写作, 剧情, 故事, writing, storycraft, 住相, 钩子, 潜台词, 反套路, 章节审计, 平台写作, 寓言, 高考作文, 江湖叙事, 真实经历, 剧情推演 | content.md + manifest.json |
-| 故事写作 | [`group-portrait-群像戏`](./故事写作/group-portrait-群像戏/) | **public** | 群像, 群戏, 多视角, 化学反应, 诉求, 事件, 互动, 冲突, 剧本, 小说, 公众号, 知乎, 小红书, 饭局, 死光节点 | content.md + manifest.json |
-| 故事写作 | [`群像文字游戏模板`](./故事写作/群像文字游戏模板/) | **public** | 群像, 文字游戏, 沉浸式, 互动叙事, 分支剧情, 第七人, 死光节点, 剧本杀, 饭局, 模板, Agent游戏 | SKILL.md + fixed/ + workflow/ + 实例/ |
 | 情感领域 | [`emotional-relationship-情感关系教练`](./情感领域/emotional-relationship-情感关系教练/) | **public** | 情感, 关系, 情感教练, emotional-relationship, 关系层级, 信号识别, 他心通, 体面表达, 吸引, 阶段, 依恋, alpha, boundary, intimacy | content.md + manifest.json |
 | 情感领域 | [`alpha-attraction-Alpha吸引与安全依恋`](./情感领域/alpha-attraction-Alpha吸引与安全依恋/) | **public** | 情感, 关系, Alpha, 高意图低索取, 吸引力, 依恋, 安全依恋, 焦虑型, 回避型, 安全型, alpha-attraction, secure-attachment, frame, boundary | content.md + manifest.json |
 | 金融投资 | [`daily-market-review-每日复盘`](./金融投资/daily-market-review-每日复盘/) | **public** | A股, 复盘, daily-market-review, 四层融合, 住相信号, STW, 情绪周期, 涨停, 炸板率, 板块资金流, 下周机会, 下月机会 | content.md + manifest.json |
@@ -65,7 +63,7 @@
 | 内容创作 | [`self-media-script-自媒体口播稿`](./内容创作/self-media-script-自媒体口播稿/) | **public** | 自媒体, 口播, 口播稿, 抖音, 小红书, B站, 公众号, 视频号, 封面, 配图, 情感, Agent, 交易, self-media, video-script, social-media | content.md + manifest.json |
 | 橙皮书 | [`orange-book-5步流水线-调研规划写作三审三校成书`](./橙皮书/orange-book-5步流水线-调研规划写作三审三校成书/) | **public** | 橙皮书, orange-book, 做书, 扫盲, 领域入门, 5 阶段流水线, 三审三校, 事实核查, PDF, DOCX, EPUB, 教程, 指南, 手册, 5 阶段, 5 道门 | content.md + manifest.json |
 
-> **22 个 case 全部默认 public** —— 提 PR 共享。
+> **20 个 case 全部默认 public** —— 提 PR 共享。
 
 > **本批新增 7 case（2026-07-17）**：pretty-skills 16 领域空域从 3 个（游戏玩家/情感/橙皮书）降到 1 个（游戏玩家）。
 
@@ -111,4 +109,4 @@ def load_pretty_skill(root="/path/to/pretty-skills"):
 
 ---
 
-<sub>最后更新：2026-08-11 · 22 个 case 全部 public（新增 group-portrait-群像戏 + 群像文字游戏模板，与 writing-storycraft 同处故事写作域）</sub>
+<sub>最后更新：2026-08-11 · 20 个 case 全部 public（回滚 group-portrait-群像戏 + 群像文字游戏模板 两个 case，转为本地私有）</sub>
