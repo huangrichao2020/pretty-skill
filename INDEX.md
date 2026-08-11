@@ -67,6 +67,8 @@
 
 > **本批新增 7 case（2026-07-17）**：pretty-skills 16 领域空域从 3 个（游戏玩家/情感/橙皮书）降到 1 个（游戏玩家）。
 
+> **2026-08-11 README 同步**：故事写作/README.md 补列 writing-storycraft-写作剧情推演 case（修复 2026-07-17 沉淀批次中 INDEX 有但 README 漏列的不一致）。
+
 ---
 
 ## 🏷 visibility 规则（agent 必须遵循）
@@ -107,4 +109,4 @@ def load_pretty_skill(root="/path/to/pretty-skills"):
 
 ---
 
-<sub>最后更新：2026-07-14 · 14 个 case 全部 public</sub>
+<sub>最后更新：2026-08-11 · 20 个 case 全部 public（修复 2026-07-14 故事写作/README.md 漏列 writing-storycraft case + 同步批次备注）</sub>
