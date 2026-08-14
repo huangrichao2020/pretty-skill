@@ -100,7 +100,7 @@ agent 自动做 4 步：
 ## 📱 加群交流 · Pretty-skills 使用交流群
 
 <p align="center">
-  <img src="assets/readme-14-qrcode-wechat.png" alt="Pretty-skills 使用交流群微信二维码" width="260">
+  <img src="assets/readme-14-qrcode-wechat.jpg" alt="Pretty-skills 使用交流群微信二维码" width="260">
 </p>
 
 <p align="center">
